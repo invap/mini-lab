@@ -72,6 +72,7 @@ a {
 
     background-color: var(--invap-green);
     color: white;
+    z-index: 800;
 }
 
 /* ==== NOMBRE O LOGO (TOMAR DECISION) ==== */
@@ -194,7 +195,7 @@ a {
 
 
 /* =========================
-   MAIN
+    MAIN
    ========================= */
 
 main {
@@ -209,7 +210,7 @@ main {
 
 
 /* =========================
-   SECTION HEADER
+    SECTION HEADER
    ========================= */
 
 .kit-section__header {
@@ -250,52 +251,8 @@ main {
     line-height: 1.6;
 }
 
-
 /* =========================
-   SEARCH
-   ========================= */
-
-.kit-search {
-    width: calc(100% - 2rem);
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.5rem;
-}
-
-.kit-search__label {
-    display: block;
-
-    margin-bottom: 0.5rem;
-
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.kit-search__input {
-    width: 100%;
-
-    padding: 0.9rem 1rem;
-
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
-
-    background-color: white;
-
-    color: var(--text-primary);
-
-    outline: none;
-}
-
-.kit-search__input:focus {
-    border-color: var(--invap-green);
-
-    box-shadow:
-        0 0 0 3px rgba(0, 119, 50, 0.12);
-}
-
-
-/* =========================
-   COMPONENT GRID
+    COMPONENT GRID
    ========================= */
 
 .components-grid {
@@ -324,6 +281,22 @@ main {
     background-color: var(--surface);
 
     box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.component-card:hover{
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+    transform: translateY(-2px);
+}
+
+.component-card:focus{
+    outline: 2px solid var(--invap-green);
+}
+
+.component-card:focus-visible{
+    outline: 2px solid var(--invap-green);
+    outline-offset: 2px;
 }
 
 .component-card__image-container {
@@ -366,12 +339,182 @@ main {
 }
 
 .component-card__button {
-    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--invap-green);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
 
-    padding: 0.75rem 1rem;
+/* =========================
+    DIALOG
+   ========================= */
+
+.component-dialog {
+    width: calc(100% - 2rem);
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    padding: 0;
 
     border: 0;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-large);
+
+    background-color: var(--surface);
+
+    overflow: hidden;
+}
+
+.component-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+
+.component-dialog__container {
+    max-height: 90vh;
+
+    overflow-y: auto;
+}
+
+
+/* Header */
+
+.component-dialog__header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1.25rem;
+
+    background-color: var(--invap-green);
+    color: white;
+}
+
+
+.component-dialog__title {
+    margin: 0;
+
+    font-size: 1.25rem;
+}
+
+
+.component-dialog__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* Imagen */
+
+.component-dialog__image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+
+    padding: 1.5rem;
+
+    background-color: #f1f4f2;
+}
+
+
+.component-dialog__image {
+    width: 100%;
+    max-height: 250px;
+
+    object-fit: contain;
+}
+
+
+/* Contenido */
+
+.component-dialog__content {
+    padding: 1.5rem;
+}
+
+
+.component-dialog__section {
+    margin-bottom: 1.5rem;
+}
+
+
+.component-dialog__section h3 {
+    margin: 0 0 0.5rem;
+
+    font-size: 1rem;
+}
+
+
+.component-dialog__section p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+}
+
+
+/* Documentación */
+
+.component-dialog__documentation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.25rem;
+
+    padding: 1rem;
+
+    border-radius: var(--radius-medium);
+
+    background-color: var(--invap-green-light);
+
+    color: var(--invap-green);
+
+    font-weight: 600;
+}
+
+
+/* Botón cerrar */
+
+.component-dialog__button {
+    width: 100%;
+
+    padding: 0.9rem 1rem;
+
+    border: 0;
+    border-radius: var(--radius-medium);
 
     background-color: var(--invap-green);
 
@@ -382,13 +525,8 @@ main {
     cursor: pointer;
 }
 
-.component-card__button:hover {
-    background-color: var(--invap-green-dark);
-}
-
-
 /* =========================
-   FOOTER
+    FOOTER
    ========================= */
 
 .site-footer {
