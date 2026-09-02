@@ -18,7 +18,23 @@
         </button>
         <a href="../index.html" class="site-header__brand">
             Mini Lab
-        </a>
+        </a> 
+        <div class="site-header__action">
+            <div class="site-header__logos">
+                <!-- los logos van acá -->
+            </div>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar tema">
+                <svg id="sun-icon" class="theme-icon" xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                </svg>
+                
+                <svg id="moon-icon" class="theme-icon" xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+            </button>
+        </div>
+
     </header>
 
     <div id="menu-overlay" class="menu-overlay"></div>
@@ -31,7 +47,12 @@
                 ✕
             </button>
         </div>
-
+        <div class="site-nav__intro">
+            <h1 class="site-nav__title">Conocé tu kit</h1>
+            <p class="sit-nav__subtitle">
+                Conocé el hardware con el que trabajamos
+            </p>
+        </div>
         <ul class="site-nav__list">
             <li class="site-nav__item"><a href="../index.html" class="site-nav__link">Inicio</a></li>
             <li class="site-nav__item"><a href="conoce-tu-kit.html" class="site-nav__link site-nav__link--active">Conocé tu kit</a></li>
@@ -211,20 +232,37 @@
                     <h3>¿Para qué la vamos a usar?</h3>
                     <p id="dialog-use"></p>
                 </section>
+                <section id="dialog-important-data-section" class="component-dialog__section">
+                    <h3>Datos importantes</h3>
+                    <ul id="dialog-important-data" class="component-dialog__list"></ul>
+                </section>
+                <section id="dialog-activities-section" class="component-dialog__section">
+                    <h3>Lo vas a usar en...</h3>
+                    <ul id="dialog-activities" class="component-dialog__list"></ul>
+                </section>
+                <section id="dialog-help-section" class="component-dialog__section">
+                    <h3>¿Tenés problemas con este componente?</h3>
+                    <a id="dialog-help" class="component-dialog__help-link" href="#" target="_blank" rel="noopener noreferrer">
+                        Ver ayuda y problemas frecuentes
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </section>
                 <a href="#" class="component-dialog__documentation" id="dialog-documentation" target="_blank" rel="noopener noreferrer">
                     <span id="dialog-documentation-text"></span>
                     <span aria-hidden="true">→</span>
                 </a>
-                <button id="component-dialog-close-button" class="component-dialog__button" type="button">
+                <!-- <button id="component-dialog-close-button" class="component-dialog__button" type="button">
                     Cerrar
-                </button>
+                </button> -->
             </div>
         </div>
     </dialog>
 
     <footer class="site-footer">
         <p>
-            Mini Lab · Fundación INVAP
+            Un proyecto de <strong>INVAP</strong>
+            <span class="site-footer__plus">+</span>
+            <strong>Fundación INVAP</strong>
         </p>
     </footer>
 
