@@ -9,8 +9,12 @@
 
     --text-primary: #1f1f1f;
     --text-secondary: #666666;
+    --texto-on-brand: #ffffff;
 
     --border:  #d9e2dc;
+
+    --scrollbar :#bbe9cc;
+    --scrollbar-hover: #a0e0b8;
 
     --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.08);
 
@@ -22,7 +26,7 @@
 }
 
 [data-theme="dark"]{
-    --invap-green-light: #e6f3eb;
+    --invap-green-light: #163623;
 
     --background: #1f1f1f;
     --surface: #2c2c2c;
@@ -32,6 +36,9 @@
     --text-secondary: #cccccc;
 
     --border:  #444444;
+
+    --scrollbar: #3f8f60;
+    --scrollbar-hover: #59a977;
 }
 
 * {
@@ -41,7 +48,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #bbe9cc transparent;
+    scrollbar-color: var(--scrollbar) transparent;
 }
 html::-webkit-scrollbar {
     width: 8px;
@@ -50,11 +57,11 @@ html::-webkit-scrollbar-track {
     background: transparent;
 }
 html::-webkit-scrollbar-thumb {
-    background-color: #bbe9cc;
+    background-color: var(--scrollbar);
     border-radius: 999px;
 }
 html::-webkit-scrollbar-thumb:hover {
-    background-color: #a0e0b8;
+    background-color: var(--scrollbar-hover);
 }
 
 body {
@@ -85,6 +92,9 @@ a {
     text-decoration: none;
 }
 
+main {
+    width: 100%;
+}
 
 /* =========================
     HEADER
@@ -100,31 +110,80 @@ a {
     padding: 1rem 1.25rem;
 
     background-color: var(--invap-green);
-    color: white;
+    color: var(--texto-on-brand);
     z-index: 800;
 }
 
-/* ==== NOMBRE O LOGO (TOMAR DECISION) ==== */
 .site-header__brand {
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-/* ==== MENU HAMBURGUESA ==== */
 .site-header__menu-button {
     border: 0;
     background: transparent;
 
-    color: white;
+    color: var(--texto-on-brand);
     font-size: 1.5rem;
 
     cursor: pointer;
 }
 
+.site-header__actions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.site-header__logos{
+    display: none;
+}
 
 /* =========================
-    NAV
+    THEME TOGGLE
    ========================= */
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    padding: 9px;
+    border: 0;
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+html[data-theme="light"] #sun-icon {
+    display: none;
+}
+
+html[data-theme="light"] #moon-icon {
+    display: block;
+}
+
+html[data-theme="dark"] #sun-icon {
+    display: block;
+}
+
+html[data-theme="dark"] #moon-icon {
+    display: none;
+}
+
+/* ========================
+    OVERLAY
+   ======================== */
 
 .menu-overlay{
     position: fixed;
@@ -142,7 +201,15 @@ a {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* ==== MENU LATERAL ==== */
+.menu-overlay--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==================
+    NAV
+   ====================== */
+
 .site-nav {
     position: fixed;
     top: 0;
@@ -153,7 +220,7 @@ a {
 
     padding: 1.25rem;
 
-    background-color: white;
+    background-color: var(--surface);
 
     z-index: 1000;
 
@@ -163,11 +230,6 @@ a {
 
 .site-nav--open {
     transform: translateX(0);
-}
-
-.menu-overlay--visible {
-    opacity: 1;
-    visibility: visible;
 }
 
 .site-nav__header {
@@ -189,10 +251,15 @@ a {
 .site-nav__close {
     border: 0;
     background: transparent;
+    color: var(--text-primary);
 
     font-size: 1.5rem;
 
     cursor: pointer;
+}
+
+.site-nav__intro{
+    display: none;
 }
 
 .site-nav__list {
@@ -211,7 +278,7 @@ a {
 
     padding: 0.85rem 1rem;
 
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-small);
 
     color: var(--text-secondary);
 }
@@ -223,14 +290,23 @@ a {
     font-weight: 600;
 }
 
+/* ======================
+    FOOTER
+   ====================== */
+
+
+
+
+
+
+
+
 
 /* =========================
     MAIN
    ========================= */
 
-main {
-    width: 100%;
-}
+
 
 .kit-section {
     width: 100%;
@@ -280,49 +356,9 @@ main {
     font-size: 1rem;
     line-height: 1.6;
 }
-.site-header__action{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
 
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    width: 2.5rem;
-    height: 2.5rem;
 
-    padding: 9px;
-    border: 0;
-    border-radius: 50%;
-
-    background-color: rgba(255, 255, 255, 0.15);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-}
-
-html[data-theme="light"] #sun-icon {
-    display: none;
-}
-
-html[data-theme="light"] #moon-icon {
-    display: block;
-}
-
-html[data-theme="dark"] #sun-icon {
-    display: block;
-}
-
-html[data-theme="dark"] #moon-icon {
-    display: none;
-}
 
 /* =========================
     COMPONENT GRID
@@ -353,7 +389,7 @@ html[data-theme="dark"] #moon-icon {
 
     background-color: var(--surface);
 
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-small);
     cursor: pointer;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     -webkit-tap-highlight-color: transparent;
@@ -519,7 +555,7 @@ html[data-theme="dark"] #moon-icon {
 
     padding: 1.5rem;
 
-    background-color: #f1f4f2;
+    background-color: var(--card-background);
 }
 
 
@@ -546,6 +582,7 @@ html[data-theme="dark"] #moon-icon {
 
 .component-dialog__section h3 {
     margin: 0 0 0.5rem;
+    color: var(--text-primary);
 
     font-size: 1rem;
 }
@@ -589,7 +626,7 @@ html[data-theme="dark"] #moon-icon {
 
     color: var(--invap-green);
 
-    font-width: 700;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -616,26 +653,6 @@ html[data-theme="dark"] #moon-icon {
 
     font-weight: 600;
 }
-
-
-/* Botón cerrar */
-
-/* .component-dialog__button {
-    width: 100%;
-
-    padding: 0.9rem 1rem;
-
-    border: 0;
-    border-radius: var(--radius-medium);
-
-    background-color: var(--invap-green);
-
-    color: white;
-
-    font-weight: 600;
-
-    cursor: pointer;
-} */
 
 /* =========================
     FOOTER
@@ -668,38 +685,26 @@ html[data-theme="dark"] #moon-icon {
     font-weight: 700;
 }
 
-.site-nav__intro{
-    display: none;
-}
-
-.site-header__logos{
-    display: none;
-}
-
+/* =========================
+    DESKTOP LAYOUT
+   ========================= */
 @media(min-width: 1024px){
-    body {
-        background-color: var(--background);
-    }
 
     main{
         margin-left: 280px;
         width: calc(100% - 280px);
         padding-top: 72px;
     }
-
-    .site-footer{
-        margin-left: 280px;
-    }
-
+    
     /*==================
-    Header
+    HEADER
     ====================*/
-
+    
     .site-header {
         position: fixed;
         top: 0;
         left: 0;
-
+        
         width: 100%;
         height: 72px;
 
@@ -708,7 +713,7 @@ html[data-theme="dark"] #moon-icon {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        
 
         background-color: var(--invap-green);
         border-bottom: 1px solid var(--border);
@@ -732,27 +737,27 @@ html[data-theme="dark"] #moon-icon {
         gap: 1.5rem;
     }
 
-/*====================
-    Sidebar
-=====================*/
+    /*====================
+    SIDEBAR
+    ======================*/
     .site-nav {
         position: fixed;
         top: 72px;
         left: 0;
-
+        
         width: 280px;
         height: calc(100vh - 72px);
-
+        
         padding: 1.25rem ;
-
+        
         background-color: var(--invap-green);
         transform: none;
         box-shadow: none;
-
+        
         overflow-y: auto;
-
+        
         z-index: 900;
-    }
+}
 
     .site-nav__header {
         display: none;
@@ -766,9 +771,9 @@ html[data-theme="dark"] #moon-icon {
         display: none;
     }
 
-/*=====================
-    Intro de la pagina
-=======================*/
+    /*=====================
+    Intro
+    =======================*/
     .site-nav__intro{
         display: block;
         margin: 0 0 1.25rem;
@@ -792,9 +797,9 @@ html[data-theme="dark"] #moon-icon {
         color: rgba(255, 255, 255, 0.75);
     }
 
-/*===================
-    links del menú
-=====================*/
+    /*===================
+    links
+    =====================*/
 
     .site-nav__link{
         display: block;
@@ -809,7 +814,7 @@ html[data-theme="dark"] #moon-icon {
         font-weight: 500;
         text-decoration: none;
         transition: 
-            backround-color 0.2s ease,
+            background-color 0.2s ease,
             color 0.2s ease;
         }
 
@@ -829,141 +834,10 @@ html[data-theme="dark"] #moon-icon {
         color: var(--invap-green-dark);
     }
 
-/*===========
-    contenido
-=============*/
-    .kit-section{
-        min-height: calc(100vh -70px);
-        padding: 2rem 0 3rem;
-    }
-
-    .kit-section__header{
-        display: none;
-    }
-
-    .components-grid {
-        width: calc(100% - 4rem);
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.5rem;
-}
-
-    /*==================
-    Tarjetas
-    ====================*/
-    .component-card{
-        
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .component-card__image-container{
-        
-        height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-    }
-
-    .component-card__content{
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        padding: 1.25rem;
-    }
-    .component-card__title{
-        margin-bottom: 0.6rem;
-        font-size: 1.15rem;
-    }
-    .component-card__description{
-        flex: 1;
-        margin-bottom: 1rem;
-        line-height: 1.5;
-    }
-    .component-card__button{
-        margin-top: auto;
-    }
-
-    .component-card:hover{
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); 
-    }
-
-    /*=================
-    modales
-    ===================*/
-    .component-dialog{
-        width: calc(100% - 4rem);
-        max-width: 850px;
-        max-height: 85vh;
-    }
-
-    .component-dialog__container{
-        display: grid;
-        grid-template-columns: 42% 58%;
-        grid-template-rows: auto 1fr;
-        max-height: 86vh;
-    }
-
-    .component-dialog__header{
-        grid-column: 1 / -1;
-    }
-
-    .component-dialog__image-container{
-        grid-column: 1;
-        grid-row: 2;
-        min-height: 420px;
-        padding: 2rem;
-    }
-
-    .component-dialog__content{
-        grid-column: 2;
-        grid-row: 2;
-        padding: 2rem;
-        overflow-y: auto;
-    }
-    
-    .component-dialog__image{
-        max-height: 330px;
-    }
-    
-    .component-dialog__title{
-        font-size: 1.4rem;
-    }
-
-    .component-dialog__section{
-        margin-bottom: 2rem;
-    }
-
-    .component-dialog__documentation{
-        transition: 
-            background-color 0.2s ease,
-            transform 0.2s ease;
-    }
-
-    .component-dialog__documentation:hover{
-        background-color: #d7ebdf;
-        transform: translateX(2px);
-    }
-
-    /* .component-dialog__button{
-        transition: 
-            background-color 0.2s ease,
-            transform 0.2s ease;
-    }
-    
-    .component-dialog__button:hover{
-        background-color: var(--invap-green-dark);
-    } */
-
-    /*==========
+    /* ===============
     FOOTER
-    ============*/
+    ================== */
+    
     .site-footer{
         margin-left: 280px;
         padding: 1.25rem 2rem;

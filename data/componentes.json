@@ -1,0 +1,97 @@
+{
+    "raspberry-pi-pico-2": {
+        "title": "Raspberry Pi Pico 2",
+        "image": "../assets/images/raspberry-pi-pico-2-wh.png",
+        "cardDescription": "Placa principal utilizada para desarrollar y ejecutar los programas del kit.",
+        "description":
+            "La Raspberry Pi Pico 2 es la placa principal del kit.",
+        "use":
+            "La vamos a utilizar para ejecutar programas y conectar los distintos componentes del kit.",
+        "documentationText": "Documentación de la Raspberry Pi Pico 2",
+        "documentation":
+            "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+        "importantData": ["Es la placa principal del kit", "Trabaja con lógica de 3.3V", "Microcontrolador RP2040", "Memoria Flash de 2 MB", "Conectividad USB 1.1", "Conectividad wireless Bluetooth 5.2 y Wi-Fi 4", "Velocidad de reloj de hasta 133 MHz", "40 pines GPIO"],
+        "activities": ["Construcción de circuitos", "Programación de microcontroladores", "Desarrollo de proyectos electrónicos"],
+        "help": "Si necesitas ayuda para utilizar la Raspberry Pi Pico 2, puedes consultar la documentación oficial o buscar tutoriales en línea."
+    },
+
+    "protoboard": {
+        "title": "Protoboard",
+        "image": "../assets/images/protoboard.jpg",
+        "cardDescription": "Permite realizar conexiones y prototipos electrónicos sin necesidad de soldar.",
+        "description":
+            "La protoboard permite construir circuitos sin necesidad de soldar.",
+        "use":
+            "La vamos a utilizar para conectar la placa con LEDs, resistencias, sensores y otros componentes.",
+        "documentationText": "Guía de uso de la protoboard",
+        "documentation": "https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all",
+        "importantData": ["Material: Fibra de vidrio", "Dimensiones: 83,3 mm x 53,3 mm", "Puntos de conexión: 80"],
+        "activities": ["Construcción de circuitos", "Prototipado rápido", "Experimentación con componentes electrónicos", "Aprendizaje de electrónica básica"],
+        "help": "Si necesitas ayuda para utilizar la protoboard, puedes consultar la guía de uso o buscar tutoriales en línea."
+    },
+
+    "mpu6050": {
+        "title": "MPU6050",
+        "image": "../assets/images/MPU6050.png",
+        "cardDescription": "Sensor de movimiento que combina acelerómetro y giroscopio.",
+        "description":
+            "El MPU6050 combina un acelerómetro y un giroscopio.",
+        "use":
+            "Lo vamos a utilizar para medir movimiento, aceleración y orientación.",
+        "documentationText": "Documentación del MPU6050",
+        "documentation": "https://product.tdk.com/en/search/sensor/mortion-inertial/imu/info?part_no=MPU-6050",
+        "importantData": ["Acelerómetro: 16 bits", "Giroscopio: 16 bits", "Comunicación I2C"]
+    },
+
+    "dupont-macho-macho": {
+        "title": "Cables Dupont macho-macho",
+        "image": "../assets/images/dupont-macho-macho.jpg",
+        "cardDescription": "Cables utilizados para conectar componentes en la protoboard o placas de desarrollo.",
+        "description":
+            "Cables Dupont macho-macho utilizados para conectar componentes en la protoboard.",
+        "use":
+            "Los vamos a utilizar para establecer conexiones entre la placa y los distintos componentes del kit.",
+        "documentationText": null,
+        "documentation": null,
+        "importantData": ["Cantidad: 40 cables", "Longitud: 20 cm", "Conectores: Macho en ambos extremos"]
+    },
+
+    "led-rojo": {
+        "title": "LED rojo",
+        "image": "../assets/images/led-rojo.jpg",
+        "cardDescription": "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
+        "description":
+            "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
+        "use":
+            "Lo vamos a utilizar para crear indicadores de estado o señales visuales.",
+        "documentationText": "Guía sobre LEDs y su funcionamiento",
+        "documentation": "https://learn.sparkfun.com/tutorials/light-emitting-diodes-leds/all",
+        "importantData": ["Color: Rojo", "Tensión directa: 2V", "Corriente directa: 20 mA", "Ángulo de visión: 30°", "Pata larga: Ánodo (+), Pata corta: Cátodo (-)"]
+    },
+    "resistencias": {
+        "title": "Resistencias",
+        "image": "../assets/images/resistencias.jpg",
+        "cardDescription": "Componentes utilizados para limitar el flujo de corriente en los circuitos electrónicos.",
+        "description":
+            "Resistencias utilizadas para controlar el flujo de corriente en los circuitos.",
+        "use":
+            "Las vamos a utilizar para limitar la corriente que fluye a través de los componentes del kit.",
+        "documentationText": "Guía sobre resistencias y su funcionamiento",
+        "documentation": "https://learn.sparkfun.com/tutorials/resistors/all",
+        "importantData": ["Valores: 220Ω, 1kΩ, 4.7kΩ, 10kΩ", "Potencia nominal: 1/4 vatios" ]
+    },
+
+    "boton-pulsador": {
+        "title": "Botón pulsador",
+        "image": "../assets/images/boton-pulsador.png",
+        "cardDescription": "Componente utilizado para enviar una señal de entrada a un circuito electrónico.",
+        "description":
+            "Botón pulsador utilizado para interactuar con los circuitos.",
+        "use":
+            "Lo vamos a utilizar para activar o desactivar funciones en nuestros proyectos.",
+        "documentationText": "Guía sobre botones y su funcionamiento",
+        "documentation": "https://learn.sparkfun.com/tutorials/button-and-switch-basics/all",
+        "importantData": ["Tipo: Momentáneo", "Tensión máxima: 12V", "Corriente máxima: 50 mA"]
+    }
+
+}

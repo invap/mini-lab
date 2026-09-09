@@ -1,0 +1,498 @@
+/* ===================
+    CONOCE TU KIT
+   =================== */
+
+/* =========================
+    KIT SECTION
+   ========================= */
+
+.kit-section {
+    width: 100%;
+
+    margin: 0;
+    padding: 0 0 3rem;
+}
+
+
+/* =========================
+    SECTION HEADER
+   ========================= */
+
+.kit-section__header {
+    margin: 0 0 2rem;
+    padding: 1.5rem;
+
+    background-color: var(--invap-green-dark);
+    color: var(--texto-on-brand);
+}
+
+.kit-section__title {
+    margin: 0;
+
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+}
+
+.kit-section__description {
+    max-width: 680px;
+
+    margin: 0.75rem 0 0;
+
+    color: #ececec;
+
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+/* =========================
+    COMPONENT GRID
+   ========================= */
+
+.components-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    width: calc(100% - 2rem);
+
+    margin-inline: auto;
+}
+
+
+/* =========================
+    COMPONENT CARD
+   ========================= */
+
+.component-card {
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    background-color: var(--surface);
+
+    box-shadow: var(--shadow-small);
+
+    cursor: pointer;
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+.component-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+.component-card:focus {
+    outline: none;
+}
+
+.component-card:focus-visible {
+    outline: 2px solid var(--invap-green);
+    outline-offset: 2px;
+}
+
+.component-card__image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+
+    padding: 1.5rem;
+
+    background-color: var(--card-background);
+}
+
+.component-card__image {
+    max-height: 150px;
+
+    object-fit: contain;
+}
+
+.component-card__content {
+    padding: 1.25rem;
+}
+
+.component-card__title {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.15rem;
+}
+
+.component-card__description {
+    margin: 0.6rem 0 1rem;
+
+    color: var(--text-secondary);
+
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.component-card__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    width: auto;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--invap-green);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+    COMPONENT DIALOG
+   ========================= */
+
+.component-dialog {
+    width: calc(100% - 2rem);
+    max-width: 500px;
+
+    max-height: 90vh;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: var(--radius-large);
+
+    background-color: var(--surface);
+    color: var(--text-primary);
+
+    overflow: hidden;
+}
+
+.component-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.component-dialog__container {
+    max-height: 90vh;
+
+    overflow-y: auto;
+}
+
+
+/* Dialog header */
+
+.component-dialog__header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1.25rem;
+
+    background-color: var(--invap-green);
+    color: var(--texto-on-brand);
+}
+
+.component-dialog__title {
+    margin: 0;
+
+    font-size: 1.25rem;
+}
+
+.component-dialog__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+.component-dialog__close:focus {
+    outline: none;
+}
+
+.component-dialog__close:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+
+/* Dialog image */
+
+.component-dialog__image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 220px;
+
+    padding: 1.5rem;
+
+    background-color: var(--card-background);
+}
+
+.component-dialog__image {
+    width: 100%;
+    max-height: 250px;
+
+    object-fit: contain;
+}
+
+
+/* Dialog content */
+
+.component-dialog__content {
+    padding: 1.5rem;
+
+    scrollbar-width: thin;
+}
+
+.component-dialog__section {
+    margin-bottom: 1.5rem;
+}
+
+.component-dialog__section h3 {
+    margin: 0 0 0.5rem;
+
+    font-size: 1rem;
+}
+
+.component-dialog__section p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+}
+
+
+/* Lists */
+
+.component-dialog__list {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+}
+
+.component-dialog__list li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* Help */
+
+.component-dialog__help {
+    padding: 1rem;
+
+    border-radius: var(--radius-medium);
+
+    background-color: var(--invap-green-light);
+}
+
+.component-dialog__help h3 {
+    margin-top: 0;
+}
+
+.component-dialog__help-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    color: var(--invap-green);
+
+    font-weight: 700;
+}
+
+.component-dialog__help-link:hover {
+    color: var(--invap-green-dark);
+}
+
+
+/* Documentation */
+
+.component-dialog__documentation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.25rem;
+    padding: 1rem;
+
+    border-radius: var(--radius-medium);
+
+    background-color: var(--invap-green-light);
+    color: var(--invap-green);
+
+    font-weight: 600;
+}
+
+
+/* =========================
+    DESKTOP
+   ========================= */
+
+@media (min-width: 1024px) {
+
+    .kit-section {
+        min-height: calc(100vh - 72px);
+
+        padding: 2rem 0 3rem;
+    }
+
+    .kit-section__header {
+        display: none;
+    }
+
+
+    /* Grid */
+
+    .components-grid {
+        width: calc(100% - 4rem);
+        max-width: var(--max-width);
+
+        margin: 0 auto;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(260px, 1fr));
+
+        gap: 1.5rem;
+    }
+
+
+    /* Cards */
+
+    .component-card {
+        display: flex;
+        flex-direction: column;
+
+        height: 100%;
+    }
+
+    .component-card__image-container {
+        height: 220px;
+    }
+
+    .component-card__content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    .component-card__title {
+        margin-bottom: 0.6rem;
+    }
+
+    .component-card__description {
+        flex: 1;
+
+        margin-bottom: 1rem;
+    }
+
+    .component-card__button {
+        margin-top: auto;
+    }
+
+    .component-card:hover {
+        transform: translateY(-4px);
+
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+
+    /* Dialog */
+
+    .component-dialog {
+        width: calc(100% - 4rem);
+        max-width: 850px;
+
+        max-height: 85vh;
+    }
+
+    .component-dialog__container {
+        display: grid;
+
+        grid-template-columns: 42% 58%;
+        grid-template-rows: auto 1fr;
+
+        max-height: 85vh;
+
+        overflow: hidden;
+    }
+
+    .component-dialog__header {
+        grid-column: 1 / -1;
+    }
+
+    .component-dialog__image-container {
+        grid-column: 1;
+        grid-row: 2;
+
+        min-height: 420px;
+
+        padding: 2rem;
+    }
+
+    .component-dialog__content {
+        grid-column: 2;
+        grid-row: 2;
+
+        padding: 2rem;
+
+        overflow-y: auto;
+    }
+
+    .component-dialog__image {
+        max-height: 330px;
+    }
+
+    .component-dialog__title {
+        font-size: 1.4rem;
+    }
+
+    .component-dialog__section {
+        margin-bottom: 2rem;
+    }
+
+    .component-dialog__documentation {
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .component-dialog__documentation:hover {
+        background-color: var(--invap-green-light);
+        transform: translateX(2px);
+    }
+}

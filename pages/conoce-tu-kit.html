@@ -10,6 +10,7 @@
 
     <title>Mini Lab | Conoce tu kit</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/pages/conoce-tu-kit.css">
 </head>
 <body>
     <header class="site-header">
@@ -19,7 +20,7 @@
         <a href="../index.html" class="site-header__brand">
             Mini Lab
         </a> 
-        <div class="site-header__action">
+        <div class="site-header__actions">
             <div class="site-header__logos">
                 <!-- los logos van acá -->
             </div>
@@ -34,7 +35,6 @@
                 </svg>
             </button>
         </div>
-
     </header>
 
     <div id="menu-overlay" class="menu-overlay"></div>
@@ -49,7 +49,7 @@
         </div>
         <div class="site-nav__intro">
             <h1 class="site-nav__title">Conocé tu kit</h1>
-            <p class="sit-nav__subtitle">
+            <p class="site-nav__subtitle">
                 Conocé el hardware con el que trabajamos
             </p>
         </div>
@@ -70,145 +70,7 @@
                     <p class="kit-section__description">Descubre los componentes que vienen incluidos en el kit</p>
                 </header>
 
-            <div class="components-grid">
-                <article class="component-card" tabindex="0" role="button" data-component="raspberry-pi-pico-2">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/raspberry-pi-pico-2-wh.png"
-                            alt="Raspberry Pi Pico 2"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            Raspberry Pi Pico 2
-                        </h2>
-                        <p class="component-card__description">
-                            Placa principal utilizada para desarrollar
-                            y ejecutar los programas del kit.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="protoboard">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/protoboard.jpg"
-                            alt="Protoboard"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            Protoboard
-                        </h2>
-                        <p class="component-card__description">
-                            Permite realizar conexiones y prototipos
-                            electrónicos sin necesidad de soldar.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="mpu6050">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/MPU6050.png"
-                            alt="Sensor MPU6050"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            MPU6050
-                        </h2>
-                        <p class="component-card__description">
-                            Sensor que combina acelerómetro y
-                            giroscopio para detectar movimiento.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="dupont-macho-macho">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/dupont-macho-macho.jpg"
-                            alt="Cables Dupont macho-macho"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            Cables Dupont macho-macho
-                        </h2>
-                        <p class="component-card__description">
-                            Cables utilizados para conectar componentes
-                            en protoboard o placas de desarrollo.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="led-rojo">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/led-rojo.jpg"
-                            alt="LED Rojo"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            LED Rojo
-                        </h2>
-                        <p class="component-card__description">
-                            LED de color rojo utilizado para indicación visual en proyectos electrónicos.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="resistencias">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/resistencias.jpg"
-                            alt="Resistencias"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            Resistencias
-                        </h2>
-                        <p class="component-card__description">
-                            Componentes utilizados para limitar el flujo de corriente en los circuitos electrónicos.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-                <article class="component-card" tabindex="0" role="button" data-component="boton-pulsador">
-                    <div class="component-card__image-container">
-                        <img
-                            src="../assets/images/boton-pulsador.png"
-                            alt="Botón Pulsador"
-                            class="component-card__image"
-                        >
-                    </div>
-                    <div class="component-card__content">
-                        <h2 class="component-card__title">
-                            Botón Pulsador
-                        </h2>
-                        <p class="component-card__description">
-                            Componente utilizado para enviar una señal de entrada a un circuito electrónicos.
-                        </p>
-                        <span class="component-card__button">Ver detalles →</span>
-                    </div>
-                </article>
-
-            </div>
+            <div id="components-grid" class="components-grid"></div>
         </section>
     </main>
 
@@ -251,9 +113,6 @@
                     <span id="dialog-documentation-text"></span>
                     <span aria-hidden="true">→</span>
                 </a>
-                <!-- <button id="component-dialog-close-button" class="component-dialog__button" type="button">
-                    Cerrar
-                </button> -->
             </div>
         </div>
     </dialog>
@@ -267,6 +126,7 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/pages/conoce-tu-kit.js"></script>
 
 </body>
 </html>
