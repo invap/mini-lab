@@ -17,12 +17,15 @@
     --scrollbar-hover: #a0e0b8;
 
     --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 
     --radius-small: 8px;
     --radius-medium: 14px;
     --radius-large: 20px;
 
     --max-width: 1200px;
+
+    --grid-color: rgba(0, 119, 50, 0.08);
 }
 
 [data-theme="dark"]{
@@ -39,6 +42,8 @@
 
     --scrollbar: #3f8f60;
     --scrollbar-hover: #59a977;
+
+    --grid-color:rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -165,19 +170,19 @@ main {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
-html[data-theme="light"] #sun-icon {
+.theme-toggle .sun-icon{
     display: none;
 }
 
-html[data-theme="light"] #moon-icon {
+.theme-toggle .moon-icon{
     display: block;
 }
 
-html[data-theme="dark"] #sun-icon {
+[data-theme="dark"] .theme-toggle .sun-icon{
     display: block;
 }
 
-html[data-theme="dark"] #moon-icon {
+[data-theme="dark"] .theme-toggle .moon-icon{
     display: none;
 }
 
@@ -234,7 +239,7 @@ html[data-theme="dark"] #moon-icon {
 
 .site-nav__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
     margin-bottom: 1.5rem;
@@ -290,30 +295,37 @@ html[data-theme="dark"] #moon-icon {
     font-weight: 600;
 }
 
-/* ======================
-    FOOTER
-   ====================== */
+.site-nav__brand{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: var(--invap-green);
+    text-decoration: none;
+}
 
+.site-nav__brand-name{
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+}
 
-
-
-
-
-
-
+.site-nav__brand-subtitle{
+    margin-top: 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.3;
+    opacity: 0.72;
+}
 
 /* =========================
     MAIN
    ========================= */
-
-
 
 .kit-section {
     width: 100%;
     margin: 0;
     padding: 0 0 3rem;
 }
-
 
 /* =========================
     SECTION HEADER
@@ -655,6 +667,47 @@ html[data-theme="dark"] #moon-icon {
 }
 
 /* =========================
+    PÁGINA EN CONSTRUCCIÓN
+   ========================= */
+
+.development-section {
+    padding: 2rem 0 4rem;
+}
+
+.development-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    padding: 1.25rem 1.5rem;
+
+    border: 1px solid #eadca2;
+    border-radius: var(--radius-medium);
+
+    background-color: #fff9e8;
+
+    color: #725127;
+}
+
+.development-notice__icon {
+    font-size: 1.4rem;
+}
+
+.development-notice p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .development-notice {
+    border-color: #665c32;
+
+    background-color: #3a3422;
+
+    color: #e0cf91;
+}
+
+/* =========================
     FOOTER
    ========================= */
 
@@ -683,6 +736,96 @@ html[data-theme="dark"] #moon-icon {
     margin: 0 0.35rem;
     color: var(--invap-green);
     font-weight: 700;
+}
+
+/* =========================
+    BUTTON
+   ========================= */
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.85rem 1.3rem;
+
+    border-radius: var(--radius-medium);
+
+    background-color: var(--invap-green);
+    color: white;
+
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.primary-button:hover {
+    background-color: var(--invap-green-dark);
+
+    transform: translateY(-1px);
+}
+
+.secondary-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.3rem;
+    border: 1px solid var(--invap-green);
+    border-radius: var(--radius-medium);
+    color: var(--invap-green);
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.secondary-button:hover{
+    background-color: var(--invap-green-light);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+    PAGE LAYOUT
+   ========================= */
+.page-container{
+    width: calc(100% - 2rem);
+    max-width: var(--max-width);
+    margin-inline: auto;
+}
+
+
+/* =========================
+    DESKTOP HEADER
+   ========================= */
+.page-header{
+    padding: 3rem 0 2.5rem;
+    background-color: var(--background);
+}
+
+.page-header__eyebrow{
+    margin: 0 0 0.65rem;
+    color: var(--invap-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.page-header__title{
+    margin: 0;
+    color: var(--text-primary);
+    font-size: clamp(2rem, 6vw, 3.25rem);
+    font-weight: 750;
+    line-height: 1.1;
+}
+
+.page-header__description{
+    max-width: 700px;
+    margin: 1rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 /* =========================
@@ -716,7 +859,7 @@ html[data-theme="dark"] #moon-icon {
         
 
         background-color: var(--invap-green);
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         z-index: 1000;
     }
 
@@ -769,6 +912,14 @@ html[data-theme="dark"] #moon-icon {
 
     .menu-overlay {
         display: none;
+    }
+    .home-page .site-nav__brand{
+        color: var(--texto-on-brand);
+    }
+
+    .home-page .site-nav__brand-subtitle{
+        color: var(--texto-on-brand);
+        opacity: 0.72;
     }
 
     /*=====================
@@ -834,6 +985,13 @@ html[data-theme="dark"] #moon-icon {
         color: var(--invap-green-dark);
     }
 
+    .home-page .site-nav__header{
+        display: flex;
+        align-items: flex-start;
+        padding: 1.6rem 1.5rem 1.4rem;
+        border-bottom: 1px solid white;
+    }
+
     /* ===============
     FOOTER
     ================== */
@@ -846,5 +1004,18 @@ html[data-theme="dark"] #moon-icon {
         color: var(--text-secondary);
         font-size: 0.9rem;
         text-align: center;
+    }
+    
+    .primary-button {
+        flex-shrink: 0;
+    }
+
+
+    .page-container{
+        width: calc(100% - 6rem);
+    }
+
+    .page-header{
+        padding: 4rem 0 3rem;
     }
 }

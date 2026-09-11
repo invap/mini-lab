@@ -1,7 +1,7 @@
 {
     "raspberry-pi-pico-2": {
         "title": "Raspberry Pi Pico 2",
-        "image": "../assets/images/raspberry-pi-pico-2-wh.png",
+        "image": "raspberry-pi-pico-2-wh.png",
         "cardDescription": "Placa principal utilizada para desarrollar y ejecutar los programas del kit.",
         "description":
             "La Raspberry Pi Pico 2 es la placa principal del kit.",
@@ -17,7 +17,7 @@
 
     "protoboard": {
         "title": "Protoboard",
-        "image": "../assets/images/protoboard.jpg",
+        "image": "protoboard.jpg",
         "cardDescription": "Permite realizar conexiones y prototipos electrónicos sin necesidad de soldar.",
         "description":
             "La protoboard permite construir circuitos sin necesidad de soldar.",
@@ -32,7 +32,7 @@
 
     "mpu6050": {
         "title": "MPU6050",
-        "image": "../assets/images/MPU6050.png",
+        "image": "MPU6050.png",
         "cardDescription": "Sensor de movimiento que combina acelerómetro y giroscopio.",
         "description":
             "El MPU6050 combina un acelerómetro y un giroscopio.",
@@ -45,7 +45,7 @@
 
     "dupont-macho-macho": {
         "title": "Cables Dupont macho-macho",
-        "image": "../assets/images/dupont-macho-macho.jpg",
+        "image": "dupont-macho-macho.jpg",
         "cardDescription": "Cables utilizados para conectar componentes en la protoboard o placas de desarrollo.",
         "description":
             "Cables Dupont macho-macho utilizados para conectar componentes en la protoboard.",
@@ -58,7 +58,7 @@
 
     "led-rojo": {
         "title": "LED rojo",
-        "image": "../assets/images/led-rojo.jpg",
+        "image": "led-rojo.jpg",
         "cardDescription": "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
         "description":
             "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
@@ -70,7 +70,7 @@
     },
     "resistencias": {
         "title": "Resistencias",
-        "image": "../assets/images/resistencias.jpg",
+        "image": "resistencias.jpg",
         "cardDescription": "Componentes utilizados para limitar el flujo de corriente en los circuitos electrónicos.",
         "description":
             "Resistencias utilizadas para controlar el flujo de corriente en los circuitos.",
@@ -83,7 +83,7 @@
 
     "boton-pulsador": {
         "title": "Botón pulsador",
-        "image": "../assets/images/boton-pulsador.png",
+        "image": "boton-pulsador.png",
         "cardDescription": "Componente utilizado para enviar una señal de entrada a un circuito electrónico.",
         "description":
             "Botón pulsador utilizado para interactuar con los circuitos.",

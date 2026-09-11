@@ -2,7 +2,7 @@ const menuButton = document.querySelector('#menu-button');
 const menuCloseButton = document.querySelector('#menu-closed');
 const navigation = document.querySelector('#main-navigation');
 const overlay = document.querySelector('#menu-overlay');
-const themeToggle = document.querySelector('#theme-toggle');
+const themeToggles = document.querySelectorAll("[data-theme-toggle]");
 const savedTheme = localStorage.getItem('theme') || 'light';
 
 function openMenu() {
@@ -41,11 +41,11 @@ if (menuButton && menuCloseButton && navigation && overlay) {
 }
 
 document.documentElement.dataset.theme = savedTheme;
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.dataset.theme;
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = newTheme;
-        localStorage.setItem('theme', newTheme);
+    themeToggles.forEach((toggle) =>{
+        toggle.addEventListener("click", () => {
+            const currentTheme = document.documentElement.dataset.theme;
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.dataset.theme = newTheme;
+            localStorage.setItem("theme", newTheme);
+        })
     });
-}

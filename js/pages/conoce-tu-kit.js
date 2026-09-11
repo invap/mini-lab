@@ -14,14 +14,26 @@ const dialogActivities = document.querySelector("#dialog-activities");
 const dialogHelpSection = document.querySelector("#dialog-help-section");
 const dialogHelp = document.querySelector("#dialog-help");
 
+const currentScriptUrl= document.currentScript.src;
+const componentsDataUrl = new URL("../../data/componentes.json", currentScriptUrl);
+const imagesBaseUrl = new URL("../../assets/images/", currentScriptUrl);
+
 let components = {};
+
+/* =========================
+    CARGA DE IMÁGENES
+   ========================= */
+
+function getComponentImageUrl(imageFileName) {
+    return new URL(imageFileName, imagesBaseUrl).href;
+}
 
 /* =========================
     CARGA DE DATOS
    ========================= */
 
 async function loadComponents() {
-    const response = await fetch("../data/componentes.json");
+    const response = await fetch(componentsDataUrl);
     if (!response.ok) {
         throw new Error( `Error al cargar componentes: ${response.status}`);
     }
@@ -47,7 +59,7 @@ function renderComponentCards() {
             imageContainer.classList.add("component-card__image-container");
             const image = document.createElement("img");
             image.classList.add("component-card__image");
-            image.src = component.image;
+            image.src = getComponentImageUrl(component.image);
             image.alt = component.title;
 
             imageContainer.appendChild(image);
@@ -84,7 +96,7 @@ function openComponentDialog(componentId) {
     if (!component) return;
 
     dialogTitle.textContent = component.title;
-    dialogImage.src = component.image;
+    dialogImage.src = getComponentImageUrl(component.image);
     dialogImage.alt = component.title;
     dialogDescription.textContent = component.description;
     dialogUse.textContent = component.use;
