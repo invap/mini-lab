@@ -1,5 +1,5 @@
 const menuButton = document.querySelector('#menu-button');
-const menuCloseButton = document.querySelector('#menu-closed');
+const menuCloseButton = document.querySelector('#menu-close');
 const navigation = document.querySelector('#main-navigation');
 const overlay = document.querySelector('#menu-overlay');
 const themeToggles = document.querySelectorAll("[data-theme-toggle]");

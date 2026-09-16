@@ -20,6 +20,18 @@ const imagesBaseUrl = new URL("../../assets/images/", currentScriptUrl);
 
 let components = {};
 
+function updateComponentsCount(){
+    const countElement = document.querySelector('#components-count');
+    const labelElement = document.querySelector('#components-count-label');
+    const count = Object.keys(components).length;
+    if (countElement){
+        countElement.textContent = count;
+    }
+    if(labelElement){
+        labelElement.textContent = count === 1 ? 'componente incluido' : 'componentes incluidos'
+    } 
+}
+
 /* =========================
     CARGA DE IMÁGENES
    ========================= */
@@ -166,6 +178,7 @@ function closeComponentDialog() {
 componentsGrid.addEventListener("click", (event) => {
         const card = event.target.closest(".component-card");
         if (!card) return;
+        card.blur();
 
         openComponentDialog(card.dataset.component);
     }
@@ -206,6 +219,7 @@ componentDialog.addEventListener("close", () => {
 async function initializeComponents() {
     try {
         await loadComponents();
+        updateComponentsCount();
         renderComponentCards();
     } catch (error) {
         console.error("Error al inicializar los componentes:", error);

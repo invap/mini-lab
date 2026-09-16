@@ -28,8 +28,8 @@
 
     <body>
         <!-- =========================
-         HEADER MOBILE
-         ========================= -->
+        HEADER MOBILE
+        ========================= -->
 
         <header class="site-header">
             <button
@@ -94,8 +94,8 @@
         </header>
 
         <!-- =========================
-         NAVEGACIÓN
-         ========================= -->
+        NAVEGACIÓN
+        ========================= -->
 
         <div id="menu-overlay" class="menu-overlay"></div>
 
@@ -208,39 +208,49 @@
         </nav>
 
         <!-- =========================
-         CONTENIDO
-         ========================= -->
+        CONTENIDO
+        ========================= -->
 
         <main>
             <!-- ENCABEZADO DE PÁGINA -->
 
-            <header class="page-header">
+            <header class="page-header page-header--kit">
                 <div class="page-container">
-                    <p class="page-header__eyebrow">Hardware</p>
-
-                    <h1 class="page-header__title">Conocé tu kit</h1>
-
-                    <p class="page-header__description">
-                        Explorá los componentes que forman parte de Mini Lab y
-                        conocé para qué sirve cada uno antes de comenzar con las
-                        actividades.
+                    <div class="kit-hero">
+                        <div class="kit-hero__content">
+                            <nav class="kit-hero__breadcrumb" aria-label="Breadcrumb">
+                                <a href="/index.html" class="kit-hero__breadcrumb-link">Mini Lab</a>
+                                <span class="kit-hero__breadcrumb-separator">></span>
+                                <span class="kit-hero__breadcrumb-current">Conocé tu kit</span>
+                            </nav>
+                            <p class="kit-hero__eyebrow">• Hardware</p>
+                            <h1 class="kit-hero__title">Conocé tu kit</h1>
+                            <p class="kit-hero__description">
+                                Explorá los componentes que forman parte de Mini Lab y
+                                conocé para qué sirve cada uno antes de comenzar con las
+                                actividades.
+                            </p>
+                        </div>
+                        <div class="kit-hero__count">
+                            <span id="components-count" class="kit-hero__count-number">0</span>
+                            <span id="components-count-label" class="kit-hero__count-text">Componentes incluidos</span>
+                        </div>
+                    </div>
+                    <div class="kit-hero__divider">
+                        <span class="kit-hero__line"></span>
+                        <span class="kit-hero__pill">Componentes del kit</span>
+                        <span class="kit-hero__line"></span>
+                    </div>
+                    <p class="kit-hero__catalog-description">
+                        Seleccioná un componente para conocer sus
+                        características y cómo lo vas a utilizar en Mini Lab.
                     </p>
                 </div>
             </header>
 
             <!-- COMPONENTES -->
 
-            <section class="kit-section" aria-labelledby="kit-title">
-                <header class="kit-section__header">
-                    <h2 id="kit-title" class="kit-section__title">
-                        Componentes del kit
-                    </h2>
-
-                    <p class="kit-section__description">
-                        Seleccioná un componente para conocer sus
-                        características y cómo lo vas a utilizar en Mini Lab.
-                    </p>
-                </header>
+            <section class="kit-section" aria-labelledby="kit-title">       
 
                 <div id="components-grid" class="components-grid"></div>
 
@@ -272,8 +282,8 @@
         </main>
 
         <!-- =========================
-         MODAL COMPONENTE
-         ========================= -->
+        MODAL COMPONENTE
+        ========================= -->
 
         <dialog id="component-dialog" class="component-dialog">
             <div class="component-dialog__container">
@@ -302,13 +312,11 @@
                 <div class="component-dialog__content">
                     <section class="component-dialog__section">
                         <h3>¿Qué es?</h3>
-
                         <p id="dialog-description"></p>
                     </section>
 
                     <section class="component-dialog__section">
                         <h3>¿Cómo lo usamos en Mini Lab?</h3>
-
                         <p id="dialog-use"></p>
                     </section>
 
@@ -317,7 +325,6 @@
                         class="component-dialog__section"
                     >
                         <h3>Datos importantes</h3>
-
                         <ul
                             id="dialog-important-data"
                             class="component-dialog__list"
@@ -341,7 +348,6 @@
                         class="component-dialog__section"
                     >
                         <h3>¿Tenés problemas con este componente?</h3>
-
                         <a
                             id="dialog-help"
                             class="component-dialog__help-link"

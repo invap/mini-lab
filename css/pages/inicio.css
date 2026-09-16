@@ -7,7 +7,7 @@
     min-height: 520px;
     display: flex;
     align-items: center;
-    background-color: var(--card-background);
+    background-color: var(--background);
     background-image: 
         linear-gradient(
             var(--grid-color) 1px,
@@ -178,10 +178,6 @@
     font-weight: 800;
     line-height: 1;
     opacity: 0.28;
-}
-
-[data-theme="dark"] .journey-card__number {
-    color: #427c59;
 }
 
 .journey-card__title {
@@ -481,67 +477,4 @@
     .qemu-section .home-container{
         max-width: 1050px;
     }
-    
-    .home-page .site-header{
-        display: none;
-    }
-    .home-page .site-nav{
-        top: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .home-page main{
-        padding-top: 0;
-    }
-    .home-page .site-nav__header{
-        display: flex;
-        align-items: flex-start;
-        padding: 1.8rem 1.5rem 1.5rem;
-    }
-    .home-page .site-nav__close{
-        display: none;
-    }
-    
-    .home-page .site-nav__list{
-        margin-top: 0.75rem;
-    }
-
-    .home-page .site-nav__footer{
-        display: block;
-        margin-top: auto;
-        padding: 1rem 1.25rem 1.4rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .home-page .theme-toggle--sidebar{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0.75rem;
-        padding: 0.75rem 0.9rem;
-        border: 0;
-        border-radius: var(--radius-small);
-        background: transparent;
-
-        font-family: inherit;
-        font-size: 0.9rem;
-        font-weight: 600;
-
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
-
-    .home-page .theme-toggle--sidebar:hover{
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .home-page .theme-toggle__label{
-        display: inline;
-    }
-}
-
-.site-nav__footer{
-    display: none;
 }
