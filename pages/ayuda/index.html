@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Mini Lab, plataforma educativa para aprender sistemas embebidos con Rust"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+
+        <title>Mini Lab | Ayuda</title>
+        <link rel="stylesheet" href="../../css/styles.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <button id="menu-button" class="site-header__menu-button" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-navigation">
+                ☰
+            </button>
+            <a href="../../index.html" class="site-header__brand"> Mini Lab </a>
+            <div class="site-header__actions">
+                <div class="site-header__logos">
+                    <!-- Logos institucionales -->
+                </div>
+                <button class="theme-toggle" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- =========================
+        NAVEGACIÓN
+        ========================= -->
+        <div id="menu-overlay" class="menu-overlay"></div>
+        <nav id="main-navigation" class="site-nav" aria-label="Navegación principal">
+            <div class="site-nav__header">
+                <a href="../../index.html" class="site-nav__brand">
+                    <span class="site-nav__brand-name">Mini Lab</span>
+                    <span class="site-nav__brand-subtitle">Sistemas embebidos con Rust</span>
+                </a>
+                <button id="menu-close" class="site-nav__close" type="button" aria-label="Cerrar menú de navegación">
+                    ✕
+                </button>
+            </div>
+
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="../../index.html" class="site-nav__link">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="../conoce-tu-kit/" class="site-nav__link">
+                        Conocé tu kit
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="../primeros-pasos/" class="site-nav__link" aria-current="page">
+                        Primeros pasos
+                    </a>
+                </li>   
+
+                <li class="site-nav__item">
+                    <a href="../actividades/" class="site-nav__link">
+                        Actividades
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="../recursos/" class="site-nav__link">
+                        Recursos
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="./" class="site-nav__link site-nav__link--active">
+                        Ayuda
+                    </a>
+                </li>
+            </ul>
+            <div class="site-nav__footer">
+                <button class="theme-toggle theme-toggle--sidebar" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                    <span class="theme-toggle__label">Tema</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- =========================
+        CONTENIDO
+        ========================= -->
+        <main>
+            <header class="page-header">
+                <div class="page-container">
+                    <h1 class="page-header__title">Ayuda</h1>
+                </div>
+            </header>
+            <section class="development-section">
+                <div class="page-container">
+                    <div class="development-notice">
+                        <span class="development-notice__icon" aria-hidden="true">
+                            🛠
+                        </span>
+                        <p>
+                            <strong>
+                                Mini Lab se encuentra actualmente en desarrollo.
+                            </strong>
+                            Los contenidos, actividades y estructura pueden
+                            modificarse a medida que avance el proyecto.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- =========================
+        FOOTER
+        ========================= -->
+        <footer class="site-footer">
+            <p>
+                Un proyecto de
+                <strong>INVAP</strong>
+                <span class="site-footer__plus"> + </span>
+                <strong>Fundación INVAP</strong>
+            </p>
+        </footer>
+
+        <script src="../../js/main.js"></script>
+    </body>
+</html>

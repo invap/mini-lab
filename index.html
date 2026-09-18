@@ -1,362 +1,315 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INVAP mini lab</title>
-  <style>
-    :root {
-      --bg:       #0d1117;
-      --surface:  #161b22;
-      --border:   #30363d;
-      --green:    #39d353;
-      --green-dim:#1a6630;
-      --text:     #e6edf3;
-      --muted:    #7d8590;
-      --accent:   #58a6ff;
-      --font-mono: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
-      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Mini Lab, plataforma educativa para aprender sistemas embebidos con Rust"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+
+        <title>Mini Lab | Inicio</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/pages/inicio.css" />
+    </head>
+    <body class="home-page">
+        <!-- =========================
+        HEADER
+        ========================= -->
+        <header class="site-header">
+            <button id="menu-button" class="site-header__menu-button" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-navigation">
+                ☰
+            </button>
+            <a href="index.html" class="site-header__brand"> Mini Lab </a>
+            <div class="site-header__actions">
+                <div class="site-header__logos">
+                    <!-- Logos institucionales -->
+                </div>
+                <button class="theme-toggle" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <!-- =========================
+        NAVEGACIÓN
+        ========================= -->
+        <div id="menu-overlay" class="menu-overlay"></div>
+        <nav id="main-navigation" class="site-nav" aria-label="Navegación principal">
+            <div class="site-nav__header">
+                <a href="index.html" class="site-nav__brand">
+                    <span class="site-nav__brand-name">
+                        Mini Lab
+                    </span>
+                    <span class="site-nav__brand-subtitle">
+                        Sistemas embebidos con Rust
+                    </span>
+                </a>
+                <button id="menu-close" class="site-nav__close" type="button" aria-label="Cerrar menú de navegación">
+                    ✕
+                </button>
+            </div>
+
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a href="index.html" class="site-nav__link site-nav__link--active" aria-current="page">
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="pages/conoce-tu-kit/" class="site-nav__link">
+                        Conocé tu kit
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="pages/primeros-pasos/" class="site-nav__link">
+                        Primeros pasos
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="pages/actividades/" class="site-nav__link">
+                        Actividades
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="pages/recursos/" class="site-nav__link">
+                        Recursos
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a href="pages/ayuda/" class="site-nav__link">
+                        Ayuda
+                    </a>
+                </li>
+            </ul>
+
+            <div class="site-nav__footer">
+                <button class="theme-toggle theme-toggle--sidebar" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                    <span class="theme-toggle__label">
+                        Tema
+                    </span>
+                </button>
+            </div>
+
+        </nav>
+
+        <!-- =========================
+        CONTENIDO
+        ========================= -->
+        <main>
+            <section class="home-hero">
+                <div class="home-container home-hero__content">
+                    <p class="home-hero__eyebrow">Plataforma educativa · Sistemas embebidos</p>
+                    <h1 class="home-hero__title">Mini Lab + RUST</h1>
+                    <p class="home-hero__description">Mini Lab es una plataforma pensada para acompañarte en el uso del kit, desde la preparación del entorno hasta el desarrollo de actividades prácticas con Rust.</p>
+                    <div class="home-hero__actions">
+                        <a href="pages/primeros-pasos/" class="primary-button">Comenzar</a>
+                        <a href="pages/conoce-tu-kit/" class="secondary-button">Conocé tu kit</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TU RECORRIDO -->
+            <section class="journey-section">
+                <div class="home-container">
+                    <header class="home-section-header">
+                        <h2 class="home-section-title">Tu recorrido</h2>
+                        <p class="home-section-description">
+                            Cuatro etapas para avanzar desde los primeros pasos
+                            hasta desarrollar tus propios proyectos.
+                        </p>
+                    </header>
+                    <div class="journey-grid">
+                        <a href="pages/conoce-tu-kit/" class="journey-card">
+                            <div class="journey-card__top">
+                                <span class="journey-card__icon"> ◇ </span>
+                                <span class="journey-card__number"> 01 </span>
+                            </div>
+                            <h2 class="journey-card__title">Conocé tu kit</h2>
+                            <p class="journey-card__description">
+                                Explorá los componentes del kit: placa,
+                                sensores, cables y más.
+                            </p>
+                        </a>
+
+                        <a href="pages/primeros-pasos/" class="journey-card">
+                            <div class="journey-card__top">
+                                <span class="journey-card__icon"> &gt;_ </span>
+                                <span class="journey-card__number"> 02 </span>
+                            </div>
+
+                            <h2 class="journey-card__title">
+                                Prepará tu entorno
+                            </h2>
+
+                            <p class="journey-card__description">
+                                Instalá y configurá las herramientas necesarias
+                                para comenzar a trabajar con Rust.
+                            </p>
+                        </a>
+
+                        <a href="pages/actividades/" class="journey-card">
+                            <div class="journey-card__top">
+                                <span class="journey-card__icon">
+                                    &lt;&gt;
+                                </span>
+                                <span class="journey-card__number"> 03 </span>
+                            </div>
+
+                            <h2 class="journey-card__title">
+                                Realizá actividades
+                            </h2>
+
+                            <p class="journey-card__description">
+                                Seguí las prácticas guiadas y experimentá con
+                                sistemas embebidos.
+                            </p>
+                        </a>
+
+                        <a href="pages/recursos/" class="journey-card">
+                            <div class="journey-card__top">
+                                <span class="journey-card__icon"> □ </span>
+                                <span class="journey-card__number"> 04 </span>
+                            </div>
+                            <h2 class="journey-card__title">
+                                Consultá recursos
+                            </h2>
+                            <p class="journey-card__description">
+                                Accedé a documentación, referencias y herramientas para seguir profundizado.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RUST -->
+            <section class="rust-section">
+                <div class="home-container rust-layout">
+                    <div class="rust-section__content">
+                        <p class="section-label">
+                            <span class="section-label__dot"></span>
+                            Lenguaje de programación
+                        </p>
+                        <h2 class="home-section-title">Programá en Rust</h2>
+                        <p class="rust-section__description">
+                            Las actividades de Mini Lab están pensadas alrededor
+                            de Rust, un lenguaje moderno que permite trabajar
+                            con sistemas embebidos priorizando seguridad y
+                            rendimiento.
+                        </p>
+
+                        <p class="rust-section__description">
+                            No necesitás experiencia previa en Rust. La
+                            plataforma busca acompañarte desde la configuración
+                            inicial hasta el trabajo directo con el hardware.
+                        </p>
+                    </div>
+
+                    <div class="code-window" aria-label="Ejemplo de código Rust">
+                        <div class="code-window__header">
+                            <div class="code-window__dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="code-window__filename"> main.rs </span>
+                        </div>
+                        <pre class="code-window__content"><code>#![no_std]
+#![no_main]
+
+use cortex_m_rt::entry;
+
+#[entry]
+fn main() -&gt; ! {
+    loop {
+        // Tu programa embebido
     }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+            <!-- QEMU -->
+            <section class="qemu-section" aria-labelledby="qemu-title">
+                <div class="home-container">
+                    <div class="qemu-card">
+                        <div class="qemu-card__visual" aria-hidden="true">
+                            <span class="qemu-card__terminal">
+                                &gt;_
+                            </span>
+                            <span class="qemu-card__visual-label">
+                                QEMU
+                            </span>
+                        </div>
+                        <div class="qemu-card__body">
+                            <p class="section-label">
+                                <span class="section-label__dot"></span>
+                                Emulación
+                            </p>
+                            <h2 id="qemu-title" class="qemu-card__title">
+                                ¿Todavía no tenés el kit?
+                            </h2>
+                            <p class="qemu-card__description">
+                                Podés empezar igualmente. Con QEMU podés preparar
+                                tu entorno, compilar programas en Rust y ejecutar
+                                las primeras prácticas utilizando hardware emulado.
+                            </p>
+                            <a href="pages/primeros-pasos/" class="primary-button qemu-card__button">
+                                Comenzar con QEMU
+                                <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+            <!-- EN CONSTRUCCIÓN -->
+            <section class="development-section">
+                <div class="home-container">
+                    <div class="development-notice">
+                        <span class="development-notice__icon" aria-hidden="true">
+                            🛠
+                        </span>
+                        <p>
+                            <strong>
+                                Mini Lab se encuentra actualmente en desarrollo.
+                            </strong>
+                            Los contenidos, actividades y estructura pueden
+                            modificarse a medida que avance el proyecto.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-    /* ── HEADER ── */
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .org-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--green-dim);
-      border: 1px solid var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--green);
-      flex-shrink: 0;
-    }
-
-    .org-name {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    nav {
-      margin-left: auto;
-      display: flex;
-      gap: 24px;
-    }
-
-    nav a {
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .15s;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 80px 40px 60px;
-      max-width: 760px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .prompt {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--green);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .prompt::before {
-      content: '>';
-      color: var(--green);
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 14px;
-      background: var(--green);
-      vertical-align: middle;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink { 50% { opacity: 0; } }
-
-    h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-
-    h1 span { color: var(--green); }
-
-    .tagline {
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 520px;
-      margin-bottom: 36px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 18px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: opacity .15s, background .15s;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: #0d1117;
-    }
-
-    .btn-primary:hover { opacity: .85; }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover { background: var(--surface); }
-
-    /* ── REPOS ── */
-    .section {
-      padding: 0 40px 80px;
-      max-width: 760px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .repos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 12px;
-    }
-
-    .repo-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      transition: border-color .15s, background .15s;
-    }
-
-    .repo-card:hover {
-      border-color: var(--accent);
-      background: #1c2128;
-    }
-
-    .repo-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .repo-icon {
-      font-size: 14px;
-      opacity: .6;
-    }
-
-    .repo-name {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .repo-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.5;
-      flex: 1;
-    }
-
-    .repo-meta {
-      display: flex;
-      gap: 14px;
-      margin-top: 4px;
-    }
-
-    .repo-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 12px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: auto;
-      border-top: 1px solid var(--border);
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-text {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .15s;
-    }
-
-    .footer-links a:hover { color: var(--text); }
-
-    @media (max-width: 600px) {
-      header, .hero, .section, footer { padding-left: 20px; padding-right: 20px; }
-      nav { display: none; }
-      .repos { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="org-avatar">ORG</div>
-    <span class="org-name">ORG_NAME</span>
-    <nav>
-      <a href="https://github.com/ORG_NAME">GitHub</a>
-      <!-- <a href="#">Docs</a> -->
-      <!-- <a href="#">Contacto</a> -->
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="prompt">ORG_NAME/ORG_NAME.github.io <span class="cursor"></span></div>
-      <h1>Guía de recursos para el mini lab <span>organización</span></h1>
-      <p class="tagline">
-        Descripción corta de qué hace la organización, sus objetivos o tecnologías clave. Una o dos oraciones.
-      </p>
-      <div class="hero-actions">
-        <a href="https://github.com/ORG_NAME" class="btn btn-primary">Ver en GitHub</a>
-        <!-- <a href="#repos" class="btn btn-secondary">Proyectos</a> -->
-      </div>
-    </section>
-
-    <section class="section" id="repos">
-      <div class="section-label">repositorios</div>
-      <div class="repos">
-
-        <!-- Repetí este bloque por cada repo -->
-        <a href="https://github.com/ORG_NAME/REPO_1" class="repo-card">
-          <div class="repo-header">
-            <span class="repo-icon">⬡</span>
-            <span class="repo-name">REPO_1</span>
-          </div>
-          <p class="repo-desc">Descripción corta del repositorio. Qué hace, para qué sirve.</p>
-          <div class="repo-meta">
-            <span class="repo-tag">C</span>
-            <span class="repo-tag">v1.0</span>
-          </div>
-        </a>
-
-        <a href="https://github.com/ORG_NAME/REPO_2" class="repo-card">
-          <div class="repo-header">
-            <span class="repo-icon">⬡</span>
-            <span class="repo-name">REPO_2</span>
-          </div>
-          <p class="repo-desc">Descripción corta del repositorio. Qué hace, para qué sirve.</p>
-          <div class="repo-meta">
-            <span class="repo-tag">Rust</span>
-          </div>
-        </a>
-
-        <!-- Agregá más acá -->
-
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span class="footer-text">© 2026 ORG_NAME</span>
-    <div class="footer-links">
-      <a href="https://github.com/ORG_NAME">GitHub</a>
-      <!-- <a href="mailto:contacto@ejemplo.com">Contacto</a> -->
-    </div>
-  </footer>
-
-</body>
+        <!-- =========================
+        FOOTER
+        ========================= -->
+        <footer class="site-footer">
+            <p>
+                Un proyecto de
+                <strong>INVAP</strong>
+                <span class="site-footer__plus"> + </span>
+                <strong>Fundación INVAP</strong>
+            </p>
+        </footer>
+        <script src="js/main.js" defer></script>
+    </body>
 </html>
