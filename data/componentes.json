@@ -10,9 +10,9 @@
         "documentationText": "Documentación de la Raspberry Pi Pico 2",
         "documentation":
             "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
-        "importantData": ["Es la placa principal del kit", "Trabaja con lógica de 3.3V", "Microcontrolador RP2040", "Memoria Flash de 2 MB", "Conectividad USB 1.1", "Conectividad wireless Bluetooth 5.2 y Wi-Fi 4", "Velocidad de reloj de hasta 133 MHz", "40 pines GPIO"],
+        "importantData": ["Es la placa principal del kit", "Trabaja con lógica de 3.3V", "Microcontrolador RP2350", "Memoria Flash de 4 MB", "Conectividad USB 1.1", "Bluetooth 5.2 y Wi-Fi 4 en los modelos W", "Velocidad de reloj de hasta 150 MHz", "26 pines GPIO"],
         "activities": ["Construcción de circuitos", "Programación de microcontroladores", "Desarrollo de proyectos electrónicos"],
-        "help": "Si necesitas ayuda para utilizar la Raspberry Pi Pico 2, puedes consultar la documentación oficial o buscar tutoriales en línea."
+        "help": "../ayuda/"
     },
 
     "protoboard": {
@@ -27,7 +27,7 @@
         "documentation": "https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all",
         "importantData": ["Material: Fibra de vidrio", "Dimensiones: 83,3 mm x 53,3 mm", "Puntos de conexión: 80"],
         "activities": ["Construcción de circuitos", "Prototipado rápido", "Experimentación con componentes electrónicos", "Aprendizaje de electrónica básica"],
-        "help": "Si necesitas ayuda para utilizar la protoboard, puedes consultar la guía de uso o buscar tutoriales en línea."
+        "help": "../ayuda/"
     },
 
     "mpu6050": {

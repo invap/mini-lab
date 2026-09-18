@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,17 +16,17 @@
             <button id="menu-button" class="site-header__menu-button" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-navigation">
                 ☰
             </button>
-            <a href="index.html" class="site-header__brand"> Mini Lab </a>
+            <a href="../../index.html" class="site-header__brand"> Mini Lab </a>
             <div class="site-header__actions">
                 <div class="site-header__logos">
                     <!-- Logos institucionales -->
                 </div>
-                <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar tema">
-                    <svg id="sun-icon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button class="theme-toggle" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="4"></circle>
                         <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
                     </svg>
-                    <svg id="moon-icon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                 </button>
@@ -39,22 +39,18 @@
         <div id="menu-overlay" class="menu-overlay"></div>
         <nav id="main-navigation" class="site-nav" aria-label="Navegación principal">
             <div class="site-nav__header">
-                <span class="site-nav__title"> Mini Lab </span>
-                <button id="menu-closed" class="site-nav__close" type="button" aria-label="Cerrar menú de navegación">
+                <a href="../../index.html" class="site-nav__brand">
+                    <span class="site-nav__brand-name">Mini Lab</span>
+                    <span class="site-nav__brand-subtitle">Sistemas embebidos con Rust</span>
+                </a>
+                <button id="menu-close" class="site-nav__close" type="button" aria-label="Cerrar menú de navegación">
                     ✕
                 </button>
             </div>
 
-            <div class="site-nav__intro">
-                <h1 class="site-nav__title">Mini Lab</h1>
-                <p class="site-nav__subtitle">
-                    Plataforma educativa de sistemas embebidos
-                </p>
-            </div>
-
             <ul class="site-nav__list">
                 <li class="site-nav__item">
-                    <a href="../../index.html" class="site-nav__link site-nav__link">
+                    <a href="../../index.html" class="site-nav__link">
                         Inicio
                     </a>
                 </li>
@@ -66,7 +62,7 @@
                 </li>
 
                 <li class="site-nav__item">
-                    <a href="./" class="site-nav__link site-nav__link--active">
+                    <a href="./" class="site-nav__link site-nav__link--active" aria-current="page">
                         Primeros pasos
                     </a>
                 </li>
@@ -89,14 +85,31 @@
                     </a>
                 </li>
             </ul>
+            <div class="site-nav__footer">
+                <button class="theme-toggle theme-toggle--sidebar" data-theme-toggle type="button" aria-label="Cambiar tema">
+                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                    <span class="theme-toggle__label">Tema</span>
+                </button>
+            </div>
         </nav>
 
         <!-- =========================
         CONTENIDO
         ========================= -->
         <main>
+            <header class="page-header">
+                <div class="page-container">
+                    <h1 class="page-header__title">Primeros pasos</h1>
+                </div>
+            </header>
             <section class="development-section">
-                <div class="home-container">
+                <div class="page-container">
                     <div class="development-notice">
                         <span class="development-notice__icon" aria-hidden="true">
                             🛠
@@ -128,22 +141,3 @@
         <script src="../../js/main.js"></script>
     </body>
 </html>
-
-<!--
-    <section class="development-section">
-        <div class="home-container">
-            <div class="development-notice">
-                <span class="development-notice__icon" aria-hidden="true">
-                    🛠
-                </span>
-                <p>
-                    <strong>
-                        Mini Lab se encuentra actualmente en desarrollo.
-                    </strong>
-                    Los contenidos, actividades y estructura pueden
-                    modificarse a medida que avance el proyecto.
-                </p>
-            </div>
-        </div>
-        <button onclick="history.back()" class="primary-button">Volver atrás</button>
-    </section> -->

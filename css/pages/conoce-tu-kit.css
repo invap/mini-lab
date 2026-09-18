@@ -94,7 +94,7 @@
     padding: 1rem 1.1rem;
     border: 2px solid var(--border);
     border-radius: var(--radius-medium);
-/*     
+/*
     padding: 1rem 1.1rem;
     border: 1px solid var(--border);
     border-radius: var(--radius-medium);
@@ -183,7 +183,7 @@
     pointer-events: none;
 }
 
-.page-header--kit 
+.page-header--kit
 .page-container{
     position: relative;
     z-index: 1;
@@ -374,34 +374,40 @@
 
 
 /* =========================================================
-   COMPONENT DIALOG
+    COMPONENT DIALOG
    ========================================================= */
 
 .component-dialog {
-    width: calc(100% - 2rem);
-    max-width: 500px;
-    max-height: 90vh;
+    position: fixed;
+    width: min(1100px, calc(100% - 2rem));
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
 
     padding: 0;
 
-    border: 0;
+    border: 1px solid var(--border);
     border-radius: var(--radius-large);
 
     background-color: var(--surface);
     color: var(--text-primary);
 
     overflow: hidden;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
 }
 
 .component-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
 }
 
 
 /* Container */
 
 .component-dialog__container {
-    max-height: 90vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem - 2px);
 
     overflow-y: auto;
 
@@ -412,33 +418,34 @@
 /* Header */
 
 .component-dialog__header {
-    position: sticky;
-    top: 0;
-
-    z-index: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-
-    padding: 1.25rem;
-
-    background-color: var(--invap-green);
-    color: var(--text-on-brand);
+    padding: 0;
 }
 
 .component-dialog__title {
     margin: 0;
+    color: var(--text-primary);
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 750;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+}
 
-    font-size: 1.25rem;
+.component-dialog__description{
+    max-width: 620px;
+    margin: 1.25rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 .component-dialog__close {
-    width: 2.5rem;
-    height: 2.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
 
-    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
 
     display: flex;
     align-items: center;
@@ -446,21 +453,79 @@
 
     padding: 0;
 
-    border: 0;
+    border: 1px solid var(--border);
     border-radius: 50%;
 
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--text-on-brand);
+    background-color: var(--surface);
+    color: var(--text-primary);
 
-    font-size: 1.2rem;
+    font-size: 1rem;
 
     cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .component-dialog__close:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--invap-green);
+    background-color: var(--card-background);
 }
 
+.component-dialog__close:active{
+    transform: scale(0.96);
+}
+
+.component-dialog__visual{
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.component-dialog__visual-grid{
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(
+            var(--grid-color) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            var(--grid-color) 1px,
+            transparent 1px
+        );
+        background-size: 28px 28px;
+        mask-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 0.25)
+        );
+        pointer-events: none;
+}
+
+.component-dialog__visual::after{
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 119, 50, 0.10),
+            transparent 70%
+        );
+    pointer-events: none;
+}
 
 /* Imagen */
 
@@ -477,8 +542,12 @@
 }
 
 .component-dialog__image {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
-    max-height: 250px;
+    max-width: 320px;
+    max-height: 320px;
 
     object-fit: contain;
 }
@@ -487,11 +556,34 @@
 /* Contenido */
 
 .component-dialog__content {
-    padding: 1.5rem;
+    min-width: 0;
+    padding: 2rem;
+    background-color: var(--surface);
+}
+
+.component-dialog__header{
+    padding-right: 3rem;
+}
+
+.component-dialog__eyebrow{
+    width: fit-content;
+    margin: 0 0 1rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(0, 119, 50, 0.3);
+    border-radius: 999px;
+    background-color: rgba(0, 119, 50, 0.3);
+    color: var(--invap-green);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .component-dialog__section {
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
 }
 
 .component-dialog__section h3 {
@@ -510,6 +602,78 @@
     line-height: 1.6;
 }
 
+.component-dialog__section .component-dialog__section-label{
+    margin: 0 0 0.5rem;
+    color: var(--invap-green);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.component-dialog__section .component-dialog__section-title{
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.component-dialog__section .component-dialog__section-text{
+    margin: 0.8rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.component-dialog__data-list{
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    list-style: none;
+}
+
+.component-dialog__data-list li{
+    position: relative;
+    padding: 0.9rem 1rem 0.9rem 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    background-color: var(--background);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.component-dialog__data-list li::before{
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    left: 1rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--invap-green);
+}
+
+.component-dialog__activity-list{
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+}
+
+.component-dialog__activity-list li{
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--background);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
 
 /* Listas */
 
@@ -530,48 +694,66 @@
 /* Ayuda */
 
 .component-dialog__help-link {
+    margin-top: 1rem;
+
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 
-    color: var(--invap-green);
+    color: var(--text-primary);
 
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
 
-    transition: color 0.2s ease;
+    text-decoration: none;
 }
 
 .component-dialog__help-link:hover {
     color: var(--invap-green-dark);
 }
 
+.component-dialog__help-link span{
+    color: var(--invap-green);
+    transition: transform 0.2s ease;
+}
+
+.component-dialog__help-link:hover span{
+    transform: translateY(3px);
+}
+
 
 /* Documentación */
 
 .component-dialog__documentation {
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
 
-    margin-bottom: 1.25rem;
+    padding: 1rem 1.1rem;
 
-    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
 
-    border-radius: var(--radius-medium);
+    background-color: var(--background);
+    color: var(--text-primary);
 
-    background-color: var(--invap-green-light);
-    color: var(--invap-green);
-
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 650;
+    text-decoration: none;
 
     transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        border-color 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .component-dialog__documentation:hover {
-    transform: translateX(2px);
+    border-color: var(--invap-green);
+}
+
+.component-dialog__documentation span:last-child{
+    color: var(--invap-green);
 }
 
 /* =========================================================
@@ -622,18 +804,27 @@
     }
 
     .component-dialog__container {
-        display: grid;
-
-        grid-template-columns: 42% 58%;
-        grid-template-rows: auto 1fr;
-
-        max-height: 85vh;
-
+        grid-template-columns:
+            minmax(0, 42fr)
+            minmax(0, 58fr);
+        max-height: calc(85vh - 2px);
         overflow: hidden;
     }
 
+    .component-dialog__visual{
+        min-height: 0;
+        padding: 4rem;
+        border-right: 1px solid var(--border);
+        border-bottom: 0;
+    }
+
     .component-dialog__header {
-        grid-column: 1 / -1;
+        padding-right: 2rem;
+    }
+
+    .component-dialog__data-list{
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
     .component-dialog__image-container {
@@ -646,18 +837,15 @@
     }
 
     .component-dialog__image {
-        max-height: 330px;
+        max-width: 360px;
+        max-height: 360px;
     }
 
     .component-dialog__content {
-        grid-column: 2;
-        grid-row: 2;
-
-        padding: 2rem;
-
+        min-height: 0;
+        max-height: calc(85vh - 2px);
+        padding: 3.25rem;
         overflow-y: auto;
-
-        scrollbar-width: thin;
     }
 
     .component-dialog__title {

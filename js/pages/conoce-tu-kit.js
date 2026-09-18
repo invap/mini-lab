@@ -19,6 +19,7 @@ const componentsDataUrl = new URL("../../data/componentes.json", currentScriptUr
 const imagesBaseUrl = new URL("../../assets/images/", currentScriptUrl);
 
 let components = {};
+let componentDialogTrigger = null;
 
 function updateComponentsCount(){
     const countElement = document.querySelector('#components-count');
@@ -58,12 +59,18 @@ async function loadComponents() {
 
 function renderComponentCards() {
     componentsGrid.innerHTML = "";
+    if (Object.keys(components).length === 0) {
+        showComponentsStatus("Todavía no hay componentes disponibles.");
+        return;
+    }
     Object.entries(components).forEach(([componentId, component]) => {
             const card = document.createElement("article");
             card.classList.add("component-card");
             card.tabIndex = 0;
             card.setAttribute("role", "button");
             card.setAttribute("aria-label", `Ver detalles de ${component.title}`);
+            card.setAttribute("aria-haspopup", "dialog");
+            card.setAttribute("aria-controls", "component-dialog");
             card.dataset.component =componentId;
 
             /* Imagen */
@@ -103,9 +110,10 @@ function renderComponentCards() {
     ABRIR MODAL
    ========================= */
 
-function openComponentDialog(componentId) {
+function openComponentDialog(componentId, trigger) {
     const component = components[componentId];
     if (!component) return;
+    componentDialogTrigger = trigger;
 
     dialogTitle.textContent = component.title;
     dialogImage.src = getComponentImageUrl(component.image);
@@ -159,6 +167,8 @@ function openComponentDialog(componentId) {
     }
 
     componentDialog.showModal();
+    componentDialog.querySelectorAll(".component-dialog__container, .component-dialog__content")
+        .forEach((element) => { element.scrollTop = 0; });
     document.body.classList.add("no-scroll");
 }
 
@@ -168,7 +178,6 @@ function openComponentDialog(componentId) {
 
 function closeComponentDialog() {
     componentDialog.close();
-    document.body.classList.remove("no-scroll");
 }
 
 /* =========================
@@ -178,9 +187,7 @@ function closeComponentDialog() {
 componentsGrid.addEventListener("click", (event) => {
         const card = event.target.closest(".component-card");
         if (!card) return;
-        card.blur();
-
-        openComponentDialog(card.dataset.component);
+        openComponentDialog(card.dataset.component, card);
     }
 );
 
@@ -190,7 +197,7 @@ componentsGrid.addEventListener("keydown", (event) => {
 
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
-            openComponentDialog(card.dataset.component);
+            openComponentDialog(card.dataset.component, card);
         }
     }
 );
@@ -208,7 +215,13 @@ componentDialog.addEventListener("click", (event) => {
 );
 
 componentDialog.addEventListener("close", () => {
-        document.body.classList.remove("no-scroll");
+        document.body.classList.toggle("no-scroll", Boolean(
+            document.querySelector(".site-nav--open, dialog[open]")
+        ));
+        if (componentDialogTrigger && !componentDialog.open) {
+            componentDialogTrigger.focus({ preventScroll: true });
+            componentDialogTrigger = null;
+        }
     }
 );
 
@@ -216,13 +229,45 @@ componentDialog.addEventListener("close", () => {
     INICIALIZACIÓN
    ========================= */
 
-async function initializeComponents() {
+function showComponentsStatus(message, canRetry = false) {
+    const status = document.createElement("div");
+    const text = document.createElement("p");
+    text.setAttribute("role", canRetry ? "alert" : "status");
+    text.textContent = message;
+    status.appendChild(text);
+
+    if (canRetry) {
+        const retryButton = document.createElement("button");
+        retryButton.type = "button";
+        retryButton.classList.add("primary-button");
+        retryButton.textContent = "Reintentar";
+        retryButton.addEventListener("click", () => initializeComponents(true), { once: true });
+        status.appendChild(retryButton);
+    }
+
+    componentsGrid.replaceChildren(status);
+}
+
+async function initializeComponents(isRetry = false) {
+    componentsGrid.setAttribute("aria-busy", "true");
+    showComponentsStatus("Cargando componentes…");
     try {
         await loadComponents();
         updateComponentsCount();
         renderComponentCards();
+        if (isRetry) {
+            componentsGrid.querySelector(".component-card")?.focus();
+        }
     } catch (error) {
         console.error("Error al inicializar los componentes:", error);
+        const countElement = document.querySelector("#components-count");
+        if (countElement) countElement.textContent = "—";
+        showComponentsStatus("No pudimos cargar los componentes. Revisá tu conexión y volvé a intentarlo.", true);
+        if (isRetry) {
+            componentsGrid.querySelector("button")?.focus();
+        }
+    } finally {
+        componentsGrid.setAttribute("aria-busy", "false");
     }
 }
 

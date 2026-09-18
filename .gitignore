@@ -1,3 +1,43 @@
+# =========================
+# EDITORES / IDE
+# =========================
 .vscode/
+.idea/
+
+# =========================
+# SISTEMA OPERATIVO
+# =========================
+.DS_Store
 Thumbs.db
+desktop.ini
+
+# =========================
+# ARCHIVOS TEMPORALES
+# =========================
 *.log
+*.tmp
+*.temp
+*.swp
+
+# =========================
+# TESTS LOCALES
+# =========================
+tests/
+
+# =========================
+# COBERTURA / REPORTES
+# =========================
+coverage/
+test-results/
+
+# =========================
+# VARIABLES DE ENTORNO
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# DEPENDENCIAS
+# =========================
+node_modules/

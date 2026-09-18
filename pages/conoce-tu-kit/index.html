@@ -219,7 +219,7 @@
                     <div class="kit-hero">
                         <div class="kit-hero__content">
                             <nav class="kit-hero__breadcrumb" aria-label="Breadcrumb">
-                                <a href="/index.html" class="kit-hero__breadcrumb-link">Mini Lab</a>
+                                <a href="../../index.html" class="kit-hero__breadcrumb-link">Mini Lab</a>
                                 <span class="kit-hero__breadcrumb-separator">></span>
                                 <span class="kit-hero__breadcrumb-current">Conocé tu kit</span>
                             </nav>
@@ -238,7 +238,7 @@
                     </div>
                     <div class="kit-hero__divider">
                         <span class="kit-hero__line"></span>
-                        <span class="kit-hero__pill">Componentes del kit</span>
+                        <span id="kit-title" class="kit-hero__pill">Componentes del kit</span>
                         <span class="kit-hero__line"></span>
                     </div>
                     <p class="kit-hero__catalog-description">
@@ -285,11 +285,10 @@
         MODAL COMPONENTE
         ========================= -->
 
-        <dialog id="component-dialog" class="component-dialog">
+        <dialog id="component-dialog" class="component-dialog" aria-labelledby="dialog-title">
             <div class="component-dialog__container">
-                <header class="component-dialog__header">
-                    <h2 id="dialog-title" class="component-dialog__title"></h2>
-
+                <!-- <header class="component-dialog__header"> -->
+                    <!-- <h2 id="dialog-title" class="component-dialog__title"></h2> -->
                     <button
                         id="component-dialog-close"
                         class="component-dialog__close"
@@ -298,36 +297,41 @@
                     >
                         ✕
                     </button>
-                </header>
+                <!-- </header> -->
 
-                <div class="component-dialog__image-container">
+                <div class="component-dialog__visual">
+                    <div class="component-dialog__visual-grid" aria-hidden="true"></div>
                     <img
                         id="dialog-image"
                         class="component-dialog__image"
-                        src=""
                         alt=""
-                    />
+                    >
                 </div>
 
                 <div class="component-dialog__content">
-                    <section class="component-dialog__section">
-                        <h3>¿Qué es?</h3>
-                        <p id="dialog-description"></p>
-                    </section>
+                    <header class="component-dialog__header">
+                        <p class="component-dialog__eyebrow">
+                            Hardware
+                        </p>
+                        <h2 id="dialog-title" class="component-dialog__title"></h2>
+                        <p id="dialog-description" class="component-dialog__description"></p>
+                    </header>
 
                     <section class="component-dialog__section">
-                        <h3>¿Cómo lo usamos en Mini Lab?</h3>
-                        <p id="dialog-use"></p>
+                        <p class="component-dialog__section-label">En Mini Lab</p>
+                        <h3 class="component-dialog__section-title">¿Cómo lo usamos en Mini Lab?</h3>
+                        <p id="dialog-use" class="component-dialog__section-text"></p>
                     </section>
 
                     <section
                         id="dialog-important-data-section"
                         class="component-dialog__section"
                     >
-                        <h3>Datos importantes</h3>
+                        <p class="component-dialog__section-label"> Información</p>
+                        <h3 class="component-dialog__section-title">Datos importantes</h3>
                         <ul
                             id="dialog-important-data"
-                            class="component-dialog__list"
+                            class="component-dialog__data-list"
                         ></ul>
                     </section>
 
@@ -335,11 +339,12 @@
                         id="dialog-activities-section"
                         class="component-dialog__section"
                     >
-                        <h3>Lo vas a usar en...</h3>
+                        <p class="component-dialog__section-label">Práctica</p>
+                        <h3 class="component-dialog__section-title">Lo vas a usar en...</h3>
 
                         <ul
                             id="dialog-activities"
-                            class="component-dialog__list"
+                            class="component-dialog__activity-list"
                         ></ul>
                     </section>
 
@@ -347,13 +352,14 @@
                         id="dialog-help-section"
                         class="component-dialog__section"
                     >
+                        <p class="component-dialog__section-label">Soporte</p>
                         <h3>¿Tenés problemas con este componente?</h3>
                         <a
                             id="dialog-help"
                             class="component-dialog__help-link"
                             href="#"
                         >
-                            Ver ayuda y problemas frecuentes
+                            Problemas frecuentes
                             <span aria-hidden="true">→</span>
                         </a>
                     </section>
