@@ -431,6 +431,252 @@ button.steps-nav__link:focus-visible,
 }
 
 /* =========================================================
+   VERIFICACIÓN DEL ENTORNO
+   ========================================================= */
+
+.verification-group {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+
+    border-top: 1px solid var(--border);
+}
+
+.verification-group__header {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 1.25rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.verification-group__number {
+    color: var(--steps-accent);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.verification-group__title {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.verification-group__description {
+    max-width: 580px;
+
+    margin: 0.6rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.verification-check {
+    margin-top: 1.75rem;
+}
+
+.verification-check__header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.verification-check__header strong {
+    color: var(--text-primary);
+
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.verification-check__icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--steps-accent-border);
+    border-radius: 50%;
+
+    background-color: var(--steps-accent-soft);
+    color: var(--steps-accent);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.verification-check__description {
+    margin: 0.65rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.verification-command-label {
+    margin: 1.75rem 0 0.5rem;
+
+    color: var(--text-primary);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.verification-result {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    margin-top: 0.8rem;
+}
+
+.verification-result__icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: var(--steps-accent-soft);
+    color: var(--steps-accent);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.verification-result p {
+    min-width: 0;
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.verification-result code,
+.hardware-verification code {
+    color: var(--text-primary);
+
+    font-family:
+        "JetBrains Mono",
+        "Fira Code",
+        Consolas,
+        monospace;
+
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+}
+
+.hardware-verification {
+    padding: 1rem 1.1rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+
+    background-color: var(--surface);
+}
+
+.hardware-verification__badge {
+    display: inline-flex;
+
+    margin-bottom: 0.8rem;
+    padding: 0.25rem 0.55rem;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hardware-verification p {
+    margin: 0.5rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.environment-ready {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 1rem;
+
+    margin-top: 3.5rem;
+    padding: 1.35rem;
+
+    border: 1px solid var(--steps-accent-border);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--steps-accent-soft);
+}
+
+.environment-ready__icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: var(--steps-accent);
+    color: var(--text-on-brand);
+
+    font-weight: 700;
+}
+
+.environment-ready__eyebrow {
+    margin: 0 0 0.25rem;
+
+    color: var(--steps-accent);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.environment-ready__title {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.05rem;
+}
+
+.environment-ready__description {
+    max-width: 520px;
+
+    margin: 0.5rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
    PROGRESO
    ========================================================= */
 

@@ -162,16 +162,16 @@
                             </button>
                         </li>
                         <li class="steps-nav__item">
-                            <span
-                                class="steps-nav__link steps-nav__link-pending"
-                                data-step-placeholder="4"
-                                aria-disabled="true"
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="4"
                             >
                                 <span class="steps-nav__number"> 04 </span>
                                 <span class="steps-nav__label">
                                     Verificá el entorno
                                 </span>
-                            </span>
+                            </button>
                         </li>
                         <li class="steps-nav__item">
                             <span
@@ -302,10 +302,7 @@
                                 Primeros pasos
                             </p>
 
-                            <h1
-                                id="steps-hero-title"
-                                class="steps-hero__title"
-                            >
+                            <h1 id="steps-hero-title" class="steps-hero__title">
                                 Prepará tu entorno
                             </h1>
 
@@ -495,7 +492,8 @@
                                         <span
                                             class="step-checklist__description"
                                         >
-                                            Los vamos a necesitar durante la configuración
+                                            Los vamos a necesitar durante la
+                                            configuración
                                         </span>
                                     </div>
                                 </li>
@@ -544,8 +542,8 @@
 
                             <p class="step-article__lead">
                                 La toolchain reúne las herramientas de Rust que
-                                necesitamos para compilar, generar e inspeccionar
-                                programas para sistemas embebidos.
+                                necesitamos para compilar, generar e
+                                inspeccionar programas para sistemas embebidos.
                             </p>
                         </header>
 
@@ -559,38 +557,43 @@
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    <strong>rustup</strong> administra las versiones
-                                    y componentes de Rust. Al instalar Rust con
-                                    rustup también obtenemos <strong>rustc</strong>,
-                                    el compilador, y <strong>Cargo</strong>, la
-                                    herramienta que gestiona proyectos,
-                                    dependencias y compilaciones.
+                                    <strong>rustup</strong> administra las
+                                    versiones y componentes de Rust. Al instalar
+                                    Rust con rustup también obtenemos
+                                    <strong>rustc</strong>, el compilador, y
+                                    <strong>Cargo</strong>, la herramienta que
+                                    gestiona proyectos, dependencias y
+                                    compilaciones.
                                 </p>
 
                                 <dl class="toolchain-components">
                                     <div class="toolchain-components__item">
                                         <dt><code>rustup</code></dt>
                                         <dd>
-                                            Administra toolchains, componentes y targets.
+                                            Administra toolchains, componentes y
+                                            targets.
                                         </dd>
                                     </div>
                                     <div class="toolchain-components__item">
                                         <dt><code>rustc</code></dt>
                                         <dd>
-                                            Compila el código fuente escrito en Rust.
+                                            Compila el código fuente escrito en
+                                            Rust.
                                         </dd>
                                     </div>
                                     <div class="toolchain-components__item">
                                         <dt><code>cargo</code></dt>
                                         <dd>
-                                            Gestiona el proyecto, sus dependencias y compilaciones.
+                                            Gestiona el proyecto, sus
+                                            dependencias y compilaciones.
                                         </dd>
                                     </div>
                                 </dl>
 
                                 <p class="toolchain-block__description">
-                                    En Linux, que es el sistema soportado actualmente
-                                    por Mini Lab, podés iniciar la instalación con:
+                                    En Linux, que es el sistema soportado
+                                    actualmente por Mini Lab, podés iniciar la
+                                    instalación con:
                                 </p>
 
                                 <div class="command-block">
@@ -598,18 +601,24 @@
                                         <span>Terminal</span>
                                         <span>Linux</span>
                                     </div>
-                                    <pre class="command-block__code"><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
                                 </div>
 
                                 <p class="toolchain-block__description">
-                                    Al terminar, para actualizar la terminal actual ejecutá el siguiente comando, o simplemente cerrá la terminal y abrí otra:
+                                    Al terminar, para actualizar la terminal
+                                    actual ejecutá el siguiente comando, o
+                                    simplemente cerrá la terminal y abrí otra:
                                 </p>
 
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Terminal</span>
                                     </div>
-                                    <pre class="command-block__code"><code>source "$HOME/.cargo/env"</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>source "$HOME/.cargo/env"</code></pre>
                                 </div>
                             </div>
                         </section>
@@ -624,29 +633,37 @@
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    La Raspberry Pi Pico 2 utiliza el microcontrolador RP2350.
-                                    En Mini Lab vamos a trabajar inicialmente con sus núcleos
-                                    ARM Cortex-M33.
+                                    La Raspberry Pi Pico 2 utiliza el
+                                    microcontrolador RP2350. En Mini Lab vamos a
+                                    trabajar inicialmente con sus núcleos ARM
+                                    Cortex-M33.
                                 </p>
 
                                 <p class="toolchain-block__description">
-                                    Para que Rust pueda generar código para esta arquitectura,
-                                    agregamos el target correspondiente:
+                                    Para que Rust pueda generar código para esta
+                                    arquitectura, agregamos el target
+                                    correspondiente:
                                 </p>
 
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Terminal</span>
                                     </div>
-                                    <pre class="command-block__code"><code>rustup target add thumbv8m.main-none-eabihf</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustup target add thumbv8m.main-none-eabihf</code></pre>
                                 </div>
                                 <aside class="step-note">
-                                    <span class="step-note__icon" aria-hidden="true">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
                                         ¡
                                     </span>
                                     <p>
-                                        Este target genera código ARMv8-M para Cortex-M33
-                                        utilizando soporte de punto flotante por hardware.
+                                        Este target genera código ARMv8-M para
+                                        Cortex-M33 utilizando soporte de punto
+                                        flotante por hardware.
                                     </p>
                                 </aside>
                             </div>
@@ -662,18 +679,22 @@
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    Las LLVM Tools permiten inspeccionar los binarios
-                                    generados por Rust. <strong>cargo-binutils</strong>
-                                    agrega comandos de Cargo para utilizar herramientas
-                                    como <code>size</code>, <code>objdump</code> y
-                                    <code>nm</code> de una forma más cómoda.
+                                    Las LLVM Tools permiten inspeccionar los
+                                    binarios generados por Rust.
+                                    <strong>cargo-binutils</strong> agrega
+                                    comandos de Cargo para utilizar herramientas
+                                    como <code>size</code>,
+                                    <code>objdump</code> y <code>nm</code> de
+                                    una forma más cómoda.
                                 </p>
 
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Terminal</span>
                                     </div>
-                                    <pre class="command-block__code"><code>cargo install cargo-binutils --locked
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install cargo-binutils --locked
 rustup component add llvm-tools-preview</code></pre>
                                 </div>
                             </div>
@@ -689,17 +710,19 @@ rustup component add llvm-tools-preview</code></pre>
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    Permite crear un proyecto nuevo a partir de una
-                                    plantilla ya preparada. Esto evita tener que configurar
-                                    desde cero los archivos y ajustes que necesita un
-                                    proyecto bare-metal.
+                                    Permite crear un proyecto nuevo a partir de
+                                    una plantilla ya preparada. Esto evita tener
+                                    que configurar desde cero los archivos y
+                                    ajustes que necesita un proyecto bare-metal.
                                 </p>
 
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Terminal</span>
                                     </div>
-                                    <pre class="command-block__code"><code>cargo install cargo-generate --locked</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install cargo-generate --locked</code></pre>
                                 </div>
 
                                 <p class="toolchain-block__description">
@@ -741,9 +764,10 @@ rustup component add llvm-tools-preview</code></pre>
                             <h2 class="step-article__title">Configurá Linux</h2>
 
                             <p class="step-article__lead">
-                                Con la toolchain de Rust preparada, ahora vamos a
-                                instalar las herramientas del sistema que usaremos
-                                para ejecutar, depurar y comunicarnos con el hardware.
+                                Con la toolchain de Rust preparada, ahora vamos
+                                a instalar las herramientas del sistema que
+                                usaremos para ejecutar, depurar y comunicarnos
+                                con el hardware.
                             </p>
                         </header>
 
@@ -751,9 +775,7 @@ rustup component add llvm-tools-preview</code></pre>
                             <span class="system-platform__label">
                                 Sistema actualmente soportado
                             </span>
-                            <span class="system-platform__badge">
-                                Linux
-                            </span>
+                            <span class="system-platform__badge"> Linux </span>
                         </div>
 
                         <!-- Paquetes Linux -->
@@ -766,9 +788,10 @@ rustup component add llvm-tools-preview</code></pre>
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    Para seguir el recorrido instalaremos Git, un
-                                    depurador con soporte ARM, OpenOCD y QEMU.
-                                    Elegí el comando correspondiente a tu distribución.
+                                    Para seguir el recorrido instalaremos Git,
+                                    un depurador con soporte ARM, OpenOCD y
+                                    QEMU. Elegí el comando correspondiente a tu
+                                    distribución.
                                 </p>
 
                                 <div class="command-block">
@@ -776,7 +799,9 @@ rustup component add llvm-tools-preview</code></pre>
                                         <span>Ubuntu / Debian</span>
                                         <span>APT</span>
                                     </div>
-                                    <pre class="command-block__code"><code>sudo apt install git gdb-multiarch openocd qemu-system-arm</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo apt install git gdb-multiarch openocd qemu-system-arm</code></pre>
                                 </div>
 
                                 <div class="command-block">
@@ -784,7 +809,9 @@ rustup component add llvm-tools-preview</code></pre>
                                         <span>Fedora</span>
                                         <span>DNF</span>
                                     </div>
-                                    <pre class="command-block__code"><code>sudo dnf install git gdb openocd qemu-system-arm</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo dnf install git gdb openocd qemu-system-arm</code></pre>
                                 </div>
 
                                 <div class="command-block">
@@ -792,7 +819,9 @@ rustup component add llvm-tools-preview</code></pre>
                                         <span>Arch Linux</span>
                                         <span>Pacman</span>
                                     </div>
-                                    <pre class="command-block__code"><code>sudo pacman -S git arm-none-eabi-gdb qemu-system-arm openocd</code></pre>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo pacman -S git arm-none-eabi-gdb qemu-system-arm openocd</code></pre>
                                 </div>
                             </div>
                         </section>
@@ -810,19 +839,21 @@ rustup component add llvm-tools-preview</code></pre>
                                     <div class="system-tools__item">
                                         <dt>GDB</dt>
                                         <dd>
-                                            Depurador que permite detener la ejecución,
-                                            avanzar paso a paso e inspeccionar el estado
-                                            del programa. Necesitamos una versión con
-                                            soporte para ARM Cortex-M.
+                                            Depurador que permite detener la
+                                            ejecución, avanzar paso a paso e
+                                            inspeccionar el estado del programa.
+                                            Necesitamos una versión con soporte
+                                            para ARM Cortex-M.
                                         </dd>
                                     </div>
 
                                     <div class="system-tools__item">
                                         <dt>OpenOCD</dt>
                                         <dd>
-                                            Facilita la comunicación entre las herramientas
-                                            de depuración de la computadora y el hardware
-                                            embebido mediante un probe compatible.
+                                            Facilita la comunicación entre las
+                                            herramientas de depuración de la
+                                            computadora y el hardware embebido
+                                            mediante un probe compatible.
                                         </dd>
                                     </div>
 
@@ -830,9 +861,10 @@ rustup component add llvm-tools-preview</code></pre>
                                         <dt>QEMU</dt>
                                         <dd>
                                             Emula determinados sistemas ARM. No
-                                            reemplaza automáticamente la placa Pico 2;
-                                            solo sirve para las prácticas y targets
-                                            compatibles con la máquina emulada.
+                                            reemplaza automáticamente la placa
+                                            Pico 2; solo sirve para las
+                                            prácticas y targets compatibles con
+                                            la máquina emulada.
                                         </dd>
                                     </div>
                                 </dl>
@@ -849,36 +881,52 @@ rustup component add llvm-tools-preview</code></pre>
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    La Raspberry Pi Pico 2 puede recibir firmware directamente
-                                    mediante su conexión USB utilizando el modo BOOTSEL.
+                                    La Raspberry Pi Pico 2 puede recibir
+                                    firmware directamente mediante su conexión
+                                    USB utilizando el modo BOOTSEL.
                                 </p>
                                 <div class="hardware-flow">
                                     <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">1</span>
+                                        <span class="hardware-flow__number"
+                                            >1</span
+                                        >
                                         <div>
-                                            <strong>Mantené presionado BOOTSEL</strong>
+                                            <strong
+                                                >Mantené presionado
+                                                BOOTSEL</strong
+                                            >
                                             <p>
-                                                Con la placa desconectada, mantené presionado
-                                                el botón BOOTSEL mientras conectás el cable USB.
+                                                Con la placa desconectada,
+                                                mantené presionado el botón
+                                                BOOTSEL mientras conectás el
+                                                cable USB.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">2</span>
+                                        <span class="hardware-flow__number"
+                                            >2</span
+                                        >
                                         <div>
-                                            <strong>Linux detecta la Pico 2</strong>
+                                            <strong
+                                                >Linux detecta la Pico 2</strong
+                                            >
                                             <p>
-                                                La placa aparece como una unidad de almacenamiento
-                                                llamada <code>RPI-RP2</code>.
+                                                La placa aparece como una unidad
+                                                de almacenamiento llamada
+                                                <code>RPI-RP2</code>.
                                             </p>
                                         </div>
                                     </div>
                                     <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">3</span>
+                                        <span class="hardware-flow__number"
+                                            >3</span
+                                        >
                                         <div>
                                             <strong>Copiá el firmware</strong>
                                             <p>
-                                                Copiá el archivo <code>.uf2</code> a esa unidad
+                                                Copiá el archivo
+                                                <code>.uf2</code> a esa unidad
                                                 para programar la memoria flash.
                                             </p>
                                         </div>
@@ -894,9 +942,9 @@ rustup component add llvm-tools-preview</code></pre>
                                     </span>
                                     <p>
                                         Este mecanismo forma parte de la ROM del
-                                        RP2350, por lo que el modo BOOTSEL permanece
-                                        disponible aunque el firmware cargado tenga
-                                        algún problema.
+                                        RP2350, por lo que el modo BOOTSEL
+                                        permanece disponible aunque el firmware
+                                        cargado tenga algún problema.
                                     </p>
                                 </aside>
                             </div>
@@ -905,9 +953,361 @@ rustup component add llvm-tools-preview</code></pre>
                 </div>
             </section>
 
-<!-- =========================
-         NAVEGACIÓN DEL RECORRIDO
-         ========================= -->
+            <!-- =========================
+        PASO 04
+        ========================= -->
+        <section
+            id="verificar-entorno"
+            class="step-content"
+            data-step-panel="4"
+            data-step-title="Verificá el entorno"
+            hidden
+        >
+
+            <div class="page-container">
+                <article class="step-article">
+                    <!-- Encabezado -->
+                    <header class="step-article__header">
+                        <div class="step-article__eyebrow">
+                            <span class="step-article__number">
+                                04
+                            </span>
+                            <span
+                                class="step-article__line"
+                                aria-hidden="true"
+                            ></span>
+                            <span class="step-article__category">
+                                Verificación
+                            </span>
+                        </div>
+                        <h2 class="step-article__title">
+                            Comprobá tu entorno
+                        </h2>
+                        <p class="step-article__lead">
+                            Antes de crear nuestro primer proyecto, vamos a comprobar
+                            que la toolchain de Rust y las herramientas de Linux
+                            quedaron instaladas correctamente.
+                        </p>
+                    </header>
+
+                    <aside class="step-note">
+                        <span
+                            class="step-note__icon"
+                            aria-hidden="true"
+                        >
+                            i
+                        </span>
+                        <p>
+                            Ejecutá cada comando en una terminal. No importa que
+                            las versiones mostradas sean exactamente iguales:
+                            lo importante en esta etapa es que las herramientas
+                            estén disponibles y respondan correctamente.
+                        </p>
+                    </aside>
+
+                    <!-- =====================================
+                        01 - RUST
+                    ===================================== -->
+                    <section class="verification-group">
+                        <div class="verification-group__header">
+                            <span class="verification-group__number">
+                                01
+                            </span>
+                            <div>
+                                <h3 class="verification-group__title">
+                                    Rust y Cargo
+                                </h3>
+                                <p class="verification-group__description">
+                                    Primero verificamos las herramientas principales
+                                    instaladas mediante rustup.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>Rust</strong>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre class="command-block__code"><code>rustc --version</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>Cargo</strong>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre class="command-block__code"><code>cargo --version</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>Rustup</strong>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre class="command-block__code"><code>rustup --version</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- =====================================
+                        02 - TARGET
+                        ===================================== -->
+
+                    <section class="verification-group">
+                        <div class="verification-group__header">
+                            <span class="verification-group__number">
+                                02
+                            </span>
+                            <div>
+                                <h3 class="verification-group__title">
+                                    Target de la Pico 2
+                                </h3>
+                                <p class="verification-group__description">
+                                    Confirmamos que Rust puede compilar para el
+                                    ARM Cortex-M33 del RP2350.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                            </div>
+                            <pre class="command-block__code"><code>rustup target list --installed | grep thumbv8m.main-none-eabihf</code></pre>
+                        </div>
+
+                        <div class="verification-result">
+                            <span class="verification-result__icon">
+                                ✓
+                            </span>
+                            <p>
+                                La salida debería incluir
+                                <code>thumbv8m.main-none-eabihf</code>.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- =====================================
+                        03 - HERRAMIENTAS RUST
+                        ===================================== -->
+
+                    <section class="verification-group">
+                        <div class="verification-group__header">
+                            <span class="verification-group__number">
+                                03
+                            </span>
+                            <div>
+                                <h3 class="verification-group__title">
+                                    Herramientas de compilación
+                                </h3>
+                                <p class="verification-group__description">
+                                    Verificamos las herramientas auxiliares que
+                                    instalamos para trabajar con proyectos y binarios.
+                                </p>
+                            </div>
+                        </div>
+                        <p class="verification-command-label">
+                            LLVM Tools
+                        </p>
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                            </div>
+                            <pre class="command-block__code"><code>rustup component list --installed | grep llvm-tools</code></pre>
+                        </div>
+
+                        <p class="verification-command-label">
+                            cargo-binutils
+                        </p>
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                            </div>
+                            <pre class="command-block__code"><code>cargo install --list | grep cargo-binutils</code></pre>
+                        </div>
+
+                        <p class="verification-command-label">
+                            cargo-generate
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                            </div>
+                            <pre class="command-block__code"><code>cargo generate --version</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- =====================================
+                        04 - LINUX
+                    ===================================== -->
+
+                    <section class="verification-group">
+                        <div class="verification-group__header">
+                            <span class="verification-group__number">
+                                04
+                            </span>
+                            <div>
+                                <h3 class="verification-group__title">
+                                    Herramientas de Linux
+                                </h3>
+                                <p class="verification-group__description">
+                                    Ahora comprobamos las herramientas instaladas
+                                    específicamente para el entorno Linux.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>GDB</strong>
+                            </div>
+                            <p class="verification-check__description">
+                                El nombre del ejecutable depende de la
+                                distribución. Usá el comando correspondiente:
+                            </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Ubuntu / Debian</span>
+                                </div>
+                                <pre class="command-block__code"><code>gdb-multiarch --version</code></pre>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Fedora</span>
+                                </div>
+                                <pre class="command-block__code"><code>gdb --version</code></pre>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Arch Linux</span>
+                                </div>
+                                <pre class="command-block__code"><code>arm-none-eabi-gdb --version</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>OpenOCD</strong>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre class="command-block__code"><code>openocd --version</code></pre>
+                            </div>
+                        </div>
+                        <div class="verification-check">
+                            <div class="verification-check__header">
+                                <span class="verification-check__icon">
+                                    ✓
+                                </span>
+                                <strong>QEMU</strong>
+                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre class="command-block__code"><code>qemu-system-arm --version</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- =====================================
+                        05 - HARDWARE
+                    ===================================== -->
+
+                    <section class="verification-group">
+                        <div class="verification-group__header">
+                            <span class="verification-group__number">
+                                05
+                            </span>
+                            <div>
+                                <h3 class="verification-group__title">
+                                    Verificar la Pico 2
+                                </h3>
+                                <p class="verification-group__description">
+                                    Si ya tenés el kit, podemos comprobar también
+                                    que Linux detecta correctamente la placa.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hardware-verification">
+                            <span class="hardware-verification__badge">
+                                Opcional
+                            </span>
+                            <p>
+                                Mantené presionado <strong>BOOTSEL</strong> mientras
+                                conectás la Pico 2 mediante USB.
+                            </p>
+                            <p>
+                                El sistema debería mostrar una nueva unidad de
+                                almacenamiento llamada <code>RPI-RP2</code>.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- =====================================
+                        RESULTADO FINAL
+                    ===================================== -->
+
+                    <section class="environment-ready">
+                        <span
+                            class="environment-ready__icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+                        <div>
+                            <p class="environment-ready__eyebrow">
+                                Entorno preparado
+                            </p>
+                            <h3 class="environment-ready__title">
+                                Todo listo para compilar
+                            </h3>
+                            <p class="environment-ready__description">
+                                Si las verificaciones anteriores fueron exitosas,
+                                ya tenemos preparado el entorno necesario para
+                                crear y compilar nuestro primer firmware.
+                            </p>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </section>
+
+            <!-- =========================
+        NAVEGACIÓN DEL RECORRIDO
+        ========================= -->
 
             <nav class="steps-footer" aria-label="Navegación entre pasos">
                 <div class="page-container steps-footer__container">
@@ -919,10 +1319,7 @@ rustup component add llvm-tools-preview</code></pre>
                         </span>
                     </a>
 
-                    <div
-                        class="steps-footer__indicators"
-                        aria-hidden="true"
-                    >
+                    <div class="steps-footer__indicators" aria-hidden="true">
                         <span
                             class="steps-footer__indicator steps-footer__indicator--active"
                             data-step-indicator="1"
