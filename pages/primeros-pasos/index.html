@@ -173,17 +173,18 @@
                                 </span>
                             </button>
                         </li>
+
                         <li class="steps-nav__item">
-                            <span
-                                class="steps-nav__link steps-nav__link-pending"
-                                data-step-placeholder="5"
-                                aria-disabled="true"
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="5"
                             >
                                 <span class="steps-nav__number"> 05 </span>
                                 <span class="steps-nav__label">
                                     Compilá firmware
                                 </span>
-                            </span>
+                            </button>
                         </li>
                         <li class="steps-nav__item">
                             <span
@@ -700,9 +701,33 @@ rustup component add llvm-tools-preview</code></pre>
                             </div>
                         </section>
 
-                        <!-- Cargo Generate -->
+                        <!-- flip-link -->
                         <section class="toolchain-block">
                             <span class="toolchain-block__number"> 04 </span>
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    flip-link
+                                </h3>
+                                <p class="toolchain-block__description">
+                                    Mini Lab utiliza el template rp-rs para
+                                    RP2350. Este template usa flip-link durante
+                                    el enlazado para detectar desbordamientos
+                                    del stack de forma más segura.
+                                </p>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install flip-link --locked</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Cargo Generate -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
 
                             <div class="toolchain-block__content">
                                 <h3 class="toolchain-block__title">
@@ -914,7 +939,7 @@ rustup component add llvm-tools-preview</code></pre>
                                             <p>
                                                 La placa aparece como una unidad
                                                 de almacenamiento llamada
-                                                <code>RPI-RP2</code>.
+                                                <code>RP2350</code>.
                                             </p>
                                         </div>
                                     </div>
@@ -956,354 +981,722 @@ rustup component add llvm-tools-preview</code></pre>
             <!-- =========================
         PASO 04
         ========================= -->
-        <section
-            id="verificar-entorno"
-            class="step-content"
-            data-step-panel="4"
-            data-step-title="Verificá el entorno"
-            hidden
-        >
+            <section
+                id="verificar-entorno"
+                class="step-content"
+                data-step-panel="4"
+                data-step-title="Verificá el entorno"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <!-- Encabezado -->
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number"> 04 </span>
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="step-article__category">
+                                    Verificación
+                                </span>
+                            </div>
+                            <h2 class="step-article__title">
+                                Comprobá tu entorno
+                            </h2>
+                            <p class="step-article__lead">
+                                Antes de crear nuestro primer proyecto, vamos a
+                                comprobar que la toolchain de Rust y las
+                                herramientas de Linux quedaron instaladas
+                                correctamente.
+                            </p>
+                        </header>
 
-            <div class="page-container">
-                <article class="step-article">
-                    <!-- Encabezado -->
-                    <header class="step-article__header">
-                        <div class="step-article__eyebrow">
-                            <span class="step-article__number">
-                                04
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
                             </span>
-                            <span
-                                class="step-article__line"
-                                aria-hidden="true"
-                            ></span>
-                            <span class="step-article__category">
-                                Verificación
-                            </span>
-                        </div>
-                        <h2 class="step-article__title">
-                            Comprobá tu entorno
-                        </h2>
-                        <p class="step-article__lead">
-                            Antes de crear nuestro primer proyecto, vamos a comprobar
-                            que la toolchain de Rust y las herramientas de Linux
-                            quedaron instaladas correctamente.
-                        </p>
-                    </header>
+                            <p>
+                                Ejecutá cada comando en una terminal. No importa
+                                que las versiones mostradas sean exactamente
+                                iguales: lo importante en esta etapa es que las
+                                herramientas estén disponibles y respondan
+                                correctamente.
+                            </p>
+                        </aside>
 
-                    <aside class="step-note">
-                        <span
-                            class="step-note__icon"
-                            aria-hidden="true"
-                        >
-                            i
-                        </span>
-                        <p>
-                            Ejecutá cada comando en una terminal. No importa que
-                            las versiones mostradas sean exactamente iguales:
-                            lo importante en esta etapa es que las herramientas
-                            estén disponibles y respondan correctamente.
-                        </p>
-                    </aside>
-
-                    <!-- =====================================
+                        <!-- =====================================
                         01 - RUST
                     ===================================== -->
-                    <section class="verification-group">
-                        <div class="verification-group__header">
-                            <span class="verification-group__number">
-                                01
-                            </span>
-                            <div>
-                                <h3 class="verification-group__title">
-                                    Rust y Cargo
-                                </h3>
-                                <p class="verification-group__description">
-                                    Primero verificamos las herramientas principales
-                                    instaladas mediante rustup.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    01
                                 </span>
-                                <strong>Rust</strong>
-                            </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Terminal</span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Rust y Cargo
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Primero verificamos las herramientas
+                                        principales instaladas mediante rustup.
+                                    </p>
                                 </div>
-                                <pre class="command-block__code"><code>rustc --version</code></pre>
                             </div>
-                        </div>
 
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
-                                </span>
-                                <strong>Cargo</strong>
-                            </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Terminal</span>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Rust</strong>
                                 </div>
-                                <pre class="command-block__code"><code>cargo --version</code></pre>
-                            </div>
-                        </div>
-
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
-                                </span>
-                                <strong>Rustup</strong>
-                            </div>
-
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Terminal</span>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustc --version</code></pre>
                                 </div>
-                                <pre class="command-block__code"><code>rustup --version</code></pre>
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+                                    <p>
+                                        Para utilizar el template de Mini Lab
+                                        necesitás Rust 1.85 o una versión
+                                        posterior.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </section>
 
-                    <!-- =====================================
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Cargo</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo --version</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Rustup</strong>
+                                </div>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustup --version</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
                         02 - TARGET
                         ===================================== -->
 
-                    <section class="verification-group">
-                        <div class="verification-group__header">
-                            <span class="verification-group__number">
-                                02
-                            </span>
-                            <div>
-                                <h3 class="verification-group__title">
-                                    Target de la Pico 2
-                                </h3>
-                                <p class="verification-group__description">
-                                    Confirmamos que Rust puede compilar para el
-                                    ARM Cortex-M33 del RP2350.
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    02
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Target de la Pico 2
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Confirmamos que Rust puede compilar para
+                                        el ARM Cortex-M33 del RP2350.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>rustup target list --installed | grep thumbv8m.main-none-eabihf</code></pre>
+                            </div>
+
+                            <div class="verification-result">
+                                <span class="verification-result__icon">
+                                    ✓
+                                </span>
+                                <p>
+                                    La salida debería incluir
+                                    <code>thumbv8m.main-none-eabihf</code>.
                                 </p>
                             </div>
-                        </div>
+                        </section>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
-                            </div>
-                            <pre class="command-block__code"><code>rustup target list --installed | grep thumbv8m.main-none-eabihf</code></pre>
-                        </div>
-
-                        <div class="verification-result">
-                            <span class="verification-result__icon">
-                                ✓
-                            </span>
-                            <p>
-                                La salida debería incluir
-                                <code>thumbv8m.main-none-eabihf</code>.
-                            </p>
-                        </div>
-                    </section>
-
-                    <!-- =====================================
+                        <!-- =====================================
                         03 - HERRAMIENTAS RUST
                         ===================================== -->
 
-                    <section class="verification-group">
-                        <div class="verification-group__header">
-                            <span class="verification-group__number">
-                                03
-                            </span>
-                            <div>
-                                <h3 class="verification-group__title">
-                                    Herramientas de compilación
-                                </h3>
-                                <p class="verification-group__description">
-                                    Verificamos las herramientas auxiliares que
-                                    instalamos para trabajar con proyectos y binarios.
-                                </p>
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    03
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Herramientas de compilación
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Verificamos las herramientas auxiliares
+                                        que instalamos para trabajar con
+                                        proyectos y binarios.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <p class="verification-command-label">
-                            LLVM Tools
-                        </p>
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
+                            <p class="verification-command-label">LLVM Tools</p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>rustup component list --installed | grep llvm-tools</code></pre>
                             </div>
-                            <pre class="command-block__code"><code>rustup component list --installed | grep llvm-tools</code></pre>
-                        </div>
 
-                        <p class="verification-command-label">
-                            cargo-binutils
-                        </p>
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
+                            <p class="verification-command-label">
+                                cargo-binutils
+                            </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo install --list | grep cargo-binutils</code></pre>
                             </div>
-                            <pre class="command-block__code"><code>cargo install --list | grep cargo-binutils</code></pre>
-                        </div>
 
-                        <p class="verification-command-label">
-                            cargo-generate
-                        </p>
+                            <p class="verification-command-label">flip-link</p>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>flip-link --version</code></pre>
                             </div>
-                            <pre class="command-block__code"><code>cargo generate --version</code></pre>
-                        </div>
-                    </section>
 
-                    <!-- =====================================
+                            <p class="verification-command-label">
+                                cargo-generate
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo generate --version</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
                         04 - LINUX
                     ===================================== -->
 
-                    <section class="verification-group">
-                        <div class="verification-group__header">
-                            <span class="verification-group__number">
-                                04
-                            </span>
-                            <div>
-                                <h3 class="verification-group__title">
-                                    Herramientas de Linux
-                                </h3>
-                                <p class="verification-group__description">
-                                    Ahora comprobamos las herramientas instaladas
-                                    específicamente para el entorno Linux.
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    04
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Herramientas de Linux
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Ahora comprobamos las herramientas
+                                        instaladas específicamente para el
+                                        entorno Linux.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Git</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span> Terminal </span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>git --version</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>GDB</strong>
+                                </div>
+                                <p class="verification-check__description">
+                                    El nombre del ejecutable depende de la
+                                    distribución. Usá el comando
+                                    correspondiente:
                                 </p>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Ubuntu / Debian</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>gdb-multiarch --version</code></pre>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Fedora</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>gdb --version</code></pre>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Arch Linux</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>arm-none-eabi-gdb --version</code></pre>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
-                                </span>
-                                <strong>GDB</strong>
-                            </div>
-                            <p class="verification-check__description">
-                                El nombre del ejecutable depende de la
-                                distribución. Usá el comando correspondiente:
-                            </p>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Ubuntu / Debian</span>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>OpenOCD</strong>
                                 </div>
-                                <pre class="command-block__code"><code>gdb-multiarch --version</code></pre>
-                            </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Fedora</span>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>openocd --version</code></pre>
                                 </div>
-                                <pre class="command-block__code"><code>gdb --version</code></pre>
                             </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Arch Linux</span>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>QEMU</strong>
                                 </div>
-                                <pre class="command-block__code"><code>arm-none-eabi-gdb --version</code></pre>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>qemu-system-arm --version</code></pre>
+                                </div>
                             </div>
-                        </div>
+                        </section>
 
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
-                                </span>
-                                <strong>OpenOCD</strong>
-                            </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Terminal</span>
-                                </div>
-                                <pre class="command-block__code"><code>openocd --version</code></pre>
-                            </div>
-                        </div>
-                        <div class="verification-check">
-                            <div class="verification-check__header">
-                                <span class="verification-check__icon">
-                                    ✓
-                                </span>
-                                <strong>QEMU</strong>
-                            </div>
-                            <div class="command-block">
-                                <div class="command-block__header">
-                                    <span>Terminal</span>
-                                </div>
-                                <pre class="command-block__code"><code>qemu-system-arm --version</code></pre>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- =====================================
+                        <!-- =====================================
                         05 - HARDWARE
                     ===================================== -->
 
-                    <section class="verification-group">
-                        <div class="verification-group__header">
-                            <span class="verification-group__number">
-                                05
-                            </span>
-                            <div>
-                                <h3 class="verification-group__title">
-                                    Verificar la Pico 2
-                                </h3>
-                                <p class="verification-group__description">
-                                    Si ya tenés el kit, podemos comprobar también
-                                    que Linux detecta correctamente la placa.
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    05
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Verificar la Pico 2
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Si ya tenés el kit, podemos comprobar
+                                        también que Linux detecta correctamente
+                                        la placa.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="hardware-verification">
+                                <span class="hardware-verification__badge">
+                                    Opcional
+                                </span>
+                                <p>
+                                    Mantené presionado
+                                    <strong>BOOTSEL</strong> mientras conectás
+                                    la Pico 2 mediante USB.
+                                </p>
+                                <p>
+                                    El sistema debería mostrar una nueva unidad
+                                    de almacenamiento llamada
+                                    <code>RP2350</code>.
                                 </p>
                             </div>
-                        </div>
+                        </section>
 
-                        <div class="hardware-verification">
-                            <span class="hardware-verification__badge">
-                                Opcional
-                            </span>
-                            <p>
-                                Mantené presionado <strong>BOOTSEL</strong> mientras
-                                conectás la Pico 2 mediante USB.
-                            </p>
-                            <p>
-                                El sistema debería mostrar una nueva unidad de
-                                almacenamiento llamada <code>RPI-RP2</code>.
-                            </p>
-                        </div>
-                    </section>
-
-                    <!-- =====================================
+                        <!-- =====================================
                         RESULTADO FINAL
                     ===================================== -->
 
-                    <section class="environment-ready">
-                        <span
-                            class="environment-ready__icon"
-                            aria-hidden="true"
-                        >
-                            ✓
-                        </span>
-                        <div>
-                            <p class="environment-ready__eyebrow">
-                                Entorno preparado
+                        <section class="environment-ready">
+                            <span
+                                class="environment-ready__icon"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+                            <div>
+                                <p class="environment-ready__eyebrow">
+                                    Entorno preparado
+                                </p>
+                                <h3 class="environment-ready__title">
+                                    Todo listo para compilar
+                                </h3>
+                                <p class="environment-ready__description">
+                                    Si las verificaciones anteriores fueron
+                                    exitosas, ya tenemos preparado el entorno
+                                    necesario para crear y compilar nuestro
+                                    primer firmware.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =========================
+        PASO 05
+        ========================= -->
+
+            <section
+                id="compilar-firmware"
+                class="step-content"
+                data-step-panel="5"
+                data-step-title="Compilá firmware"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number">05</span>
+
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="step-article__category">
+                                    Primer firmware
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">
+                                Creá y compilá tu primer proyecto
+                            </h2>
+
+                            <p class="step-article__lead">
+                                Con el entorno preparado, vamos a crear un
+                                proyecto para la Raspberry Pi Pico 2 y
+                                compilarlo para el ARM Cortex-M33 del RP2350.
                             </p>
-                            <h3 class="environment-ready__title">
-                                Todo listo para compilar
-                            </h3>
-                            <p class="environment-ready__description">
-                                Si las verificaciones anteriores fueron exitosas,
-                                ya tenemos preparado el entorno necesario para
-                                crear y compilar nuestro primer firmware.
+                        </header>
+
+                        <!-- Por qué usamos template -->
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+
+                            <p>
+                                Mini Lab utiliza el template
+                                rp235x-project-template para evitar configurar
+                                manualmente desde cero el linker, el layout de
+                                memoria y la estructura básica necesaria para un
+                                proyecto bare-metal.
                             </p>
-                        </div>
-                    </section>
-                </article>
-            </div>
-        </section>
+                        </aside>
+
+                        <!-- 01 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Generá el proyecto
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Usamos cargo-generate para crear una nueva
+                                    copia del template preparado para los
+                                    microcontroladores RP235x.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo generate --git https://github.com/rp-rs/rp235x-project-template</code></pre>
+                                </div>
+
+                                <p class="toolchain-block__description">
+                                    Cuando el asistente pregunte el nombre del
+                                    proyecto, podés utilizar:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Nombre del proyecto</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>mini-lab-hello</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 02 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Entrá al proyecto
+                                </h3>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cd mini-lab-hello</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 03 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Conocé la estructura del proyecto
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El template incluye varios archivos que un
+                                    proyecto Rust convencional no necesita.
+                                </p>
+
+                                <dl class="system-tools">
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>Cargo.toml</code>
+                                        </dt>
+
+                                        <dd>
+                                            Define el proyecto y sus
+                                            dependencias.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>src/main.rs</code>
+                                        </dt>
+
+                                        <dd>
+                                            Contiene el punto de entrada del
+                                            firmware.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>.cargo/config.toml</code>
+                                        </dt>
+
+                                        <dd>
+                                            Contiene configuración de
+                                            compilación y ejecución para el
+                                            entorno embebido.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>memory.x</code>
+                                        </dt>
+
+                                        <dd>
+                                            Define el layout de memoria que
+                                            necesita el linker para generar el
+                                            firmware.
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </section>
+
+                        <!-- 04 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 04 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Compilá el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El template ya está preparado para utilizar
+                                    el target ARM del RP2350 que instalamos
+                                    anteriormente.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                        <span>Release</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo build --release</code></pre>
+                                </div>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Si Cargo finaliza sin errores, el
+                                        firmware fue compilado correctamente.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 05 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Encontrá el resultado
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Cargo guarda el ejecutable compilado dentro
+                                    del directorio correspondiente al target.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Firmware</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Este archivo es un ejecutable ELF. En el
+                                        siguiente paso veremos cómo cargarlo y
+                                        ejecutarlo en la Pico 2.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                        <!-- 06 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 06 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Inspeccioná el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Podemos utilizar cargo-binutils para
+                                    comprobar qué secciones forman parte del
+                                    binario y cuánto espacio ocupa cada una.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo size --release -- -A</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <aside class="step-tip">
+                            <p>
+                                Ya tenemos código compilado específicamente para
+                                el RP2350. El siguiente paso será cargarlo y
+                                comprobar su ejecución.
+                            </p>
+                        </aside>
+                    </article>
+                </div>
+            </section>
 
             <!-- =========================
         NAVEGACIÓN DEL RECORRIDO
