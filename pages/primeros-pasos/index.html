@@ -187,16 +187,16 @@
                             </button>
                         </li>
                         <li class="steps-nav__item">
-                            <span
-                                class="steps-nav__link steps-nav__link-pending"
-                                data-step-placeholder="6"
-                                aria-disabled="true"
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="6"
                             >
                                 <span class="steps-nav__number"> 06 </span>
                                 <span class="steps-nav__label">
                                     Ejecutá y probá
                                 </span>
-                            </span>
+                            </button>
                         </li>
                     </ol>
                 </li>
@@ -974,6 +974,36 @@ rustup component add llvm-tools-preview</code></pre>
                                 </aside>
                             </div>
                         </section>
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number">04</span>
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Instalar picotool
+                                </h3>
+                                <p class="toolchain-block__description">
+                                    picotool es la herramienta oficial de
+                                    Raspberry Pi para trabajar con dispositivos
+                                    RP2040 y RP2350. En Mini Lab la vamos a
+                                    utilizar para convertir el firmware generado
+                                    por Rust al formato UF2 que reconoce el modo
+                                    BOOTSEL de la Pico 2.
+                                </p>
+                                <p class="toolchain-block__description">
+                                    Descargá el binario precompilado para Linux
+                                    desde los
+                                    <a
+                                        href="https://github.com/raspberrypi/pico-sdk-tools/releases"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        releases oficiales de Raspberry Pi
+                                    </a>
+                                    y asegurate de que el ejecutable
+                                    <code>picotool</code>
+                                    quede disponible en tu PATH.
+                                </p>
+                            </div>
+                        </section>
                     </article>
                 </div>
             </section>
@@ -1321,6 +1351,22 @@ rustup component add llvm-tools-preview</code></pre>
                                     <pre
                                         class="command-block__code"
                                     ><code>qemu-system-arm --version</code></pre>
+                                </div>
+                            </div>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>picotool</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool --version</code></pre>
                                 </div>
                             </div>
                         </section>
@@ -1698,6 +1744,372 @@ rustup component add llvm-tools-preview</code></pre>
                 </div>
             </section>
 
+            <!-- =========================
+            PASO 06
+            ========================= -->
+
+            <section
+                id="ejecutar-probar"
+                class="step-content"
+                data-step-panel="6"
+                data-step-title="Ejecutá y probá"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number">06</span>
+
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="step-article__category">
+                                    Ejecución
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">
+                                Ejecutá tu firmware en la Pico 2
+                            </h2>
+
+                            <p class="step-article__lead">
+                                Ya tenemos un programa compilado para el RP2350.
+                                Ahora vamos a convertirlo al formato UF2,
+                                cargarlo mediante USB y comprobar su ejecución
+                                directamente sobre la Raspberry Pi Pico 2.
+                            </p>
+                        </header>
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+
+                            <p>
+                                El proyecto generado a partir del template de
+                                Mini Lab incluye un ejemplo que hace parpadear
+                                el LED integrado de la Raspberry Pi Pico 2. Esto
+                                nos permite comprobar visualmente que el
+                                firmware se ejecutó correctamente.
+                            </p>
+                        </aside>
+
+                <!-- =========================
+                01 - GENERAR UF2
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Convertí el firmware a UF2
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El resultado del paso anterior es un
+                                    ejecutable ELF. Utilizamos picotool para
+                                    convertirlo al formato UF2 que reconoce el
+                                    bootloader USB de la Pico 2.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                        <span>ELF → UF2</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool uf2 convert -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello mini-lab-hello.uf2</code></pre>
+                                </div>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Al finalizar deberías encontrar
+                                        <code>mini-lab-hello.uf2</code>
+                                        en el directorio actual.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                 02 - BOOTSEL
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Iniciá la Pico 2 en modo BOOTSEL
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Desconectá la placa. Mantené presionado el
+                                    botón BOOTSEL mientras volvés a conectarla
+                                    mediante USB y luego soltalo.
+                                </p>
+
+                                <div class="hardware-flow">
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            1
+                                        </span>
+
+                                        <div>
+                                            <strong>
+                                                Desconectá la Pico 2
+                                            </strong>
+
+                                            <p>
+                                                Retirá el cable USB de la placa.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            2
+                                        </span>
+
+                                        <div>
+                                            <strong>
+                                                Mantené presionado BOOTSEL
+                                            </strong>
+
+                                            <p>
+                                                No sueltes el botón mientras
+                                                volvés a conectar el cable USB.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            3
+                                        </span>
+
+                                        <div>
+                                            <strong> Soltá BOOTSEL </strong>
+
+                                            <p>
+                                                Linux debería montar una nueva
+                                                unidad llamada
+                                                <code>RP2350</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                03 - COPIAR UF2
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Cargá el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Abrí la unidad <code>RP2350</code> y copiá
+                                    dentro el archivo que acabamos de generar:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Firmware</span>
+                                        <span>UF2</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>mini-lab-hello.uf2</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Cuando termina la transferencia, la
+                                        unidad RP2350 se desmonta
+                                        automáticamente y la Pico 2 reinicia
+                                        para ejecutar el nuevo firmware.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                04 - PROBAR
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 04 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Comprobá la ejecución
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Observá el LED integrado de la Raspberry Pi
+                                    Pico 2. El firmware incluido en el template
+                                    alterna su estado aproximadamente cada medio
+                                    segundo.
+                                </p>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Si el LED parpadea continuamente, tu
+                                        primer firmware Rust está ejecutándose
+                                        correctamente sobre el RP2350.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                05 - FLUJO ALTERNATIVO
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Una vez que conozcas el flujo
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    picotool también puede cargar directamente
+                                    un ejecutable ELF en una placa conectada en
+                                    modo BOOTSEL. Más adelante podremos
+                                    automatizar este proceso para no tener que
+                                    generar y copiar manualmente el archivo UF2.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Alternativa</span>
+                                        <span>picotool</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool load --update --verify --execute -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        En Mini Lab presentamos primero el flujo
+                                        UF2 porque permite entender claramente
+                                        las etapas de compilación, conversión y
+                                        carga del firmware.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                SIN HARDWARE
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 06 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    ¿No tenés el kit?
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Podés realizar todo el recorrido hasta la
+                                    compilación del firmware sin tener una Pico
+                                    2 conectada.
+                                </p>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        La simulación completa del RP2350 no
+                                        forma parte todavía de este recorrido.
+                                        Las prácticas que puedan ejecutarse sin
+                                        hardware se identificarán
+                                        específicamente dentro de Actividades.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                FINAL
+                ========================= -->
+
+                        <section class="environment-ready">
+                            <span
+                                class="environment-ready__icon"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+
+                            <div>
+                                <p class="environment-ready__eyebrow">
+                                    Primeros pasos completados
+                                </p>
+
+                                <h3 class="environment-ready__title">
+                                    Tu entorno Mini Lab está listo
+                                </h3>
+
+                                <p class="environment-ready__description">
+                                    Preparaste el entorno, instalaste la
+                                    toolchain, configuraste Linux, verificaste
+                                    las herramientas, compilaste un firmware y
+                                    lo ejecutaste en la Pico 2. Ya podés
+                                    comenzar con las actividades.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
             <!-- =========================
         NAVEGACIÓN DEL RECORRIDO
         ========================= -->

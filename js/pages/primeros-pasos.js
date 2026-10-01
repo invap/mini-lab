@@ -56,6 +56,7 @@ function showStep(stepId, shouldScroll = true) {
     }
 
     currentStepId = stepId;
+    history.replaceState(null, "", `#${step.panel.id}`);
     stepPanels.forEach((panel) => {
         panel.hidden = panel !== step.panel;
     });
@@ -115,13 +116,23 @@ function showStep(stepId, shouldScroll = true) {
     }
 
     const nextStep = steps.get(stepId + 1);
+    const isLastStep = stepId === totalSteps;
 
     if (footerNext && footerNextLabel) {
-        footerNext.disabled = !nextStep;
-        footerNext.setAttribute("aria-disabled", String(!nextStep));
-        footerNextLabel.textContent = nextStep
-            ? `Continuar: ${nextStep.title}`
-            : `Próximamente: ${stepPlaceholders.get(stepId + 1) ?? "siguiente paso"}`;
+        if (isLastStep) {
+            footerNext.disabled = false;
+            footerNext.setAttribute("aria-disabled", "false");
+            footerNextLabel.textContent = "Continuar a Actividades";
+        }else{
+            footerNext.disabled = !nextStep;
+            footerNext.setAttribute(
+                "aria-disabled",
+                String(!nextStep),
+            );
+            footerNextLabel.textContent = nextStep
+                ? `Continuar: ${nextStep.title}`
+                : `Próximamente: ${stepPlaceholders.get(stepId + 1) ?? "siguiente paso"}`;
+        }
     }
 
     if (shouldScroll) {
@@ -156,16 +167,24 @@ footerBack?.addEventListener("click", (event) => {
 });
 
 footerNext?.addEventListener("click", () => {
-    if (currentStepId && steps.has(currentStepId + 1)) {
+    if (!currentStepId) {
+        return;
+    }
+    if (steps.has(currentStepId + 1)) {
         showStep(currentStepId + 1);
+        return;
+    }
+    if (currentStepId === totalSteps) {
+        window.location.href = "../actividades/";
     }
 });
 
-const initialStepId = Number(
-    document.querySelector("[data-step-target][aria-current='step']")
-        ?.dataset.stepTarget,
+const hash = window.location.hash.replace("#", "");
+const stepFromHash = [...steps.entries()].find(
+    ([, step]) => step.panel.id === hash,
 );
-showStep(
-    steps.has(initialStepId) ? initialStepId : steps.keys().next().value,
-    false,
-);
+
+const initialStepId = stepFromHash
+    ? stepFromHash[0]
+    : steps.keys().next().value;
+showStep(initialStepId, false);

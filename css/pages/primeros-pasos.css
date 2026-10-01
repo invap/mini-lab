@@ -5,8 +5,8 @@
 .steps-nav {
     position: relative;
 
-    margin: 0.6rem 0 0 1rem;
-    padding: 0 0 0 1rem;
+    margin: 0.4rem 0 0 0.9rem;
+    padding: 0 0 0 0.9rem;
 
     list-style: none;
 }
@@ -51,16 +51,16 @@
     display: grid;
     grid-template-columns: 26px minmax(0, 1fr);
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
-    padding: 0.55rem 0.65rem;
+    padding: 0.4rem 0.5rem;
 
     border-radius: var(--radius-small);
 
     color: var(--steps-nav-text);
 
-    font-size: 0.78rem;
-    line-height: 1.3;
+    font-size: 0.74rem;
+    line-height: 1.2;
     text-decoration: none;
 
     transition:
@@ -81,7 +81,7 @@ button.steps-nav__link {
 .steps-nav__number {
     color: var(--steps-nav-number);
 
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.06rem;
 }
@@ -1190,6 +1190,17 @@ too.toolchain-block__number {
 
     font-size: 0.9rem;
     line-height: 1.7;
+}
+
+.toolchain-block__description a {
+    color: var(--steps-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.toolchain-block__description a:hover,
+.toolchain-block__description a:focus-visible {
+    color: var(--steps-accent-hover);
 }
 
 

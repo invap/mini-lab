@@ -324,6 +324,26 @@ main {
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.3s ease, visibility 0s linear 0.3s;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.site-nav::-webkit-scrollbar{
+    width: 5px;
+}
+
+.site-nav::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.site-nav::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+}
+
+.site-nav::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .site-nav--open {
