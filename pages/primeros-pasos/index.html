@@ -3,17 +3,31 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Mini Lab, plataforma educativa para aprender sistemas embebidos con Rust"/>
+        <meta
+            name="description"
+            content="Mini Lab, plataforma educativa para aprender sistemas embebidos con Rust"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
 
         <title>Mini Lab | Primeros pasos</title>
-        <link rel="stylesheet" href="../../css/styles.css">
+        <link rel="stylesheet" href="../../css/styles.css" />
+        <link rel="stylesheet" href="../../css/pages/primeros-pasos.css" />
     </head>
     <body>
         <header class="site-header">
-            <button id="menu-button" class="site-header__menu-button" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-navigation">
+            <button
+                id="menu-button"
+                class="site-header__menu-button"
+                type="button"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
                 ☰
             </button>
             <a href="../../index.html" class="site-header__brand"> Mini Lab </a>
@@ -21,12 +35,41 @@
                 <div class="site-header__logos">
                     <!-- Logos institucionales -->
                 </div>
-                <button class="theme-toggle" data-theme-toggle type="button" aria-label="Cambiar tema">
-                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button
+                    class="theme-toggle"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Cambiar tema"
+                >
+                    <svg
+                        class="theme-icon sun-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                        ></path>
                     </svg>
-                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke="currentColor"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                        class="theme-icon moon-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                 </button>
@@ -37,13 +80,24 @@
         NAVEGACIÓN
         ========================= -->
         <div id="menu-overlay" class="menu-overlay"></div>
-        <nav id="main-navigation" class="site-nav" aria-label="Navegación principal">
+        <nav
+            id="main-navigation"
+            class="site-nav"
+            aria-label="Navegación principal"
+        >
             <div class="site-nav__header">
                 <a href="../../index.html" class="site-nav__brand">
                     <span class="site-nav__brand-name">Mini Lab</span>
-                    <span class="site-nav__brand-subtitle">Sistemas embebidos con Rust</span>
+                    <span class="site-nav__brand-subtitle"
+                        >Sistemas embebidos con Rust</span
+                    >
                 </a>
-                <button id="menu-close" class="site-nav__close" type="button" aria-label="Cerrar menú de navegación">
+                <button
+                    id="menu-close"
+                    class="site-nav__close"
+                    type="button"
+                    aria-label="Cerrar menú de navegación"
+                >
                     ✕
                 </button>
             </div>
@@ -61,10 +115,90 @@
                     </a>
                 </li>
 
-                <li class="site-nav__item">
-                    <a href="./" class="site-nav__link site-nav__link--active" aria-current="page">
+                <li class="site-nav__item site-nav__item-steps">
+                    <a
+                        href="./"
+                        class="site-nav__link site-nav__link--active"
+                        aria-current="page"
+                    >
                         Primeros pasos
                     </a>
+                    <ol class="steps-nav">
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link steps-nav__link--active"
+                                type="button"
+                                data-step-target="1"
+                                aria-current="step"
+                            >
+                                <span class="steps-nav__number"> 01 </span>
+                                <span class="steps-nav__label">
+                                    Prepará tu entorno
+                                </span>
+                            </button>
+                        </li>
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="2"
+                            >
+                                <span class="steps-nav__number"> 02 </span>
+                                <span class="steps-nav__label">
+                                    Instalá la toolchain
+                                </span>
+                            </button>
+                        </li>
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="3"
+                            >
+                                <span class="steps-nav__number"> 03 </span>
+                                <span class="steps-nav__label">
+                                    Configurá tu sistema
+                                </span>
+                            </button>
+                        </li>
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="4"
+                            >
+                                <span class="steps-nav__number"> 04 </span>
+                                <span class="steps-nav__label">
+                                    Verificá el entorno
+                                </span>
+                            </button>
+                        </li>
+
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="5"
+                            >
+                                <span class="steps-nav__number"> 05 </span>
+                                <span class="steps-nav__label">
+                                    Compilá firmware
+                                </span>
+                            </button>
+                        </li>
+                        <li class="steps-nav__item">
+                            <button
+                                class="steps-nav__link"
+                                type="button"
+                                data-step-target="6"
+                            >
+                                <span class="steps-nav__number"> 06 </span>
+                                <span class="steps-nav__label">
+                                    Ejecutá y probá
+                                </span>
+                            </button>
+                        </li>
+                    </ol>
                 </li>
 
                 <li class="site-nav__item">
@@ -74,24 +208,49 @@
                 </li>
 
                 <li class="site-nav__item">
-                    <a href="../recursos/" class="site-nav__link">
-                        Recursos
-                    </a>
+                    <a href="../recursos/" class="site-nav__link"> Recursos </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a href="../ayuda/" class="site-nav__link">
-                        Ayuda
-                    </a>
+                    <a href="../ayuda/" class="site-nav__link"> Ayuda </a>
                 </li>
             </ul>
             <div class="site-nav__footer">
-                <button class="theme-toggle theme-toggle--sidebar" data-theme-toggle type="button" aria-label="Cambiar tema">
-                    <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button
+                    class="theme-toggle theme-toggle--sidebar"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Cambiar tema"
+                >
+                    <svg
+                        class="theme-icon sun-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <circle cx="12" cy="12" r="4"></circle>
-                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                        ></path>
                     </svg>
-                    <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                        class="theme-icon moon-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                     <span class="theme-toggle__label">Tema</span>
@@ -103,27 +262,1909 @@
         CONTENIDO
         ========================= -->
         <main>
-            <header class="page-header">
+            <!-- =========================
+         HERO
+         ========================= -->
+
+            <header class="steps-hero">
                 <div class="page-container">
-                    <h1 class="page-header__title">Primeros pasos</h1>
-                </div>
-            </header>
-            <section class="development-section">
-                <div class="page-container">
-                    <div class="development-notice">
-                        <span class="development-notice__icon" aria-hidden="true">
-                            🛠
+                    <!-- Breadcrumb -->
+
+                    <nav class="steps-breadcrumb" aria-label="Breadcrumb">
+                        <a
+                            href="../../index.html"
+                            class="steps-breadcrumb__link"
+                        >
+                            Mini Lab
+                        </a>
+
+                        <span
+                            class="steps-breadcrumb__separator"
+                            aria-hidden="true"
+                        >
+                            &gt;
                         </span>
-                        <p>
-                            <strong>
-                                Mini Lab se encuentra actualmente en desarrollo.
-                            </strong>
-                            Los contenidos, actividades y estructura pueden
-                            modificarse a medida que avance el proyecto.
-                        </p>
+
+                        <span class="steps-breadcrumb__current">
+                            Primeros pasos
+                        </span>
+                    </nav>
+
+                    <div class="steps-hero__layout">
+                        <!-- Presentación -->
+
+                        <div class="steps-hero__content">
+                            <p class="steps-hero__eyebrow">
+                                <span
+                                    class="steps-hero__eyebrow-dot"
+                                    aria-hidden="true"
+                                ></span>
+
+                                Primeros pasos
+                            </p>
+
+                            <h1 id="steps-hero-title" class="steps-hero__title">
+                                Prepará tu entorno
+                            </h1>
+
+                            <p class="steps-hero__description">
+                                Configurá las herramientas necesarias para
+                                comenzar a desarrollar sistemas embebidos con
+                                Rust en Mini Lab.
+                            </p>
+                        </div>
+
+                        <!-- Progreso -->
+
+                        <div class="steps-progress">
+                            <div class="steps-progress__header">
+                                <span
+                                    id="steps-progress-label"
+                                    class="steps-progress__label"
+                                >
+                                    Paso 1 de 6
+                                </span>
+
+                                <span
+                                    id="steps-progress-percentage"
+                                    class="steps-progress__percentage"
+                                >
+                                    17%
+                                </span>
+                            </div>
+
+                            <div
+                                id="steps-progress-track"
+                                class="steps-progress__track"
+                                role="progressbar"
+                                aria-label="Progreso de Primeros pasos"
+                                data-total-steps="6"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="17"
+                            >
+                                <span
+                                    id="steps-progress-bar"
+                                    class="steps-progress__bar"
+                                ></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </header>
+
+            <!-- =========================
+         PASO 01
+         ========================= -->
+
+            <section
+                id="preparar-entorno"
+                class="step-content"
+                data-step-panel="1"
+                data-step-title="Prepará tu entorno"
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <!-- Número / categoría -->
+
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number"> 01 </span>
+
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="step-article__category">
+                                    Entorno de desarrollo
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">Linux</h2>
+
+                            <p class="step-article__lead">
+                                Mini Lab utiliza Linux nativo como entorno de
+                                desarrollo para trabajar con la toolchain de
+                                Rust y los dispositivos del kit.
+                            </p>
+                        </header>
+
+                        <!-- Nota Linux -->
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+
+                            <p>
+                                Los pasos de esta guía están pensados para
+                                realizarse sobre Linux instalado de forma
+                                nativa. Otros entornos no forman parte del
+                                alcance actual de Mini Lab.
+                            </p>
+                        </aside>
+
+                        <!-- Requisitos -->
+
+                        <section class="step-prerequisites">
+                            <h3 class="step-prerequisites__title">
+                                Antes de continuar
+                            </h3>
+
+                            <ul class="step-checklist">
+                                <li class="step-checklist__item">
+                                    <span
+                                        class="step-checklist__check"
+                                        aria-hidden="true"
+                                    >
+                                        ✓
+                                    </span>
+
+                                    <div class="step-checklist__content">
+                                        <span class="step-checklist__label">
+                                            Linux instalado de forma nativa
+                                        </span>
+
+                                        <span
+                                            class="step-checklist__description"
+                                        >
+                                            Ubuntu, Debian, Arch o similar
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="step-checklist__item">
+                                    <span
+                                        class="step-checklist__check"
+                                        aria-hidden="true"
+                                    >
+                                        ✓
+                                    </span>
+
+                                    <div class="step-checklist__content">
+                                        <span class="step-checklist__label">
+                                            Conexión a internet activa
+                                        </span>
+
+                                        <span
+                                            class="step-checklist__description"
+                                        >
+                                            Para descargar paquetes y la
+                                            toolchain
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="step-checklist__item">
+                                    <span
+                                        class="step-checklist__check"
+                                        aria-hidden="true"
+                                    >
+                                        ✓
+                                    </span>
+
+                                    <div class="step-checklist__content">
+                                        <span class="step-checklist__label">
+                                            Acceso a una terminal
+                                        </span>
+
+                                        <span
+                                            class="step-checklist__description"
+                                        >
+                                            Bash o Zsh
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="step-checklist__item">
+                                    <span
+                                        class="step-checklist__check"
+                                        aria-hidden="true"
+                                    >
+                                        ✓
+                                    </span>
+
+                                    <div class="step-checklist__content">
+                                        <span class="step-checklist__label">
+                                            Permisos para instalar herramientas
+                                        </span>
+
+                                        <span
+                                            class="step-checklist__description"
+                                        >
+                                            Los vamos a necesitar durante la
+                                            configuración
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <!-- Nota final -->
+
+                        <aside class="step-tip">
+                            <p>
+                                Si ya tenés Linux instalado y una terminal
+                                disponible, podés avanzar directamente al
+                                siguiente paso.
+                            </p>
+                        </aside>
+                    </article>
+                </div>
             </section>
+            <!-- =========================
+         PASO 02
+         ========================= -->
+            <section
+                id="instalar-toolchain"
+                class="step-content"
+                data-step-panel="2"
+                data-step-title="Instalá la toolchain"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number"> 02 </span>
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="step-article__category">
+                                    Rust embebido
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">
+                                Instalá la toolchain
+                            </h2>
+
+                            <p class="step-article__lead">
+                                La toolchain reúne las herramientas de Rust que
+                                necesitamos para compilar, generar e
+                                inspeccionar programas para sistemas embebidos.
+                            </p>
+                        </header>
+
+                        <!-- Rustup -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Rust y rustup
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    <strong>rustup</strong> administra las
+                                    versiones y componentes de Rust. Al instalar
+                                    Rust con rustup también obtenemos
+                                    <strong>rustc</strong>, el compilador, y
+                                    <strong>Cargo</strong>, la herramienta que
+                                    gestiona proyectos, dependencias y
+                                    compilaciones.
+                                </p>
+
+                                <dl class="toolchain-components">
+                                    <div class="toolchain-components__item">
+                                        <dt><code>rustup</code></dt>
+                                        <dd>
+                                            Administra toolchains, componentes y
+                                            targets.
+                                        </dd>
+                                    </div>
+                                    <div class="toolchain-components__item">
+                                        <dt><code>rustc</code></dt>
+                                        <dd>
+                                            Compila el código fuente escrito en
+                                            Rust.
+                                        </dd>
+                                    </div>
+                                    <div class="toolchain-components__item">
+                                        <dt><code>cargo</code></dt>
+                                        <dd>
+                                            Gestiona el proyecto, sus
+                                            dependencias y compilaciones.
+                                        </dd>
+                                    </div>
+                                </dl>
+
+                                <p class="toolchain-block__description">
+                                    En Linux, que es el sistema soportado
+                                    actualmente por Mini Lab, podés iniciar la
+                                    instalación con:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                        <span>Linux</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></pre>
+                                </div>
+
+                                <p class="toolchain-block__description">
+                                    Al terminar, para actualizar la terminal
+                                    actual ejecutá el siguiente comando, o
+                                    simplemente cerrá la terminal y abrí otra:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>source "$HOME/.cargo/env"</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Target -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Agregar el target de compilación
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    La Raspberry Pi Pico 2 utiliza el
+                                    microcontrolador RP2350. En Mini Lab vamos a
+                                    trabajar inicialmente con sus núcleos ARM
+                                    Cortex-M33.
+                                </p>
+
+                                <p class="toolchain-block__description">
+                                    Para que Rust pueda generar código para esta
+                                    arquitectura, agregamos el target
+                                    correspondiente:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustup target add thumbv8m.main-none-eabihf</code></pre>
+                                </div>
+                                <aside class="step-note">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        ¡
+                                    </span>
+                                    <p>
+                                        Este target genera código ARMv8-M para
+                                        Cortex-M33 utilizando soporte de punto
+                                        flotante por hardware.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                        <!-- Binutils -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    LLVM Tools y cargo-binutils
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Las LLVM Tools permiten inspeccionar los
+                                    binarios generados por Rust.
+                                    <strong>cargo-binutils</strong> agrega
+                                    comandos de Cargo para utilizar herramientas
+                                    como <code>size</code>,
+                                    <code>objdump</code> y <code>nm</code> de
+                                    una forma más cómoda.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install cargo-binutils --locked
+rustup component add llvm-tools-preview</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- flip-link -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 04 </span>
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    flip-link
+                                </h3>
+                                <p class="toolchain-block__description">
+                                    Mini Lab utiliza el template rp-rs para
+                                    RP2350. Este template usa flip-link durante
+                                    el enlazado para detectar desbordamientos
+                                    del stack de forma más segura.
+                                </p>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install flip-link --locked</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Cargo Generate -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    cargo-generate
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Permite crear un proyecto nuevo a partir de
+                                    una plantilla ya preparada. Esto evita tener
+                                    que configurar desde cero los archivos y
+                                    ajustes que necesita un proyecto bare-metal.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo install cargo-generate --locked</code></pre>
+                                </div>
+
+                                <p class="toolchain-block__description">
+                                    El comando instala cargo-generate. Para
+                                    descargar plantillas vas a necesitar Git,
+                                    que instalaremos en el paso 3 antes de crear
+                                    un proyecto.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =========================
+         PASO 03
+         ========================= -->
+            <section
+                id="configurar-sistema"
+                class="step-content"
+                data-step-panel="3"
+                data-step-title="Configurá tu sistema"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number"> 03 </span>
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="step-article__category">
+                                    Sistema operativo
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">Configurá Linux</h2>
+
+                            <p class="step-article__lead">
+                                Con la toolchain de Rust preparada, ahora vamos
+                                a instalar las herramientas del sistema que
+                                usaremos para ejecutar, depurar y comunicarnos
+                                con el hardware.
+                            </p>
+                        </header>
+
+                        <div class="system-platform">
+                            <span class="system-platform__label">
+                                Sistema actualmente soportado
+                            </span>
+                            <span class="system-platform__badge"> Linux </span>
+                        </div>
+
+                        <!-- Paquetes Linux -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Instalar las herramientas de Linux
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Para seguir el recorrido instalaremos Git,
+                                    un depurador con soporte ARM, OpenOCD y
+                                    QEMU. Elegí el comando correspondiente a tu
+                                    distribución.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Ubuntu / Debian</span>
+                                        <span>APT</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo apt install git gdb-multiarch openocd qemu-system-arm</code></pre>
+                                </div>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Fedora</span>
+                                        <span>DNF</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo dnf install git gdb openocd qemu-system-arm</code></pre>
+                                </div>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Arch Linux</span>
+                                        <span>Pacman</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>sudo pacman -S git arm-none-eabi-gdb qemu-system-arm openocd</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Qué hace cada herramienta -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    ¿Para qué sirve cada herramienta?
+                                </h3>
+
+                                <dl class="system-tools">
+                                    <div class="system-tools__item">
+                                        <dt>GDB</dt>
+                                        <dd>
+                                            Depurador que permite detener la
+                                            ejecución, avanzar paso a paso e
+                                            inspeccionar el estado del programa.
+                                            Necesitamos una versión con soporte
+                                            para ARM Cortex-M.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>OpenOCD</dt>
+                                        <dd>
+                                            Facilita la comunicación entre las
+                                            herramientas de depuración de la
+                                            computadora y el hardware embebido
+                                            mediante un probe compatible.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>QEMU</dt>
+                                        <dd>
+                                            Emula determinados sistemas ARM. No
+                                            reemplaza automáticamente la placa
+                                            Pico 2; solo sirve para las
+                                            prácticas y targets compatibles con
+                                            la máquina emulada.
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </section>
+
+                        <!-- BOOTSEL -->
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Acceso al hardware desde Linux
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    La Raspberry Pi Pico 2 puede recibir
+                                    firmware directamente mediante su conexión
+                                    USB utilizando el modo BOOTSEL.
+                                </p>
+                                <div class="hardware-flow">
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number"
+                                            >1</span
+                                        >
+                                        <div>
+                                            <strong
+                                                >Mantené presionado
+                                                BOOTSEL</strong
+                                            >
+                                            <p>
+                                                Con la placa desconectada,
+                                                mantené presionado el botón
+                                                BOOTSEL mientras conectás el
+                                                cable USB.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number"
+                                            >2</span
+                                        >
+                                        <div>
+                                            <strong
+                                                >Linux detecta la Pico 2</strong
+                                            >
+                                            <p>
+                                                La placa aparece como una unidad
+                                                de almacenamiento llamada
+                                                <code>RP2350</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number"
+                                            >3</span
+                                        >
+                                        <div>
+                                            <strong>Copiá el firmware</strong>
+                                            <p>
+                                                Copiá el archivo
+                                                <code>.uf2</code> a esa unidad
+                                                para programar la memoria flash.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+                                    <p>
+                                        Este mecanismo forma parte de la ROM del
+                                        RP2350, por lo que el modo BOOTSEL
+                                        permanece disponible aunque el firmware
+                                        cargado tenga algún problema.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number">04</span>
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Instalar picotool
+                                </h3>
+                                <p class="toolchain-block__description">
+                                    picotool es la herramienta oficial de
+                                    Raspberry Pi para trabajar con dispositivos
+                                    RP2040 y RP2350. En Mini Lab la vamos a
+                                    utilizar para convertir el firmware generado
+                                    por Rust al formato UF2 que reconoce el modo
+                                    BOOTSEL de la Pico 2.
+                                </p>
+                                <p class="toolchain-block__description">
+                                    Descargá el binario precompilado para Linux
+                                    desde los
+                                    <a
+                                        href="https://github.com/raspberrypi/pico-sdk-tools/releases"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        releases oficiales de Raspberry Pi
+                                    </a>
+                                    y asegurate de que el ejecutable
+                                    <code>picotool</code>
+                                    quede disponible en tu PATH.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =========================
+        PASO 04
+        ========================= -->
+            <section
+                id="verificar-entorno"
+                class="step-content"
+                data-step-panel="4"
+                data-step-title="Verificá el entorno"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <!-- Encabezado -->
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number"> 04 </span>
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+                                <span class="step-article__category">
+                                    Verificación
+                                </span>
+                            </div>
+                            <h2 class="step-article__title">
+                                Comprobá tu entorno
+                            </h2>
+                            <p class="step-article__lead">
+                                Antes de crear nuestro primer proyecto, vamos a
+                                comprobar que la toolchain de Rust y las
+                                herramientas de Linux quedaron instaladas
+                                correctamente.
+                            </p>
+                        </header>
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+                            <p>
+                                Ejecutá cada comando en una terminal. No importa
+                                que las versiones mostradas sean exactamente
+                                iguales: lo importante en esta etapa es que las
+                                herramientas estén disponibles y respondan
+                                correctamente.
+                            </p>
+                        </aside>
+
+                        <!-- =====================================
+                        01 - RUST
+                    ===================================== -->
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    01
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Rust y Cargo
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Primero verificamos las herramientas
+                                        principales instaladas mediante rustup.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Rust</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustc --version</code></pre>
+                                </div>
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+                                    <p>
+                                        Para utilizar el template de Mini Lab
+                                        necesitás Rust 1.85 o una versión
+                                        posterior.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Cargo</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo --version</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Rustup</strong>
+                                </div>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>rustup --version</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
+                        02 - TARGET
+                        ===================================== -->
+
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    02
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Target de la Pico 2
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Confirmamos que Rust puede compilar para
+                                        el ARM Cortex-M33 del RP2350.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>rustup target list --installed | grep thumbv8m.main-none-eabihf</code></pre>
+                            </div>
+
+                            <div class="verification-result">
+                                <span class="verification-result__icon">
+                                    ✓
+                                </span>
+                                <p>
+                                    La salida debería incluir
+                                    <code>thumbv8m.main-none-eabihf</code>.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
+                        03 - HERRAMIENTAS RUST
+                        ===================================== -->
+
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    03
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Herramientas de compilación
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Verificamos las herramientas auxiliares
+                                        que instalamos para trabajar con
+                                        proyectos y binarios.
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="verification-command-label">LLVM Tools</p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>rustup component list --installed | grep llvm-tools</code></pre>
+                            </div>
+
+                            <p class="verification-command-label">
+                                cargo-binutils
+                            </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo install --list | grep cargo-binutils</code></pre>
+                            </div>
+
+                            <p class="verification-command-label">flip-link</p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>flip-link --version</code></pre>
+                            </div>
+
+                            <p class="verification-command-label">
+                                cargo-generate
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo generate --version</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
+                        04 - LINUX
+                    ===================================== -->
+
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    04
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Herramientas de Linux
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Ahora comprobamos las herramientas
+                                        instaladas específicamente para el
+                                        entorno Linux.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>Git</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span> Terminal </span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>git --version</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>GDB</strong>
+                                </div>
+                                <p class="verification-check__description">
+                                    El nombre del ejecutable depende de la
+                                    distribución. Usá el comando
+                                    correspondiente:
+                                </p>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Ubuntu / Debian</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>gdb-multiarch --version</code></pre>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Fedora</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>gdb --version</code></pre>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Arch Linux</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>arm-none-eabi-gdb --version</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>OpenOCD</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>openocd --version</code></pre>
+                                </div>
+                            </div>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>QEMU</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>qemu-system-arm --version</code></pre>
+                                </div>
+                            </div>
+                            <div class="verification-check">
+                                <div class="verification-check__header">
+                                    <span class="verification-check__icon">
+                                        ✓
+                                    </span>
+                                    <strong>picotool</strong>
+                                </div>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool --version</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
+                        05 - HARDWARE
+                    ===================================== -->
+
+                        <section class="verification-group">
+                            <div class="verification-group__header">
+                                <span class="verification-group__number">
+                                    05
+                                </span>
+                                <div>
+                                    <h3 class="verification-group__title">
+                                        Verificar la Pico 2
+                                    </h3>
+                                    <p class="verification-group__description">
+                                        Si ya tenés el kit, podemos comprobar
+                                        también que Linux detecta correctamente
+                                        la placa.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="hardware-verification">
+                                <span class="hardware-verification__badge">
+                                    Opcional
+                                </span>
+                                <p>
+                                    Mantené presionado
+                                    <strong>BOOTSEL</strong> mientras conectás
+                                    la Pico 2 mediante USB.
+                                </p>
+                                <p>
+                                    El sistema debería mostrar una nueva unidad
+                                    de almacenamiento llamada
+                                    <code>RP2350</code>.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- =====================================
+                        RESULTADO FINAL
+                    ===================================== -->
+
+                        <section class="environment-ready">
+                            <span
+                                class="environment-ready__icon"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+                            <div>
+                                <p class="environment-ready__eyebrow">
+                                    Entorno preparado
+                                </p>
+                                <h3 class="environment-ready__title">
+                                    Todo listo para compilar
+                                </h3>
+                                <p class="environment-ready__description">
+                                    Si las verificaciones anteriores fueron
+                                    exitosas, ya tenemos preparado el entorno
+                                    necesario para crear y compilar nuestro
+                                    primer firmware.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =========================
+        PASO 05
+        ========================= -->
+
+            <section
+                id="compilar-firmware"
+                class="step-content"
+                data-step-panel="5"
+                data-step-title="Compilá firmware"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number">05</span>
+
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="step-article__category">
+                                    Primer firmware
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">
+                                Creá y compilá tu primer proyecto
+                            </h2>
+
+                            <p class="step-article__lead">
+                                Con el entorno preparado, vamos a crear un
+                                proyecto para la Raspberry Pi Pico 2 y
+                                compilarlo para el ARM Cortex-M33 del RP2350.
+                            </p>
+                        </header>
+
+                        <!-- Por qué usamos template -->
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+
+                            <p>
+                                Mini Lab utiliza el template
+                                rp235x-project-template para evitar configurar
+                                manualmente desde cero el linker, el layout de
+                                memoria y la estructura básica necesaria para un
+                                proyecto bare-metal.
+                            </p>
+                        </aside>
+
+                        <!-- 01 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Generá el proyecto
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Usamos cargo-generate para crear una nueva
+                                    copia del template preparado para los
+                                    microcontroladores RP235x.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo generate --git https://github.com/rp-rs/rp235x-project-template</code></pre>
+                                </div>
+
+                                <p class="toolchain-block__description">
+                                    Cuando el asistente pregunte el nombre del
+                                    proyecto, podés utilizar:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Nombre del proyecto</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>mini-lab-hello</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 02 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Entrá al proyecto
+                                </h3>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cd mini-lab-hello</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 03 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Conocé la estructura del proyecto
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El template incluye varios archivos que un
+                                    proyecto Rust convencional no necesita.
+                                </p>
+
+                                <dl class="system-tools">
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>Cargo.toml</code>
+                                        </dt>
+
+                                        <dd>
+                                            Define el proyecto y sus
+                                            dependencias.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>src/main.rs</code>
+                                        </dt>
+
+                                        <dd>
+                                            Contiene el punto de entrada del
+                                            firmware.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>.cargo/config.toml</code>
+                                        </dt>
+
+                                        <dd>
+                                            Contiene configuración de
+                                            compilación y ejecución para el
+                                            entorno embebido.
+                                        </dd>
+                                    </div>
+
+                                    <div class="system-tools__item">
+                                        <dt>
+                                            <code>memory.x</code>
+                                        </dt>
+
+                                        <dd>
+                                            Define el layout de memoria que
+                                            necesita el linker para generar el
+                                            firmware.
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </section>
+
+                        <!-- 04 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 04 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Compilá el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El template ya está preparado para utilizar
+                                    el target ARM del RP2350 que instalamos
+                                    anteriormente.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                        <span>Release</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo build --release</code></pre>
+                                </div>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Si Cargo finaliza sin errores, el
+                                        firmware fue compilado correctamente.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 05 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Encontrá el resultado
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Cargo guarda el ejecutable compilado dentro
+                                    del directorio correspondiente al target.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Firmware</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Este archivo es un ejecutable ELF. En el
+                                        siguiente paso veremos cómo cargarlo y
+                                        ejecutarlo en la Pico 2.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                        <!-- 06 -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 06 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Inspeccioná el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Podemos utilizar cargo-binutils para
+                                    comprobar qué secciones forman parte del
+                                    binario y cuánto espacio ocupa cada una.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>cargo size --release -- -A</code></pre>
+                                </div>
+                            </div>
+                        </section>
+
+                        <aside class="step-tip">
+                            <p>
+                                Ya tenemos código compilado específicamente para
+                                el RP2350. El siguiente paso será cargarlo y
+                                comprobar su ejecución.
+                            </p>
+                        </aside>
+                    </article>
+                </div>
+            </section>
+
+            <!-- =========================
+            PASO 06
+            ========================= -->
+
+            <section
+                id="ejecutar-probar"
+                class="step-content"
+                data-step-panel="6"
+                data-step-title="Ejecutá y probá"
+                hidden
+            >
+                <div class="page-container">
+                    <article class="step-article">
+                        <header class="step-article__header">
+                            <div class="step-article__eyebrow">
+                                <span class="step-article__number">06</span>
+
+                                <span
+                                    class="step-article__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="step-article__category">
+                                    Ejecución
+                                </span>
+                            </div>
+
+                            <h2 class="step-article__title">
+                                Ejecutá tu firmware en la Pico 2
+                            </h2>
+
+                            <p class="step-article__lead">
+                                Ya tenemos un programa compilado para el RP2350.
+                                Ahora vamos a convertirlo al formato UF2,
+                                cargarlo mediante USB y comprobar su ejecución
+                                directamente sobre la Raspberry Pi Pico 2.
+                            </p>
+                        </header>
+
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">
+                                i
+                            </span>
+
+                            <p>
+                                El proyecto generado a partir del template de
+                                Mini Lab incluye un ejemplo que hace parpadear
+                                el LED integrado de la Raspberry Pi Pico 2. Esto
+                                nos permite comprobar visualmente que el
+                                firmware se ejecutó correctamente.
+                            </p>
+                        </aside>
+
+                <!-- =========================
+                01 - GENERAR UF2
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 01 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Convertí el firmware a UF2
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    El resultado del paso anterior es un
+                                    ejecutable ELF. Utilizamos picotool para
+                                    convertirlo al formato UF2 que reconoce el
+                                    bootloader USB de la Pico 2.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Terminal</span>
+                                        <span>ELF → UF2</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool uf2 convert -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello mini-lab-hello.uf2</code></pre>
+                                </div>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Al finalizar deberías encontrar
+                                        <code>mini-lab-hello.uf2</code>
+                                        en el directorio actual.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                 02 - BOOTSEL
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 02 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Iniciá la Pico 2 en modo BOOTSEL
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Desconectá la placa. Mantené presionado el
+                                    botón BOOTSEL mientras volvés a conectarla
+                                    mediante USB y luego soltalo.
+                                </p>
+
+                                <div class="hardware-flow">
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            1
+                                        </span>
+
+                                        <div>
+                                            <strong>
+                                                Desconectá la Pico 2
+                                            </strong>
+
+                                            <p>
+                                                Retirá el cable USB de la placa.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            2
+                                        </span>
+
+                                        <div>
+                                            <strong>
+                                                Mantené presionado BOOTSEL
+                                            </strong>
+
+                                            <p>
+                                                No sueltes el botón mientras
+                                                volvés a conectar el cable USB.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="hardware-flow__step">
+                                        <span class="hardware-flow__number">
+                                            3
+                                        </span>
+
+                                        <div>
+                                            <strong> Soltá BOOTSEL </strong>
+
+                                            <p>
+                                                Linux debería montar una nueva
+                                                unidad llamada
+                                                <code>RP2350</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                03 - COPIAR UF2
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 03 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Cargá el firmware
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Abrí la unidad <code>RP2350</code> y copiá
+                                    dentro el archivo que acabamos de generar:
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Firmware</span>
+                                        <span>UF2</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>mini-lab-hello.uf2</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Cuando termina la transferencia, la
+                                        unidad RP2350 se desmonta
+                                        automáticamente y la Pico 2 reinicia
+                                        para ejecutar el nuevo firmware.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                04 - PROBAR
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 04 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Comprobá la ejecución
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Observá el LED integrado de la Raspberry Pi
+                                    Pico 2. El firmware incluido en el template
+                                    alterna su estado aproximadamente cada medio
+                                    segundo.
+                                </p>
+
+                                <div class="verification-result">
+                                    <span class="verification-result__icon">
+                                        ✓
+                                    </span>
+
+                                    <p>
+                                        Si el LED parpadea continuamente, tu
+                                        primer firmware Rust está ejecutándose
+                                        correctamente sobre el RP2350.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                05 - FLUJO ALTERNATIVO
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 05 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    Una vez que conozcas el flujo
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    picotool también puede cargar directamente
+                                    un ejecutable ELF en una placa conectada en
+                                    modo BOOTSEL. Más adelante podremos
+                                    automatizar este proceso para no tener que
+                                    generar y copiar manualmente el archivo UF2.
+                                </p>
+
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Alternativa</span>
+                                        <span>picotool</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>picotool load --update --verify --execute -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
+                                </div>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        En Mini Lab presentamos primero el flujo
+                                        UF2 porque permite entender claramente
+                                        las etapas de compilación, conversión y
+                                        carga del firmware.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                SIN HARDWARE
+                ========================= -->
+
+                        <section class="toolchain-block">
+                            <span class="toolchain-block__number"> 06 </span>
+
+                            <div class="toolchain-block__content">
+                                <h3 class="toolchain-block__title">
+                                    ¿No tenés el kit?
+                                </h3>
+
+                                <p class="toolchain-block__description">
+                                    Podés realizar todo el recorrido hasta la
+                                    compilación del firmware sin tener una Pico
+                                    2 conectada.
+                                </p>
+
+                                <aside class="step-note step-note--inline">
+                                    <span
+                                        class="step-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        La simulación completa del RP2350 no
+                                        forma parte todavía de este recorrido.
+                                        Las prácticas que puedan ejecutarse sin
+                                        hardware se identificarán
+                                        específicamente dentro de Actividades.
+                                    </p>
+                                </aside>
+                            </div>
+                        </section>
+
+                <!-- =========================
+                FINAL
+                ========================= -->
+
+                        <section class="environment-ready">
+                            <span
+                                class="environment-ready__icon"
+                                aria-hidden="true"
+                            >
+                                ✓
+                            </span>
+
+                            <div>
+                                <p class="environment-ready__eyebrow">
+                                    Primeros pasos completados
+                                </p>
+
+                                <h3 class="environment-ready__title">
+                                    Tu entorno Mini Lab está listo
+                                </h3>
+
+                                <p class="environment-ready__description">
+                                    Preparaste el entorno, instalaste la
+                                    toolchain, configuraste Linux, verificaste
+                                    las herramientas, compilaste un firmware y
+                                    lo ejecutaste en la Pico 2. Ya podés
+                                    comenzar con las actividades.
+                                </p>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </section>
+            <!-- =========================
+        NAVEGACIÓN DEL RECORRIDO
+        ========================= -->
+
+            <nav class="steps-footer" aria-label="Navegación entre pasos">
+                <div class="page-container steps-footer__container">
+                    <a href="../conoce-tu-kit/" class="steps-footer__back">
+                        <span aria-hidden="true">←</span>
+
+                        <span data-step-back-label>
+                            Volver a Conocé tu kit
+                        </span>
+                    </a>
+
+                    <div class="steps-footer__indicators" aria-hidden="true">
+                        <span
+                            class="steps-footer__indicator steps-footer__indicator--active"
+                            data-step-indicator="1"
+                        ></span>
+                        <span
+                            class="steps-footer__indicator"
+                            data-step-indicator="2"
+                        ></span>
+                        <span
+                            class="steps-footer__indicator"
+                            data-step-indicator="3"
+                        ></span>
+                        <span
+                            class="steps-footer__indicator"
+                            data-step-indicator="4"
+                        ></span>
+                        <span
+                            class="steps-footer__indicator"
+                            data-step-indicator="5"
+                        ></span>
+                        <span
+                            class="steps-footer__indicator"
+                            data-step-indicator="6"
+                        ></span>
+                    </div>
+
+                    <button
+                        class="steps-footer__next"
+                        type="button"
+                        disabled
+                        aria-disabled="true"
+                        data-step-next
+                    >
+                        <span data-step-next-label>
+                            Continuar: Instalá la toolchain
+                        </span>
+                        <span aria-hidden="true"> → </span>
+                    </button>
+                </div>
+            </nav>
         </main>
 
         <!-- =========================
@@ -138,6 +2179,7 @@
             </p>
         </footer>
 
-        <script src="../../js/main.js"></script>
+        <script src="../../js/main.js" defer></script>
+        <script src="../../js/pages/primeros-pasos.js" defer></script>
     </body>
 </html>

@@ -2,6 +2,10 @@
     --invap-green: #007732;
     --invap-green-dark: #005a26;
     --invap-green-light: #e6f3eb;
+    --invap-green-glow: #16a34a;
+
+    --boton-glow: 0 4px 12px rgba(0, 119, 50, 0.25);
+    --boton-glow-hover: 0 6px 16px rgba(0, 119, 50, 0.35);
 
     --background: #f7f9f8;
     --surface: #ffffff;
@@ -28,14 +32,56 @@
     --grid-color: rgba(0, 119, 50, 0.08);
     --nav-button: #ffffff;
     --text-nav-button: #007732;
+    --nav-background: var(--invap-green);
+    --nav-text: var(--text-on-brand);
+    --nav-text-muted: rgba(255, 255, 255, 0.8);
+    --nav-hover-background: rgba(255, 255, 255, 0.12);
+    --nav-active-background: var(--nav-button);
+
+    --steps-nav-line: rgba(255, 255, 255, 0.22);
+    --steps-nav-dot: rgba(255, 255, 255, 0.28);
+    --steps-nav-dot-active: #72e49d;
+    --steps-nav-dot-active-glow: rgba(114, 228, 157, 0.12);
+    --steps-nav-text: rgba(255, 255, 255, 0.72);
+    --steps-nav-number: rgba(255, 255, 255, 0.45);
+    --steps-nav-hover: rgba(255, 255, 255, 0.08);
+    --steps-nav-active-bg: rgba(255, 255, 255, 0.1);
+    --steps-badge-border: rgba(0, 119, 50, 0.35);
+    --steps-badge-bg: rgba(0, 119, 50, 0.14);
+    --steps-badge-text: var(--invap-green);
+    --steps-accent: var(--invap-green);
+    --steps-accent-hover: var(--invap-green-dark);
+    --steps-accent-soft: rgba(0, 119, 50, 0.05);
+    --steps-accent-border: rgba(0, 119, 50, 0.35);
+    --steps-accent-glow: rgba(0, 119, 50, 0.4);
+
+    --kit-badge-border: rgba(0, 119, 50, 0.35);
+    --kit-badge-bg: rgba(0, 119, 50, 0.16);
+    --kit-badge-text: #18c05a;
+
+    --notice-warning-border: #eadca2;
+    --notice-warning-bg: #fff9e8;
+    --notice-warning-text: #725127;
+    --notice-warning-dark-border: #665c32;
+    --notice-warning-dark-bg: #3a3422;
+    --notice-warning-dark-text: #e0cf91;
+
+    --code-window-bg: #071a0f;
+    --code-window-header-bg: rgba(255, 255, 255, 0.025);
+    --code-window-header-border: rgba(255, 255, 255, 0.08);
+    --code-window-text: #9bc9ab;
+    --code-window-muted: #7d9a86;
 }
 
 [data-theme="dark"]{
     --invap-green-light: #163623;
 
-    --background: #1f1f1f;
-    --surface: #2c2c2c;
-    --card-background: #3a3a3a;
+    --boton-glow: 0 0 14px rgba(22, 163, 74, 0.3);
+    --boton-glow-hover: 0 0 20px rgba(22, 163, 74, 0.45);
+
+    --background: #0a0a0a;
+    --surface: #131313;
+    --card-background: #222222;
 
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
@@ -49,6 +95,45 @@
 
     --nav-button: #163623;
     --text-nav-button:#ffffff;
+    --nav-background: var(--invap-green);
+    --nav-text: var(--text-on-brand);
+    --nav-text-muted: rgba(255, 255, 255, 0.8);
+    --nav-hover-background: rgba(255, 255, 255, 0.12);
+    --nav-active-background: var(--nav-button);
+
+    --steps-nav-line: rgba(255, 255, 255, 0.22);
+    --steps-nav-dot: rgba(255, 255, 255, 0.28);
+    --steps-nav-dot-active: #72e49d;
+    --steps-nav-dot-active-glow: rgba(114, 228, 157, 0.12);
+    --steps-nav-text: rgba(255, 255, 255, 0.72);
+    --steps-nav-number: rgba(255, 255, 255, 0.45);
+    --steps-nav-hover: rgba(255, 255, 255, 0.08);
+    --steps-nav-active-bg: rgba(255, 255, 255, 0.1);
+    --steps-badge-border: rgba(50, 212, 111, 0.3);
+    --steps-badge-bg: rgba(50, 212, 111, 0.08);
+    --steps-badge-text: #32d46f;
+    --steps-accent: #32d46f;
+    --steps-accent-hover: #72e49d;
+    --steps-accent-soft: rgba(50, 212, 111, 0.05);
+    --steps-accent-border: rgba(50, 212, 111, 0.3);
+    --steps-accent-glow: rgba(50, 212, 111, 0.4);
+
+    --kit-badge-border: rgba(50, 212, 111, 0.3);
+    --kit-badge-bg: rgba(50, 212, 111, 0.08);
+    --kit-badge-text: #32d46f;
+
+    --notice-warning-border: #665c32;
+    --notice-warning-bg: #3a3422;
+    --notice-warning-text: #e0cf91;
+    --notice-warning-dark-border: #665c32;
+    --notice-warning-dark-bg: #3a3422;
+    --notice-warning-dark-text: #e0cf91;
+
+    --code-window-bg: #071a0f;
+    --code-window-header-bg: rgba(255, 255, 255, 0.025);
+    --code-window-header-border: rgba(255, 255, 255, 0.08);
+    --code-window-text: #9bc9ab;
+    --code-window-muted: #7d9a86;
 }
 
 * {
@@ -118,8 +203,8 @@ main {
 
     padding: 1rem 1.25rem;
 
-    background-color: var(--invap-green);
-    color: var(--text-on-brand);
+    background-color: var(--nav-background);
+    color: var(--nav-text);
     z-index: 800;
 }
 
@@ -232,13 +317,33 @@ main {
 
     padding: 1.25rem;
 
-    background-color: var(--surface);
+    background-color: var(--nav-background);
 
     z-index: 1000;
 
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.3s ease, visibility 0s linear 0.3s;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.site-nav::-webkit-scrollbar{
+    width: 5px;
+}
+
+.site-nav::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.site-nav::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+}
+
+.site-nav::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .site-nav--open {
@@ -259,7 +364,7 @@ main {
 .site-nav__close {
     border: 0;
     background: transparent;
-    color: var(--text-primary);
+    color: var(--nav-text);
 
     font-size: 1.5rem;
 
@@ -284,12 +389,12 @@ main {
 
     border-radius: var(--radius-small);
 
-    color: var(--text-secondary);
+    color: var(--nav-text-muted);
 }
 
 .site-nav__link--active {
-    background-color: var(--invap-green-light);
-    color: var(--invap-green);
+    background-color: var(--nav-active-background);
+    color: var(--text-nav-button);
 
     font-weight: 600;
 }
@@ -298,7 +403,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    color: var(--invap-green);
+    color: var(--nav-text);
     text-decoration: none;
 }
 
@@ -330,12 +435,12 @@ main {
 
     padding: 1.25rem 1.5rem;
 
-    border: 1px solid #eadca2;
+    border: 1px solid var(--notice-warning-border);
     border-radius: var(--radius-medium);
 
-    background-color: #fff9e8;
+    background-color: var(--notice-warning-bg);
 
-    color: #725127;
+    color: var(--notice-warning-text);
 }
 
 .development-notice__icon {
@@ -349,11 +454,11 @@ main {
 }
 
 [data-theme="dark"] .development-notice {
-    border-color: #665c32;
+    border-color: var(--notice-warning-dark-border);
 
-    background-color: #3a3422;
+    background-color: var(--notice-warning-dark-bg);
 
-    color: #e0cf91;
+    color: var(--notice-warning-dark-text);
 }
 
 /* =========================
@@ -407,7 +512,8 @@ main {
 
     transition:
         background-color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .primary-button:hover {
@@ -415,6 +521,21 @@ main {
 
     transform: translateY(-1px);
 }
+
+
+
+.primary-button-glow {
+    background-color: var(--invap-green-glow);
+    box-shadow: var(--boton-glow);
+}
+
+.primary-button-glow:hover {
+    background-color: var(--invap-green);
+    box-shadow: var(--boton-glow-hover);
+    transform: translateY(-1px);
+}
+
+
 
 .secondary-button{
     display: inline-flex;
@@ -507,7 +628,7 @@ main {
         display: flex;
         flex-direction: column;
         padding: 1.25rem;
-        background-color: var(--invap-green);
+        background-color: var(--nav-background);
         transform: none;
         visibility: visible;
         transition: none;
@@ -526,7 +647,7 @@ main {
     }
 
     .site-nav__brand{
-        color: var(--text-on-brand);
+        color: var(--nav-text);
     }
 
     .site-nav__close {
@@ -543,7 +664,7 @@ main {
         margin-bottom: 0.35rem;
         padding: 0.8rem 1rem;
         border-radius: var(--radius-medium);
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--nav-text-muted);
         font-size: 1rem;
         font-weight: 500;
         transition: 
@@ -552,18 +673,18 @@ main {
     }
 
     .site-nav__link:hover{
-        background-color: rgba(255, 255, 255, 0.12);
-        color: var(--text-on-brand);
+        background-color: var(--nav-hover-background);
+        color: var(--nav-text);
     }
 
     .site-nav__link--active{
-        background-color: var(--nav-button);
+        background-color: var(--nav-active-background);
         color: var(--text-nav-button);
         font-weight: 700;
     }
 
     .site-nav__link--active:hover {
-        background-color: var(--nav-button);
+        background-color: var(--nav-active-background);
         color: var(--text-nav-button);
         opacity: 0.9;
     }
@@ -600,7 +721,7 @@ main {
     }
 
     .theme-toggle--sidebar:hover{
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: var(--nav-hover-background);
     }
 
     .theme-toggle--sidebar .theme-icon{
