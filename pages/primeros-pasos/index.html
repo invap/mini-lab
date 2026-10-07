@@ -386,7 +386,7 @@
                             <p class="step-article__lead">
                                 Mini Lab utiliza Linux nativo como entorno de
                                 desarrollo para trabajar con la toolchain de
-                                Rust y los dispositivos del kit.
+                                Rust y el entorno de simulación.
                             </p>
                         </header>
 
@@ -791,8 +791,7 @@ rustup component add llvm-tools-preview</code></pre>
                             <p class="step-article__lead">
                                 Con la toolchain de Rust preparada, ahora vamos
                                 a instalar las herramientas del sistema que
-                                usaremos para ejecutar, depurar y comunicarnos
-                                con el hardware.
+                                usaremos para crear y compilar los proyectos de Mini Lab.
                             </p>
                         </header>
 
@@ -809,14 +808,13 @@ rustup component add llvm-tools-preview</code></pre>
 
                             <div class="toolchain-block__content">
                                 <h3 class="toolchain-block__title">
-                                    Instalar las herramientas de Linux
+                                    Instalar Git
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    Para seguir el recorrido instalaremos Git,
-                                    un depurador con soporte ARM, OpenOCD y
-                                    QEMU. Elegí el comando correspondiente a tu
-                                    distribución.
+                                    Git es necesario para obtener los templates y
+                                    recursos que utilizaremos durante el recorrido
+                                    de Mini Lab.
                                 </p>
 
                                 <div class="command-block">
@@ -826,7 +824,8 @@ rustup component add llvm-tools-preview</code></pre>
                                     </div>
                                     <pre
                                         class="command-block__code"
-                                    ><code>sudo apt install git gdb-multiarch openocd qemu-system-arm</code></pre>
+                                    ><code>sudo apt update
+sudo apt install git</code></pre>
                                 </div>
 
                                 <div class="command-block">
@@ -836,7 +835,7 @@ rustup component add llvm-tools-preview</code></pre>
                                     </div>
                                     <pre
                                         class="command-block__code"
-                                    ><code>sudo dnf install git gdb openocd qemu-system-arm</code></pre>
+                                    ><code>sudo dnf install git</code></pre>
                                 </div>
 
                                 <div class="command-block">
@@ -846,164 +845,18 @@ rustup component add llvm-tools-preview</code></pre>
                                     </div>
                                     <pre
                                         class="command-block__code"
-                                    ><code>sudo pacman -S git arm-none-eabi-gdb qemu-system-arm openocd</code></pre>
+                                    ><code>sudo pacman -S git</code></pre>
                                 </div>
                             </div>
                         </section>
-
-                        <!-- Qué hace cada herramienta -->
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 02 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    ¿Para qué sirve cada herramienta?
-                                </h3>
-
-                                <dl class="system-tools">
-                                    <div class="system-tools__item">
-                                        <dt>GDB</dt>
-                                        <dd>
-                                            Depurador que permite detener la
-                                            ejecución, avanzar paso a paso e
-                                            inspeccionar el estado del programa.
-                                            Necesitamos una versión con soporte
-                                            para ARM Cortex-M.
-                                        </dd>
-                                    </div>
-
-                                    <div class="system-tools__item">
-                                        <dt>OpenOCD</dt>
-                                        <dd>
-                                            Facilita la comunicación entre las
-                                            herramientas de depuración de la
-                                            computadora y el hardware embebido
-                                            mediante un probe compatible.
-                                        </dd>
-                                    </div>
-
-                                    <div class="system-tools__item">
-                                        <dt>QEMU</dt>
-                                        <dd>
-                                            Emula determinados sistemas ARM. No
-                                            reemplaza automáticamente la placa
-                                            Pico 2; solo sirve para las
-                                            prácticas y targets compatibles con
-                                            la máquina emulada.
-                                        </dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </section>
-
-                        <!-- BOOTSEL -->
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 03 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Acceso al hardware desde Linux
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    La Raspberry Pi Pico 2 puede recibir
-                                    firmware directamente mediante su conexión
-                                    USB utilizando el modo BOOTSEL.
-                                </p>
-                                <div class="hardware-flow">
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number"
-                                            >1</span
-                                        >
-                                        <div>
-                                            <strong
-                                                >Mantené presionado
-                                                BOOTSEL</strong
-                                            >
-                                            <p>
-                                                Con la placa desconectada,
-                                                mantené presionado el botón
-                                                BOOTSEL mientras conectás el
-                                                cable USB.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number"
-                                            >2</span
-                                        >
-                                        <div>
-                                            <strong
-                                                >Linux detecta la Pico 2</strong
-                                            >
-                                            <p>
-                                                La placa aparece como una unidad
-                                                de almacenamiento llamada
-                                                <code>RP2350</code>.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number"
-                                            >3</span
-                                        >
-                                        <div>
-                                            <strong>Copiá el firmware</strong>
-                                            <p>
-                                                Copiá el archivo
-                                                <code>.uf2</code> a esa unidad
-                                                para programar la memoria flash.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <aside class="step-note step-note--inline">
-                                    <span
-                                        class="step-note__icon"
-                                        aria-hidden="true"
-                                    >
-                                        i
-                                    </span>
-                                    <p>
-                                        Este mecanismo forma parte de la ROM del
-                                        RP2350, por lo que el modo BOOTSEL
-                                        permanece disponible aunque el firmware
-                                        cargado tenga algún problema.
-                                    </p>
-                                </aside>
-                            </div>
-                        </section>
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number">04</span>
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Instalar picotool
-                                </h3>
-                                <p class="toolchain-block__description">
-                                    picotool es la herramienta oficial de
-                                    Raspberry Pi para trabajar con dispositivos
-                                    RP2040 y RP2350. En Mini Lab la vamos a
-                                    utilizar para convertir el firmware generado
-                                    por Rust al formato UF2 que reconoce el modo
-                                    BOOTSEL de la Pico 2.
-                                </p>
-                                <p class="toolchain-block__description">
-                                    Descargá el binario precompilado para Linux
-                                    desde los
-                                    <a
-                                        href="https://github.com/raspberrypi/pico-sdk-tools/releases"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        releases oficiales de Raspberry Pi
-                                    </a>
-                                    y asegurate de que el ejecutable
-                                    <code>picotool</code>
-                                    quede disponible en tu PATH.
-                                </p>
-                            </div>
-                        </section>
+                        <aside class="step-note">
+                            <span class="step-note__icon" aria-hidden="true">¡</span>
+                            <p>
+                                Herramientas asociadas a depuración o carga sobre
+                                hardware físico, como GDB, OpenOCD y picotool, no
+                                forman parte del recorrido actual.
+                            </p>
+                        </aside>
                     </article>
                 </div>
             </section>
@@ -1149,7 +1002,7 @@ rustup component add llvm-tools-preview</code></pre>
                                 </span>
                                 <div>
                                     <h3 class="verification-group__title">
-                                        Target de la Pico 2
+                                        Target del RP2350
                                     </h3>
                                     <p class="verification-group__description">
                                         Confirmamos que Rust puede compilar para
@@ -1228,7 +1081,7 @@ rustup component add llvm-tools-preview</code></pre>
                                 </div>
                                 <pre
                                     class="command-block__code"
-                                ><code>flip-link --version</code></pre>
+                                ><code>cargo install --list | grep flip-link</code></pre>
                             </div>
 
                             <p class="verification-command-label">
@@ -1256,162 +1109,34 @@ rustup component add llvm-tools-preview</code></pre>
                                 </span>
                                 <div>
                                     <h3 class="verification-group__title">
-                                        Herramientas de Linux
+                                        Git
                                     </h3>
                                     <p class="verification-group__description">
-                                        Ahora comprobamos las herramientas
-                                        instaladas específicamente para el
-                                        entorno Linux.
+                                        Por último, comprobamos que Git esté
+                                        disponible para obtener los recursos y
+                                        templates utilizados por Mini Lab.
                                     </p>
                                 </div>
                             </div>
-
-                            <div class="verification-check">
-                                <div class="verification-check__header">
-                                    <span class="verification-check__icon">
-                                        ✓
-                                    </span>
-                                    <strong>Git</strong>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
                                 </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span> Terminal </span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>git --version</code></pre>
-                                </div>
+                                <pre
+                                    class="command-block__code"
+                                ><code>git --version</code></pre>
                             </div>
-
-                            <div class="verification-check">
-                                <div class="verification-check__header">
-                                    <span class="verification-check__icon">
-                                        ✓
-                                    </span>
-                                    <strong>GDB</strong>
-                                </div>
-                                <p class="verification-check__description">
-                                    El nombre del ejecutable depende de la
-                                    distribución. Usá el comando
-                                    correspondiente:
-                                </p>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Ubuntu / Debian</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>gdb-multiarch --version</code></pre>
-                                </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Fedora</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>gdb --version</code></pre>
-                                </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Arch Linux</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>arm-none-eabi-gdb --version</code></pre>
-                                </div>
-                            </div>
-
-                            <div class="verification-check">
-                                <div class="verification-check__header">
-                                    <span class="verification-check__icon">
-                                        ✓
-                                    </span>
-                                    <strong>OpenOCD</strong>
-                                </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Terminal</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>openocd --version</code></pre>
-                                </div>
-                            </div>
-                            <div class="verification-check">
-                                <div class="verification-check__header">
-                                    <span class="verification-check__icon">
-                                        ✓
-                                    </span>
-                                    <strong>QEMU</strong>
-                                </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Terminal</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>qemu-system-arm --version</code></pre>
-                                </div>
-                            </div>
-                            <div class="verification-check">
-                                <div class="verification-check__header">
-                                    <span class="verification-check__icon">
-                                        ✓
-                                    </span>
-                                    <strong>picotool</strong>
-                                </div>
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Terminal</span>
-                                    </div>
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>picotool --version</code></pre>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- =====================================
-                        05 - HARDWARE
-                    ===================================== -->
-
-                        <section class="verification-group">
-                            <div class="verification-group__header">
-                                <span class="verification-group__number">
-                                    05
-                                </span>
-                                <div>
-                                    <h3 class="verification-group__title">
-                                        Verificar la Pico 2
-                                    </h3>
-                                    <p class="verification-group__description">
-                                        Si ya tenés el kit, podemos comprobar
-                                        también que Linux detecta correctamente
-                                        la placa.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="hardware-verification">
-                                <span class="hardware-verification__badge">
-                                    Opcional
+                            <div class="verification-result">
+                                <span class="verification-result__icon">
+                                    ✓
                                 </span>
                                 <p>
-                                    Mantené presionado
-                                    <strong>BOOTSEL</strong> mientras conectás
-                                    la Pico 2 mediante USB.
-                                </p>
-                                <p>
-                                    El sistema debería mostrar una nueva unidad
-                                    de almacenamiento llamada
-                                    <code>RP2350</code>.
+                                    Si aparece el número de versión, Git está
+                                    disponible correctamente.
                                 </p>
                             </div>
                         </section>
 
-                        <!-- =====================================
-                        RESULTADO FINAL
-                    ===================================== -->
 
                         <section class="environment-ready">
                             <span
@@ -1420,18 +1145,21 @@ rustup component add llvm-tools-preview</code></pre>
                             >
                                 ✓
                             </span>
+
                             <div>
                                 <p class="environment-ready__eyebrow">
                                     Entorno preparado
                                 </p>
+
                                 <h3 class="environment-ready__title">
                                     Todo listo para compilar
                                 </h3>
+
                                 <p class="environment-ready__description">
                                     Si las verificaciones anteriores fueron
-                                    exitosas, ya tenemos preparado el entorno
-                                    necesario para crear y compilar nuestro
-                                    primer firmware.
+                                    exitosas, el entorno está preparado para crear
+                                    y compilar nuestro primer firmware para el
+                                    RP2350.
                                 </p>
                             </div>
                         </section>
@@ -1439,7 +1167,7 @@ rustup component add llvm-tools-preview</code></pre>
                 </div>
             </section>
 
-            <!-- =========================
+                        <!-- =========================
         PASO 05
         ========================= -->
 
@@ -1472,8 +1200,8 @@ rustup component add llvm-tools-preview</code></pre>
 
                             <p class="step-article__lead">
                                 Con el entorno preparado, vamos a crear un
-                                proyecto para la Raspberry Pi Pico 2 y
-                                compilarlo para el ARM Cortex-M33 del RP2350.
+                                proyecto para el RP2350, adaptarlo al entorno
+                                de simulación y compilarlo para su ARM Cortex-M33.
                             </p>
                         </header>
 
@@ -1481,12 +1209,12 @@ rustup component add llvm-tools-preview</code></pre>
 
                         <aside class="step-note">
                             <span class="step-note__icon" aria-hidden="true">
-                                i
+                                ¡
                             </span>
 
                             <p>
                                 Mini Lab utiliza el template
-                                rp235x-project-template para evitar configurar
+                                <code>rp235x-project-template</code> para evitar configurar
                                 manualmente desde cero el linker, el layout de
                                 memoria y la estructura básica necesaria para un
                                 proyecto bare-metal.
@@ -1504,9 +1232,8 @@ rustup component add llvm-tools-preview</code></pre>
                                 </h3>
 
                                 <p class="toolchain-block__description">
-                                    Usamos cargo-generate para crear una nueva
-                                    copia del template preparado para los
-                                    microcontroladores RP235x.
+                                    Usamos cargo-generate para crear un nuevo proyecto
+                                    a partir del template oficial de rp-rs.
                                 </p>
 
                                 <div class="command-block">
@@ -1533,6 +1260,27 @@ rustup component add llvm-tools-preview</code></pre>
                                         class="command-block__code"
                                     ><code>mini-lab-hello</code></pre>
                                 </div>
+                                <p class="toolchain-block__description">
+                                    Si pregunta qué método de flashing querés 
+                                    utilizar, seleccioná:
+                                </p>
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>Flashing method</span>
+                                    </div>
+                                    <pre class="command-block__code"><code>none</code></pre>
+                                </div>
+                                <aside class="step-note step-note--inline">
+                                    <span class="step-note__icon" aria-hidden="true">
+                                        ¡
+                                    </span>
+                                    <p>
+                                        En esta etapa no programaremos una placa
+                                        física. El firmware será cargado posteriormente
+                                        en el simulador, por eso no necesitamos
+                                        configurar un método de flashing.
+                                    </p>
+                                </aside>
                             </div>
                         </section>
 
@@ -1624,9 +1372,206 @@ rustup component add llvm-tools-preview</code></pre>
                         </section>
 
                         <!-- 04 -->
+                         <section class="toolchain-block">
+                <span class="toolchain-block__number">04</span>
 
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Adaptá el LED al simulador
+                    </h3>
+
+
+                    <p class="toolchain-block__description">
+                        El ejemplo original utiliza GPIO25 porque está
+                        pensado para el LED de una Raspberry Pi Pico.
+                        La placa RP2350 disponible actualmente en Velxio
+                        utiliza una distribución diferente.
+                    </p>
+
+
+                    <p class="toolchain-block__description">
+                        Abrí <code>src/main.rs</code> y reemplazá:
+                    </p>
+
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Original</span>
+                        </div>
+
+
+                        <pre class="command-block__code"><code>let mut led_pin = pins.gpio25.into_push_pull_output();</code></pre>
+                    </div>
+
+
+                    <p class="toolchain-block__description">
+                        por:
+                    </p>
+
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Mini Lab / Velxio</span>
+                        </div>
+
+
+                        <pre class="command-block__code"><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
+                    </div>
+
+
+                    <aside class="step-note step-note--inline">
+                        <span
+                            class="step-note__icon"
+                            aria-hidden="true"
+                        >
+                            i
+                        </span>
+
+
+                        <p>
+                            Más adelante conectaremos un LED virtual a
+                            GPIO15. Este cambio corresponde al entorno de
+                            simulación actual y podrá revisarse cuando
+                            trabajemos con la placa física.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+
+            <!-- 05 - UART -->
+
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">05</span>
+
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Agregá salida serial
+                    </h3>
+
+
+                    <p class="toolchain-block__description">
+                        Además del LED, vamos a enviar mensajes mediante
+                        UART para poder observar la ejecución desde el
+                        Serial Monitor del simulador.
+                    </p>
+
+
+                    <p class="toolchain-block__description">
+                        Agregá estos imports al comienzo de
+                        <code>main.rs</code>:
+                    </p>
+
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Rust</span>
+                        </div>
+
+
+                        <pre class="command-block__code"><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
+                    </div>
+
+
+                    <p class="toolchain-block__description">
+                        Después de inicializar los pines, agregá la
+                        configuración de UART0:
+                    </p>
+
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Rust</span>
+                            <span>UART0</span>
+                        </div>
+
+
+                        <pre class="command-block__code"><code>let uart_pins = (
+    pins.gpio2.into_function(),
+    pins.gpio3.into_function(),
+);
+
+
+let mut uart0 =
+    hal::uart::UartPeripheral::new(
+        pac.UART0,
+        uart_pins,
+        &mut pac.RESETS,
+    )
+    .enable(
+        UartConfig::new(
+            115200.Hz(),
+            DataBits::Eight,
+            None,
+            StopBits::One,
+        ),
+        clocks.peripheral_clock.freq(),
+    )
+    .unwrap();
+
+
+uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
+                    </div>
+
+
+                    <p class="toolchain-block__description">
+                        Finalmente, reemplazá el loop principal por:
+                    </p>
+
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Rust</span>
+                            <span>Loop</span>
+                        </div>
+
+
+                        <pre class="command-block__code"><code>loop {
+    info!("on!");
+    led_pin.set_high().unwrap();
+    uart0.write_full_blocking(b"LED ON\r\n");
+
+
+    delay.delay_ms(500);
+
+
+    info!("off!");
+    led_pin.set_low().unwrap();
+    uart0.write_full_blocking(b"LED OFF\r\n");
+
+
+    delay.delay_ms(500);
+}</code></pre>
+                    </div>
+
+
+                    <aside class="step-note step-note--inline">
+                        <span
+                            class="step-note__icon"
+                            aria-hidden="true"
+                        >
+                            i
+                        </span>
+
+
+                        <p>
+                            UART0 utiliza GPIO2 como TX y GPIO3 como RX
+                            a 115200 baudios. En el siguiente paso
+                            utilizaremos el Serial Monitor de Velxio para
+                            observar estos mensajes.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+                        
+                        <!-- 06 -->
                         <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 04 </span>
+                            <span class="toolchain-block__number"> 06 </span>
 
                             <div class="toolchain-block__content">
                                 <h3 class="toolchain-block__title">
@@ -1663,14 +1608,14 @@ rustup component add llvm-tools-preview</code></pre>
                             </div>
                         </section>
 
-                        <!-- 05 -->
+                        <!-- 07 -->
 
                         <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 05 </span>
+                            <span class="toolchain-block__number"> 07 </span>
 
                             <div class="toolchain-block__content">
                                 <h3 class="toolchain-block__title">
-                                    Encontrá el resultado
+                                    Encontrá el firmware
                                 </h3>
 
                                 <p class="toolchain-block__description">
@@ -1681,6 +1626,7 @@ rustup component add llvm-tools-preview</code></pre>
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Firmware</span>
+                                        <span>ELF</span>
                                     </div>
 
                                     <pre
@@ -1697,18 +1643,19 @@ rustup component add llvm-tools-preview</code></pre>
                                     </span>
 
                                     <p>
-                                        Este archivo es un ejecutable ELF. En el
-                                        siguiente paso veremos cómo cargarlo y
-                                        ejecutarlo en la Pico 2.
+                                        Aunque el archivo no tenga una extensión
+                                        visible, es un ejecutable ELF ARM. Velxio
+                                        puede cargar este archivo directamente, por
+                                        lo que no necesitamos convertirlo a BIN o UF2.
                                     </p>
                                 </aside>
                             </div>
                         </section>
 
-                        <!-- 06 -->
+                        <!-- 08 -->
 
                         <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 06 </span>
+                            <span class="toolchain-block__number"> 08 </span>
 
                             <div class="toolchain-block__content">
                                 <h3 class="toolchain-block__title">
@@ -1724,6 +1671,7 @@ rustup component add llvm-tools-preview</code></pre>
                                 <div class="command-block">
                                     <div class="command-block__header">
                                         <span>Terminal</span>
+                                        <span>Opcional</span>
                                     </div>
 
                                     <pre
@@ -1737,7 +1685,7 @@ rustup component add llvm-tools-preview</code></pre>
                             <p>
                                 Ya tenemos código compilado específicamente para
                                 el RP2350. El siguiente paso será cargarlo y
-                                comprobar su ejecución.
+                                comprobar su ejecución en Velxio.
                             </p>
                         </aside>
                     </article>
@@ -1749,367 +1697,392 @@ rustup component add llvm-tools-preview</code></pre>
             ========================= -->
 
             <section
-                id="ejecutar-probar"
-                class="step-content"
-                data-step-panel="6"
-                data-step-title="Ejecutá y probá"
-                hidden
-            >
-                <div class="page-container">
-                    <article class="step-article">
-                        <header class="step-article__header">
-                            <div class="step-article__eyebrow">
-                                <span class="step-article__number">06</span>
+    id="ejecutar-probar"
+    class="step-content"
+    data-step-panel="6"
+    data-step-title="Ejecutá y probá"
+    hidden
+>
+    <div class="page-container">
+        <article class="step-article">
+            <header class="step-article__header">
+                <div class="step-article__eyebrow">
+                    <span class="step-article__number">06</span>
 
-                                <span
-                                    class="step-article__line"
-                                    aria-hidden="true"
-                                ></span>
+                    <span
+                        class="step-article__line"
+                        aria-hidden="true"
+                    ></span>
 
-                                <span class="step-article__category">
-                                    Ejecución
-                                </span>
-                            </div>
+                    <span class="step-article__category">
+                        Simulación
+                    </span>
+                </div>
 
-                            <h2 class="step-article__title">
-                                Ejecutá tu firmware en la Pico 2
-                            </h2>
+                <h2 class="step-article__title">
+                    Ejecutá tu firmware en Velxio
+                </h2>
 
-                            <p class="step-article__lead">
-                                Ya tenemos un programa compilado para el RP2350.
-                                Ahora vamos a convertirlo al formato UF2,
-                                cargarlo mediante USB y comprobar su ejecución
-                                directamente sobre la Raspberry Pi Pico 2.
-                            </p>
-                        </header>
+                <p class="step-article__lead">
+                    Velxio es un entorno de simulación que permite ejecutar
+                    firmware para microcontroladores y probar su comportamiento
+                    sin utilizar hardware físico. En Mini Lab lo utilizaremos
+                    para cargar el firmware que compilamos con Rust, conectar
+                    componentes virtuales y comprobar su funcionamiento.
+                </p>
+            </header>
 
-                        <aside class="step-note">
-                            <span class="step-note__icon" aria-hidden="true">
-                                i
-                            </span>
+            <aside class="step-note">
+                <span
+                    class="step-note__icon"
+                    aria-hidden="true"
+                >
+                    i
+                </span>
 
-                            <p>
-                                El proyecto generado a partir del template de
-                                Mini Lab incluye un ejemplo que hace parpadear
-                                el LED integrado de la Raspberry Pi Pico 2. Esto
-                                nos permite comprobar visualmente que el
-                                firmware se ejecutó correctamente.
-                            </p>
-                        </aside>
+                <p>
+                    En este primer recorrido vamos a comprobar dos aspectos
+                    del firmware: una salida GPIO mediante un LED virtual y
+                    una salida UART mediante el Serial Monitor de Velxio.
+                </p>
+            </aside>
 
-                <!-- =========================
-                01 - GENERAR UF2
-                ========================= -->
+            <aside class="step-note">
+                <span
+                    class="step-note__icon"
+                    aria-hidden="true"
+                >
+                    i
+                </span>
 
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 01 </span>
+                <p>
+                    Velxio no dispone actualmente de la misma Raspberry
+                    Pi Pico 2 utilizada como referencia por Mini Lab.
+                    Para este recorrido utilizamos una Pimoroni Pico Plus
+                    2 W, que también pertenece a la familia RP2350.
+                    Algunas conexiones y GPIO pueden diferir entre ambas
+                    placas.
+                </p>
+            </aside>
 
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Convertí el firmware a UF2
-                                </h3>
+            <!-- 01 - ABRIR VELXIO -->
 
-                                <p class="toolchain-block__description">
-                                    El resultado del paso anterior es un
-                                    ejecutable ELF. Utilizamos picotool para
-                                    convertirlo al formato UF2 que reconoce el
-                                    bootloader USB de la Pico 2.
-                                </p>
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">01</span>
 
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Terminal</span>
-                                        <span>ELF → UF2</span>
-                                    </div>
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Creá un proyecto en Velxio
+                    </h3>
 
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>picotool uf2 convert -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello mini-lab-hello.uf2</code></pre>
-                                </div>
+                    <p class="toolchain-block__description">
+                        Abrí Velxio desde el navegador y creá un nuevo
+                        proyecto de simulación.
+                    </p>
 
-                                <div class="verification-result">
-                                    <span class="verification-result__icon">
-                                        ✓
-                                    </span>
+                    <p class="toolchain-block__description">
+                        <a
+                            href="https://velxio.dev/editor"
+                            class="step-external-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Abrir Velxio ↗
+                        </a>
+                    </p>
 
-                                    <p>
-                                        Al finalizar deberías encontrar
-                                        <code>mini-lab-hello.uf2</code>
-                                        en el directorio actual.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
+                    <p class="toolchain-block__description">
+                        Seleccioná como placa:
+                    </p>
 
-                <!-- =========================
-                 02 - BOOTSEL
-                ========================= -->
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Placa virtual</span>
+                        </div>
 
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 02 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Iniciá la Pico 2 en modo BOOTSEL
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    Desconectá la placa. Mantené presionado el
-                                    botón BOOTSEL mientras volvés a conectarla
-                                    mediante USB y luego soltalo.
-                                </p>
-
-                                <div class="hardware-flow">
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">
-                                            1
-                                        </span>
-
-                                        <div>
-                                            <strong>
-                                                Desconectá la Pico 2
-                                            </strong>
-
-                                            <p>
-                                                Retirá el cable USB de la placa.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">
-                                            2
-                                        </span>
-
-                                        <div>
-                                            <strong>
-                                                Mantené presionado BOOTSEL
-                                            </strong>
-
-                                            <p>
-                                                No sueltes el botón mientras
-                                                volvés a conectar el cable USB.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="hardware-flow__step">
-                                        <span class="hardware-flow__number">
-                                            3
-                                        </span>
-
-                                        <div>
-                                            <strong> Soltá BOOTSEL </strong>
-
-                                            <p>
-                                                Linux debería montar una nueva
-                                                unidad llamada
-                                                <code>RP2350</code>.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                <!-- =========================
-                03 - COPIAR UF2
-                ========================= -->
-
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 03 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Cargá el firmware
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    Abrí la unidad <code>RP2350</code> y copiá
-                                    dentro el archivo que acabamos de generar:
-                                </p>
-
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Firmware</span>
-                                        <span>UF2</span>
-                                    </div>
-
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>mini-lab-hello.uf2</code></pre>
-                                </div>
-
-                                <aside class="step-note step-note--inline">
-                                    <span
-                                        class="step-note__icon"
-                                        aria-hidden="true"
-                                    >
-                                        i
-                                    </span>
-
-                                    <p>
-                                        Cuando termina la transferencia, la
-                                        unidad RP2350 se desmonta
-                                        automáticamente y la Pico 2 reinicia
-                                        para ejecutar el nuevo firmware.
-                                    </p>
-                                </aside>
-                            </div>
-                        </section>
-
-                <!-- =========================
-                04 - PROBAR
-                ========================= -->
-
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 04 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Comprobá la ejecución
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    Observá el LED integrado de la Raspberry Pi
-                                    Pico 2. El firmware incluido en el template
-                                    alterna su estado aproximadamente cada medio
-                                    segundo.
-                                </p>
-
-                                <div class="verification-result">
-                                    <span class="verification-result__icon">
-                                        ✓
-                                    </span>
-
-                                    <p>
-                                        Si el LED parpadea continuamente, tu
-                                        primer firmware Rust está ejecutándose
-                                        correctamente sobre el RP2350.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-
-                <!-- =========================
-                05 - FLUJO ALTERNATIVO
-                ========================= -->
-
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 05 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    Una vez que conozcas el flujo
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    picotool también puede cargar directamente
-                                    un ejecutable ELF en una placa conectada en
-                                    modo BOOTSEL. Más adelante podremos
-                                    automatizar este proceso para no tener que
-                                    generar y copiar manualmente el archivo UF2.
-                                </p>
-
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>Alternativa</span>
-                                        <span>picotool</span>
-                                    </div>
-
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>picotool load --update --verify --execute -t elf target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
-                                </div>
-
-                                <aside class="step-note step-note--inline">
-                                    <span
-                                        class="step-note__icon"
-                                        aria-hidden="true"
-                                    >
-                                        i
-                                    </span>
-
-                                    <p>
-                                        En Mini Lab presentamos primero el flujo
-                                        UF2 porque permite entender claramente
-                                        las etapas de compilación, conversión y
-                                        carga del firmware.
-                                    </p>
-                                </aside>
-                            </div>
-                        </section>
-
-                <!-- =========================
-                SIN HARDWARE
-                ========================= -->
-
-                        <section class="toolchain-block">
-                            <span class="toolchain-block__number"> 06 </span>
-
-                            <div class="toolchain-block__content">
-                                <h3 class="toolchain-block__title">
-                                    ¿No tenés el kit?
-                                </h3>
-
-                                <p class="toolchain-block__description">
-                                    Podés realizar todo el recorrido hasta la
-                                    compilación del firmware sin tener una Pico
-                                    2 conectada.
-                                </p>
-
-                                <aside class="step-note step-note--inline">
-                                    <span
-                                        class="step-note__icon"
-                                        aria-hidden="true"
-                                    >
-                                        i
-                                    </span>
-
-                                    <p>
-                                        La simulación completa del RP2350 no
-                                        forma parte todavía de este recorrido.
-                                        Las prácticas que puedan ejecutarse sin
-                                        hardware se identificarán
-                                        específicamente dentro de Actividades.
-                                    </p>
-                                </aside>
-                            </div>
-                        </section>
-
-                <!-- =========================
-                FINAL
-                ========================= -->
-
-                        <section class="environment-ready">
-                            <span
-                                class="environment-ready__icon"
-                                aria-hidden="true"
-                            >
-                                ✓
-                            </span>
-
-                            <div>
-                                <p class="environment-ready__eyebrow">
-                                    Primeros pasos completados
-                                </p>
-
-                                <h3 class="environment-ready__title">
-                                    Tu entorno Mini Lab está listo
-                                </h3>
-
-                                <p class="environment-ready__description">
-                                    Preparaste el entorno, instalaste la
-                                    toolchain, configuraste Linux, verificaste
-                                    las herramientas, compilaste un firmware y
-                                    lo ejecutaste en la Pico 2. Ya podés
-                                    comenzar con las actividades.
-                                </p>
-                            </div>
-                        </section>
-                    </article>
+                        <pre class="command-block__code"><code>Pimoroni Pico Plus 2 W</code></pre>
+                    </div>
                 </div>
             </section>
+
+            <!-- 02 - CIRCUITO -->
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">02</span>
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Conectá un LED a GPIO15
+                    </h3>
+
+                    <p class="toolchain-block__description">
+                        Agregá un LED y una resistencia al circuito
+                        virtual. Utilizaremos GPIO15 porque es el pin que
+                        configuramos en el firmware durante el paso
+                        anterior.
+                    </p>
+
+                    <div class="hardware-flow">
+                        <div class="hardware-flow__step">
+                            <span class="hardware-flow__number">1</span>
+
+                            <div>
+                                <strong>GPIO15</strong>
+
+                                <p>
+                                    Conectá GPIO15 a una resistencia de
+                                    aproximadamente 220 Ω a 330 Ω.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hardware-flow__step">
+                            <span class="hardware-flow__number">2</span>
+
+                            <div>
+                                <strong>LED</strong>
+
+                                <p>
+                                    Conectá la resistencia al ánodo del LED.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hardware-flow__step">
+                            <span class="hardware-flow__number">3</span>
+
+                            <div>
+                                <strong>GND</strong>
+
+                                <p>
+                                    Conectá el cátodo del LED a GND.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="step-note step-note--inline">
+                        <span
+                            class="step-note__icon"
+                            aria-hidden="true"
+                        >
+                            i
+                        </span>
+
+                        <p>
+                            El template original utiliza GPIO25. Lo
+                            reemplazamos por GPIO15 porque la placa virtual
+                            utilizada en este recorrido no expone GPIO25
+                            de la misma manera.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- 03 - CARGAR ELF -->
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">03</span>
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Cargá el firmware
+                    </h3>
+
+                    <p class="toolchain-block__description">
+                        Utilizá la opción
+                        <strong>Upload Firmware</strong> de Velxio y
+                        seleccioná directamente el ejecutable ELF que
+                        generó Cargo:
+                    </p>
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Firmware</span>
+                            <span>ELF ARM</span>
+                        </div>
+
+                        <pre class="command-block__code"><code>target/thumbv8m.main-none-eabihf/release/mini-lab-hello</code></pre>
+                    </div>
+
+                    <aside class="step-note step-note--inline">
+                        <span
+                            class="step-note__icon"
+                            aria-hidden="true"
+                        >
+                            i
+                        </span>
+
+                        <p>
+                            No necesitás convertir el archivo a BIN o UF2.
+                            Velxio puede recibir directamente el ELF
+                            generado por Cargo y preparar internamente la
+                            imagen que utiliza el simulador.
+                        </p>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- 04 - ADVERTENCIA -->
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">04</span>
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Verificá que el firmware fue reconocido
+                    </h3>
+
+                    <p class="toolchain-block__description">
+                        Al cargar el archivo, Velxio puede mostrar una
+                        advertencia indicando que detectó firmware ARM
+                        mientras la placa seleccionada es una Pimoroni
+                        Pico Plus 2 W.
+                    </p>
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Velxio</span>
+                        </div>
+
+                        <pre class="command-block__code"><code>detected ARM architecture, but current board is Pimoroni Pico Plus 2W. loading anyway</code></pre>
+                    </div>
+
+                    <p class="toolchain-block__description">
+                        En este recorrido esa advertencia es esperada.
+                        Después de procesar el archivo, Velxio debería
+                        indicar:
+                    </p>
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Velxio</span>
+                        </div>
+
+                        <pre class="command-block__code"><code>loaded ELF firmware ARM -> binary</code></pre>
+                    </div>
+
+                    <div class="verification-result">
+                        <span class="verification-result__icon">
+                            ✓
+                        </span>
+
+                        <p>
+                            Este mensaje confirma que Velxio reconoció el
+                            ELF ARM y cargó el firmware en el simulador.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 - EJECUTAR -->
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">05</span>
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Ejecutá el firmware
+                    </h3>
+
+                    <p class="toolchain-block__description">
+                        Iniciá la simulación desde Velxio y observá el LED
+                        conectado a GPIO15.
+                    </p>
+
+                    <div class="verification-result">
+                        <span class="verification-result__icon">
+                            ✓
+                        </span>
+
+                        <p>
+                            Si el LED se enciende y apaga aproximadamente
+                            cada 500 ms, el firmware Rust está ejecutándose
+                            correctamente en el RP2350 virtual.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 06 - SERIAL -->
+
+            <section class="toolchain-block">
+                <span class="toolchain-block__number">06</span>
+
+                <div class="toolchain-block__content">
+                    <h3 class="toolchain-block__title">
+                        Abrí el Serial Monitor
+                    </h3>
+
+                    <p class="toolchain-block__description">
+                        Abrí el Serial Monitor de Velxio para observar
+                        los mensajes enviados mediante UART por el
+                        firmware.
+                    </p>
+
+                    <p class="toolchain-block__description">
+                        Deberías ver una salida similar a:
+                    </p>
+
+                    <div class="command-block">
+                        <div class="command-block__header">
+                            <span>Serial Monitor</span>
+                            <span>115200 baud</span>
+                        </div>
+
+                        <pre class="command-block__code"><code>Mini Lab iniciado
+LED ON
+LED OFF
+LED ON
+LED OFF
+...</code></pre>
+                    </div>
+
+                    <div class="verification-result">
+                        <span class="verification-result__icon">
+                            ✓
+                        </span>
+
+                        <p>
+                            Si el LED parpadea y el Serial Monitor muestra
+                            los mensajes, verificamos tanto la salida GPIO
+                            como la comunicación serial del firmware.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RESULTADO FINAL -->
+
+            <section class="environment-ready">
+                <span
+                    class="environment-ready__icon"
+                    aria-hidden="true"
+                >
+                    ✓
+                </span>
+
+                <div>
+                    <p class="environment-ready__eyebrow">
+                        Primeros pasos completados
+                    </p>
+
+                    <h3 class="environment-ready__title">
+                        Tu primer firmware está funcionando
+                    </h3>
+
+                    <p class="environment-ready__description">
+                        Preparaste el entorno, compilaste firmware Rust
+                        para RP2350, cargaste directamente el ELF en
+                        Velxio y comprobaste su ejecución mediante GPIO
+                        y salida serial. Ya podés comenzar con las
+                        actividades de Mini Lab.
+                    </p>
+                </div>
+            </section>
+        </article>
+    </div>
+</section>
             <!-- =========================
         NAVEGACIÓN DEL RECORRIDO
         ========================= -->

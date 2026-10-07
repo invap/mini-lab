@@ -112,3 +112,42 @@ themeToggles.forEach((toggle) => {
         }
     });
 });
+
+
+const commandBlocks = document.querySelectorAll(".command-block");
+
+commandBlocks.forEach((block) => {
+    const header = block.querySelector(".command-block__header");
+    const code = block.querySelector(".command-block__code code");
+
+    if (!header || !code) {
+        return;
+    }
+
+    const copyButton = document.createElement("button");
+
+    copyButton.type = "button";
+    copyButton.className = "command-block__copy";
+    copyButton.textContent = "Copiar";
+    copyButton.setAttribute("aria-label", "Copiar comando");
+
+    header.appendChild(copyButton);
+
+    copyButton.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(code.textContent.trim());
+
+            copyButton.textContent = "Copiado ✓";
+
+            setTimeout(() => {
+                copyButton.textContent = "Copiar";
+            }, 1500);
+        } catch {
+            copyButton.textContent = "Error";
+
+            setTimeout(() => {
+                copyButton.textContent = "Copiar";
+            }, 1500);
+        }
+    });
+});
