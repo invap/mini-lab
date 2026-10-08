@@ -254,7 +254,7 @@
     border: 2px solid var(--invap-green);
     border-radius: var(--radius-medium);
 
-    background-color: #071a0f;
+    background-color: var(--code-window-bg);
 
     box-shadow: var(--box-shadow);
 }
@@ -266,8 +266,8 @@
 
     padding: 0.9rem 1.25rem;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    background-color: rgba(255, 255, 255, 0.025);
+    border-bottom: 1px solid var(--code-window-header-border);
+    background-color: var(--code-window-header-bg);
 }
 
 .code-window__dots {
@@ -295,7 +295,7 @@
 
 
 .code-window__filename {
-    color: #7d9a86;
+    color: var(--code-window-muted);
 
     font-family: monospace;
 }
@@ -306,7 +306,7 @@
 
     overflow-x: auto;
 
-    color: #9bc9ab;
+    color: var(--code-window-text);
 
     font-family: monospace;
     font-size: 0.95rem;
