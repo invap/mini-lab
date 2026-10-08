@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta
+            name="description"
+            content="Actividad 01 de Mini Lab: aprendé a crear patrones con un LED utilizando Rust."
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+
+        <title>Mini Lab | Actividad 01</title>
+
+        <link rel="stylesheet" href="../../../css/styles.css" />
+        <link rel="stylesheet" href="../../../css/pages/actividades.css" />
+    </head>
+
+    <body>
+        <!-- =========================
+        HEADER MOBILE
+        ========================= -->
+        <header class="site-header">
+            <button
+                id="menu-button"
+                class="site-header__menu-button"
+                type="button"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                ☰
+            </button>
+
+            <a href="../../../index.html" class="site-header__brand">
+                Mini Lab
+            </a>
+
+            <div class="site-header__actions">
+                <div class="site-header__logos">
+                    <!-- Logos institucionales -->
+                </div>
+
+                <button
+                    class="theme-toggle"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Cambiar tema"
+                >
+                    <svg
+                        class="theme-icon sun-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                        ></path>
+                    </svg>
+
+                    <svg
+                        class="theme-icon moon-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- =========================
+        NAVEGACIÓN
+        ========================= -->
+        <div id="menu-overlay" class="menu-overlay"></div>
+
+        <nav
+            id="main-navigation"
+            class="site-nav"
+            aria-label="Navegación principal"
+        >
+            <div class="site-nav__header">
+                <a href="../../../index.html" class="site-nav__brand">
+                    <span class="site-nav__brand-name">
+                        Mini Lab
+                    </span>
+
+                    <span class="site-nav__brand-subtitle">
+                        Sistemas embebidos con Rust
+                    </span>
+                </a>
+
+                <button
+                    id="menu-close"
+                    class="site-nav__close"
+                    type="button"
+                    aria-label="Cerrar menú de navegación"
+                >
+                    ✕
+                </button>
+            </div>
+
+            <ul class="site-nav__list">
+                <li class="site-nav__item">
+                    <a
+                        href="../../../index.html"
+                        class="site-nav__link"
+                    >
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="../../conoce-tu-kit/"
+                        class="site-nav__link"
+                    >
+                        Conocé tu kit
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="../../primeros-pasos/"
+                        class="site-nav__link"
+                    >
+                        Primeros pasos
+                    </a>
+                </li>
+
+                <!-- Actividades -->
+                <li class="site-nav__item site-nav__item-activities">
+                    <a
+                        href="../"
+                        class="site-nav__link site-nav__link--active"
+                        aria-current="page"
+                    >
+                        Actividades
+                    </a>
+
+                    <ol
+                        class="activities-nav"
+                        aria-label="Actividades de Mini Lab"
+                    >
+                        <li class="activities-nav__item">
+                            <a
+                                href="./"
+                                class="activities-nav__link activities-nav__link--active"
+                                aria-current="page"
+                            >
+                                <span class="activities-nav__number">
+                                    01
+                                </span>
+
+                                <span class="activities-nav__label">
+                                    Patrones con un LED
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <span
+                                class="activities-nav__link activities-nav__link--disabled"
+                            >
+                                <span class="activities-nav__number">
+                                    02
+                                </span>
+
+                                <span class="activities-nav__label">
+                                    Botón y LED
+                                </span>
+                            </span>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <span
+                                class="activities-nav__link activities-nav__link--disabled"
+                            >
+                                <span class="activities-nav__number">
+                                    03
+                                </span>
+
+                                <span class="activities-nav__label">
+                                    Interruptor digital
+                                </span>
+                            </span>
+                        </li>
+                    </ol>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="../../recursos/"
+                        class="site-nav__link"
+                    >
+                        Recursos
+                    </a>
+                </li>
+
+                <li class="site-nav__item">
+                    <a
+                        href="../../ayuda/"
+                        class="site-nav__link"
+                    >
+                        Ayuda
+                    </a>
+                </li>
+            </ul>
+
+            <div class="site-nav__footer">
+                <button
+                    class="theme-toggle theme-toggle--sidebar"
+                    data-theme-toggle
+                    type="button"
+                    aria-label="Cambiar tema"
+                >
+                    <svg
+                        class="theme-icon sun-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                        ></path>
+                    </svg>
+
+                    <svg
+                        class="theme-icon moon-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
+                        ></path>
+                    </svg>
+
+                    <span class="theme-toggle__label">
+                        Tema
+                    </span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- =========================
+        CONTENIDO
+        ========================= -->
+        <main>
+            <!-- =========================
+            HERO
+            ========================= -->
+            <header class="activity-hero">
+                <div class="page-container">
+                    <nav
+                        class="activity-breadcrumb"
+                        aria-label="Ruta de navegación"
+                    >
+                        <a
+                            href="../../../index.html"
+                            class="activity-breadcrumb__link"
+                        >
+                            Mini Lab
+                        </a>
+
+                        <span
+                            class="activity-breadcrumb__separator"
+                            aria-hidden="true"
+                        >
+                            &gt;
+                        </span>
+
+                        <a
+                            href="../"
+                            class="activity-breadcrumb__link"
+                        >
+                            Actividades
+                        </a>
+
+                        <span
+                            class="activity-breadcrumb__separator"
+                            aria-hidden="true"
+                        >
+                            &gt;
+                        </span>
+
+                        <span class="activity-breadcrumb__current">
+                            Actividad 01
+                        </span>
+                    </nav>
+
+                    <div class="activity-hero__content">
+                        <p class="activity-hero__eyebrow">
+                            <span
+                                class="activity-hero__eyebrow-dot"
+                                aria-hidden="true"
+                            ></span>
+
+                            Actividad 01 · Nivel inicial
+                        </p>
+
+                        <h1 class="activity-hero__title">
+                            Creá patrones con un LED
+                        </h1>
+
+                        <p class="activity-hero__description">
+                            En esta actividad vas a explorar diferentes
+                            patrones de parpadeo usando Rust y el entorno de
+                            simulación. Vas a aprender a controlar tiempos,
+                            crear secuencias y experimentar modificando el
+                            comportamiento de un LED.
+                        </p>
+
+                        <ul
+                            class="activity-meta"
+                            aria-label="Información de la actividad"
+                        >
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Esfera principal -->
+                                        <circle cx="12" cy="12" r="9" />
+                                        
+                                        <!-- Botones superiores estilo cronómetro de laboratorio -->
+                                        <path d="M12 3V1M9 2h6" />
+                                        
+                                        <!-- Área de tiempo transcurrido (Aproximadamente 25 minutos) -->
+                                        <path d="M12 12V3a9 9 0 0 1 7.8 13.5Z" fill="currentColor" fill-opacity="0.15" stroke="none" />
+                                        
+                                        <!-- Manecillas internas -->
+                                        <path d="M12 12V3M12 12l7.8 4.5" />
+                                    </svg>
+
+                                </span>
+
+                                20–30 min
+                            </li>
+
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Barra 1: Nivel Inicial (Rellena para indicar que está activa) -->
+                                        <rect x="4" y="15" width="4" height="5" rx="1" fill="currentColor" />
+                                        
+                                        <!-- Barra 2: Nivel Intermedio (Vacía) -->
+                                        <rect x="10" y="10" width="4" height="10" rx="1" opacity="0.4" />
+                                        
+                                        <!-- Barra 3: Nivel Avanzado (Vacía) -->
+                                        <rect x="16" y="4" width="4" height="16" rx="1" opacity="0.4" />
+                                    </svg>
+
+                                </span>
+
+                                Nivel inicial
+                            </li>
+
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Cuerpo de la bombilla -->
+                                        <path d="M15 18H9M14 21H10M12 2v1M4.22 4.22l.7.7M2 12h1M21 12h1M18.36 4.22l-.7.7" />
+                                        <path d="M17 12a5 5 0 1 0-10 0c0 2.5 2 3.5 3 5h4c1-1.5 3-2.5 3-5z" />
+                                    </svg>
+                                </span>
+
+                                LED
+                            </li>
+
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Cuerpo central del microcontrolador -->
+                                        <rect x="5" y="5" width="14" height="14" rx="1.5" fill="none" />
+                                        
+                                        <!-- Muesca de orientación / Identificador del Pin 1 -->
+                                        <circle cx="7.5" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
+                                        
+                                        <!-- Pines Superiores -->
+                                        <path d="M7 2v3M10 2v3M13 2v3M17 2v3" />
+                                        <!-- Pines Inferiores -->
+                                        <path d="M7 19v3M10 19v3M13 19v3M17 19v3" />
+                                        <!-- Pines Izquierdos -->
+                                        <path d="M2 7h3M2 10h3M2 13h3M2 17h3" />
+                                        <!-- Pines Derechas -->
+                                        <path d="M19 7h3M19 10h3M19 13h3M19 17h3" />
+                                    </svg>
+                                </span>
+
+                                RP2350
+                            </li>
+
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Pantalla del simulador / Área de trabajo -->
+                                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                                        
+                                        <!-- Soporte o base de la pantalla -->
+                                        <path d="M6 21h12M12 17v4" />
+                                        
+                                        <!-- Nodos de circuito simulados en pantalla -->
+                                        <circle cx="7" cy="8" r="1.5" fill="currentColor" />
+                                        <circle cx="17" cy="12" r="1.5" fill="currentColor" />
+                                        
+                                        <!-- Línea de conexión / Onda de señal interactiva -->
+                                        <path d="M8.5 8h2l2.5 5 2.5-7 1 2" />
+                                    </svg>
+
+                                </span>
+
+                                Velxio
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- =========================
+            CUERPO
+            ========================= -->
+            <div class="activity-content">
+                <div class="page-container">
+                    <!-- =========================
+                    OBJETIVOS
+                    ========================= -->
+                    <section class="activity-section">
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    01
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Objetivos
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Qué vas a aprender
+                            </h2>
+                        </header>
+
+                        <div class="learning-grid">
+                            <article class="learning-card">
+                                <span
+                                    class="learning-card__number"
+                                    aria-hidden="true"
+                                >
+                                    01
+                                </span>
+
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Cuerpo principal del temporizador -->
+                                        <circle cx="12" cy="14" r="8" />
+                                        
+                                        <!-- Botón superior de Inicio/Parada (Pulsador) -->
+                                        <path d="M12 6V3M9 3h6" />
+                                        
+                                        <!-- Botón lateral de Reset / Configuración -->
+                                        <path d="M18 8l2-2" />
+                                        
+                                        <!-- Indicador interno de cuenta atrás (Arco de tiempo restante) -->
+                                        <path d="M12 10a4 4 0 0 1 4 4" stroke-width="2" />
+                                        <path d="M12 14V10" />
+                                    </svg>
+
+                                </div>
+
+                                <h3 class="learning-card__title">
+                                    Temporización
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Controlar cuánto tiempo permanece
+                                    encendido o apagado el LED.
+                                </p>
+                            </article>
+
+                            <article class="learning-card">
+                                <span
+                                    class="learning-card__number"
+                                    aria-hidden="true"
+                                >
+                                    02
+                                </span>
+
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Señal de reloj / Pulso de la secuencia -->
+                                        <path d="M2 18h3v-4h4v4h3" />
+                                        
+                                        <!-- Línea de distribución hacia los LEDs -->
+                                        <path d="M12 18V6h4" />
+                                        
+                                        <!-- Hilera de LEDs verticales en secuencia -->
+                                        <!-- LED Superior (Encendido) -->
+                                        <circle cx="18" cy="6" r="2" fill="currentColor" />
+                                        <!-- LED Central (Medio encendido / Atenuado) -->
+                                        <circle cx="18" cy="12" r="2" opacity="0.6" />
+                                        <!-- LED Inferior (Apagado) -->
+                                        <circle cx="18" cy="18" r="2" opacity="0.2" />
+                                    </svg>
+
+                                </div>
+
+                                <h3 class="learning-card__title">
+                                    Secuencias
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Combinar distintos cambios de estado
+                                    para crear un patrón.
+                                </p>
+                            </article>
+
+                            <article class="learning-card">
+                                <span
+                                    class="learning-card__number"
+                                    aria-hidden="true"
+                                >
+                                    03
+                                </span>
+
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Base del interruptor/esquema -->
+                                        <path d="M3 12h5M16 12h5" />
+                                        
+                                        <!-- La palanca cambiando de posición (En plena transición de prueba) -->
+                                        <path d="M8 12l6-5" stroke-width="2" />
+                                        <path d="M8 12l6 5" stroke-dasharray="2 2" opacity="0.4" />
+                                        
+                                        <!-- Indicadores de estado -->
+                                        <circle cx="14" cy="7" r="1" fill="currentColor" />
+                                        <circle cx="14" cy="17" r="1" opacity="0.4" />
+                                    </svg>
+
+                                </div>
+
+                                <h3 class="learning-card__title">
+                                    Prueba y error
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Modificar valores, volver a compilar y
+                                    comparar el resultado obtenido.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    MATERIALES
+                    ========================= -->
+                    <section class="activity-section">
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    02
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Antes de empezar
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Qué necesitás
+                            </h2>
+                        </header>
+
+                        <div class="activity-materials">
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Proyecto de Primeros pasos
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        mini-lab-hello
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Velxio
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Simulador utilizado durante el recorrido
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Pimoroni Pico Plus 2 W
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Placa RP2350 disponible en Velxio
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        LED virtual
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Conectado a GPIO15
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Resistencia
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Entre 220 Ω y 330 Ω
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Mini Lab toma como hardware de referencia la
+                                Raspberry Pi Pico 2. En el recorrido actual
+                                utilizamos la Pimoroni Pico Plus 2 W disponible
+                                en Velxio, por lo que trabajaremos con GPIO15.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- =========================
+                    PARTE 1
+                    ========================= -->
+                    <section
+                        id="cambiar-velocidad"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    03
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Experimentá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Parte 1 — Cambiá la velocidad
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Empezá desde el parpadeo que ya construiste
+                                en Primeros pasos. El LED permanece
+                                encendido 500 ms y apagado otros 500 ms.
+                            </p>
+                        </header>
+
+                        <div class="activity-experiment__layout">
+                            <div class="activity-experiment__main">
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>src/main.rs</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(500);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(500);
+}</code></pre>
+                                </div>
+
+                                <div class="activity-task">
+                                    <span
+                                        class="activity-task__label"
+                                    >
+                                        Tu objetivo
+                                    </span>
+
+                                    <p>
+                                        Hacé que el LED parpadee
+                                        <strong>el doble de rápido</strong>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <aside class="activity-hint">
+                                <span
+                                    class="activity-hint__icon"
+                                    aria-hidden="true"
+                                >
+                                    ⚡
+                                </span>
+
+                                <h3 class="activity-hint__title">
+                                    Pista
+                                </h3>
+
+                                <p>
+                                    Revisá cuánto tiempo espera el programa
+                                    después de encender y apagar el LED.
+                                    Si reducís esos valores, el ciclo tarda
+                                    menos en completarse.
+                                </p>
+                            </aside>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    PARTE 2
+                    ========================= -->
+                    <section
+                        id="destello-corto"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    04
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Experimentá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Parte 2 — Hacé un destello corto
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Los tiempos de encendido y apagado no tienen
+                                que ser iguales. Ahora vamos a crear un
+                                destello breve seguido por una pausa más larga.
+                            </p>
+                        </header>
+
+                        <div class="activity-pattern">
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Encendido
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    100 ms
+                                </strong>
+                            </div>
+
+                            <span
+                                class="activity-pattern__arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Apagado
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    900 ms
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(100);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(900);
+}</code></pre>
+                        </div>
+
+                        <div class="activity-question">
+                            <span
+                                class="activity-question__icon"
+                                aria-hidden="true"
+                            >
+                                ?
+                            </span>
+
+                            <p>
+                                Antes de ejecutarlo: ¿cómo esperás que se vea
+                                este patrón comparado con el anterior?
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    PARTE 3
+                    ========================= -->
+                    <section
+                        id="crear-patron"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    05
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Experimentá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Parte 3 — Creá una secuencia
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Ahora combiná varios cambios de estado.
+                                Vamos a generar dos destellos rápidos
+                                seguidos por una pausa más larga.
+                            </p>
+                        </header>
+
+                        <div
+                            class="activity-sequence"
+                            aria-label="Dos destellos cortos y una pausa larga"
+                        >
+                            <span
+                                class="activity-sequence__on"
+                                title="LED encendido"
+                            >
+                                ●
+                            </span>
+
+                            <span
+                                class="activity-sequence__off"
+                                title="LED apagado"
+                            >
+                                ○
+                            </span>
+
+                            <span
+                                class="activity-sequence__on"
+                                title="LED encendido"
+                            >
+                                ●
+                            </span>
+
+                            <span
+                                class="activity-sequence__pause"
+                                aria-hidden="true"
+                            ></span>
+
+                            <span
+                                class="activity-sequence__off"
+                                title="LED apagado"
+                            >
+                                ○
+                            </span>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(150);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(150);
+
+    led_pin.set_high().unwrap();
+    delay.delay_ms(150);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(700);
+}</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Modificá el código, ejecutá nuevamente
+                                <code>cargo build --release</code> y cargá
+                                el nuevo ELF en Velxio para comparar el
+                                resultado.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- =========================
+                    DESAFÍO
+                    ========================= -->
+                    <section class="activity-section">
+                        <div class="activity-challenge">
+                            <div
+                                class="activity-challenge__icon"
+                                aria-hidden="true"
+                            >
+                                ★
+                            </div>
+
+                            <div class="activity-challenge__content">
+                                <p class="activity-challenge__eyebrow">
+                                    Desafío final
+                                </p>
+
+                                <h2 class="activity-challenge__title">
+                                    Diseñá tu propio patrón
+                                </h2>
+
+                                <p class="activity-challenge__description">
+                                    Creá una señal utilizando al menos
+                                    <strong>
+                                        tres cambios de estado
+                                    </strong>
+                                    del LED.
+                                </p>
+
+                                <p class="activity-challenge__description">
+                                    Antes de ejecutarla, escribí o imaginá
+                                    cómo debería verse. Después compilá el
+                                    firmware y compará tu predicción con el
+                                    resultado en Velxio.
+                                </p>
+
+                                <ul class="activity-challenge__checklist">
+                                    <li>
+                                        Usá al menos tres cambios de estado.
+                                    </li>
+
+                                    <li>
+                                        Utilizá más de un tiempo de espera.
+                                    </li>
+
+                                    <li>
+                                        Predecí el comportamiento antes de
+                                        ejecutarlo.
+                                    </li>
+
+                                    <li>
+                                        Probalo en el simulador.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    COMPLETADO
+                    ========================= -->
+                    <section class="activity-complete">
+                        <span
+                            class="activity-complete__icon"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+                        <div class="activity-complete__content">
+                            <h2 class="activity-complete__title">
+                                Actividad completada
+                            </h2>
+
+                            <p class="activity-complete__description">
+                                Ya modificaste una salida GPIO, trabajaste
+                                con tiempos y construiste tus primeras
+                                secuencias en Rust.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    NAVEGACIÓN FINAL
+                    ========================= -->
+                    <nav
+                        class="activity-footer-nav"
+                        aria-label="Navegación entre actividades"
+                    >
+                        <a
+                            href="../"
+                            class="activity-footer-nav__back"
+                        >
+                            <span aria-hidden="true">
+                                ←
+                            </span>
+
+                            Volver a actividades
+                        </a>
+
+                        <span
+                            class="activity-footer-nav__next activity-footer-nav__next--disabled"
+                            aria-disabled="true"
+                        >
+                            Siguiente actividad
+
+                            <span aria-hidden="true">
+                                →
+                            </span>
+                        </span>
+                    </nav>
+                </div>
+            </div>
+        </main>
+
+        <!-- =========================
+        FOOTER
+        ========================= -->
+        <footer class="site-footer">
+            <p>
+                Un proyecto de
+                <strong>INVAP</strong>
+
+                <span class="site-footer__plus">
+                    +
+                </span>
+
+                <strong>Fundación INVAP</strong>
+            </p>
+        </footer>
+
+        <script
+            src="../../../js/main.js"
+            defer
+        ></script>
+    </body>
+</html>
