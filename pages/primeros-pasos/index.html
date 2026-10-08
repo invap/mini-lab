@@ -1496,7 +1496,7 @@ use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
 );
 
 
-let mut uart0 =
+let uart0 =
     hal::uart::UartPeripheral::new(
         pac.UART0,
         uart_pins,
@@ -1891,7 +1891,7 @@ uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
 
                     <p class="toolchain-block__description">
                         Utilizá la opción
-                        <strong>Upload Firmware</strong> de Velxio y
+                        <strong>File > Upload Firmware</strong> de Velxio y
                         seleccioná directamente el ejecutable ELF que
                         generó Cargo:
                     </p>
