@@ -1,3 +1,61 @@
+/* =========================
+   CAPTURAS DE LA GUÍA
+   ========================= */
+
+.step-figure {
+    max-width: 760px;
+
+    margin: 1.5rem 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--surface);
+
+    box-shadow: var(--shadow-small);
+}
+
+.step-figure__image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    background-color: #0b0b0b;
+}
+
+.step-figure__caption {
+    margin: 0;
+
+    padding: 0.85rem 1rem;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+.step-figure__caption strong {
+    color: var(--text-primary);
+    font-weight: 650;
+}
+
+.step-figure__caption code {
+    color: var(--text-primary);
+
+    font-family: monospace;
+    font-size: 0.74rem;
+}
+
+.step-figure--circuit {
+    max-width: 660px;
+}
+
+
 .step-external-link {
     display: inline-flex;
     align-items: center;

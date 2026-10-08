@@ -1790,6 +1790,20 @@ uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
                             Abrir Velxio ↗
                         </a>
                     </p>
+                    <figure class="step-figure">
+                        <img
+                            src="../../assets/images/velxio-agregar-microcontrolador.jpeg"
+                            alt="Botón Add de Velxio utilizado para agregar una placa o componente al proyecto"
+                            class="step-figure__image"
+                            loading="lazy"
+                            decoding="async"
+                        />
+
+                        <figcaption class="step-figure__caption">
+                            Desde el editor de Velxio, seleccioná
+                            <strong>Add</strong> para agregar una placa al proyecto.
+                        </figcaption>
+                    </figure>
 
                     <p class="toolchain-block__description">
                         Seleccioná como placa:
@@ -1802,6 +1816,20 @@ uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
 
                         <pre class="command-block__code"><code>Pimoroni Pico Plus 2 W</code></pre>
                     </div>
+                    <figure class="step-figure">
+                        <img
+                            src="../../assets/images/velxio-pimoroni-pico-plus-2.jpeg"
+                            alt="Selección de la placa Pimoroni Pico Plus 2 W en el catálogo de componentes de Velxio"
+                            class="step-figure__image"
+                            loading="lazy"
+                            decoding="async"
+                        />
+
+                        <figcaption class="step-figure__caption">
+                            Buscá <strong>Pimoroni</strong> y seleccioná
+                            <strong>Pimoroni Pico Plus 2 W</strong>.
+                        </figcaption>
+                    </figure>
                 </div>
             </section>
 
@@ -1825,6 +1853,7 @@ uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
                     <div class="hardware-flow">
                         <div class="hardware-flow__step">
                             <span class="hardware-flow__number">1</span>
+                            
 
                             <div>
                                 <strong>GPIO15</strong>
@@ -1860,6 +1889,21 @@ uart0.write_full_blocking(b"Mini Lab iniciado\r\n");</code></pre>
                             </div>
                         </div>
                     </div>
+
+                    <figure class="step-figure step-figure--circuit">
+                        <img
+                            src="../../assets/images/velxio-conexion-placa.png"
+                            alt="Circuito en Velxio con un LED y una resistencia conectados entre GPIO15 y GND de la Pimoroni Pico Plus 2 W"
+                            class="step-figure__image"
+                            loading="lazy"
+                            decoding="async"
+                        />
+
+                        <figcaption class="step-figure__caption">
+                            El circuito debe quedar conectado como se muestra:
+                            <strong>GPIO15 → resistencia → LED → GND</strong>.
+                        </figcaption>
+                    </figure>
 
                     <aside class="step-note step-note--inline">
                         <span
@@ -2037,6 +2081,22 @@ LED ON
 LED OFF
 ...</code></pre>
                     </div>
+
+                    <figure class="step-figure">
+                        <img
+                            src="../../assets/images/velxio-test-completo.jpeg"
+                            alt="Firmware Mini Lab ejecutándose en Velxio con el LED encendido y mensajes LED ON y LED OFF visibles en el Serial Monitor"
+                            class="step-figure__image"
+                            loading="lazy"
+                            decoding="async"
+                        />
+
+                        <figcaption class="step-figure__caption">
+                            Resultado esperado: el LED alterna entre encendido y apagado,
+                            mientras el Serial Monitor muestra los mensajes
+                            <code>LED ON</code> y <code>LED OFF</code>.
+                        </figcaption>
+                    </figure>
 
                     <div class="verification-result">
                         <span class="verification-result__icon">
