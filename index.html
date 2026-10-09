@@ -139,7 +139,23 @@
                     <div class="journey-grid">
                         <a href="pages/conoce-tu-kit/" class="journey-card">
                             <div class="journey-card__top">
-                                <span class="journey-card__icon"> ◇ </span>
+                                <span class="journey-card__icon"> 
+                                    <svg style="padding: 4px;" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--kit-badge-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <!-- Cuerpo central del microcontrolador -->
+                                        <rect x="5" y="5" width="14" height="14" rx="1.5" fill="none" />
+                                        <!-- Muesca de orientación / Identificador del Pin 1 -->
+                                        <circle cx="7.5" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
+                                        
+                                        <!-- Pines Superiores -->
+                                        <path d="M7 2v3M10 2v3M13 2v3M17 2v3" />
+                                        <!-- Pines Inferiores -->
+                                        <path d="M7 19v3M10 19v3M13 19v3M17 19v3" />
+                                        <!-- Pines Izquierdos -->
+                                        <path d="M2 7h3M2 10h3M2 13h3M2 17h3" />
+                                        <!-- Pines Derechas -->
+                                        <path d="M19 7h3M19 10h3M19 13h3M19 17h3" />
+                                    </svg>
+                                </span>
                                 <span class="journey-card__number"> 01 </span>
                             </div>
                             <h2 class="journey-card__title">Conocé tu kit</h2>
@@ -151,7 +167,25 @@
 
                         <a href="pages/primeros-pasos/" class="journey-card">
                             <div class="journey-card__top">
-                                <span class="journey-card__icon"> &gt;_ </span>
+                                <span class="journey-card__icon"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" class="icono-entorno">
+                                        <!-- Ventana de consola bien simple -->
+                                        <rect x="22" y="24" width="46" height="38" rx="5" fill="none" stroke="var(--kit-badge-text)" stroke-width="4.5" />
+                                        
+                                        <!-- Detalle superior de la consola (solo una línea tranqui) -->
+                                        <line x1="22" y1="31" x2="68" y2="31" stroke="var(--kit-badge-text)" stroke-width="1.5" />
+
+                                        <!-- El prompt de terminal >_ -->
+                                        <path d="M 30 39 L 34 43 L 30 47" fill="none" stroke="var(--kit-badge-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <line x1="37" y1="47" x2="43" y2="47" stroke="var(--kit-badge-text)" stroke-width="2" stroke-linecap="round" />
+
+                                        <!-- Un único engranaje sutil abajo a la derecha -->
+                                        <g transform="translate(62, 54)">
+                                            <circle cx="8" cy="8" r="4.5" fill="none" stroke="var(--kit-badge-text)" stroke-width="2" />
+                                            <path d="M 8 1 L 8 3 M 8 13 L 8 15 M 1 8 L 3 8 M 13 8 L 15 8 M 3 3 L 4.5 4.5 M 11.5 11.5 L 13 13 M 3 13 L 4.5 11.5 M 11.5 4.5 L 13 3" stroke="var(--kit-badge-text)" stroke-width="2.2" stroke-linecap="round" />
+                                        </g>
+                                    </svg>
+                                </span>
                                 <span class="journey-card__number"> 02 </span>
                             </div>
 
@@ -168,7 +202,18 @@
                         <a href="pages/actividades/" class="journey-card">
                             <div class="journey-card__top">
                                 <span class="journey-card__icon">
-                                    &lt;&gt;
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" class="icono-actividades">
+                                        <!-- Símbolos de código < > -->
+                                        <path d="M 36 35 L 22 50 L 36 65" fill="none" stroke="var(--kit-badge-text)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M 64 35 L 78 50 L 64 65" fill="none" stroke="var(--kit-badge-text)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                        <!-- Barra diagonal (/) estilo pista de circuito (Sistemas Embebidos) -->
+                                        <g fill="var(--kit-badge-text)">
+                                            <line x1="45" y1="68" x2="55" y2="32" stroke="var(--kit-badge-text)" stroke-width="2.5" stroke-linecap="round" />
+                                            <circle cx="45" cy="68" r="2.5" />
+                                            <circle cx="55" cy="32" r="2.5" />
+                                        </g>
+                                    </svg>
                                 </span>
                                 <span class="journey-card__number"> 03 </span>
                             </div>
@@ -185,7 +230,21 @@
 
                         <a href="pages/recursos/" class="journey-card">
                             <div class="journey-card__top">
-                                <span class="journey-card__icon"> □ </span>
+                                <span class="journey-card__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80" class="icono-recursos">
+                                        <!-- Contorno del documento -->
+                                        <path d="M 32 24 L 54 24 L 68 38 L 68 72 C 68 74.2 66.2 76 64 76 L 36 76 C 33.8 76 32 74.2 32 72 Z" fill="none" stroke="#34d368" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        
+                                        <!-- Pliegue de la esquina superior derecha -->
+                                        <path d="M 54 24 L 54 38 L 68 38" fill="none" stroke="var(--kit-badge-text)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                        <!-- Líneas de texto/código (documentación) -->
+                                        <line x1="42" y1="50" x2="58" y2="50" stroke="var(--kit-badge-text)" stroke-width="2.5" stroke-linecap="round" />
+                                        <line x1="42" y1="60" x2="58" y2="60" stroke="var(--kit-badge-text)" stroke-width="2.5" stroke-linecap="round" />
+                                        <!-- Última línea más corta para darle asimetría natural -->
+                                        <line x1="42" y1="70" x2="50" y2="70" stroke="var(--kit-badge-text)" stroke-width="2.5" stroke-linecap="round" />
+                                    </svg>
+                                </span>
                                 <span class="journey-card__number"> 04 </span>
                             </div>
                             <h2 class="journey-card__title">
@@ -246,33 +305,58 @@ fn main() -&gt; ! {
                 </div>
             </section>
 
-            <!-- QEMU -->
-            <section class="qemu-section" aria-labelledby="qemu-title">
+            <!-- EMULADOR -->
+            <section class="qemu-section" aria-labelledby="emulator-title">
                 <div class="home-container">
                     <div class="qemu-card">
                         <div class="qemu-card__visual" aria-hidden="true">
                             <span class="qemu-card__terminal">
-                                &gt;_
+                                <svg class="activity-meta__icon-svg" xmlns="http://w3.org" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--kit-badge-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <!-- Pantalla del simulador / Área de trabajo -->
+                                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    
+                                    <!-- Soporte o base de la pantalla -->
+                                    <path d="M6 21h12M12 17v4" />
+                                    
+                                    <!-- Nodos de circuito simulados en pantalla -->
+                                    <circle cx="7" cy="8" r="1.5" fill="var(--kit-badge-text)" />
+                                    <circle cx="17" cy="12" r="1.5" fill="var(--kit-badge-text) " />
+                                    
+                                    <!-- Línea de conexión / Onda de señal interactiva -->
+                                    <path d="M8.5 8h2l2.5 5 2.5-7 1 2" />
+                                </svg>
                             </span>
+
                             <span class="qemu-card__visual-label">
-                                QEMU
+                                VELXIO
                             </span>
                         </div>
+
                         <div class="qemu-card__body">
                             <p class="section-label">
                                 <span class="section-label__dot"></span>
-                                Emulación
+                                Simulación
                             </p>
-                            <h2 id="qemu-title" class="qemu-card__title">
+
+                            <h2
+                                id="emulator-title"
+                                class="qemu-card__title"
+                            >
                                 ¿Todavía no tenés el kit?
                             </h2>
+
                             <p class="qemu-card__description">
-                                Podés empezar igualmente. Con QEMU podés preparar
-                                tu entorno, compilar programas en Rust y ejecutar
-                                las primeras prácticas utilizando hardware emulado.
+                                No te preocupes, podés arrancar con el emulador.
+                                En Primeros pasos vas a preparar tu entorno,
+                                compilar tu primer firmware en Rust y probarlo
+                                en Velxio antes de pasar al hardware físico.
                             </p>
-                            <a href="pages/primeros-pasos/" class="primary-button qemu-card__button">
-                                Comenzar con QEMU
+
+                            <a
+                                href="pages/primeros-pasos/"
+                                class="primary-button qemu-card__button"
+                            >
+                                Empezar con el emulador
                                 <span aria-hidden="true">→</span>
                             </a>
                         </div>
