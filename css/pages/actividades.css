@@ -301,6 +301,11 @@
     color: var(--steps-accent);
 }
 
+.learning-card__icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
 .learning-card__title {
     margin: 0 0 0.4rem;
 
