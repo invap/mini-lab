@@ -6,7 +6,7 @@
 
         <meta
             name="description"
-            content="Actividad 01 de Mini Lab: aprendé a crear patrones con un LED utilizando Rust."
+            content="Tutorial 01 de Mini Lab: enviá tu primer mensaje por UART desde un microcontrolador con Rust."
         />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,7 @@
             rel="stylesheet"
         />
 
-        <title>Mini Lab | Actividad 01</title>
+        <title>Mini Lab | Tutorial 01: UART</title>
 
         <link rel="stylesheet" href="../../../css/styles.css" />
         <link rel="stylesheet" href="../../../css/pages/actividades.css" />
@@ -84,9 +84,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                 </button>
             </div>
@@ -104,9 +102,7 @@
         >
             <div class="site-nav__header">
                 <a href="../../../index.html" class="site-nav__brand">
-                    <span class="site-nav__brand-name">
-                        Mini Lab
-                    </span>
+                    <span class="site-nav__brand-name"> Mini Lab </span>
 
                     <span class="site-nav__brand-subtitle">
                         Sistemas embebidos con Rust
@@ -125,28 +121,19 @@
 
             <ul class="site-nav__list">
                 <li class="site-nav__item">
-                    <a
-                        href="../../../index.html"
-                        class="site-nav__link"
-                    >
+                    <a href="../../../index.html" class="site-nav__link">
                         Inicio
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../conoce-tu-kit/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../conoce-tu-kit/" class="site-nav__link">
                         Conocé tu kit
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../primeros-pasos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../primeros-pasos/" class="site-nav__link">
                         Primeros pasos
                     </a>
                 </li>
@@ -160,73 +147,16 @@
                     >
                         Actividades
                     </a>
-
-                    <ol
-                        class="activities-nav"
-                        aria-label="Actividades de Mini Lab"
-                    >
-                        <li class="activities-nav__item">
-                            <a
-                                href="./"
-                                class="activities-nav__link activities-nav__link--active"
-                                aria-current="page"
-                            >
-                                <span class="activities-nav__number">
-                                    01
-                                </span>
-
-                                <span class="activities-nav__label">
-                                    Patrones con un LED
-                                </span>
-                            </a>
-                        </li>
-
-                        <li class="activities-nav__item">
-                            <span
-                                class="activities-nav__link activities-nav__link--disabled"
-                            >
-                                <span class="activities-nav__number">
-                                    02
-                                </span>
-
-                                <span class="activities-nav__label">
-                                    Botón y LED
-                                </span>
-                            </span>
-                        </li>
-
-                        <li class="activities-nav__item">
-                            <span
-                                class="activities-nav__link activities-nav__link--disabled"
-                            >
-                                <span class="activities-nav__number">
-                                    03
-                                </span>
-
-                                <span class="activities-nav__label">
-                                    Interruptor digital
-                                </span>
-                            </span>
-                        </li>
-                    </ol>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../recursos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../recursos/" class="site-nav__link">
                         Recursos
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../ayuda/"
-                        class="site-nav__link"
-                    >
-                        Ayuda
-                    </a>
+                    <a href="../../ayuda/" class="site-nav__link"> Ayuda </a>
                 </li>
             </ul>
 
@@ -267,14 +197,10 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
 
-                    <span class="theme-toggle__label">
-                        Tema
-                    </span>
+                    <span class="theme-toggle__label"> Tema </span>
                 </button>
             </div>
         </nav>
@@ -282,10 +208,11 @@
         <!-- =========================
         CONTENIDO
         ========================= -->
+
         <main>
             <!-- =========================
-            HERO
-            ========================= -->
+    HERO
+    ========================= -->
             <header class="activity-hero">
                 <div class="page-container">
                     <nav
@@ -306,10 +233,7 @@
                             &gt;
                         </span>
 
-                        <a
-                            href="../"
-                            class="activity-breadcrumb__link"
-                        >
+                        <a href="../" class="activity-breadcrumb__link">
                             Actividades
                         </a>
 
@@ -321,7 +245,7 @@
                         </span>
 
                         <span class="activity-breadcrumb__current">
-                            Actividad 01
+                            Tutorial 01
                         </span>
                     </nav>
 
@@ -332,47 +256,34 @@
                                 aria-hidden="true"
                             ></span>
 
-                            Actividad 01 · Nivel inicial
+                            Tutorial 01 · Nivel inicial
                         </p>
 
                         <h1 class="activity-hero__title">
-                            Creá patrones con un LED
+                            Tu primer mensaje por UART
                         </h1>
 
                         <p class="activity-hero__description">
-                            En esta actividad vas a explorar diferentes
-                            patrones de parpadeo usando Rust y el entorno de
-                            simulación. Vas a aprender a controlar tiempos,
-                            crear secuencias y experimentar modificando el
-                            comportamiento de un LED.
+                            Enviá tu primer “Hola Mini Lab” desde el
+                            microcontrolador y observá el resultado en el Serial
+                            Monitor de Velxio. Vas a conocer una de las formas
+                            más simples de comunicación entre un sistema
+                            embebido y el exterior.
                         </p>
 
                         <ul
                             class="activity-meta"
-                            aria-label="Información de la actividad"
+                            aria-label="Información del tutorial"
                         >
                             <li class="activity-meta__item">
                                 <span
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Esfera principal -->
-                                        <circle cx="12" cy="12" r="9" />
-                                        
-                                        <!-- Botones superiores estilo cronómetro de laboratorio -->
-                                        <path d="M12 3V1M9 2h6" />
-                                        
-                                        <!-- Área de tiempo transcurrido (Aproximadamente 25 minutos) -->
-                                        <path d="M12 12V3a9 9 0 0 1 7.8 13.5Z" fill="currentColor" fill-opacity="0.15" stroke="none" />
-                                        
-                                        <!-- Manecillas internas -->
-                                        <path d="M12 12V3M12 12l7.8 4.5" />
-                                    </svg>
-
+                                    ◷
                                 </span>
 
-                                20–30 min
+                                15–20 min
                             </li>
 
                             <li class="activity-meta__item">
@@ -380,17 +291,7 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Barra 1: Nivel Inicial (Rellena para indicar que está activa) -->
-                                        <rect x="4" y="15" width="4" height="5" rx="1" fill="currentColor" />
-                                        
-                                        <!-- Barra 2: Nivel Intermedio (Vacía) -->
-                                        <rect x="10" y="10" width="4" height="10" rx="1" opacity="0.4" />
-                                        
-                                        <!-- Barra 3: Nivel Avanzado (Vacía) -->
-                                        <rect x="16" y="4" width="4" height="16" rx="1" opacity="0.4" />
-                                    </svg>
-
+                                    ◫
                                 </span>
 
                                 Nivel inicial
@@ -401,14 +302,10 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Cuerpo de la bombilla -->
-                                        <path d="M15 18H9M14 21H10M12 2v1M4.22 4.22l.7.7M2 12h1M21 12h1M18.36 4.22l-.7.7" />
-                                        <path d="M17 12a5 5 0 1 0-10 0c0 2.5 2 3.5 3 5h4c1-1.5 3-2.5 3-5z" />
-                                    </svg>
+                                    &gt;_
                                 </span>
 
-                                LED
+                                UART0
                             </li>
 
                             <li class="activity-meta__item">
@@ -416,22 +313,7 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Cuerpo central del microcontrolador -->
-                                        <rect x="5" y="5" width="14" height="14" rx="1.5" fill="none" />
-                                        
-                                        <!-- Muesca de orientación / Identificador del Pin 1 -->
-                                        <circle cx="7.5" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
-                                        
-                                        <!-- Pines Superiores -->
-                                        <path d="M7 2v3M10 2v3M13 2v3M17 2v3" />
-                                        <!-- Pines Inferiores -->
-                                        <path d="M7 19v3M10 19v3M13 19v3M17 19v3" />
-                                        <!-- Pines Izquierdos -->
-                                        <path d="M2 7h3M2 10h3M2 13h3M2 17h3" />
-                                        <!-- Pines Derechas -->
-                                        <path d="M19 7h3M19 10h3M19 13h3M19 17h3" />
-                                    </svg>
+                                    ◈
                                 </span>
 
                                 RP2350
@@ -442,21 +324,7 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Pantalla del simulador / Área de trabajo -->
-                                        <rect x="2" y="3" width="20" height="14" rx="2" />
-                                        
-                                        <!-- Soporte o base de la pantalla -->
-                                        <path d="M6 21h12M12 17v4" />
-                                        
-                                        <!-- Nodos de circuito simulados en pantalla -->
-                                        <circle cx="7" cy="8" r="1.5" fill="currentColor" />
-                                        <circle cx="17" cy="12" r="1.5" fill="currentColor" />
-                                        
-                                        <!-- Línea de conexión / Onda de señal interactiva -->
-                                        <path d="M8.5 8h2l2.5 5 2.5-7 1 2" />
-                                    </svg>
-
+                                    ⌁
                                 </span>
 
                                 Velxio
@@ -467,13 +335,13 @@
             </header>
 
             <!-- =========================
-            CUERPO
-            ========================= -->
+    CUERPO
+    ========================= -->
             <div class="activity-content">
                 <div class="page-container">
                     <!-- =========================
-                    OBJETIVOS
-                    ========================= -->
+            OBJETIVOS
+            ========================= -->
                     <section class="activity-section">
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
@@ -494,130 +362,81 @@
                             <h2 class="activity-section__title">
                                 Qué vas a aprender
                             </h2>
+
+                            <p class="activity-section__lead">
+                                Antes de trabajar con sensores y actuadores,
+                                vamos a comprobar que nuestro firmware puede
+                                comunicarse con el exterior.
+                            </p>
                         </header>
 
                         <div class="learning-grid">
                             <article class="learning-card">
-                                <span
-                                    class="learning-card__number"
-                                    aria-hidden="true"
-                                >
-                                    01
-                                </span>
+                                <span class="learning-card__number"> 01 </span>
 
                                 <div
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Cuerpo principal del temporizador -->
-                                        <circle cx="12" cy="14" r="8" />
-                                        
-                                        <!-- Botón superior de Inicio/Parada (Pulsador) -->
-                                        <path d="M12 6V3M9 3h6" />
-                                        
-                                        <!-- Botón lateral de Reset / Configuración -->
-                                        <path d="M18 8l2-2" />
-                                        
-                                        <!-- Indicador interno de cuenta atrás (Arco de tiempo restante) -->
-                                        <path d="M12 10a4 4 0 0 1 4 4" stroke-width="2" />
-                                        <path d="M12 14V10" />
-                                    </svg>
-
+                                    &gt;_
                                 </div>
 
                                 <h3 class="learning-card__title">
-                                    Temporización
+                                    Comunicación serial
                                 </h3>
 
                                 <p class="learning-card__description">
-                                    Controlar cuánto tiempo permanece
-                                    encendido o apagado el LED.
+                                    Entendé para qué sirve UART y cómo puede
+                                    utilizarse para enviar información desde un
+                                    microcontrolador.
                                 </p>
                             </article>
 
                             <article class="learning-card">
-                                <span
-                                    class="learning-card__number"
-                                    aria-hidden="true"
-                                >
-                                    02
-                                </span>
+                                <span class="learning-card__number"> 02 </span>
 
                                 <div
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Señal de reloj / Pulso de la secuencia -->
-                                        <path d="M2 18h3v-4h4v4h3" />
-                                        
-                                        <!-- Línea de distribución hacia los LEDs -->
-                                        <path d="M12 18V6h4" />
-                                        
-                                        <!-- Hilera de LEDs verticales en secuencia -->
-                                        <!-- LED Superior (Encendido) -->
-                                        <circle cx="18" cy="6" r="2" fill="currentColor" />
-                                        <!-- LED Central (Medio encendido / Atenuado) -->
-                                        <circle cx="18" cy="12" r="2" opacity="0.6" />
-                                        <!-- LED Inferior (Apagado) -->
-                                        <circle cx="18" cy="18" r="2" opacity="0.2" />
-                                    </svg>
-
+                                    TX
                                 </div>
 
                                 <h3 class="learning-card__title">
-                                    Secuencias
+                                    Configuración UART0
                                 </h3>
 
                                 <p class="learning-card__description">
-                                    Combinar distintos cambios de estado
-                                    para crear un patrón.
+                                    Configurá los pines TX y RX y una velocidad
+                                    de comunicación de 115200 baudios.
                                 </p>
                             </article>
 
                             <article class="learning-card">
-                                <span
-                                    class="learning-card__number"
-                                    aria-hidden="true"
-                                >
-                                    03
-                                </span>
+                                <span class="learning-card__number"> 03 </span>
 
                                 <div
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <!-- Base del interruptor/esquema -->
-                                        <path d="M3 12h5M16 12h5" />
-                                        
-                                        <!-- La palanca cambiando de posición (En plena transición de prueba) -->
-                                        <path d="M8 12l6-5" stroke-width="2" />
-                                        <path d="M8 12l6 5" stroke-dasharray="2 2" opacity="0.4" />
-                                        
-                                        <!-- Indicadores de estado -->
-                                        <circle cx="14" cy="7" r="1" fill="currentColor" />
-                                        <circle cx="14" cy="17" r="1" opacity="0.4" />
-                                    </svg>
-
+                                    “ ”
                                 </div>
 
                                 <h3 class="learning-card__title">
-                                    Prueba y error
+                                    Envío de mensajes
                                 </h3>
 
                                 <p class="learning-card__description">
-                                    Modificar valores, volver a compilar y
-                                    comparar el resultado obtenido.
+                                    Mandá texto desde Rust y comprobá el
+                                    resultado utilizando el Serial Monitor.
                                 </p>
                             </article>
                         </div>
                     </section>
 
                     <!-- =========================
-                    MATERIALES
-                    ========================= -->
+            QUÉ NECESITÁS
+            ========================= -->
                     <section class="activity-section">
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
@@ -638,6 +457,11 @@
                             <h2 class="activity-section__title">
                                 Qué necesitás
                             </h2>
+
+                            <p class="activity-section__lead">
+                                Vamos a continuar desde el proyecto que
+                                preparaste en Primeros pasos.
+                            </p>
                         </header>
 
                         <div class="activity-materials">
@@ -651,11 +475,32 @@
 
                                 <div class="activity-material__content">
                                     <span class="activity-material__name">
-                                        Proyecto de Primeros pasos
+                                        Proyecto Mini Lab
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        mini-lab-hello
+                                        El proyecto generado durante Primeros
+                                        pasos
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Toolchain de Rust
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Configurada para
+                                        thumbv8m.main-none-eabihf
                                     </span>
                                 </div>
                             </div>
@@ -674,64 +519,7 @@
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Simulador utilizado durante el recorrido
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span
-                                    class="activity-material__check"
-                                    aria-hidden="true"
-                                >
-                                    ✓
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        Pimoroni Pico Plus 2 W
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Placa RP2350 disponible en Velxio
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span
-                                    class="activity-material__check"
-                                    aria-hidden="true"
-                                >
-                                    ✓
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        LED virtual
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Conectado a GPIO15
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span
-                                    class="activity-material__check"
-                                    aria-hidden="true"
-                                >
-                                    ✓
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        Resistencia
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Entre 220 Ω y 330 Ω
+                                        Con la Pimoroni Pico Plus 2 W
                                     </span>
                                 </div>
                             </div>
@@ -746,19 +534,18 @@
                             </span>
 
                             <p>
-                                Mini Lab toma como hardware de referencia la
-                                Raspberry Pi Pico 2. En el recorrido actual
-                                utilizamos la Pimoroni Pico Plus 2 W disponible
-                                en Velxio, por lo que trabajaremos con GPIO15.
+                                En este tutorial no necesitás conectar LED,
+                                botón ni sensores. Vamos a trabajar únicamente
+                                con la comunicación UART del microcontrolador.
                             </p>
                         </aside>
                     </section>
 
                     <!-- =========================
-                    PARTE 1
-                    ========================= -->
+            PARTE 1
+            ========================= -->
                     <section
-                        id="cambiar-velocidad"
+                        id="entender-uart"
                         class="activity-section activity-experiment"
                     >
                         <header class="activity-section__header">
@@ -773,80 +560,89 @@
                                 ></span>
 
                                 <span class="activity-section__category">
-                                    Experimentá
+                                    Entendé
                                 </span>
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 1 — Cambiá la velocidad
+                                ¿Qué es UART?
                             </h2>
 
                             <p class="activity-section__lead">
-                                Empezá desde el parpadeo que ya construiste
-                                en Primeros pasos. El LED permanece
-                                encendido 500 ms y apagado otros 500 ms.
+                                UART es una forma de comunicación serial.
+                                Permite transmitir información utilizando una
+                                línea para enviar datos y otra para recibirlos.
                             </p>
                         </header>
 
-                        <div class="activity-experiment__layout">
-                            <div class="activity-experiment__main">
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>src/main.rs</span>
-                                    </div>
-
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(500);
-
-    led_pin.set_low().unwrap();
-    delay.delay_ms(500);
-}</code></pre>
-                                </div>
-
-                                <div class="activity-task">
-                                    <span
-                                        class="activity-task__label"
-                                    >
-                                        Tu objetivo
-                                    </span>
-
-                                    <p>
-                                        Hacé que el LED parpadee
-                                        <strong>el doble de rápido</strong>.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <aside class="activity-hint">
-                                <span
-                                    class="activity-hint__icon"
-                                    aria-hidden="true"
-                                >
-                                    ⚡
+                        <div class="activity-pattern">
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    TX
                                 </span>
 
-                                <h3 class="activity-hint__title">
-                                    Pista
-                                </h3>
+                                <strong class="activity-pattern__value">
+                                    GPIO2
+                                </strong>
+                            </div>
 
-                                <p>
-                                    Revisá cuánto tiempo espera el programa
-                                    después de encender y apagar el LED.
-                                    Si reducís esos valores, el ciclo tarda
-                                    menos en completarse.
-                                </p>
-                            </aside>
+                            <span
+                                class="activity-pattern__arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    UART0
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    115200 baud
+                                </strong>
+                            </div>
+
+                            <span
+                                class="activity-pattern__arrow"
+                                aria-hidden="true"
+                            >
+                                ←
+                            </span>
+
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    RX
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    GPIO3
+                                </strong>
+                            </div>
                         </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                <strong>TX</strong> significa transmisión y
+                                <strong>RX</strong> recepción. En este primer
+                                ejercicio solamente vamos a enviar información,
+                                pero configuraremos ambos pines.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- =========================
-                    PARTE 2
-                    ========================= -->
+            PARTE 2
+            ========================= -->
                     <section
-                        id="destello-corto"
+                        id="configurar-uart"
                         class="activity-section activity-experiment"
                     >
                         <header class="activity-section__header">
@@ -861,86 +657,79 @@
                                 ></span>
 
                                 <span class="activity-section__category">
-                                    Experimentá
+                                    Configurá
                                 </span>
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 2 — Hacé un destello corto
+                                Configurá UART0
                             </h2>
 
                             <p class="activity-section__lead">
-                                Los tiempos de encendido y apagado no tienen
-                                que ser iguales. Ahora vamos a crear un
-                                destello breve seguido por una pausa más larga.
+                                Primero necesitamos importar los tipos que
+                                utilizaremos para configurar la comunicación.
                             </p>
                         </header>
 
-                        <div class="activity-pattern">
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Encendido
-                                </span>
-
-                                <strong class="activity-pattern__value">
-                                    100 ms
-                                </strong>
-                            </div>
-
-                            <span
-                                class="activity-pattern__arrow"
-                                aria-hidden="true"
-                            >
-                                →
-                            </span>
-
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Apagado
-                                </span>
-
-                                <strong class="activity-pattern__value">
-                                    900 ms
-                                </strong>
-                            </div>
-                        </div>
+                        <p class="activity-section__lead">
+                            Agregá estos imports al comienzo de
+                            <code>src/main.rs</code>:
+                        </p>
 
                         <div class="command-block">
                             <div class="command-block__header">
                                 <span>src/main.rs</span>
+                                <span>Imports</span>
                             </div>
 
                             <pre
                                 class="command-block__code"
-                            ><code>loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(100);
-
-    led_pin.set_low().unwrap();
-    delay.delay_ms(900);
-}</code></pre>
+                            ><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
                         </div>
 
-                        <div class="activity-question">
-                            <span
-                                class="activity-question__icon"
-                                aria-hidden="true"
-                            >
-                                ?
-                            </span>
+                        <p class="activity-section__lead">
+                            Después de inicializar los pines del proyecto,
+                            agregá la configuración de UART0:
+                        </p>
 
-                            <p>
-                                Antes de ejecutarlo: ¿cómo esperás que se vea
-                                este patrón comparado con el anterior?
-                            </p>
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>UART0</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let uart_pins = (
+    pins.gpio2.into_function(),
+    pins.gpio3.into_function(),
+);
+
+let uart0 =
+    hal::uart::UartPeripheral::new(
+        pac.UART0,
+        uart_pins,
+        &mut pac.RESETS,
+    )
+    .enable(
+        UartConfig::new(
+            115200.Hz(),
+            DataBits::Eight,
+            None,
+            StopBits::One,
+        ),
+        clocks.peripheral_clock.freq(),
+    )
+    .unwrap();</code></pre>
                         </div>
                     </section>
 
                     <!-- =========================
-                    PARTE 3
-                    ========================= -->
+            PARTE 3
+            ========================= -->
                     <section
-                        id="crear-patron"
+                        id="hola-mini-lab"
                         class="activity-section activity-experiment"
                     >
                         <header class="activity-section__header">
@@ -955,78 +744,41 @@
                                 ></span>
 
                                 <span class="activity-section__category">
-                                    Experimentá
+                                    Programá
                                 </span>
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 3 — Creá una secuencia
+                                Enviá tu primer mensaje
                             </h2>
 
                             <p class="activity-section__lead">
-                                Ahora combiná varios cambios de estado.
-                                Vamos a generar dos destellos rápidos
-                                seguidos por una pausa más larga.
+                                Ya tenemos UART configurado. Ahora vamos a
+                                utilizarlo para enviar nuestro primer texto.
                             </p>
                         </header>
 
-                        <div
-                            class="activity-sequence"
-                            aria-label="Dos destellos cortos y una pausa larga"
-                        >
-                            <span
-                                class="activity-sequence__on"
-                                title="LED encendido"
-                            >
-                                ●
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                Tu objetivo
                             </span>
 
-                            <span
-                                class="activity-sequence__off"
-                                title="LED apagado"
-                            >
-                                ○
-                            </span>
-
-                            <span
-                                class="activity-sequence__on"
-                                title="LED encendido"
-                            >
-                                ●
-                            </span>
-
-                            <span
-                                class="activity-sequence__pause"
-                                aria-hidden="true"
-                            ></span>
-
-                            <span
-                                class="activity-sequence__off"
-                                title="LED apagado"
-                            >
-                                ○
-                            </span>
+                            <p>
+                                Hacé que el microcontrolador escriba
+                                <strong>“Hola Mini Lab!”</strong>
+                                en el Serial Monitor.
+                            </p>
                         </div>
-
+                        <br>
                         <div class="command-block">
                             <div class="command-block__header">
                                 <span>src/main.rs</span>
+                                <span>Loop</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(150);
-
-    led_pin.set_low().unwrap();
-    delay.delay_ms(150);
-
-    led_pin.set_high().unwrap();
-    delay.delay_ms(150);
-
-    led_pin.set_low().unwrap();
-    delay.delay_ms(700);
+                            <pre class="command-block__code"><code>loop {
+    uart0.write_full_blocking(b"Hola Mini Lab!\r\n");
+    delay.delay_ms(1000);
 }</code></pre>
                         </div>
 
@@ -1039,17 +791,191 @@
                             </span>
 
                             <p>
-                                Modificá el código, ejecutá nuevamente
-                                <code>cargo build --release</code> y cargá
-                                el nuevo ELF en Velxio para comparar el
-                                resultado.
+                                El mensaje se envía una vez por segundo para que
+                                puedas observarlo fácilmente al abrir el Serial
+                                Monitor.
                             </p>
                         </aside>
                     </section>
 
                     <!-- =========================
-                    DESAFÍO
-                    ========================= -->
+            PARTE 4
+            ========================= -->
+                    <section
+                        id="compilar"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    06
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Compilá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Generá el firmware
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Guardá los cambios y compilá nuevamente el
+                                proyecto en modo release.
+                            </p>
+                        </header>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                                <span>Release</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>cargo build --release</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Si Cargo finaliza sin errores, encontrás el ELF
+                                generado dentro de
+                                <code
+                                    >target/thumbv8m.main-none-eabihf/release/</code
+                                >.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- =========================
+            PARTE 5
+            ========================= -->
+                    <section
+                        id="probar-velxio"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    07
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Ejecutá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Probalo en Velxio
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Cargá el nuevo ELF en la Pimoroni Pico Plus 2 W
+                                y ejecutá la simulación.
+                            </p>
+                        </header>
+
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                En Velxio
+                            </span>
+
+                            <p>
+                                Usá <strong>File → Upload Firmware</strong>
+                                y seleccioná el ELF que acabás de compilar.
+                            </p>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Para este tutorial no necesitás agregar
+                                componentes virtuales. El objetivo es observar
+                                directamente la salida UART del firmware.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- =========================
+            RESULTADO
+            ========================= -->
+                    <section
+                        id="serial-monitor"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    08
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Comprobá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Abrí el Serial Monitor
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Abrí el monitor serial de Velxio mientras el
+                                firmware está ejecutándose.
+                            </p>
+                        </header>
+
+                        <p class="activity-section__lead">
+                            Deberías ver una salida similar a:
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Serial Monitor</span>
+                                <span>115200 baud</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>Hola Mini Lab!
+Hola Mini Lab!
+Hola Mini Lab!
+Hola Mini Lab!
+...</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+            DESAFÍO
+            ========================= -->
                     <section class="activity-section">
                         <div class="activity-challenge">
                             <div
@@ -1065,40 +991,30 @@
                                 </p>
 
                                 <h2 class="activity-challenge__title">
-                                    Diseñá tu propio patrón
+                                    Personalizá tu primer mensaje
                                 </h2>
 
                                 <p class="activity-challenge__description">
-                                    Creá una señal utilizando al menos
-                                    <strong>
-                                        tres cambios de estado
-                                    </strong>
-                                    del LED.
+                                    Modificá el programa para que el
+                                    microcontrolador envíe un mensaje diferente
+                                    al Serial Monitor.
                                 </p>
 
                                 <p class="activity-challenge__description">
-                                    Antes de ejecutarla, escribí o imaginá
-                                    cómo debería verse. Después compilá el
-                                    firmware y compará tu predicción con el
-                                    resultado en Velxio.
+                                    Podés incluir tu nombre, cambiar el texto o
+                                    enviar dos mensajes distintos.
                                 </p>
 
                                 <ul class="activity-challenge__checklist">
-                                    <li>
-                                        Usá al menos tres cambios de estado.
-                                    </li>
+                                    <li>Modificá el contenido del mensaje.</li>
+
+                                    <li>Compilá nuevamente el firmware.</li>
+
+                                    <li>Cargá el nuevo ELF en Velxio.</li>
 
                                     <li>
-                                        Utilizá más de un tiempo de espera.
-                                    </li>
-
-                                    <li>
-                                        Predecí el comportamiento antes de
-                                        ejecutarlo.
-                                    </li>
-
-                                    <li>
-                                        Probalo en el simulador.
+                                        Comprobá que el cambio aparezca en el
+                                        Serial Monitor.
                                     </li>
                                 </ul>
                             </div>
@@ -1106,8 +1022,8 @@
                     </section>
 
                     <!-- =========================
-                    COMPLETADO
-                    ========================= -->
+            COMPLETADO
+            ========================= -->
                     <section class="activity-complete">
                         <span
                             class="activity-complete__icon"
@@ -1118,45 +1034,39 @@
 
                         <div class="activity-complete__content">
                             <h2 class="activity-complete__title">
-                                Actividad completada
+                                Tutorial completado
                             </h2>
 
                             <p class="activity-complete__description">
-                                Ya modificaste una salida GPIO, trabajaste
-                                con tiempos y construiste tus primeras
-                                secuencias en Rust.
+                                Ya configuraste UART0 y enviaste información
+                                desde un firmware Rust al Serial Monitor. En el
+                                siguiente tutorial vas a comenzar a controlar
+                                una salida GPIO con un LED.
                             </p>
                         </div>
                     </section>
 
                     <!-- =========================
-                    NAVEGACIÓN FINAL
-                    ========================= -->
+            NAVEGACIÓN FINAL
+            ========================= -->
                     <nav
                         class="activity-footer-nav"
-                        aria-label="Navegación entre actividades"
+                        aria-label="Navegación entre tutoriales"
                     >
-                        <a
-                            href="../"
-                            class="activity-footer-nav__back"
-                        >
-                            <span aria-hidden="true">
-                                ←
-                            </span>
+                        <a href="../" class="activity-footer-nav__back">
+                            <span aria-hidden="true"> ← </span>
 
                             Volver a actividades
                         </a>
 
-                        <span
-                            class="activity-footer-nav__next activity-footer-nav__next--disabled"
-                            aria-disabled="true"
+                        <a
+                            href="../actividad-02/"
+                            class="activity-footer-nav__next"
                         >
-                            Siguiente actividad
+                            Tutorial 02 · Blinky
 
-                            <span aria-hidden="true">
-                                →
-                            </span>
-                        </span>
+                            <span aria-hidden="true"> → </span>
+                        </a>
                     </nav>
                 </div>
             </div>
@@ -1170,17 +1080,12 @@
                 Un proyecto de
                 <strong>INVAP</strong>
 
-                <span class="site-footer__plus">
-                    +
-                </span>
+                <span class="site-footer__plus"> + </span>
 
                 <strong>Fundación INVAP</strong>
             </p>
         </footer>
 
-        <script
-            src="../../../js/main.js"
-            defer
-        ></script>
+        <script src="../../../js/main.js" defer></script>
     </body>
 </html>
