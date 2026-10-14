@@ -140,13 +140,66 @@
 
                 <!-- Actividades -->
                 <li class="site-nav__item site-nav__item-activities">
-                    <a
-                        href="../"
-                        class="site-nav__link site-nav__link--active"
-                        aria-current="page"
-                    >
+                    <a href="../" class="site-nav__link site-nav__link--active">
                         Actividades
                     </a>
+
+                    <ol
+                        class="activities-nav"
+                        aria-label="Tutoriales de Mini Lab"
+                    >
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-01/"
+                                class="activities-nav__link activities-nav__link--active"
+                            >
+                                <span class="activities-nav__number"> 01 </span>
+
+                                <span class="activities-nav__label">
+                                    Serie / UART
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-02/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 02 </span>
+
+                                <span class="activities-nav__label">
+                                    Blinky
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-03/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 03 </span>
+
+                                <span class="activities-nav__label">
+                                    Botón
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-04/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 04 </span>
+
+                                <span class="activities-nav__label">
+                                    MPU6050
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
                 </li>
 
                 <li class="site-nav__item">
@@ -769,7 +822,7 @@ let uart0 =
                                 en el Serial Monitor.
                             </p>
                         </div>
-                        <br>
+                        <br />
                         <div class="command-block">
                             <div class="command-block__header">
                                 <span>src/main.rs</span>

@@ -2,21 +2,14 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             name="description"
             content="Tutorial 03 de Mini Lab: leé un botón como entrada digital y controlá un LED con Rust."
         />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
@@ -90,9 +83,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                 </button>
             </div>
@@ -111,9 +102,7 @@
         >
             <div class="site-nav__header">
                 <a href="../../../index.html" class="site-nav__brand">
-                    <span class="site-nav__brand-name">
-                        Mini Lab
-                    </span>
+                    <span class="site-nav__brand-name"> Mini Lab </span>
 
                     <span class="site-nav__brand-subtitle">
                         Sistemas embebidos con Rust
@@ -132,58 +121,95 @@
 
             <ul class="site-nav__list">
                 <li class="site-nav__item">
-                    <a
-                        href="../../../index.html"
-                        class="site-nav__link"
-                    >
+                    <a href="../../../index.html" class="site-nav__link">
                         Inicio
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../conoce-tu-kit/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../conoce-tu-kit/" class="site-nav__link">
                         Conocé tu kit
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../primeros-pasos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../primeros-pasos/" class="site-nav__link">
                         Primeros pasos
                     </a>
                 </li>
 
-                <li class="site-nav__item">
-                    <a
-                        href="./"
-                        class="site-nav__link site-nav__link--active"
-                        aria-current="page"
-                    >
+                <!-- Actividades -->
+                <li class="site-nav__item site-nav__item-activities">
+                    <a href="../" class="site-nav__link site-nav__link--active">
                         Actividades
                     </a>
+
+                    <ol
+                        class="activities-nav"
+                        aria-label="Tutoriales de Mini Lab"
+                    >
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-01/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 01 </span>
+
+                                <span class="activities-nav__label">
+                                    Serie / UART
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-02/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 02 </span>
+
+                                <span class="activities-nav__label">
+                                    Blinky
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-03/"
+                                class="activities-nav__link activities-nav__link--active"
+                            >
+                                <span class="activities-nav__number"> 03 </span>
+
+                                <span class="activities-nav__label">
+                                    Botón
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-04/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 04 </span>
+
+                                <span class="activities-nav__label">
+                                    MPU6050
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../recursos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../recursos/" class="site-nav__link">
                         Recursos
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../ayuda/"
-                        class="site-nav__link"
-                    >
-                        Ayuda
-                    </a>
+                    <a href="../../ayuda/" class="site-nav__link"> Ayuda </a>
                 </li>
             </ul>
 
@@ -224,14 +250,10 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
 
-                    <span class="theme-toggle__label">
-                        Tema
-                    </span>
+                    <span class="theme-toggle__label"> Tema </span>
                 </button>
             </div>
         </nav>
@@ -241,804 +263,789 @@
         ========================= -->
 
         <main>
-    <!-- =========================
+            <!-- =========================
     HERO
     ========================= -->
-    <header class="activity-hero">
-        <div class="page-container">
-            <nav
-                class="activity-breadcrumb"
-                aria-label="Ruta de navegación"
-            >
-                <a
-                    href="../../../index.html"
-                    class="activity-breadcrumb__link"
-                >
-                    Mini Lab
-                </a>
+            <header class="activity-hero">
+                <div class="page-container">
+                    <nav
+                        class="activity-breadcrumb"
+                        aria-label="Ruta de navegación"
+                    >
+                        <a
+                            href="../../../index.html"
+                            class="activity-breadcrumb__link"
+                        >
+                            Mini Lab
+                        </a>
 
-                <span
-                    class="activity-breadcrumb__separator"
-                    aria-hidden="true"
-                >
-                    &gt;
-                </span>
-
-                <a
-                    href="../"
-                    class="activity-breadcrumb__link"
-                >
-                    Actividades
-                </a>
-
-                <span
-                    class="activity-breadcrumb__separator"
-                    aria-hidden="true"
-                >
-                    &gt;
-                </span>
-
-                <span class="activity-breadcrumb__current">
-                    Tutorial 03
-                </span>
-            </nav>
-
-            <div class="activity-hero__content">
-                <p class="activity-hero__eyebrow">
-                    <span
-                        class="activity-hero__eyebrow-dot"
-                        aria-hidden="true"
-                    ></span>
-
-                    Tutorial 03 · Nivel inicial
-                </p>
-
-                <h1 class="activity-hero__title">
-                    Controlá un LED con un botón
-                </h1>
-
-                <p class="activity-hero__description">
-                    Aprendé a leer una entrada digital desde Rust.
-                    Vas a conectar un botón al microcontrolador y usar
-                    su estado para controlar el LED.
-                </p>
-
-                <ul
-                    class="activity-meta"
-                    aria-label="Información del tutorial"
-                >
-                    <li class="activity-meta__item">
                         <span
-                            class="activity-meta__icon"
+                            class="activity-breadcrumb__separator"
                             aria-hidden="true"
                         >
-                            ◷
+                            &gt;
                         </span>
 
-                        20–30 min
-                    </li>
+                        <a href="../" class="activity-breadcrumb__link">
+                            Actividades
+                        </a>
 
-                    <li class="activity-meta__item">
                         <span
-                            class="activity-meta__icon"
+                            class="activity-breadcrumb__separator"
                             aria-hidden="true"
                         >
-                            ◫
+                            &gt;
                         </span>
 
-                        Nivel inicial
-                    </li>
+                        <span class="activity-breadcrumb__current">
+                            Tutorial 03
+                        </span>
+                    </nav>
 
-                    <li class="activity-meta__item">
-                        <span
-                            class="activity-meta__icon"
-                            aria-hidden="true"
+                    <div class="activity-hero__content">
+                        <p class="activity-hero__eyebrow">
+                            <span
+                                class="activity-hero__eyebrow-dot"
+                                aria-hidden="true"
+                            ></span>
+
+                            Tutorial 03 · Nivel inicial
+                        </p>
+
+                        <h1 class="activity-hero__title">
+                            Controlá un LED con un botón
+                        </h1>
+
+                        <p class="activity-hero__description">
+                            Aprendé a leer una entrada digital desde Rust. Vas a
+                            conectar un botón al microcontrolador y usar su
+                            estado para controlar el LED.
+                        </p>
+
+                        <ul
+                            class="activity-meta"
+                            aria-label="Información del tutorial"
                         >
-                            ◇
-                        </span>
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    ◷
+                                </span>
 
-                        Botón
-                    </li>
+                                20–30 min
+                            </li>
 
-                    <li class="activity-meta__item">
-                        <span
-                            class="activity-meta__icon"
-                            aria-hidden="true"
-                        >
-                            ◉
-                        </span>
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    ◫
+                                </span>
 
-                        LED
-                    </li>
+                                Nivel inicial
+                            </li>
 
-                    <li class="activity-meta__item">
-                        <span
-                            class="activity-meta__icon"
-                            aria-hidden="true"
-                        >
-                            ⌁
-                        </span>
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    ◇
+                                </span>
 
-                        Velxio
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+                                Botón
+                            </li>
 
-    <!-- =========================
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    ◉
+                                </span>
+
+                                LED
+                            </li>
+
+                            <li class="activity-meta__item">
+                                <span
+                                    class="activity-meta__icon"
+                                    aria-hidden="true"
+                                >
+                                    ⌁
+                                </span>
+
+                                Velxio
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- =========================
     CUERPO
     ========================= -->
-    <div class="activity-content">
-        <div class="page-container">
+            <div class="activity-content">
+                <div class="page-container">
+                    <!-- OBJETIVOS -->
 
-            <!-- OBJETIVOS -->
+                    <section class="activity-section">
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    01
+                                </span>
 
-            <section class="activity-section">
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            01
-                        </span>
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
 
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
+                                <span class="activity-section__category">
+                                    Objetivos
+                                </span>
+                            </div>
 
-                        <span class="activity-section__category">
-                            Objetivos
-                        </span>
-                    </div>
+                            <h2 class="activity-section__title">
+                                Qué vas a aprender
+                            </h2>
 
-                    <h2 class="activity-section__title">
-                        Qué vas a aprender
-                    </h2>
+                            <p class="activity-section__lead">
+                                Hasta ahora usamos GPIO como salida. En este
+                                tutorial vamos a utilizar un pin como entrada y
+                                tomar decisiones según su estado.
+                            </p>
+                        </header>
 
-                    <p class="activity-section__lead">
-                        Hasta ahora usamos GPIO como salida.
-                        En este tutorial vamos a utilizar un pin como
-                        entrada y tomar decisiones según su estado.
-                    </p>
-                </header>
+                        <div class="learning-grid">
+                            <article class="learning-card">
+                                <span class="learning-card__number"> 01 </span>
 
-                <div class="learning-grid">
-                    <article class="learning-card">
-                        <span class="learning-card__number">
-                            01
-                        </span>
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    IN
+                                </div>
 
-                        <div
-                            class="learning-card__icon"
-                            aria-hidden="true"
-                        >
-                            IN
+                                <h3 class="learning-card__title">
+                                    GPIO como entrada
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Configurá un pin para leer señales digitales
+                                    provenientes de un botón.
+                                </p>
+                            </article>
+
+                            <article class="learning-card">
+                                <span class="learning-card__number"> 02 </span>
+
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    1/0
+                                </div>
+
+                                <h3 class="learning-card__title">
+                                    Estados HIGH y LOW
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Interpretá los dos estados posibles de una
+                                    entrada digital.
+                                </p>
+                            </article>
+
+                            <article class="learning-card">
+                                <span class="learning-card__number"> 03 </span>
+
+                                <div
+                                    class="learning-card__icon"
+                                    aria-hidden="true"
+                                >
+                                    if
+                                </div>
+
+                                <h3 class="learning-card__title">
+                                    Tomá decisiones
+                                </h3>
+
+                                <p class="learning-card__description">
+                                    Usá una condición para modificar el estado
+                                    del LED según el botón.
+                                </p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <!-- QUÉ NECESITÁS -->
+
+                    <section class="activity-section">
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    02
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Antes de empezar
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Qué necesitás
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Vamos a reutilizar el LED del Tutorial 2 y
+                                agregar un botón al circuito.
+                            </p>
+                        </header>
+
+                        <div class="activity-materials">
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Proyecto Mini Lab
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        El mismo proyecto utilizado en Blinky
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        LED virtual
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Conectado a GPIO15
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Push button
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Botón virtual de Velxio
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- CONEXIÓN -->
+
+                    <section
+                        id="conectar-boton"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    03
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Conectá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Agregá el botón en Velxio
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Agregá un componente Push Button al circuito y
+                                conectalo entre GPIO14 y GND.
+                            </p>
+                        </header>
+
+                        <div class="hardware-flow">
+                            <div class="hardware-flow__step">
+                                <span class="hardware-flow__number"> 1 </span>
+
+                                <div>
+                                    <strong>GPIO14</strong>
+
+                                    <p>
+                                        Conectá uno de los terminales del botón
+                                        a GPIO14.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="hardware-flow__step">
+                                <span class="hardware-flow__number"> 2 </span>
+
+                                <div>
+                                    <strong>GND</strong>
+
+                                    <p>
+                                        Conectá el otro terminal del botón a
+                                        tierra.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h3 class="learning-card__title">
-                            GPIO como entrada
-                        </h3>
-
-                        <p class="learning-card__description">
-                            Configurá un pin para leer señales digitales
-                            provenientes de un botón.
-                        </p>
-                    </article>
-
-                    <article class="learning-card">
-                        <span class="learning-card__number">
-                            02
-                        </span>
-
-                        <div
-                            class="learning-card__icon"
-                            aria-hidden="true"
-                        >
-                            1/0
-                        </div>
-
-                        <h3 class="learning-card__title">
-                            Estados HIGH y LOW
-                        </h3>
-
-                        <p class="learning-card__description">
-                            Interpretá los dos estados posibles de una
-                            entrada digital.
-                        </p>
-                    </article>
-
-                    <article class="learning-card">
-                        <span class="learning-card__number">
-                            03
-                        </span>
-
-                        <div
-                            class="learning-card__icon"
-                            aria-hidden="true"
-                        >
-                            if
-                        </div>
-
-                        <h3 class="learning-card__title">
-                            Tomá decisiones
-                        </h3>
-
-                        <p class="learning-card__description">
-                            Usá una condición para modificar el estado
-                            del LED según el botón.
-                        </p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- QUÉ NECESITÁS -->
-
-            <section class="activity-section">
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            02
-                        </span>
-
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span class="activity-section__category">
-                            Antes de empezar
-                        </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Qué necesitás
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Vamos a reutilizar el LED del Tutorial 2 y
-                        agregar un botón al circuito.
-                    </p>
-                </header>
-
-                <div class="activity-materials">
-                    <div class="activity-material">
-                        <span
-                            class="activity-material__check"
-                            aria-hidden="true"
-                        >
-                            ✓
-                        </span>
-
-                        <div class="activity-material__content">
-                            <span class="activity-material__name">
-                                Proyecto Mini Lab
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
                             </span>
-
-                            <span class="activity-material__detail">
-                                El mismo proyecto utilizado en Blinky
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="activity-material">
-                        <span
-                            class="activity-material__check"
-                            aria-hidden="true"
-                        >
-                            ✓
-                        </span>
-
-                        <div class="activity-material__content">
-                            <span class="activity-material__name">
-                                LED virtual
-                            </span>
-
-                            <span class="activity-material__detail">
-                                Conectado a GPIO15
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="activity-material">
-                        <span
-                            class="activity-material__check"
-                            aria-hidden="true"
-                        >
-                            ✓
-                        </span>
-
-                        <div class="activity-material__content">
-                            <span class="activity-material__name">
-                                Push button
-                            </span>
-
-                            <span class="activity-material__detail">
-                                Botón virtual de Velxio
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONEXIÓN -->
-
-            <section
-                id="conectar-boton"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            03
-                        </span>
-
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span class="activity-section__category">
-                            Conectá
-                        </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Agregá el botón en Velxio
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Agregá un componente Push Button al circuito y
-                        conectalo entre GPIO14 y GND.
-                    </p>
-                </header>
-
-                <div class="hardware-flow">
-                    <div class="hardware-flow__step">
-                        <span class="hardware-flow__number">
-                            1
-                        </span>
-
-                        <div>
-                            <strong>GPIO14</strong>
 
                             <p>
-                                Conectá uno de los terminales del botón
-                                a GPIO14.
+                                Vamos a usar la resistencia pull-up interna del
+                                microcontrolador. Por eso no necesitamos agregar
+                                una resistencia externa al botón.
                             </p>
+                        </aside>
+                    </section>
+
+                    <!-- ENTENDER PULL-UP -->
+
+                    <section
+                        id="entender-pullup"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    04
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Entendé
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                ¿Qué hace el pull-up?
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Cuando el botón está abierto, el pull-up
+                                mantiene GPIO14 en HIGH. Al presionarlo, el pin
+                                queda conectado a GND y pasa a LOW.
+                            </p>
+                        </header>
+
+                        <div class="activity-pattern">
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Botón suelto
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    HIGH
+                                </strong>
+                            </div>
+
+                            <span
+                                class="activity-pattern__arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Botón presionado
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    LOW
+                                </strong>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="hardware-flow__step">
-                        <span class="hardware-flow__number">
-                            2
-                        </span>
-
-                        <div>
-                            <strong>GND</strong>
+                        <div class="activity-question">
+                            <span
+                                class="activity-question__icon"
+                                aria-hidden="true"
+                            >
+                                ?
+                            </span>
 
                             <p>
-                                Conectá el otro terminal del botón
-                                a tierra.
+                                Si el botón está presionado, ¿esperás que
+                                <code>is_low()</code> devuelva verdadero o
+                                falso?
                             </p>
                         </div>
-                    </div>
-                </div>
+                    </section>
 
-                <aside class="activity-note">
-                    <span
-                        class="activity-note__icon"
-                        aria-hidden="true"
+                    <!-- CONFIGURAR PIN -->
+
+                    <section
+                        id="configurar-boton"
+                        class="activity-section activity-experiment"
                     >
-                        i
-                    </span>
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    05
+                                </span>
 
-                    <p>
-                        Vamos a usar la resistencia pull-up interna del
-                        microcontrolador. Por eso no necesitamos agregar
-                        una resistencia externa al botón.
-                    </p>
-                </aside>
-            </section>
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
 
-            <!-- ENTENDER PULL-UP -->
+                                <span class="activity-section__category">
+                                    Programá
+                                </span>
+                            </div>
 
-            <section
-                id="entender-pullup"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            04
-                        </span>
+                            <h2 class="activity-section__title">
+                                Configurá GPIO14 como entrada
+                            </h2>
 
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
+                            <p class="activity-section__lead">
+                                Después de inicializar los pines, agregá la
+                                configuración del botón.
+                            </p>
+                        </header>
 
-                        <span class="activity-section__category">
-                            Entendé
-                        </span>
-                    </div>
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>GPIO Input</span>
+                            </div>
 
-                    <h2 class="activity-section__title">
-                        ¿Qué hace el pull-up?
-                    </h2>
+                            <pre
+                                class="command-block__code"
+                            ><code>let button = pins.gpio14.into_pull_up_input();</code></pre>
+                        </div>
 
-                    <p class="activity-section__lead">
-                        Cuando el botón está abierto, el pull-up mantiene
-                        GPIO14 en HIGH. Al presionarlo, el pin queda
-                        conectado a GND y pasa a LOW.
-                    </p>
-                </header>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
 
-                <div class="activity-pattern">
-                    <div class="activity-pattern__item">
-                        <span class="activity-pattern__label">
-                            Botón suelto
-                        </span>
+                            <p>
+                                <code>into_pull_up_input()</code> configura
+                                GPIO14 como entrada y activa su pull-up interno.
+                            </p>
+                        </aside>
+                    </section>
 
-                        <strong class="activity-pattern__value">
-                            HIGH
-                        </strong>
-                    </div>
+                    <!-- CONTROLAR LED -->
 
-                    <span
-                        class="activity-pattern__arrow"
-                        aria-hidden="true"
+                    <section
+                        id="controlar-led"
+                        class="activity-section activity-experiment"
                     >
-                        →
-                    </span>
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    06
+                                </span>
 
-                    <div class="activity-pattern__item">
-                        <span class="activity-pattern__label">
-                            Botón presionado
-                        </span>
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
 
-                        <strong class="activity-pattern__value">
-                            LOW
-                        </strong>
-                    </div>
-                </div>
+                                <span class="activity-section__category">
+                                    Experimentá
+                                </span>
+                            </div>
 
-                <div class="activity-question">
-                    <span
-                        class="activity-question__icon"
-                        aria-hidden="true"
-                    >
-                        ?
-                    </span>
+                            <h2 class="activity-section__title">
+                                Controlá el LED con el botón
+                            </h2>
 
-                    <p>
-                        Si el botón está presionado, ¿esperás que
-                        <code>is_low()</code> devuelva verdadero o falso?
-                    </p>
-                </div>
-            </section>
+                            <p class="activity-section__lead">
+                                Reemplazá el loop del Tutorial 2 por una
+                                condición que compruebe constantemente el estado
+                                del botón.
+                            </p>
+                        </header>
 
-            <!-- CONFIGURAR PIN -->
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>Loop</span>
+                            </div>
 
-            <section
-                id="configurar-boton"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            05
-                        </span>
-
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span class="activity-section__category">
-                            Programá
-                        </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Configurá GPIO14 como entrada
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Después de inicializar los pines, agregá la
-                        configuración del botón.
-                    </p>
-                </header>
-
-                <div class="command-block">
-                    <div class="command-block__header">
-                        <span>src/main.rs</span>
-                        <span>GPIO Input</span>
-                    </div>
-
-                    <pre class="command-block__code"><code>let button = pins.gpio14.into_pull_up_input();</code></pre>
-                </div>
-
-                <aside class="activity-note">
-                    <span
-                        class="activity-note__icon"
-                        aria-hidden="true"
-                    >
-                        i
-                    </span>
-
-                    <p>
-                        <code>into_pull_up_input()</code> configura
-                        GPIO14 como entrada y activa su pull-up interno.
-                    </p>
-                </aside>
-            </section>
-
-            <!-- CONTROLAR LED -->
-
-            <section
-                id="controlar-led"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            06
-                        </span>
-
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span class="activity-section__category">
-                            Experimentá
-                        </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Controlá el LED con el botón
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Reemplazá el loop del Tutorial 2 por una condición
-                        que compruebe constantemente el estado del botón.
-                    </p>
-                </header>
-
-                <div class="command-block">
-                    <div class="command-block__header">
-                        <span>src/main.rs</span>
-                        <span>Loop</span>
-                    </div>
-
-                    <pre class="command-block__code"><code>loop {
+                            <pre class="command-block__code"><code>loop {
     if button.is_low().unwrap() {
         led_pin.set_high().unwrap();
     } else {
         led_pin.set_low().unwrap();
     }
 }</code></pre>
-                </div>
+                        </div>
 
-                <div class="activity-task">
-                    <span class="activity-task__label">
-                        Resultado esperado
-                    </span>
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                Resultado esperado
+                            </span>
 
-                    <p>
-                        Mientras mantengas presionado el botón,
-                        el LED debería permanecer
-                        <strong>encendido</strong>.
-                        Al soltarlo, debería
-                        <strong>apagarse</strong>.
-                    </p>
-                </div>
-            </section>
+                            <p>
+                                Mientras mantengas presionado el botón, el LED
+                                debería permanecer
+                                <strong>encendido</strong>. Al soltarlo, debería
+                                <strong>apagarse</strong>.
+                            </p>
+                        </div>
+                    </section>
 
-            <!-- COMPILAR -->
+                    <!-- COMPILAR -->
 
-            <section
-                id="compilar"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            07
+                    <section
+                        id="compilar"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    07
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Compilá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Generá el firmware
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Guardá los cambios y compilá nuevamente.
+                            </p>
+                        </header>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                                <span>Release</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>cargo build --release</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- PROBAR -->
+
+                    <section
+                        id="probar"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    08
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Probá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Probalo en Velxio
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Cargá el nuevo ELF y ejecutá la simulación.
+                                Después interactuá con el botón virtual.
+                            </p>
+                        </header>
+
+                        <div class="activity-pattern">
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Soltá
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    LED OFF
+                                </strong>
+                            </div>
+
+                            <span
+                                class="activity-pattern__arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+
+                            <div class="activity-pattern__item">
+                                <span class="activity-pattern__label">
+                                    Presioná
+                                </span>
+
+                                <strong class="activity-pattern__value">
+                                    LED ON
+                                </strong>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- DESAFÍO -->
+
+                    <section class="activity-section">
+                        <div class="activity-challenge">
+                            <div
+                                class="activity-challenge__icon"
+                                aria-hidden="true"
+                            >
+                                ★
+                            </div>
+
+                            <div class="activity-challenge__content">
+                                <p class="activity-challenge__eyebrow">
+                                    Desafío final
+                                </p>
+
+                                <h2 class="activity-challenge__title">
+                                    Invertí el comportamiento
+                                </h2>
+
+                                <p class="activity-challenge__description">
+                                    Modificá el programa para que el LED esté
+                                    encendido cuando el botón está suelto y se
+                                    apague mientras lo presionás.
+                                </p>
+
+                                <ul class="activity-challenge__checklist">
+                                    <li>No cambies el circuito.</li>
+
+                                    <li>
+                                        Modificá solamente la lógica del
+                                        programa.
+                                    </li>
+
+                                    <li>
+                                        Predecí el resultado antes de
+                                        ejecutarlo.
+                                    </li>
+
+                                    <li>Probalo nuevamente en Velxio.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- COMPLETADO -->
+
+                    <section class="activity-complete">
+                        <span
+                            class="activity-complete__icon"
+                            aria-hidden="true"
+                        >
+                            ✓
                         </span>
+
+                        <div class="activity-complete__content">
+                            <h2 class="activity-complete__title">
+                                Tutorial completado
+                            </h2>
+
+                            <p class="activity-complete__description">
+                                Ya utilizaste un GPIO como entrada y controlaste
+                                el comportamiento del programa según el estado
+                                de un botón.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- NAVEGACIÓN FINAL -->
+
+                    <nav
+                        class="activity-footer-nav"
+                        aria-label="Navegación entre tutoriales"
+                    >
+                        <a
+                            href="../actividad-02/"
+                            class="activity-footer-nav__back"
+                        >
+                            <span aria-hidden="true"> ← </span>
+
+                            Tutorial 02 · Blinky
+                        </a>
 
                         <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
+                            class="activity-footer-nav__next activity-footer-nav__next--disabled"
+                            aria-disabled="true"
+                        >
+                            Tutorial 04 · MPU6050
 
-                        <span class="activity-section__category">
-                            Compilá
+                            <span aria-hidden="true"> → </span>
                         </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Generá el firmware
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Guardá los cambios y compilá nuevamente.
-                    </p>
-                </header>
-
-                <div class="command-block">
-                    <div class="command-block__header">
-                        <span>Terminal</span>
-                        <span>Release</span>
-                    </div>
-
-                    <pre class="command-block__code"><code>cargo build --release</code></pre>
+                    </nav>
                 </div>
-            </section>
-
-            <!-- PROBAR -->
-
-            <section
-                id="probar"
-                class="activity-section activity-experiment"
-            >
-                <header class="activity-section__header">
-                    <div class="activity-section__eyebrow">
-                        <span class="activity-section__number">
-                            08
-                        </span>
-
-                        <span
-                            class="activity-section__line"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span class="activity-section__category">
-                            Probá
-                        </span>
-                    </div>
-
-                    <h2 class="activity-section__title">
-                        Probalo en Velxio
-                    </h2>
-
-                    <p class="activity-section__lead">
-                        Cargá el nuevo ELF y ejecutá la simulación.
-                        Después interactuá con el botón virtual.
-                    </p>
-                </header>
-
-                <div class="activity-pattern">
-                    <div class="activity-pattern__item">
-                        <span class="activity-pattern__label">
-                            Soltá
-                        </span>
-
-                        <strong class="activity-pattern__value">
-                            LED OFF
-                        </strong>
-                    </div>
-
-                    <span
-                        class="activity-pattern__arrow"
-                        aria-hidden="true"
-                    >
-                        →
-                    </span>
-
-                    <div class="activity-pattern__item">
-                        <span class="activity-pattern__label">
-                            Presioná
-                        </span>
-
-                        <strong class="activity-pattern__value">
-                            LED ON
-                        </strong>
-                    </div>
-                </div>
-            </section>
-
-            <!-- DESAFÍO -->
-
-            <section class="activity-section">
-                <div class="activity-challenge">
-                    <div
-                        class="activity-challenge__icon"
-                        aria-hidden="true"
-                    >
-                        ★
-                    </div>
-
-                    <div class="activity-challenge__content">
-                        <p class="activity-challenge__eyebrow">
-                            Desafío final
-                        </p>
-
-                        <h2 class="activity-challenge__title">
-                            Invertí el comportamiento
-                        </h2>
-
-                        <p class="activity-challenge__description">
-                            Modificá el programa para que el LED esté
-                            encendido cuando el botón está suelto y
-                            se apague mientras lo presionás.
-                        </p>
-
-                        <ul class="activity-challenge__checklist">
-                            <li>
-                                No cambies el circuito.
-                            </li>
-
-                            <li>
-                                Modificá solamente la lógica del programa.
-                            </li>
-
-                            <li>
-                                Predecí el resultado antes de ejecutarlo.
-                            </li>
-
-                            <li>
-                                Probalo nuevamente en Velxio.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- COMPLETADO -->
-
-            <section class="activity-complete">
-                <span
-                    class="activity-complete__icon"
-                    aria-hidden="true"
-                >
-                    ✓
-                </span>
-
-                <div class="activity-complete__content">
-                    <h2 class="activity-complete__title">
-                        Tutorial completado
-                    </h2>
-
-                    <p class="activity-complete__description">
-                        Ya utilizaste un GPIO como entrada y controlaste
-                        el comportamiento del programa según el estado
-                        de un botón.
-                    </p>
-                </div>
-            </section>
-
-            <!-- NAVEGACIÓN FINAL -->
-
-            <nav
-                class="activity-footer-nav"
-                aria-label="Navegación entre tutoriales"
-            >
-                <a
-                    href="../actividad-02/"
-                    class="activity-footer-nav__back"
-                >
-                    <span aria-hidden="true">
-                        ←
-                    </span>
-
-                    Tutorial 02 · Blinky
-                </a>
-
-                <span
-                    class="activity-footer-nav__next activity-footer-nav__next--disabled"
-                    aria-disabled="true"
-                >
-                    Tutorial 04 · MPU6050
-
-                    <span aria-hidden="true">
-                        →
-                    </span>
-                </span>
-            </nav>
-        </div>
-    </div>
-</main>
+            </div>
+        </main>
 
         <!-- =========================
         FOOTER

@@ -84,9 +84,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
                 </button>
             </div>
@@ -104,9 +102,7 @@
         >
             <div class="site-nav__header">
                 <a href="../../../index.html" class="site-nav__brand">
-                    <span class="site-nav__brand-name">
-                        Mini Lab
-                    </span>
+                    <span class="site-nav__brand-name"> Mini Lab </span>
 
                     <span class="site-nav__brand-subtitle">
                         Sistemas embebidos con Rust
@@ -125,59 +121,95 @@
 
             <ul class="site-nav__list">
                 <li class="site-nav__item">
-                    <a
-                        href="../../../index.html"
-                        class="site-nav__link"
-                    >
+                    <a href="../../../index.html" class="site-nav__link">
                         Inicio
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../conoce-tu-kit/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../conoce-tu-kit/" class="site-nav__link">
                         Conocé tu kit
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../primeros-pasos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../primeros-pasos/" class="site-nav__link">
                         Primeros pasos
                     </a>
                 </li>
 
                 <!-- Actividades -->
                 <li class="site-nav__item site-nav__item-activities">
-                    <a
-                        href="../"
-                        class="site-nav__link site-nav__link--active"
-                        aria-current="page"
-                    >
+                    <a href="../" class="site-nav__link site-nav__link--active">
                         Actividades
                     </a>
+
+                    <ol
+                        class="activities-nav"
+                        aria-label="Tutoriales de Mini Lab"
+                    >
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-01/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 01 </span>
+
+                                <span class="activities-nav__label">
+                                    Serie / UART
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-02/"
+                                class="activities-nav__link activities-nav__link--active"
+                            >
+                                <span class="activities-nav__number"> 02 </span>
+
+                                <span class="activities-nav__label">
+                                    Blinky
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-03/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 03 </span>
+
+                                <span class="activities-nav__label">
+                                    Botón
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="activities-nav__item">
+                            <a
+                                href="../actividad-04/"
+                                class="activities-nav__link"
+                            >
+                                <span class="activities-nav__number"> 04 </span>
+
+                                <span class="activities-nav__label">
+                                    MPU6050
+                                </span>
+                            </a>
+                        </li>
+                    </ol>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../recursos/"
-                        class="site-nav__link"
-                    >
+                    <a href="../../recursos/" class="site-nav__link">
                         Recursos
                     </a>
                 </li>
 
                 <li class="site-nav__item">
-                    <a
-                        href="../../ayuda/"
-                        class="site-nav__link"
-                    >
-                        Ayuda
-                    </a>
+                    <a href="../../ayuda/" class="site-nav__link"> Ayuda </a>
                 </li>
             </ul>
 
@@ -218,14 +250,10 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                     >
-                        <path
-                            d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
-                        ></path>
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
                     </svg>
 
-                    <span class="theme-toggle__label">
-                        Tema
-                    </span>
+                    <span class="theme-toggle__label"> Tema </span>
                 </button>
             </div>
         </nav>
@@ -257,10 +285,7 @@
                             &gt;
                         </span>
 
-                        <a
-                            href="../"
-                            class="activity-breadcrumb__link"
-                        >
+                        <a href="../" class="activity-breadcrumb__link">
                             Actividades
                         </a>
 
@@ -291,8 +316,8 @@
                         </h1>
 
                         <p class="activity-hero__description">
-                            En este tutorial vas a controlar un LED con Rust
-                            y el entorno de simulación. Vas a probar distintos
+                            En este tutorial vas a controlar un LED con Rust y
+                            el entorno de simulación. Vas a probar distintos
                             tiempos de encendido y apagado, crear secuencias y
                             experimentar con los patrones de parpadeo.
                         </p>
@@ -306,20 +331,35 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Esfera principal -->
                                         <circle cx="12" cy="12" r="9" />
-                                        
+
                                         <!-- Botones superiores estilo cronómetro de laboratorio -->
                                         <path d="M12 3V1M9 2h6" />
-                                        
+
                                         <!-- Área de tiempo transcurrido (Aproximadamente 25 minutos) -->
-                                        <path d="M12 12V3a9 9 0 0 1 7.8 13.5Z" fill="currentColor" fill-opacity="0.15" stroke="none" />
-                                        
+                                        <path
+                                            d="M12 12V3a9 9 0 0 1 7.8 13.5Z"
+                                            fill="currentColor"
+                                            fill-opacity="0.15"
+                                            stroke="none"
+                                        />
+
                                         <!-- Manecillas internas -->
                                         <path d="M12 12V3M12 12l7.8 4.5" />
                                     </svg>
-
                                 </span>
 
                                 20–30 min
@@ -330,17 +370,48 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Barra 1: Nivel Inicial (Rellena para indicar que está activa) -->
-                                        <rect x="4" y="15" width="4" height="5" rx="1" fill="currentColor" />
-                                        
-                                        <!-- Barra 2: Nivel Intermedio (Vacía) -->
-                                        <rect x="10" y="10" width="4" height="10" rx="1" opacity="0.4" />
-                                        
-                                        <!-- Barra 3: Nivel Avanzado (Vacía) -->
-                                        <rect x="16" y="4" width="4" height="16" rx="1" opacity="0.4" />
-                                    </svg>
+                                        <rect
+                                            x="4"
+                                            y="15"
+                                            width="4"
+                                            height="5"
+                                            rx="1"
+                                            fill="currentColor"
+                                        />
 
+                                        <!-- Barra 2: Nivel Intermedio (Vacía) -->
+                                        <rect
+                                            x="10"
+                                            y="10"
+                                            width="4"
+                                            height="10"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
+
+                                        <!-- Barra 3: Nivel Avanzado (Vacía) -->
+                                        <rect
+                                            x="16"
+                                            y="4"
+                                            width="4"
+                                            height="16"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
+                                    </svg>
                                 </span>
 
                                 Nivel inicial
@@ -351,10 +422,25 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Cuerpo de la bombilla -->
-                                        <path d="M15 18H9M14 21H10M12 2v1M4.22 4.22l.7.7M2 12h1M21 12h1M18.36 4.22l-.7.7" />
-                                        <path d="M17 12a5 5 0 1 0-10 0c0 2.5 2 3.5 3 5h4c1-1.5 3-2.5 3-5z" />
+                                        <path
+                                            d="M15 18H9M14 21H10M12 2v1M4.22 4.22l.7.7M2 12h1M21 12h1M18.36 4.22l-.7.7"
+                                        />
+                                        <path
+                                            d="M17 12a5 5 0 1 0-10 0c0 2.5 2 3.5 3 5h4c1-1.5 3-2.5 3-5z"
+                                        />
                                     </svg>
                                 </span>
 
@@ -366,21 +452,49 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Cuerpo central del microcontrolador -->
-                                        <rect x="5" y="5" width="14" height="14" rx="1.5" fill="none" />
-                                        
+                                        <rect
+                                            x="5"
+                                            y="5"
+                                            width="14"
+                                            height="14"
+                                            rx="1.5"
+                                            fill="none"
+                                        />
+
                                         <!-- Muesca de orientación / Identificador del Pin 1 -->
-                                        <circle cx="7.5" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
-                                        
+                                        <circle
+                                            cx="7.5"
+                                            cy="7.5"
+                                            r="0.75"
+                                            fill="currentColor"
+                                            stroke="none"
+                                        />
+
                                         <!-- Pines Superiores -->
                                         <path d="M7 2v3M10 2v3M13 2v3M17 2v3" />
                                         <!-- Pines Inferiores -->
-                                        <path d="M7 19v3M10 19v3M13 19v3M17 19v3" />
+                                        <path
+                                            d="M7 19v3M10 19v3M13 19v3M17 19v3"
+                                        />
                                         <!-- Pines Izquierdos -->
                                         <path d="M2 7h3M2 10h3M2 13h3M2 17h3" />
                                         <!-- Pines Derechas -->
-                                        <path d="M19 7h3M19 10h3M19 13h3M19 17h3" />
+                                        <path
+                                            d="M19 7h3M19 10h3M19 13h3M19 17h3"
+                                        />
                                     </svg>
                                 </span>
 
@@ -392,21 +506,47 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Pantalla del simulador / Área de trabajo -->
-                                        <rect x="2" y="3" width="20" height="14" rx="2" />
-                                        
+                                        <rect
+                                            x="2"
+                                            y="3"
+                                            width="20"
+                                            height="14"
+                                            rx="2"
+                                        />
+
                                         <!-- Soporte o base de la pantalla -->
                                         <path d="M6 21h12M12 17v4" />
-                                        
+
                                         <!-- Nodos de circuito simulados en pantalla -->
-                                        <circle cx="7" cy="8" r="1.5" fill="currentColor" />
-                                        <circle cx="17" cy="12" r="1.5" fill="currentColor" />
-                                        
+                                        <circle
+                                            cx="7"
+                                            cy="8"
+                                            r="1.5"
+                                            fill="currentColor"
+                                        />
+                                        <circle
+                                            cx="17"
+                                            cy="12"
+                                            r="1.5"
+                                            fill="currentColor"
+                                        />
+
                                         <!-- Línea de conexión / Onda de señal interactiva -->
                                         <path d="M8.5 8h2l2.5 5 2.5-7 1 2" />
                                     </svg>
-
                                 </span>
 
                                 Velxio
@@ -459,21 +599,34 @@
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg class="activity-meta__icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Cuerpo principal del temporizador -->
                                         <circle cx="12" cy="14" r="8" />
-                                        
+
                                         <!-- Botón superior de Inicio/Parada (Pulsador) -->
                                         <path d="M12 6V3M9 3h6" />
-                                        
+
                                         <!-- Botón lateral de Reset / Configuración -->
                                         <path d="M18 8l2-2" />
-                                        
+
                                         <!-- Indicador interno de cuenta atrás (Arco de tiempo restante) -->
-                                        <path d="M12 10a4 4 0 0 1 4 4" stroke-width="2" />
+                                        <path
+                                            d="M12 10a4 4 0 0 1 4 4"
+                                            stroke-width="2"
+                                        />
                                         <path d="M12 14V10" />
                                     </svg>
-
                                 </div>
 
                                 <h3 class="learning-card__title">
@@ -481,8 +634,8 @@
                                 </h3>
 
                                 <p class="learning-card__description">
-                                    Controlar cuánto tiempo permanece
-                                    encendido o apagado el LED.
+                                    Controlar cuánto tiempo permanece encendido
+                                    o apagado el LED.
                                 </p>
                             </article>
 
@@ -498,31 +651,53 @@
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Señal de reloj / Pulso de la secuencia -->
                                         <path d="M2 18h3v-4h4v4h3" />
-                                        
+
                                         <!-- Línea de distribución hacia los LEDs -->
                                         <path d="M12 18V6h4" />
-                                        
+
                                         <!-- Hilera de LEDs verticales en secuencia -->
                                         <!-- LED Superior (Encendido) -->
-                                        <circle cx="18" cy="6" r="2" fill="currentColor" />
+                                        <circle
+                                            cx="18"
+                                            cy="6"
+                                            r="2"
+                                            fill="currentColor"
+                                        />
                                         <!-- LED Central (Medio encendido / Atenuado) -->
-                                        <circle cx="18" cy="12" r="2" opacity="0.6" />
+                                        <circle
+                                            cx="18"
+                                            cy="12"
+                                            r="2"
+                                            opacity="0.6"
+                                        />
                                         <!-- LED Inferior (Apagado) -->
-                                        <circle cx="18" cy="18" r="2" opacity="0.2" />
+                                        <circle
+                                            cx="18"
+                                            cy="18"
+                                            r="2"
+                                            opacity="0.2"
+                                        />
                                     </svg>
-
                                 </div>
 
-                                <h3 class="learning-card__title">
-                                    Secuencias
-                                </h3>
+                                <h3 class="learning-card__title">Secuencias</h3>
 
                                 <p class="learning-card__description">
-                                    Combinar distintos cambios de estado
-                                    para crear un patrón.
+                                    Combinar distintos cambios de estado para
+                                    crear un patrón.
                                 </p>
                             </article>
 
@@ -538,19 +713,42 @@
                                     class="learning-card__icon"
                                     aria-hidden="true"
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="48"
+                                        height="48"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
                                         <!-- Base del interruptor/esquema -->
                                         <path d="M3 12h5M16 12h5" />
-                                        
+
                                         <!-- La palanca cambiando de posición (En plena transición de prueba) -->
                                         <path d="M8 12l6-5" stroke-width="2" />
-                                        <path d="M8 12l6 5" stroke-dasharray="2 2" opacity="0.4" />
-                                        
-                                        <!-- Indicadores de estado -->
-                                        <circle cx="14" cy="7" r="1" fill="currentColor" />
-                                        <circle cx="14" cy="17" r="1" opacity="0.4" />
-                                    </svg>
+                                        <path
+                                            d="M8 12l6 5"
+                                            stroke-dasharray="2 2"
+                                            opacity="0.4"
+                                        />
 
+                                        <!-- Indicadores de estado -->
+                                        <circle
+                                            cx="14"
+                                            cy="7"
+                                            r="1"
+                                            fill="currentColor"
+                                        />
+                                        <circle
+                                            cx="14"
+                                            cy="17"
+                                            r="1"
+                                            opacity="0.4"
+                                        />
+                                    </svg>
                                 </div>
 
                                 <h3 class="learning-card__title">
@@ -732,9 +930,9 @@
                             </h2>
 
                             <p class="activity-section__lead">
-                                Empezá desde el parpadeo que ya construiste
-                                en Primeros pasos. El LED permanece
-                                encendido 500 ms y apagado otros 500 ms.
+                                Empezá desde el parpadeo que ya construiste en
+                                Primeros pasos. El LED permanece encendido 500
+                                ms y apagado otros 500 ms.
                             </p>
                         </header>
 
@@ -757,9 +955,7 @@
                                 </div>
 
                                 <div class="activity-task">
-                                    <span
-                                        class="activity-task__label"
-                                    >
+                                    <span class="activity-task__label">
                                         Tu objetivo
                                     </span>
 
@@ -778,15 +974,13 @@
                                     ⚡
                                 </span>
 
-                                <h3 class="activity-hint__title">
-                                    Pista
-                                </h3>
+                                <h3 class="activity-hint__title">Pista</h3>
 
                                 <p>
                                     Revisá cuánto tiempo espera el programa
-                                    después de encender y apagar el LED.
-                                    Si reducís esos valores, el ciclo tarda
-                                    menos en completarse.
+                                    después de encender y apagar el LED. Si
+                                    reducís esos valores, el ciclo tarda menos
+                                    en completarse.
                                 </p>
                             </aside>
                         </div>
@@ -820,9 +1014,9 @@
                             </h2>
 
                             <p class="activity-section__lead">
-                                Los tiempos de encendido y apagado no tienen
-                                que ser iguales. Ahora vamos a crear un
-                                destello breve seguido por una pausa más larga.
+                                Los tiempos de encendido y apagado no tienen que
+                                ser iguales. Ahora vamos a crear un destello
+                                breve seguido por una pausa más larga.
                             </p>
                         </header>
 
@@ -860,9 +1054,7 @@
                                 <span>src/main.rs</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>loop {
+                            <pre class="command-block__code"><code>loop {
     led_pin.set_high().unwrap();
     delay.delay_ms(100);
 
@@ -914,9 +1106,9 @@
                             </h2>
 
                             <p class="activity-section__lead">
-                                Ahora combiná varios cambios de estado.
-                                Vamos a generar dos destellos rápidos
-                                seguidos por una pausa más larga.
+                                Ahora combiná varios cambios de estado. Vamos a
+                                generar dos destellos rápidos seguidos por una
+                                pausa más larga.
                             </p>
                         </header>
 
@@ -963,9 +1155,7 @@
                                 <span>src/main.rs</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>loop {
+                            <pre class="command-block__code"><code>loop {
     led_pin.set_high().unwrap();
     delay.delay_ms(150);
 
@@ -990,9 +1180,8 @@
 
                             <p>
                                 Modificá el código, ejecutá nuevamente
-                                <code>cargo build --release</code> y cargá
-                                el nuevo ELF en Velxio para comparar el
-                                resultado.
+                                <code>cargo build --release</code> y cargá el
+                                nuevo ELF en Velxio para comparar el resultado.
                             </p>
                         </aside>
                     </section>
@@ -1020,17 +1209,15 @@
 
                                 <p class="activity-challenge__description">
                                     Creá una señal utilizando al menos
-                                    <strong>
-                                        tres cambios de estado
-                                    </strong>
+                                    <strong> tres cambios de estado </strong>
                                     del LED.
                                 </p>
 
                                 <p class="activity-challenge__description">
-                                    Antes de ejecutarla, escribí o imaginá
-                                    cómo debería verse. Después compilá el
-                                    firmware y compará tu predicción con el
-                                    resultado en Velxio.
+                                    Antes de ejecutarla, escribí o imaginá cómo
+                                    debería verse. Después compilá el firmware y
+                                    compará tu predicción con el resultado en
+                                    Velxio.
                                 </p>
 
                                 <ul class="activity-challenge__checklist">
@@ -1038,18 +1225,14 @@
                                         Usá al menos tres cambios de estado.
                                     </li>
 
-                                    <li>
-                                        Utilizá más de un tiempo de espera.
-                                    </li>
+                                    <li>Utilizá más de un tiempo de espera.</li>
 
                                     <li>
                                         Predecí el comportamiento antes de
                                         ejecutarlo.
                                     </li>
 
-                                    <li>
-                                        Probalo en el simulador.
-                                    </li>
+                                    <li>Probalo en el simulador.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1072,9 +1255,9 @@
                             </h2>
 
                             <p class="activity-complete__description">
-                                Ya modificaste una salida GPIO, trabajaste
-                                con tiempos y construiste tus primeras
-                                secuencias en Rust.
+                                Ya modificaste una salida GPIO, trabajaste con
+                                tiempos y construiste tus primeras secuencias en
+                                Rust.
                             </p>
                         </div>
                     </section>
@@ -1090,9 +1273,7 @@
                             href="../actividad-01/"
                             class="activity-footer-nav__back"
                         >
-                            <span aria-hidden="true">
-                                ←
-                            </span>
+                            <span aria-hidden="true"> ← </span>
 
                             Tutorial 01 · Mensaje por UART
                         </a>
@@ -1103,9 +1284,7 @@
                         >
                             Tutorial 03 · Botón
 
-                            <span aria-hidden="true">
-                                →
-                            </span>
+                            <span aria-hidden="true"> → </span>
                         </a>
                     </nav>
                 </div>
@@ -1120,17 +1299,12 @@
                 Un proyecto de
                 <strong>INVAP</strong>
 
-                <span class="site-footer__plus">
-                    +
-                </span>
+                <span class="site-footer__plus"> + </span>
 
                 <strong>Fundación INVAP</strong>
             </p>
         </footer>
 
-        <script
-            src="../../../js/main.js"
-            defer
-        ></script>
+        <script src="../../../js/main.js" defer></script>
     </body>
 </html>
