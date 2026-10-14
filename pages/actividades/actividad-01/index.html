@@ -595,6 +595,185 @@
                     </section>
 
                     <!-- =========================
+                    PREPARAR PROYECTO
+                    ========================= -->
+                    <section
+                        id="preparar-proyecto"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    03
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Prepará
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Limpiá el código de prueba
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                En Primeros pasos modificamos el proyecto para
+                                comprobar que el entorno, el LED y la
+                                comunicación serial funcionaban correctamente en
+                                Velxio.
+                            </p>
+
+                            <p class="activity-section__lead">
+                                Ahora vamos a retirar ese código de prueba y
+                                construir cada ejemplo paso a paso. No hace
+                                falta crear un proyecto nuevo: vamos a seguir
+                                trabajando sobre el mismo
+                                <code>src/main.rs</code>.
+                            </p>
+                        </header>
+
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                Eliminá el código del LED
+                            </span>
+
+                            <p>
+                                Primero sacá el import que utilizábamos para
+                                controlar una salida digital:
+                            </p>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Import</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>use embedded_hal::digital::OutputPin;</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            También eliminá la creación del pin que utilizábamos
+                            para controlar el LED:
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>GPIO15</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            Como vamos a volver a configurar UART desde cero,
+                            eliminá también la configuración que agregamos
+                            durante Primeros pasos.
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>UART de prueba</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let uart_pins = (
+    pins.gpio2.into_function(),
+    pins.gpio3.into_function(),
+);
+
+let uart0 =
+    hal::uart::UartPeripheral::new(
+        pac.UART0,
+        uart_pins,
+        &mut pac.RESETS,
+    )
+    .enable(
+        UartConfig::new(
+            115200.Hz(),
+            DataBits::Eight,
+            None,
+            StopBits::One,
+        ),
+        clocks.peripheral_clock.freq(),
+    )
+    .unwrap();</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            Por último, eliminá el <code>loop</code> de prueba
+                            que prendía y apagaba el LED y enviaba mensajes al
+                            Serial Monitor. En unos pasos vamos a reemplazarlo
+                            por el código propio de este tutorial.
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Loop de prueba</span>
+                            </div>
+
+                            <pre class="command-block__code"><code>loop {
+    info!("on!");
+    led_pin.set_high().unwrap();
+    uart0.write_full_blocking(b"LED ON\r\n");
+    delay.delay_ms(500);
+
+    info!("off!");
+    led_pin.set_low().unwrap();
+    uart0.write_full_blocking(b"LED OFF\r\n");
+    delay.delay_ms(500);
+}</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Conservá la inicialización de los periféricos,
+                                los clocks, los pines y <code>delay</code>. Esa
+                                parte prepara el microcontrolador y la vamos a
+                                seguir utilizando.
+                            </p>
+                        </aside>
+                        <p class="activity-section__lead">
+                            También podés retirar temporalmente los imports de
+                            UART que agregaste en Primeros pasos. Los vamos a
+                            incorporar nuevamente cuando configuremos la
+                            comunicación.
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Imports UART</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- =========================
             PARTE 1
             ========================= -->
                     <section
@@ -689,6 +868,26 @@
                                 pero configuraremos ambos pines.
                             </p>
                         </aside>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                Rust
+                            </span>
+
+                            <p>
+                                Vas a encontrar varias declaraciones que
+                                comienzan con
+                                <code>let mut</code>. En Rust,
+                                <code>mut</code> significa
+                                <strong>mutable</strong>: indica que el valor
+                                asociado a esa variable puede cambiar durante la
+                                ejecución del programa. Por ejemplo,
+                                <code>delay</code> modifica su estado interno
+                                cada vez que genera una espera.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- =========================
@@ -776,6 +975,24 @@ let uart0 =
     )
     .unwrap();</code></pre>
                         </div>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Esta configuración utiliza UART0 a
+                                <strong>115200 baudios</strong>, con
+                                <strong>8 bits de datos</strong>,
+                                <strong>sin bit de paridad</strong> y
+                                <strong>1 bit de parada</strong>. Esta
+                                combinación suele abreviarse como
+                                <strong>115200 8N1</strong>.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- =========================
@@ -834,6 +1051,22 @@ let uart0 =
     delay.delay_ms(1000);
 }</code></pre>
                         </div>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                La letra <code>b</code> delante del texto indica
+                                que estamos enviando una secuencia de bytes.
+                                <code>\r\n</code> agrega un salto de línea para
+                                que cada mensaje aparezca separado en el Serial
+                                Monitor.
+                            </p>
+                        </aside>
 
                         <aside class="activity-note">
                             <span
