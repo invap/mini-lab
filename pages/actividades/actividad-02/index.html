@@ -786,6 +786,13 @@
                             <h2 class="activity-section__title">
                                 Qué necesitás
                             </h2>
+                            <p class="activity-section__lead">
+                                Vamos a continuar sobre el mismo proyecto que
+                                utilizaste en el Tutorial 1. Primero retiraremos
+                                el código de UART y después configuraremos
+                                GPIO15 como una salida digital para controlar un
+                                LED.
+                            </p>
                         </header>
 
                         <div class="activity-materials">
@@ -902,11 +909,11 @@
                         </aside>
                     </section>
 
-                    <!-- =========================
-                    PARTE 1
-                    ========================= -->
+                    <!--  ===========================
+                        03 - Preparar proyecto
+                    =================================== -->
                     <section
-                        id="cambiar-velocidad"
+                        id="preparar-proyecto"
                         class="activity-section activity-experiment"
                     >
                         <header class="activity-section__header">
@@ -921,76 +928,120 @@
                                 ></span>
 
                                 <span class="activity-section__category">
-                                    Experimentá
+                                    Prepará
                                 </span>
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 1 — Cambiá la velocidad
+                                Prepará el proyecto para Blinky
                             </h2>
 
                             <p class="activity-section__lead">
-                                Empezá desde el parpadeo que ya construiste en
-                                Primeros pasos. El LED permanece encendido 500
-                                ms y apagado otros 500 ms.
+                                En el Tutorial 1 utilizamos UART para enviar
+                                mensajes al Serial Monitor. En este tutorial
+                                vamos a concentrarnos únicamente en controlar
+                                una salida digital, así que primero retiraremos
+                                el código de comunicación serial.
                             </p>
                         </header>
 
-                        <div class="activity-experiment__layout">
-                            <div class="activity-experiment__main">
-                                <div class="command-block">
-                                    <div class="command-block__header">
-                                        <span>src/main.rs</span>
-                                    </div>
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                Eliminá la configuración UART
+                            </span>
 
-                                    <pre
-                                        class="command-block__code"
-                                    ><code>loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(500);
+                            <p>
+                                Retirá los imports que agregamos para configurar
+                                UART:
+                            </p>
+                        </div>
 
-    led_pin.set_low().unwrap();
-    delay.delay_ms(500);
-}</code></pre>
-                                </div>
-
-                                <div class="activity-task">
-                                    <span class="activity-task__label">
-                                        Tu objetivo
-                                    </span>
-
-                                    <p>
-                                        Hacé que el LED parpadee
-                                        <strong>el doble de rápido</strong>.
-                                    </p>
-                                </div>
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Imports UART</span>
                             </div>
 
-                            <aside class="activity-hint">
-                                <span
-                                    class="activity-hint__icon"
-                                    aria-hidden="true"
-                                >
-                                    ⚡
-                                </span>
-
-                                <h3 class="activity-hint__title">Pista</h3>
-
-                                <p>
-                                    Revisá cuánto tiempo espera el programa
-                                    después de encender y apagar el LED. Si
-                                    reducís esos valores, el ciclo tarda menos
-                                    en completarse.
-                                </p>
-                            </aside>
+                            <pre
+                                class="command-block__code"
+                            ><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
                         </div>
+
+                        <p class="activity-section__lead">
+                            También eliminá la configuración de UART0:
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>UART0</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let uart_pins = (
+    pins.gpio2.into_function(),
+    pins.gpio3.into_function(),
+);
+
+let uart0 =
+    hal::uart::UartPeripheral::new(
+        pac.UART0,
+        uart_pins,
+        &mut pac.RESETS,
+    )
+    .enable(
+        UartConfig::new(
+            115200.Hz(),
+            DataBits::Eight,
+            None,
+            StopBits::One,
+        ),
+        clocks.peripheral_clock.freq(),
+    )
+    .unwrap();</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            Por último, eliminá el <code>loop</code> del
+                            Tutorial 1. Lo vamos a reemplazar por el programa
+                            que controla el LED.
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Loop UART</span>
+                            </div>
+
+                            <pre class="command-block__code"><code>loop {
+    uart0.write_full_blocking(b"Hola Mini Lab!\r\n");
+    delay.delay_ms(1000);
+}</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Conservá la inicialización del microcontrolador,
+                                los clocks, los pines y <code>delay</code>. Todo
+                                eso sigue siendo necesario para este tutorial.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- =========================
-                    PARTE 2
+                    04-
                     ========================= -->
                     <section
-                        id="destello-corto"
+                        id="configurar-led"
                         class="activity-section activity-experiment"
                     >
                         <header class="activity-section__header">
@@ -1005,12 +1056,313 @@
                                 ></span>
 
                                 <span class="activity-section__category">
+                                    Configurá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Configurá GPIO15 como salida
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Un GPIO puede cumplir distintas funciones. Para
+                                controlar un LED necesitamos configurar GPIO15
+                                como una
+                                <strong>salida digital</strong>.
+                            </p>
+                        </header>
+
+                        <p class="activity-section__lead">
+                            Primero agregá el trait que nos permite controlar
+                            pines de salida:
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>Import</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>use embedded_hal::digital::OutputPin;</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            Después de crear <code>pins</code>, configurá
+                            GPIO15:
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>GPIO15</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                Rust
+                            </span>
+
+                            <p>
+                                Usamos <code>mut</code> porque el estado de
+                                <code>led_pin</code> va a cambiar durante la
+                                ejecución: algunas veces tendrá un nivel lógico
+                                alto y otras uno bajo.
+                            </p>
+                        </aside>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                <code>into_push_pull_output()</code> configura
+                                GPIO15 como una salida digital. A partir de ese
+                                momento el microcontrolador puede establecer
+                                directamente un nivel <strong>HIGH</strong> o
+                                <strong>LOW</strong> sobre el pin.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- ====================
+                    05 - Hacer parpadear el LED
+                    ==================== -->
+                    <section
+                        id="primer-blinky"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    05
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Programá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Hacé parpadear el LED
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Vamos a alternar el estado de GPIO15 cada 500
+                                ms. El resultado será un LED que se enciende y
+                                se apaga una vez por segundo.
+                            </p>
+                        </header>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>src/main.rs</span>
+                                <span>Loop</span>
+                            </div>
+
+                            <pre class="command-block__code"><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(500);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(500);
+}</code></pre>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                <code>set_high()</code> coloca GPIO15 en nivel
+                                lógico alto y enciende el LED.
+                                <code>set_low()</code> vuelve el pin a nivel
+                                bajo y lo apaga.
+                            </p>
+                        </aside>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                <code>delay.delay_ms(500)</code> detiene el
+                                programa durante 500 milisegundos antes de
+                                continuar con la siguiente instrucción.
+                            </p>
+                        </aside>
+                    </section>
+
+                    <!-- =============
+                    06 - Compilar y probar Blinky
+                    ==================-->
+                    <section
+                        id="probar-blinky"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    06
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Comprobá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Compilá y probá Blinky
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Antes de modificar los tiempos, comprobá que el
+                                programa básico funciona correctamente.
+                            </p>
+                        </header>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Terminal</span>
+                                <span>Release</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>cargo build --release</code></pre>
+                        </div>
+
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                En Velxio
+                            </span>
+
+                            <p>
+                                Cargá el nuevo ELF, ejecutá la simulación y
+                                comprobá que el LED conectado a GPIO15 permanece
+                                500 ms encendido y 500 ms apagado.
+                            </p>
+                        </div>
+                    </section>
+
+                    <!-- =============
+                     cambiar velocidad
+                    -->
+                    <section
+                        id="cambiar-velocidad"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    07
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
                                     Experimentá
                                 </span>
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 2 — Hacé un destello corto
+                                Cambiá la velocidad
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Empezá desde el parpadeo que ya construiste en
+                                Primeros pasos. El LED permanece encendido 500
+                                ms y apagado otros 500 ms.
+                            </p>
+                        </header>
+
+                        <div class="activity-experiment__main">
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(500);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(500);
+}</code></pre>
+                            </div>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Tu objetivo
+                                </span>
+
+                                <p>
+                                    Hacé que el LED parpadee
+                                    <strong>el doble de rápido</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    PARTE 2
+                    ========================= -->
+                    <section
+                        id="destello-corto"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    08
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Experimentá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Hacé un destello corto
                             </h2>
 
                             <p class="activity-section__lead">
@@ -1063,19 +1415,6 @@
 }</code></pre>
                         </div>
 
-                        <div class="activity-question">
-                            <span
-                                class="activity-question__icon"
-                                aria-hidden="true"
-                            >
-                                ?
-                            </span>
-
-                            <p>
-                                Antes de ejecutarlo: ¿cómo esperás que se vea
-                                este patrón comparado con el anterior?
-                            </p>
-                        </div>
                     </section>
 
                     <!-- =========================
@@ -1088,7 +1427,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    05
+                                    09
                                 </span>
 
                                 <span
@@ -1102,7 +1441,7 @@
                             </div>
 
                             <h2 class="activity-section__title">
-                                Parte 3 — Creá una secuencia
+                                Creá una secuencia
                             </h2>
 
                             <p class="activity-section__lead">
