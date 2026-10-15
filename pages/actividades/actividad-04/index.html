@@ -958,8 +958,7 @@ use rp235x_hal::gpio::{FunctionI2C, Pin};</code></pre>
 
                             <pre
                                 class="command-block__code"
-                            ><code>let mut pac = pac::Peripherals::take().unwrap();
-let core = cortex_m::Peripherals::take().unwrap();
+                            ><code>let core = cortex_m::Peripherals::take().unwrap();
 let sio = hal::Sio::new(pac.SIO);
 
 let mut watchdog = hal::Watchdog::new(pac.WATCHDOG);
