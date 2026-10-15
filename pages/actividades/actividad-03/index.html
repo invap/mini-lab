@@ -572,6 +572,127 @@
                         </div>
                     </section>
 
+                    <section
+                        id="preparar-proyecto"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    03
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Prepará
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Prepará el proyecto para leer el botón
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                En Blinky utilizamos un temporizador para
+                                controlar cuánto tiempo permanecía encendido o
+                                apagado el LED. Ahora el estado del LED va a
+                                depender directamente del botón, así que ya no
+                                necesitamos generar esperas.
+                            </p>
+                        </header>
+
+                        <div class="activity-task">
+                            <span class="activity-task__label">
+                                Eliminá la temporización
+                            </span>
+
+                            <p>
+                                Retirá los imports utilizados exclusivamente
+                                para configurar los clocks y generar los
+                                retardos del Tutorial 2.
+                            </p>
+                        </div>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Imports</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>use rp235x_hal::clocks::init_clocks_and_plls;
+use rp235x_hal::Clock;</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            También podés eliminar la obtención de los
+                            periféricos del procesador, el watchdog, la
+                            configuración de clocks y
+                            <code>delay</code>, porque ya no los vamos a
+                            utilizar.
+                        </p>
+
+                        <div class="command-block">
+                            <div class="command-block__header">
+                                <span>Eliminar</span>
+                                <span>Temporización</span>
+                            </div>
+
+                            <pre
+                                class="command-block__code"
+                            ><code>let core = cortex_m::Peripherals::take().unwrap();
+
+let mut watchdog = hal::Watchdog::new(pac.WATCHDOG);
+
+let external_xtal_freq_hz = 12_000_000u32;
+
+let clocks = init_clocks_and_plls(
+    external_xtal_freq_hz,
+    pac.XOSC,
+    pac.CLOCKS,
+    pac.PLL_SYS,
+    pac.PLL_USB,
+    &mut pac.RESETS,
+    &mut watchdog,
+)
+.ok()
+.unwrap();
+
+let mut delay =
+    cortex_m::delay::Delay::new(
+        core.SYST,
+        clocks.system_clock.freq().to_Hz(),
+    );</code></pre>
+                        </div>
+
+                        <p class="activity-section__lead">
+                            Por último, eliminá el <code>loop</code> de Blinky.
+                            Vamos a reemplazarlo por una condición que lea
+                            constantemente el botón.
+                        </p>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Conservá <code>pac</code>, <code>sio</code>, la
+                                creación de <code>pins</code> y la configuración
+                                de GPIO15. El LED sigue formando parte del
+                                circuito.
+                            </p>
+                        </aside>
+                    </section>
+
                     <!-- CONEXIÓN -->
 
                     <section
@@ -581,7 +702,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    03
+                                    04
                                 </span>
 
                                 <span
@@ -604,30 +725,44 @@
                             </p>
                         </header>
 
-                        <div class="hardware-flow">
-                            <div class="hardware-flow__step">
-                                <span class="hardware-flow__number"> 1 </span>
+                        <div class="activity-materials">
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    1
+                                </span>
 
-                                <div>
-                                    <strong>GPIO14</strong>
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Botón → GPIO14
+                                    </span>
 
-                                    <p>
-                                        Conectá uno de los terminales del botón
-                                        a GPIO14.
-                                    </p>
+                                    <span class="activity-material__detail">
+                                        Conectá uno de los terminales del
+                                        pulsador a GPIO14.
+                                    </span>
                                 </div>
                             </div>
 
-                            <div class="hardware-flow__step">
-                                <span class="hardware-flow__number"> 2 </span>
+                            <div class="activity-material">
+                                <span
+                                    class="activity-material__check"
+                                    aria-hidden="true"
+                                >
+                                    2
+                                </span>
 
-                                <div>
-                                    <strong>GND</strong>
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Botón → GND
+                                    </span>
 
-                                    <p>
-                                        Conectá el otro terminal del botón a
+                                    <span class="activity-material__detail">
+                                        Conectá el otro lado del pulsador a
                                         tierra.
-                                    </p>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -657,7 +792,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    04
+                                    05
                                 </span>
 
                                 <span
@@ -675,9 +810,24 @@
                             </h2>
 
                             <p class="activity-section__lead">
-                                Cuando el botón está abierto, el pull-up
-                                mantiene GPIO14 en HIGH. Al presionarlo, el pin
-                                queda conectado a GND y pasa a LOW.
+                                Una entrada digital necesita tener un estado
+                                definido incluso cuando el botón no está
+                                presionado. Para conseguirlo vamos a utilizar la
+                                resistencia <strong>pull-up interna</strong> del
+                                RP2350.
+                            </p>
+
+                            <p class="activity-section__lead">
+                                El pull-up mantiene GPIO14 conectado débilmente
+                                al nivel lógico alto. Por eso, mientras el botón
+                                está suelto, el microcontrolador lee
+                                <strong>HIGH</strong>.
+                            </p>
+
+                            <p class="activity-section__lead">
+                                Cuando presionamos el botón, GPIO14 queda
+                                conectado directamente a GND. El nivel del pin
+                                pasa entonces a <strong>LOW</strong>.
                             </p>
                         </header>
 
@@ -710,20 +860,25 @@
                             </div>
                         </div>
 
-                        <div class="activity-question">
+                        <aside class="activity-note">
                             <span
-                                class="activity-question__icon"
+                                class="activity-note__icon"
                                 aria-hidden="true"
                             >
-                                ?
+                                i
                             </span>
 
                             <p>
-                                Si el botón está presionado, ¿esperás que
-                                <code>is_low()</code> devuelva verdadero o
-                                falso?
+                                Puede parecer al revés de lo esperado, pero en
+                                este circuito
+                                <strong
+                                    >LOW significa que el botón está
+                                    presionado</strong
+                                >. Este tipo de conexión suele llamarse
+                                <strong>activo en bajo</strong> o
+                                <strong>active-low</strong>.
                             </p>
-                        </div>
+                        </aside>
                     </section>
 
                     <!-- CONFIGURAR PIN -->
@@ -735,7 +890,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    05
+                                    06
                                 </span>
 
                                 <span
@@ -753,6 +908,22 @@
                             </h2>
 
                             <p class="activity-section__lead">
+                                Primero importá el trait que nos permite
+                                consultar el estado de una entrada digital:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Import</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::digital::InputPin;</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
                                 Después de inicializar los pines, agregá la
                                 configuración del botón.
                             </p>
@@ -766,7 +937,7 @@
 
                             <pre
                                 class="command-block__code"
-                            ><code>let button = pins.gpio14.into_pull_up_input();</code></pre>
+                            ><code>let mut button = pins.gpio14.into_pull_up_input();</code></pre>
                         </div>
 
                         <aside class="activity-note">
@@ -782,6 +953,38 @@
                                 GPIO14 como entrada y activa su pull-up interno.
                             </p>
                         </aside>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                Rust
+                            </span>
+
+                            <p>
+                                Declaramos <code>button</code> con
+                                <code>mut</code> porque la interfaz
+                                <code>InputPin</code> necesita acceso mutable al
+                                pin para consultar su estado mediante métodos
+                                como <code>is_low()</code>.
+                            </p>
+                        </aside>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                ↩
+                            </span>
+
+                            <p>
+                                Conservamos la configuración de GPIO15 y
+                                <code>OutputPin</code> del Tutorial 2. En este
+                                ejercicio solamente estamos agregando una nueva
+                                entrada en GPIO14.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- CONTROLAR LED -->
@@ -793,7 +996,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    06
+                                    07
                                 </span>
 
                                 <span
@@ -844,6 +1047,37 @@
                                 <strong>apagarse</strong>.
                             </p>
                         </div>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                Rust
+                            </span>
+
+                            <p>
+                                <code>if</code> permite ejecutar un bloque de
+                                código solamente cuando una condición es
+                                verdadera. En este caso,
+                                <code>button.is_low()</code> es verdadero cuando
+                                el botón está presionado.
+                            </p>
+                        </aside>
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                Si el botón está presionado, ejecutamos
+                                <code>set_high()</code> y encendemos el LED. Si
+                                no lo está, <code>else</code> ejecuta
+                                <code>set_low()</code> y lo apaga.
+                            </p>
+                        </aside>
                     </section>
 
                     <!-- COMPILAR -->
@@ -855,7 +1089,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    07
+                                    08
                                 </span>
 
                                 <span
