@@ -910,8 +910,109 @@
                         </aside>
                     </section>
 
+                    <!-- =========================
+03 · CONECTAR LED
+========================= -->
+                    <section
+                        id="conectar-led"
+                        class="activity-section activity-experiment"
+                    >
+                        <header class="activity-section__header">
+                            <div class="activity-section__eyebrow">
+                                <span class="activity-section__number">
+                                    03
+                                </span>
+
+                                <span
+                                    class="activity-section__line"
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="activity-section__category">
+                                    Conectá
+                                </span>
+                            </div>
+
+                            <h2 class="activity-section__title">
+                                Conectá el LED en Velxio
+                            </h2>
+
+                            <p class="activity-section__lead">
+                                Antes de programar Blinky, agregá un LED y una
+                                resistencia al circuito virtual.
+                            </p>
+                        </header>
+
+                        <div class="activity-materials">
+                            <div class="activity-material">
+                                <span class="activity-material__check">
+                                    1
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        GPIO15 → resistencia
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Conectá GPIO15 a una resistencia de
+                                        entre 220 Ω y 330 Ω.
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span class="activity-material__check">
+                                    2
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        Resistencia → LED
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Conectá la resistencia al ánodo del LED.
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="activity-material">
+                                <span class="activity-material__check">
+                                    3
+                                </span>
+
+                                <div class="activity-material__content">
+                                    <span class="activity-material__name">
+                                        LED → GND
+                                    </span>
+
+                                    <span class="activity-material__detail">
+                                        Conectá el cátodo del LED a GND.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="activity-note">
+                            <span
+                                class="activity-note__icon"
+                                aria-hidden="true"
+                            >
+                                i
+                            </span>
+
+                            <p>
+                                La resistencia limita la corriente que circula
+                                por el LED. En este tutorial vamos a controlar
+                                el circuito desde
+                                <strong>GPIO15</strong>.
+                            </p>
+                        </aside>
+                    </section>
+
                     <!--  ===========================
-                        03 - Preparar proyecto
+                        04 - Preparar proyecto
                     =================================== -->
                     <section
                         id="preparar-proyecto"
@@ -920,7 +1021,7 @@
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    03
+                                    04
                                 </span>
 
                                 <span
@@ -1039,7 +1140,7 @@ let uart0 =
                     </section>
 
                     <!-- =========================
-                    04-
+                    05 - Configurar GPIO15 como salida
                     ========================= -->
                     <section
                         id="configurar-led"
@@ -1048,7 +1149,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    04
+                                    05
                                 </span>
 
                                 <span
@@ -1140,7 +1241,7 @@ let uart0 =
                     </section>
 
                     <!-- ====================
-                    05 - Hacer parpadear el LED
+                    06 - Hacer parpadear el LED
                     ==================== -->
                     <section
                         id="primer-blinky"
@@ -1149,7 +1250,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    05
+                                    06
                                 </span>
 
                                 <span
@@ -1221,7 +1322,7 @@ let uart0 =
                     </section>
 
                     <!-- =============
-                    06 - Compilar y probar Blinky
+                    07 - Compilar y probar Blinky
                     ==================-->
                     <section
                         id="probar-blinky"
@@ -1230,7 +1331,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    06
+                                    07
                                 </span>
 
                                 <span
@@ -1287,7 +1388,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    07
+                                    08
                                 </span>
 
                                 <span
@@ -1305,9 +1406,10 @@ let uart0 =
                             </h2>
 
                             <p class="activity-section__lead">
-                                Empezá desde el parpadeo que ya construiste en
-                                Primeros pasos. El LED permanece encendido 500
-                                ms y apagado otros 500 ms.
+                                Ya comprobaste que Blinky funciona con
+                                intervalos de 500 ms. Ahora modificá solamente
+                                los tiempos para observar cómo cambia la
+                                frecuencia del parpadeo.
                             </p>
                         </header>
 
@@ -1340,7 +1442,7 @@ let uart0 =
                     </section>
 
                     <!-- =========================
-                    PARTE 2
+                    09 - Hacer un destello corto
                     ========================= -->
                     <section
                         id="destello-corto"
@@ -1349,7 +1451,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    08
+                                    09
                                 </span>
 
                                 <span
@@ -1415,11 +1517,10 @@ let uart0 =
     delay.delay_ms(900);
 }</code></pre>
                         </div>
-
                     </section>
 
                     <!-- =========================
-                    PARTE 3
+                    10 - Crear una secuencia
                     ========================= -->
                     <section
                         id="crear-patron"
@@ -1428,7 +1529,7 @@ let uart0 =
                         <header class="activity-section__header">
                             <div class="activity-section__eyebrow">
                                 <span class="activity-section__number">
-                                    09
+                                    10
                                 </span>
 
                                 <span
