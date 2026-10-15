@@ -127,8 +127,8 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.95rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.8;
 }
 
 
@@ -169,16 +169,20 @@
    ========================= */
 
 .activity-content {
-    padding: 3rem 0 5rem;
+    padding: clamp(2.75rem, 5vw, 3.5rem) 0 5rem;
 }
 
 .activity-section {
     max-width: 920px;
 
-    margin-bottom: 4.5rem;
+    margin-bottom: clamp(3.75rem, 6vw, 4.5rem);
 }
 
 .activity-section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+
     margin-bottom: 1.6rem;
 }
 
@@ -187,7 +191,7 @@
     align-items: center;
     gap: 0.65rem;
 
-    margin-bottom: 0.65rem;
+    margin: 0;
 }
 
 .activity-section__number {
@@ -221,6 +225,7 @@
 
     font-size: clamp(1.55rem, 4vw, 2rem);
     font-weight: 750;
+    line-height: 1.2;
     letter-spacing: -0.02em;
 }
 
@@ -231,8 +236,16 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.9rem;
-    line-height: 1.75;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.activity-section__header > .activity-section__lead {
+    margin: 0;
+}
+
+.activity-section > * + *:not(br) {
+    margin-top: 1.15rem;
 }
 
 
@@ -319,8 +332,8 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.82rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.7;
 }
 
 
@@ -389,7 +402,7 @@
 .activity-material__detail {
     color: var(--text-secondary);
 
-    font-size: 0.75rem;
+    font-size: 0.78rem;
 }
 
 
@@ -439,8 +452,8 @@
 .activity-note p {
     margin: 0;
 
-    font-size: 0.8rem;
-    line-height: 1.65;
+    font-size: 0.84rem;
+    line-height: 1.75;
 }
 
 .activity-note code {
@@ -492,8 +505,8 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.85rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 .activity-task strong {
@@ -544,8 +557,8 @@
 .activity-hint p {
     margin: 0;
 
-    font-size: 0.78rem;
-    line-height: 1.65;
+    font-size: 0.83rem;
+    line-height: 1.7;
 }
 
 
@@ -686,8 +699,8 @@
 .activity-question p {
     margin: 0;
 
-    font-size: 0.82rem;
-    line-height: 1.65;
+    font-size: 0.85rem;
+    line-height: 1.7;
 }
 
 
@@ -793,8 +806,8 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.86rem;
-    line-height: 1.65;
+    font-size: 0.9rem;
+    line-height: 1.75;
 }
 
 .activity-challenge__description strong {
@@ -807,7 +820,7 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.8;
 }
 
@@ -864,8 +877,8 @@
 
     color: var(--text-secondary);
 
-    font-size: 0.8rem;
-    line-height: 1.55;
+    font-size: 0.85rem;
+    line-height: 1.65;
 }
 
 
