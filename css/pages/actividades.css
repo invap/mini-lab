@@ -1,6 +1,6 @@
 .activity-meta__icon-svg {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 /* =========================
    ACTIVIDADES
@@ -1654,6 +1654,13 @@
     font-weight: 700;
 }
 
+.tutorial-card__icon svg {
+    width: 1.7rem;
+    height: 1.7rem;
+
+    flex-shrink: 0;
+}
+
 
 /* =========================
    CONTENIDO CARD
@@ -1827,6 +1834,11 @@
 
     font-size: 0.7rem;
     font-weight: 700;
+}
+
+.activities-home-note__icon svg {
+    width: 1rem;
+    height: 1rem;
 }
 
 .activities-home-note p {

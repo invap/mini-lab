@@ -334,7 +334,33 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    ◷
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <!-- Esfera principal -->
+                                        <circle cx="12" cy="12" r="9" />
+
+                                        <!-- Botones superiores estilo cronómetro de laboratorio -->
+                                        <path d="M12 3V1M9 2h6" />
+
+                                        <!-- Área de tiempo transcurrido (Aproximadamente 25 minutos) -->
+                                        <path
+                                            d="M12 12V3a9 9 0 0 1 7.8 13.5Z"
+                                            fill="currentColor"
+                                            fill-opacity="0.15"
+                                            stroke="none"
+                                        />
+
+                                        <!-- Manecillas internas -->
+                                        <path d="M12 12V3M12 12l7.8 4.5" />
+                                    </svg>
                                 </span>
 
                                 15–20 min
@@ -345,7 +371,46 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    ◫
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <!-- Barra 1: Nivel Inicial (Rellena para indicar que está activa) -->
+                                        <rect
+                                            x="4"
+                                            y="15"
+                                            width="4"
+                                            height="5"
+                                            rx="1"
+                                            fill="currentColor"
+                                        />
+
+                                        <!-- Barra 2: Nivel Intermedio (Vacía) -->
+                                        <rect
+                                            x="10"
+                                            y="10"
+                                            width="4"
+                                            height="10"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
+
+                                        <!-- Barra 3: Nivel Avanzado (Vacía) -->
+                                        <rect
+                                            x="16"
+                                            y="4"
+                                            width="4"
+                                            height="16"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
+                                    </svg>
                                 </span>
 
                                 Nivel inicial
@@ -356,7 +421,20 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    &gt;_
+                                    <svg
+                                        class="activity-meta__icon-svg icono-uart0"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <path d="M2.5 8h8m-3-3 3 3-3 3M11 16H3m3-3-3 3 3 3" />
+                                        <rect x="14.5" y="5.5" width="7" height="13" rx="2.5" />
+                                        <path d="m15.8 16 4.4-8" stroke-width="1.2" />
+                                    </svg>
                                 </span>
 
                                 UART0
@@ -367,7 +445,48 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    ◈
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <!-- Cuerpo central del microcontrolador -->
+                                        <rect
+                                            x="5"
+                                            y="5"
+                                            width="14"
+                                            height="14"
+                                            rx="1.5"
+                                            fill="none"
+                                        />
+
+                                        <!-- Muesca de orientación / Identificador del Pin 1 -->
+                                        <circle
+                                            cx="7.5"
+                                            cy="7.5"
+                                            r="0.75"
+                                            fill="currentColor"
+                                            stroke="none"
+                                        />
+
+                                        <!-- Pines Superiores -->
+                                        <path d="M7 2v3M10 2v3M13 2v3M17 2v3" />
+                                        <!-- Pines Inferiores -->
+                                        <path
+                                            d="M7 19v3M10 19v3M13 19v3M17 19v3"
+                                        />
+                                        <!-- Pines Izquierdos -->
+                                        <path d="M2 7h3M2 10h3M2 13h3M2 17h3" />
+                                        <!-- Pines Derechas -->
+                                        <path
+                                            d="M19 7h3M19 10h3M19 13h3M19 17h3"
+                                        />
+                                    </svg>
                                 </span>
 
                                 RP2350
@@ -378,7 +497,45 @@
                                     class="activity-meta__icon"
                                     aria-hidden="true"
                                 >
-                                    ⌁
+                                    <svg
+                                        class="activity-meta__icon-svg"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <!-- Pantalla del simulador / Área de trabajo -->
+                                        <rect
+                                            x="2"
+                                            y="3"
+                                            width="20"
+                                            height="14"
+                                            rx="2"
+                                        />
+
+                                        <!-- Soporte o base de la pantalla -->
+                                        <path d="M6 21h12M12 17v4" />
+
+                                        <!-- Nodos de circuito simulados en pantalla -->
+                                        <circle
+                                            cx="7"
+                                            cy="8"
+                                            r="1.5"
+                                            fill="currentColor"
+                                        />
+                                        <circle
+                                            cx="17"
+                                            cy="12"
+                                            r="1.5"
+                                            fill="currentColor"
+                                        />
+
+                                        <!-- Línea de conexión / Onda de señal interactiva -->
+                                        <path d="M8.5 8h2l2.5 5 2.5-7 1 2" />
+                                    </svg>
                                 </span>
 
                                 Velxio

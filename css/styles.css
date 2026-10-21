@@ -444,7 +444,16 @@ main {
 }
 
 .development-notice__icon {
-    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.development-notice__icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
 }
 
 .development-notice p {
