@@ -2,6 +2,7 @@
     width: 1.5rem;
     height: 1.5rem;
 }
+
 /* =========================
    ACTIVIDADES
    ========================= */
@@ -29,11 +30,9 @@
 
     height: 5rem;
 
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        var(--background)
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--background));
 
     pointer-events: none;
 }
@@ -129,6 +128,50 @@
 
     font-size: 1rem;
     line-height: 1.8;
+}
+
+/* =========================
+    FIGURAS / SETUPS
+   ========================= */
+
+.activity-figure {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 1.5rem 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--surface);
+}
+
+.activity-figure__image {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+.activity-figure__caption {
+    margin: 0;
+    padding: 0.8rem 1rem;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.activity-figure__caption code {
+    color: var(--text-primary);
 }
 
 
@@ -240,11 +283,11 @@
     line-height: 1.8;
 }
 
-.activity-section__header > .activity-section__lead {
+.activity-section__header>.activity-section__lead {
     margin: 0;
 }
 
-.activity-section > * + *:not(br) {
+.activity-section>*+*:not(br) {
     margin-top: 1.15rem;
 }
 
@@ -754,11 +797,9 @@
     border-radius: var(--radius-medium);
 
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--steps-accent-soft),
-            transparent
-        ),
+            transparent),
         var(--surface);
 }
 
@@ -952,7 +993,7 @@
     min-width: 0;
 }
 
-.activity-footer-nav__sequence > * {
+.activity-footer-nav__sequence>* {
     min-width: 0;
 }
 
@@ -1148,7 +1189,7 @@
     line-height: 1.5;
 }
 
-.activity-card > span:last-child {
+.activity-card>span:last-child {
     grid-column: 2;
 
     margin-top: 0.6rem;
@@ -1222,15 +1263,11 @@
     background-color: var(--background);
 
     background-image:
-        linear-gradient(
+        linear-gradient(var(--grid-color) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
             var(--grid-color) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            var(--grid-color) 1px,
-            transparent 1px
-        );
+            transparent 1px);
 
     background-size: 44px 44px;
 }
@@ -1244,11 +1281,9 @@
     height: 7rem;
 
     background:
-        linear-gradient(
-            to bottom,
+        linear-gradient(to bottom,
             transparent,
-            var(--background)
-        );
+            var(--background));
 
     pointer-events: none;
 }
@@ -1539,11 +1574,9 @@
     height: 2px;
 
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--steps-accent),
-            transparent
-        );
+            transparent);
 
     opacity: 0;
 }
@@ -1809,8 +1842,7 @@
     border-left:
         2px solid var(--steps-accent);
     border-radius:
-        0 var(--radius-small)
-        var(--radius-small) 0;
+        0 var(--radius-small) var(--radius-small) 0;
 
     background-color:
         var(--steps-accent-soft);
@@ -1880,8 +1912,7 @@
 
     .activities-home-hero .page-container {
         grid-template-columns:
-            minmax(0, 1.4fr)
-            minmax(300px, 0.6fr);
+            minmax(0, 1.4fr) minmax(300px, 0.6fr);
 
         gap: 4rem;
     }
