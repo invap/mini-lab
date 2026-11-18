@@ -1566,6 +1566,40 @@ Hola Mini Lab!
                                     Prepará la comunicación USB
                                 </h2>
 
+                                <div class="activity-task">
+                                    <span class="activity-task__label">
+                                        Limpiá el código anterior
+                                    </span>
+
+                                    <p>
+                                        Antes de configurar USB CDC, retiraremos
+                                        el código de prueba utilizado en
+                                        Primeros pasos. Eliminá la configuración
+                                        de UART0, el LED conectado a GPIO15 y el
+                                        loop que alternaba el LED y enviaba
+                                        mensajes.
+                                    </p>
+                                </div>
+
+                                <aside class="activity-note">
+                                    <span
+                                        class="activity-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Conservá la inicialización de
+                                        <code>pac</code>, <code>core</code>,
+                                        <code>watchdog</code>, <code>sio</code>,
+                                        los <code>clocks</code> y
+                                        <code>pins</code>. Esos elementos forman
+                                        parte de la configuración base del
+                                        microcontrolador.
+                                    </p>
+                                </aside>
+
                                 <p class="activity-section__lead">
                                     En la Raspberry Pi Pico 2 no vamos a
                                     utilizar UART para comunicarnos con la
