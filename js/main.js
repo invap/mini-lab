@@ -1,14 +1,14 @@
-const menuButton = document.querySelector('#menu-button');
-const menuCloseButton = document.querySelector('#menu-close');
-const navigation = document.querySelector('#main-navigation');
-const overlay = document.querySelector('#menu-overlay');
+const menuButton = document.querySelector("#menu-button");
+const menuCloseButton = document.querySelector("#menu-close");
+const navigation = document.querySelector("#main-navigation");
+const overlay = document.querySelector("#menu-overlay");
 const themeToggles = document.querySelectorAll("[data-theme-toggle]");
-const desktopLayout = window.matchMedia('(min-width: 1024px)');
+const desktopLayout = window.matchMedia("(min-width: 1024px)");
 
-let savedTheme = 'light';
+let savedTheme = "light";
 try {
-    if (localStorage.getItem('theme') === 'dark') {
-        savedTheme = 'dark';
+    if (localStorage.getItem("theme") === "dark") {
+        savedTheme = "dark";
     }
 } catch {
     // El sitio sigue funcionando cuando el navegador bloquea el almacenamiento.
@@ -18,70 +18,93 @@ function openMenu() {
     if (desktopLayout.matches) return;
 
     navigation.inert = false;
-    navigation.classList.add('site-nav--open');
-    overlay.classList.add('menu-overlay--visible');
+    navigation.classList.add("site-nav--open");
+    overlay.classList.add("menu-overlay--visible");
 
-    menuButton.setAttribute('aria-expanded', 'true');
-    document.addEventListener('click', clickAfueraDelHandler);
-    document.body.classList.add('no-scroll');
+    menuButton.setAttribute("aria-expanded", "true");
+    document.addEventListener("click", clickAfueraDelHandler);
+    document.body.classList.add("no-scroll");
     menuCloseButton.focus();
 }
 
 function closeMenu(restoreFocus = true) {
-    const wasOpen = navigation.classList.contains('site-nav--open');
-    navigation.classList.remove('site-nav--open');
+    const wasOpen = navigation.classList.contains("site-nav--open");
+    navigation.classList.remove("site-nav--open");
     navigation.inert = !desktopLayout.matches;
-    overlay.classList.remove('menu-overlay--visible');
+    overlay.classList.remove("menu-overlay--visible");
 
-    menuButton.setAttribute('aria-expanded', 'false');
-    document.removeEventListener('click', clickAfueraDelHandler);
-    document.body.classList.toggle('no-scroll', Boolean(document.querySelector('dialog[open]')));
+    menuButton.setAttribute("aria-expanded", "false");
+    document.removeEventListener("click", clickAfueraDelHandler);
+    document.body.classList.toggle(
+        "no-scroll",
+        Boolean(document.querySelector("dialog[open]")),
+    );
     if (wasOpen && restoreFocus && !desktopLayout.matches) {
         menuButton.focus();
     }
 }
 
-function clickAfueraDelHandler  (event) {
-    if (!navigation.contains(event.target) && !menuButton.contains(event.target)) {
+function clickAfueraDelHandler(event) {
+    if (
+        !navigation.contains(event.target) &&
+        !menuButton.contains(event.target)
+    ) {
         closeMenu();
-    }   
+    }
 }
 
 if (menuButton && menuCloseButton && navigation && overlay) {
     navigation.inert = !desktopLayout.matches;
-    menuButton.addEventListener('click', openMenu);
-    menuCloseButton.addEventListener('click', () => closeMenu());
-    overlay.addEventListener('click', () => closeMenu());
-    navigation.addEventListener('click', (event) => {
-        if (event.target.closest('a[href]') && !desktopLayout.matches) {
+    menuButton.addEventListener("click", openMenu);
+    menuCloseButton.addEventListener("click", () => closeMenu());
+    overlay.addEventListener("click", () => closeMenu());
+    navigation.addEventListener("click", (event) => {
+        if (event.target.closest("a[href]") && !desktopLayout.matches) {
             closeMenu();
         }
     });
-    document.addEventListener('keydown', (event) => {
-        if (!navigation.classList.contains('site-nav--open') || document.querySelector('dialog[open]')) return;
+    document.addEventListener("keydown", (event) => {
+        if (
+            !navigation.classList.contains("site-nav--open") ||
+            document.querySelector("dialog[open]")
+        )
+            return;
 
-        if (event.key === 'Escape') {
+        if (event.key === "Escape") {
             event.preventDefault();
             closeMenu();
         }
 
-        if (event.key === 'Tab') {
-            const focusable = [...navigation.querySelectorAll('a[href], button:not([disabled])')]
-                .filter((element) => element.getClientRects().length > 0);
+        if (event.key === "Tab") {
+            const focusable = [
+                ...navigation.querySelectorAll(
+                    "a[href], button:not([disabled])",
+                ),
+            ].filter((element) => element.getClientRects().length > 0);
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
-            if (event.shiftKey && (document.activeElement === first || !navigation.contains(document.activeElement))) {
+            if (
+                event.shiftKey &&
+                (document.activeElement === first ||
+                    !navigation.contains(document.activeElement))
+            ) {
                 event.preventDefault();
                 last.focus();
-            } else if (!event.shiftKey && (document.activeElement === last || !navigation.contains(document.activeElement))) {
+            } else if (
+                !event.shiftKey &&
+                (document.activeElement === last ||
+                    !navigation.contains(document.activeElement))
+            ) {
                 event.preventDefault();
                 first.focus();
             }
         }
     });
 
-    desktopLayout.addEventListener('change', () => {
-        const focusWasInNavigation = navigation.contains(document.activeElement);
+    desktopLayout.addEventListener("change", () => {
+        const focusWasInNavigation = navigation.contains(
+            document.activeElement,
+        );
         closeMenu(false);
         if (focusWasInNavigation) {
             const target = desktopLayout.matches
@@ -95,24 +118,29 @@ if (menuButton && menuCloseButton && navigation && overlay) {
 function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     themeToggles.forEach((toggle) => {
-        toggle.setAttribute('aria-label', theme === 'dark' ? 'Activar tema claro' : 'Activar tema oscuro');
-        toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+        toggle.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Activar tema claro" : "Activar tema oscuro",
+        );
+        toggle.setAttribute("aria-pressed", String(theme === "dark"));
     });
 }
 
 applyTheme(savedTheme);
 themeToggles.forEach((toggle) => {
-    toggle.addEventListener('click', () => {
-        const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    toggle.addEventListener("click", () => {
+        const newTheme =
+            document.documentElement.dataset.theme === "dark"
+                ? "light"
+                : "dark";
         applyTheme(newTheme);
         try {
-            localStorage.setItem('theme', newTheme);
+            localStorage.setItem("theme", newTheme);
         } catch {
             // El tema seleccionado se conserva durante esta visita.
         }
     });
 });
-
 
 const commandBlocks = document.querySelectorAll(".command-block");
 
@@ -149,5 +177,38 @@ commandBlocks.forEach((block) => {
                 copyButton.textContent = "Copiar";
             }, 1500);
         }
+    });
+});
+
+const tutorialSelectors = document.querySelectorAll("[data-tutorial-select]");
+
+const tutorials = document.querySelectorAll("[data-tutorial]");
+
+function selectTutorial(selectedTutorial) {
+    tutorials.forEach((tutorial) => {
+        tutorial.hidden = tutorial.dataset.tutorial !== selectedTutorial;
+    });
+
+    tutorialSelectors.forEach((button) => {
+        const isSelected = button.dataset.tutorialSelect === selectedTutorial;
+
+        button.setAttribute("aria-pressed", String(isSelected));
+
+        button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+    });
+
+    const selectedContent = document.querySelector(
+        `[data-tutorial="${selectedTutorial}"]`,
+    );
+
+    selectedContent?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+    });
+}
+
+tutorialSelectors.forEach((button) => {
+    button.addEventListener("click", () => {
+        selectTutorial(button.dataset.tutorialSelect);
     });
 });
