@@ -6,7 +6,7 @@
 
         <meta
             name="description"
-            content="Tutorial 01 de Mini Lab: enviá tu primer mensaje por UART desde un microcontrolador con Rust."
+            content="Tutorial 01 de Mini Lab: enviá tu primer mensaje serial desde un microcontrolador con Rust y probalo en Velxio mediante UART."
         />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,7 @@
             rel="stylesheet"
         />
 
-        <title>Mini Lab | Tutorial 01: UART</title>
+        <title>Mini Lab | Tutorial 01: Comunicación serial</title>
 
         <link rel="stylesheet" href="../../../css/styles.css" />
         <link rel="stylesheet" href="../../../css/pages/actividades.css" />
@@ -157,7 +157,7 @@
                                 <span class="activities-nav__number"> 01 </span>
 
                                 <span class="activities-nav__label">
-                                    Serie / UART
+                                    Comunicación serial
                                 </span>
                             </a>
                         </li>
@@ -314,15 +314,16 @@
                         </p>
 
                         <h1 class="activity-hero__title">
-                            Tu primer mensaje por UART
+                            Tu primer mensaje serial
                         </h1>
 
                         <p class="activity-hero__description">
                             Enviá tu primer “Hola Mini Lab” desde el
-                            microcontrolador y observá el resultado en el Serial
-                            Monitor de Velxio. Vas a conocer una de las formas
-                            más simples de comunicación entre un sistema
-                            embebido y el exterior.
+                            microcontrolador y observá cómo un sistema embebido
+                            puede enviar información hacia el exterior. Podés
+                            realizar la actividad en Velxio mediante UART0 o
+                            utilizar una Raspberry Pi Pico 2 real comunicándote
+                            directamente por USB.
                         </p>
 
                         <ul
@@ -431,9 +432,20 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                     >
-                                        <path d="M2.5 8h8m-3-3 3 3-3 3M11 16H3m3-3-3 3 3 3" />
-                                        <rect x="14.5" y="5.5" width="7" height="13" rx="2.5" />
-                                        <path d="m15.8 16 4.4-8" stroke-width="1.2" />
+                                        <path
+                                            d="M2.5 8h8m-3-3 3 3-3 3M11 16H3m3-3-3 3 3 3"
+                                        />
+                                        <rect
+                                            x="14.5"
+                                            y="5.5"
+                                            width="7"
+                                            height="13"
+                                            rx="2.5"
+                                        />
+                                        <path
+                                            d="m15.8 16 4.4-8"
+                                            stroke-width="1.2"
+                                        />
                                     </svg>
                                 </span>
 
@@ -538,7 +550,7 @@
                                     </svg>
                                 </span>
 
-                                Velxio
+                                Velxio / Pico 2 W
                             </li>
                         </ul>
                     </div>
@@ -614,12 +626,13 @@
                                 </div>
 
                                 <h3 class="learning-card__title">
-                                    Configuración UART0
+                                    UART en Velxio
                                 </h3>
 
                                 <p class="learning-card__description">
-                                    Configurá los pines TX y RX y una velocidad
-                                    de comunicación de 115200 baudios.
+                                    Configurá UART0 con TX, RX y una velocidad
+                                    de 115200 baudios para utilizarlo como medio
+                                    de comunicación serial dentro del simulador.
                                 </p>
                             </article>
 
@@ -726,11 +739,12 @@
 
                                 <div class="activity-material__content">
                                     <span class="activity-material__name">
-                                        Velxio
+                                        Entorno de ejecución
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Con la Pimoroni Pico Plus 2 W
+                                        Velxio con Pimoroni Pico Plus 2 W o una
+                                        Raspberry Pi Pico 2 real
                                     </span>
                                 </div>
                             </div>
@@ -746,108 +760,187 @@
 
                             <p>
                                 En este tutorial no necesitás conectar LED,
-                                botón ni sensores. Vamos a trabajar únicamente
-                                con la comunicación UART del microcontrolador.
+                                botón ni sensores. El objetivo es trabajar
+                                únicamente con comunicación serial. En Velxio
+                                utilizaremos <strong>UART0</strong>; con
+                                hardware real utilizaremos
+                                <strong>USB CDC</strong>.
                             </p>
                         </aside>
                     </section>
 
                     <!-- =========================
-                    PREPARAR PROYECTO
-                    ========================= -->
-                    <section
-                        id="preparar-proyecto"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    03
-                                </span>
+                        ELEGIR ENTORNO
+                        ========================= -->
+                    <section class="activity-mode">
+                        <div class="activity-mode__header">
+                            <p class="activity-mode__eyebrow">
+                                Elegí tu entorno
+                            </p>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Prepará
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Limpiá el código de prueba
+                            <h2 class="activity-mode__title">
+                                ¿Cómo querés realizar esta actividad?
                             </h2>
 
+                            <p class="activity-mode__description">
+                                El objetivo es el mismo en ambos recorridos. Lo
+                                que cambia es la forma en la que el
+                                microcontrolador envía la información.
+                            </p>
+                        </div>
+
+                        <div class="activity-mode__grid">
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="velxio"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Simulador
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Velxio
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Comunicación serial mediante UART0 y
+                                    visualización desde el Serial Monitor.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar Velxio →
+                                </span>
+                            </button>
+
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="hardware"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Hardware real
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Raspberry Pi Pico 2
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Comunicación serial mediante USB CDC
+                                    utilizando directamente el cable USB.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar hardware →
+                                </span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- =========================
+                    PREPARAR PROYECTO
+                    ========================= -->
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="velxio"
+                        hidden
+                    >
+                        <section
+                            id="preparar-proyecto"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Limpiá el código de prueba
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    En Primeros pasos modificamos el proyecto
+                                    para comprobar que el entorno, el LED y la
+                                    comunicación serial funcionaban
+                                    correctamente en Velxio.
+                                </p>
+
+                                <p class="activity-section__lead">
+                                    Ahora vamos a retirar ese código de prueba y
+                                    construir cada ejemplo paso a paso. No hace
+                                    falta crear un proyecto nuevo: vamos a
+                                    seguir trabajando sobre el mismo
+                                    <code>src/main.rs</code>.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Eliminá el código del LED
+                                </span>
+
+                                <p>
+                                    Primero sacá el import que utilizábamos para
+                                    controlar una salida digital:
+                                </p>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Import</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::digital::OutputPin;</code></pre>
+                            </div>
+
                             <p class="activity-section__lead">
-                                En Primeros pasos modificamos el proyecto para
-                                comprobar que el entorno, el LED y la
-                                comunicación serial funcionaban correctamente en
-                                Velxio.
+                                También eliminá la creación del pin que
+                                utilizábamos para controlar el LED:
                             </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>GPIO15</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
+                            </div>
 
                             <p class="activity-section__lead">
-                                Ahora vamos a retirar ese código de prueba y
-                                construir cada ejemplo paso a paso. No hace
-                                falta crear un proyecto nuevo: vamos a seguir
-                                trabajando sobre el mismo
-                                <code>src/main.rs</code>.
+                                Como vamos a volver a configurar UART desde
+                                cero, eliminá también la configuración que
+                                agregamos durante Primeros pasos.
                             </p>
-                        </header>
 
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                Eliminá el código del LED
-                            </span>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>UART de prueba</span>
+                                </div>
 
-                            <p>
-                                Primero sacá el import que utilizábamos para
-                                controlar una salida digital:
-                            </p>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Import</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use embedded_hal::digital::OutputPin;</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            También eliminá la creación del pin que utilizábamos
-                            para controlar el LED:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>GPIO15</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Como vamos a volver a configurar UART desde cero,
-                            eliminá también la configuración que agregamos
-                            durante Primeros pasos.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>UART de prueba</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let uart_pins = (
+                                <pre
+                                    class="command-block__code"
+                                ><code>let uart_pins = (
     pins.gpio2.into_function(),
     pins.gpio3.into_function(),
 );
@@ -868,22 +961,23 @@ let uart0 =
         clocks.peripheral_clock.freq(),
     )
     .unwrap();</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Por último, eliminá el <code>loop</code> de prueba
-                            que prendía y apagaba el LED y enviaba mensajes al
-                            Serial Monitor. En unos pasos vamos a reemplazarlo
-                            por el código propio de este tutorial.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Loop de prueba</span>
                             </div>
 
-                            <pre class="command-block__code"><code>loop {
+                            <p class="activity-section__lead">
+                                Por último, eliminá el <code>loop</code> de
+                                prueba que prendía y apagaba el LED y enviaba
+                                mensajes al Serial Monitor. En unos pasos vamos
+                                a reemplazarlo por el código propio de este
+                                tutorial.
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Loop de prueba</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
     info!("on!");
     led_pin.set_high().unwrap();
     uart0.write_full_blocking(b"LED ON\r\n");
@@ -894,224 +988,233 @@ let uart0 =
     uart0.write_full_blocking(b"LED OFF\r\n");
     delay.delay_ms(500);
 }</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                Conservá la inicialización de los periféricos,
-                                los clocks, los pines y <code>delay</code>. Esa
-                                parte prepara el microcontrolador y la vamos a
-                                seguir utilizando.
-                            </p>
-                        </aside>
-                        <p class="activity-section__lead">
-                            También podés retirar temporalmente los imports de
-                            UART que agregaste en Primeros pasos. Los vamos a
-                            incorporar nuevamente cuando configuremos la
-                            comunicación.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Imports UART</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>use rp235x_hal::fugit::RateExtU32;
-use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
-                        </div>
-                    </section>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                    <!-- =========================
+                                <p>
+                                    Conservá la inicialización de los
+                                    periféricos, los clocks, los pines y
+                                    <code>delay</code>. Esa parte prepara el
+                                    microcontrolador y la vamos a seguir
+                                    utilizando.
+                                </p>
+                            </aside>
+                            <p class="activity-section__lead">
+                                También podés retirar temporalmente los imports
+                                de UART que agregaste en Primeros pasos. Los
+                                vamos a incorporar nuevamente cuando
+                                configuremos la comunicación.
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Imports UART</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
+                            </div>
+                        </section>
+
+                        <!-- =========================
             PARTE 1
             ========================= -->
-                    <section
-                        id="entender-uart"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    03
-                                </span>
+                        <section
+                            id="entender-uart"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Entendé
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Comunicación serial y UART
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    La comunicación serial permite enviar
+                                    información como una secuencia de datos
+                                    entre dispositivos. Existen distintas formas
+                                    de implementarla. En esta versión del
+                                    tutorial vamos a utilizar UART, un
+                                    periférico del RP2350 que dispone de una
+                                    línea para transmitir datos (TX) y otra para
+                                    recibirlos (RX).
+                                </p>
+                            </header>
+
+                            <div class="activity-pattern">
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        TX
+                                    </span>
+
+                                    <strong class="activity-pattern__value">
+                                        GPIO2
+                                    </strong>
+                                </div>
 
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-pattern__arrow"
                                     aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Entendé
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                ¿Qué es UART?
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                UART es una forma de comunicación serial.
-                                Permite transmitir información utilizando una
-                                línea para enviar datos y otra para recibirlos.
-                            </p>
-                        </header>
-
-                        <div class="activity-pattern">
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    TX
+                                >
+                                    →
                                 </span>
 
-                                <strong class="activity-pattern__value">
-                                    GPIO2
-                                </strong>
-                            </div>
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        UART0
+                                    </span>
 
-                            <span
-                                class="activity-pattern__arrow"
-                                aria-hidden="true"
-                            >
-                                →
-                            </span>
+                                    <strong class="activity-pattern__value">
+                                        115200 baud
+                                    </strong>
+                                </div>
 
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    UART0
+                                <span
+                                    class="activity-pattern__arrow"
+                                    aria-hidden="true"
+                                >
+                                    ←
                                 </span>
 
-                                <strong class="activity-pattern__value">
-                                    115200 baud
-                                </strong>
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        RX
+                                    </span>
+
+                                    <strong class="activity-pattern__value">
+                                        GPIO3
+                                    </strong>
+                                </div>
                             </div>
 
-                            <span
-                                class="activity-pattern__arrow"
-                                aria-hidden="true"
-                            >
-                                ←
-                            </span>
-
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    RX
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
                                 </span>
 
-                                <strong class="activity-pattern__value">
-                                    GPIO3
-                                </strong>
-                            </div>
-                        </div>
+                                <p>
+                                    <strong>TX</strong> significa transmisión y
+                                    <strong>RX</strong> recepción. En este
+                                    primer ejercicio solamente vamos a enviar
+                                    información, pero configuraremos ambos
+                                    pines.
+                                </p>
+                            </aside>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                                <p>
+                                    Vas a encontrar varias declaraciones que
+                                    comienzan con
+                                    <code>let mut</code>. En Rust,
+                                    <code>mut</code> significa
+                                    <strong>mutable</strong>: indica que el
+                                    valor asociado a esa variable puede cambiar
+                                    durante la ejecución del programa. Por
+                                    ejemplo, <code>delay</code> modifica su
+                                    estado interno cada vez que genera una
+                                    espera.
+                                </p>
+                            </aside>
+                        </section>
 
-                            <p>
-                                <strong>TX</strong> significa transmisión y
-                                <strong>RX</strong> recepción. En este primer
-                                ejercicio solamente vamos a enviar información,
-                                pero configuraremos ambos pines.
-                            </p>
-                        </aside>
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                Rust
-                            </span>
-
-                            <p>
-                                Vas a encontrar varias declaraciones que
-                                comienzan con
-                                <code>let mut</code>. En Rust,
-                                <code>mut</code> significa
-                                <strong>mutable</strong>: indica que el valor
-                                asociado a esa variable puede cambiar durante la
-                                ejecución del programa. Por ejemplo,
-                                <code>delay</code> modifica su estado interno
-                                cada vez que genera una espera.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =========================
+                        <!-- =========================
             PARTE 2
             ========================= -->
-                    <section
-                        id="configurar-uart"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    04
-                                </span>
+                        <section
+                            id="configurar-uart"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        04
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Configurá
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Configurá UART0
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Configurá UART0
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Primero necesitamos importar los tipos que
+                                    utilizaremos para configurar la
+                                    comunicación.
+                                </p>
+                            </header>
 
                             <p class="activity-section__lead">
-                                Primero necesitamos importar los tipos que
-                                utilizaremos para configurar la comunicación.
+                                Agregá estos imports al comienzo de
+                                <code>src/main.rs</code>:
                             </p>
-                        </header>
 
-                        <p class="activity-section__lead">
-                            Agregá estos imports al comienzo de
-                            <code>src/main.rs</code>:
-                        </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Imports</span>
+                                </div>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Imports</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use rp235x_hal::fugit::RateExtU32;
+                                <pre
+                                    class="command-block__code"
+                                ><code>use rp235x_hal::fugit::RateExtU32;
 use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Después de inicializar los pines del proyecto,
-                            agregá la configuración de UART0:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>UART0</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let uart_pins = (
+                            <p class="activity-section__lead">
+                                Después de inicializar los pines del proyecto,
+                                agregá la configuración de UART0:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>UART0</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let uart_pins = (
     pins.gpio2.into_function(),
     pins.gpio3.into_function(),
 );
@@ -1132,289 +1235,806 @@ let uart0 =
         clocks.peripheral_clock.freq(),
     )
     .unwrap();</code></pre>
-                        </div>
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            </div>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Esta configuración utiliza UART0 a
-                                <strong>115200 baudios</strong>, con
-                                <strong>8 bits de datos</strong>,
-                                <strong>sin bit de paridad</strong> y
-                                <strong>1 bit de parada</strong>. Esta
-                                combinación suele abreviarse como
-                                <strong>115200 8N1</strong>.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    Esta configuración utiliza UART0 a
+                                    <strong>115200 baudios</strong>, con
+                                    <strong>8 bits de datos</strong>,
+                                    <strong>sin bit de paridad</strong> y
+                                    <strong>1 bit de parada</strong>. Esta
+                                    combinación suele abreviarse como
+                                    <strong>115200 8N1</strong>.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             PARTE 3
             ========================= -->
-                    <section
-                        id="hola-mini-lab"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    05
+                        <section
+                            id="hola-mini-lab"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        05
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Programá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Enviá tu primer mensaje
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Ya tenemos UART configurado. Ahora vamos a
+                                    utilizarlo para enviar nuestro primer texto.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Tu objetivo
                                 </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Programá
-                                </span>
+                                <p>
+                                    Hacé que el microcontrolador escriba
+                                    <strong>“Hola Mini Lab!”</strong>
+                                    en el Serial Monitor.
+                                </p>
                             </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Loop</span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Enviá tu primer mensaje
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Ya tenemos UART configurado. Ahora vamos a
-                                utilizarlo para enviar nuestro primer texto.
-                            </p>
-                        </header>
-
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                Tu objetivo
-                            </span>
-
-                            <p>
-                                Hacé que el microcontrolador escriba
-                                <strong>“Hola Mini Lab!”</strong>
-                                en el Serial Monitor.
-                            </p>
-                        </div>
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Loop</span>
-                            </div>
-
-                            <pre class="command-block__code"><code>loop {
+                                <pre class="command-block__code"><code>loop {
     uart0.write_full_blocking(b"Hola Mini Lab!\r\n");
     delay.delay_ms(1000);
 }</code></pre>
-                        </div>
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            </div>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                La letra <code>b</code> delante del texto indica
-                                que estamos enviando una secuencia de bytes.
-                                <code>\r\n</code> agrega un salto de línea para
-                                que cada mensaje aparezca separado en el Serial
-                                Monitor.
-                            </p>
-                        </aside>
+                                <p>
+                                    La letra <code>b</code> delante del texto
+                                    indica que estamos enviando una secuencia de
+                                    bytes. <code>\r\n</code> agrega un salto de
+                                    línea para que cada mensaje aparezca
+                                    separado en el Serial Monitor.
+                                </p>
+                            </aside>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                El mensaje se envía una vez por segundo para que
-                                puedas observarlo fácilmente al abrir el Serial
-                                Monitor.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    El mensaje se envía una vez por segundo para
+                                    que puedas observarlo fácilmente al abrir el
+                                    Serial Monitor.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             PARTE 4
             ========================= -->
-                    <section
-                        id="compilar"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    06
-                                </span>
+                        <section
+                            id="compilar"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        06
+                                    </span>
 
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Compilá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Generá el firmware
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Guardá los cambios y compilá nuevamente el
+                                    proyecto en modo release.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Release</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo build --release</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-note__icon"
                                     aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Compilá
+                                >
+                                    i
                                 </span>
-                            </div>
 
-                            <h2 class="activity-section__title">
-                                Generá el firmware
-                            </h2>
+                                <p>
+                                    Si Cargo finaliza sin errores, encontrás el
+                                    ELF generado dentro de
+                                    <code
+                                        >target/thumbv8m.main-none-eabihf/release/</code
+                                    >.
+                                </p>
+                            </aside>
+                        </section>
 
-                            <p class="activity-section__lead">
-                                Guardá los cambios y compilá nuevamente el
-                                proyecto en modo release.
-                            </p>
-                        </header>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
-                                <span>Release</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>cargo build --release</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                Si Cargo finaliza sin errores, encontrás el ELF
-                                generado dentro de
-                                <code
-                                    >target/thumbv8m.main-none-eabihf/release/</code
-                                >.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =========================
+                        <!-- =========================
             PARTE 5
             ========================= -->
-                    <section
-                        id="probar-velxio"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    07
+                        <section
+                            id="probar-velxio"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        07
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Ejecutá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Probalo en Velxio
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Cargá el nuevo ELF en la Pimoroni Pico Plus
+                                    2 W y ejecutá la simulación.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    En Velxio
                                 </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Ejecutá
-                                </span>
+                                <p>
+                                    Usá <strong>File → Upload Firmware</strong>
+                                    y seleccioná el ELF que acabás de compilar.
+                                </p>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Probalo en Velxio
-                            </h2>
+                            <figure class="activity-figure">
+                                <img
+                                    class="activity-figure__image"
+                                    src="../../../assets/images/actividades/actividad-01/velxio-setup.png"
+                                    alt="Setup de la Actividad 01 en Velxio con la Pimoroni Pico Plus 2 W y el Serial Monitor mostrando Hola Mini Lab"
+                                />
 
-                            <p class="activity-section__lead">
-                                Cargá el nuevo ELF en la Pimoroni Pico Plus 2 W
-                                y ejecutá la simulación.
-                            </p>
-                        </header>
+                                <figcaption class="activity-figure__caption">
+                                    Setup de la Actividad 01 en Velxio. La placa
+                                    ejecuta el firmware y envía
+                                    <code>Hola Mini Lab!</code> al Serial
+                                    Monitor.
+                                </figcaption>
+                            </figure>
 
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                En Velxio
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Usá <strong>File → Upload Firmware</strong>
-                                y seleccioná el ELF que acabás de compilar.
-                            </p>
-                        </div>
+                                <p>
+                                    UART es el medio de comunicación serial que
+                                    utilizamos en Velxio. En la versión con
+                                    hardware real vamos a aplicar el mismo
+                                    concepto utilizando la conexión USB de la
+                                    Raspberry Pi Pico 2.
+                                </p>
+                            </aside>
+                        </section>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                Para este tutorial no necesitás agregar
-                                componentes virtuales. El objetivo es observar
-                                directamente la salida UART del firmware.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =========================
+                        <!-- =========================
             RESULTADO
             ========================= -->
-                    <section
-                        id="serial-monitor"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    08
-                                </span>
+                        <section
+                            id="serial-monitor"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        08
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Comprobá
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Comprobá
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Abrí el Serial Monitor
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Abrí el Serial Monitor
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Abrí el monitor serial de Velxio mientras el
+                                    firmware está ejecutándose.
+                                </p>
+                            </header>
 
                             <p class="activity-section__lead">
-                                Abrí el monitor serial de Velxio mientras el
-                                firmware está ejecutándose.
+                                Deberías ver una salida similar a:
                             </p>
-                        </header>
 
-                        <p class="activity-section__lead">
-                            Deberías ver una salida similar a:
-                        </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Serial Monitor</span>
+                                    <span>115200 baud</span>
+                                </div>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Serial Monitor</span>
-                                <span>115200 baud</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>Hola Mini Lab!
+                                <pre
+                                    class="command-block__code"
+                                ><code>Hola Mini Lab!
 Hola Mini Lab!
 Hola Mini Lab!
 Hola Mini Lab!
 ...</code></pre>
-                        </div>
-                    </section>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="hardware"
+                        hidden
+                    >
+                        <section
+                            id="recorrido-hardware"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 01
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Hardware real
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Prepará la comunicación USB
+                                </h2>
+
+                                <div class="activity-task">
+                                    <span class="activity-task__label">
+                                        Limpiá el código anterior
+                                    </span>
+
+                                    <p>
+                                        Antes de configurar USB CDC, retiraremos
+                                        el código de prueba utilizado en
+                                        Primeros pasos. Eliminá la configuración
+                                        de UART0, el LED conectado a GPIO15 y el
+                                        loop que alternaba el LED y enviaba
+                                        mensajes.
+                                    </p>
+                                </div>
+
+                                <aside class="activity-note">
+                                    <span
+                                        class="activity-note__icon"
+                                        aria-hidden="true"
+                                    >
+                                        i
+                                    </span>
+
+                                    <p>
+                                        Conservá la inicialización de
+                                        <code>pac</code>, <code>core</code>,
+                                        <code>watchdog</code>, <code>sio</code>,
+                                        los <code>clocks</code> y
+                                        <code>pins</code>. Esos elementos forman
+                                        parte de la configuración base del
+                                        microcontrolador.
+                                    </p>
+                                </aside>
+
+                                <p class="activity-section__lead">
+                                    En la Raspberry Pi Pico 2 no vamos a
+                                    utilizar UART para comunicarnos con la
+                                    computadora. Vamos a usar directamente el
+                                    puerto USB de la placa mediante USB CDC.
+                                </p>
+                            </header>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    USB CDC permite que la Pico 2 aparezca en
+                                    Linux como un puerto serial, por ejemplo
+                                    <code>/dev/ttyACM0</code>. No necesitás un
+                                    adaptador USB-UART adicional.
+                                </p>
+                            </aside>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Cargo.toml
+                                </span>
+
+                                <p>
+                                    Agregá las dependencias necesarias para
+                                    crear el dispositivo USB serial:
+                                </p>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Cargo.toml</span>
+                                    <span>Dependencias</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>usb-device = "0.3.2"
+usbd-serial = "0.2.2"</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 02
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Creá el dispositivo USB serial
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    El RP2350 dispone de un periférico USB
+                                    integrado. Vamos a utilizarlo para que la
+                                    Pico 2 se presente ante la computadora como
+                                    un puerto serial.
+                                </p>
+                            </header>
+
+                            <p class="activity-section__lead">
+                                Agregá estos imports:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Imports</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use usb_device::{class_prelude::*, prelude::*};
+use usbd_serial::SerialPort;</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Después de configurar los clocks, creá un
+                                temporizador:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Timer</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let timer = hal::Timer::new_timer0(
+    pac.TIMER0,
+    &mut pac.RESETS,
+    &clocks,
+);</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Ahora inicializá el periférico USB y el puerto
+                                serial:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>USB CDC</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let usb_bus = UsbBusAllocator::new(
+    hal::usb::UsbBus::new(
+        pac.USB,
+        pac.USB_DPRAM,
+        clocks.usb_clock,
+        true,
+        &mut pac.RESETS,
+    ),
+);
+
+let mut serial = SerialPort::new(&usb_bus);</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
+
+                                <p>
+                                    <code>usb_bus</code> administra el
+                                    periférico USB del RP2350.
+                                    <code>serial</code> representa el puerto CDC
+                                    que vamos a usar para enviar información a
+                                    la computadora.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Identificá Mini Lab por USB
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Ahora creamos el dispositivo USB y definimos
+                                    la información con la que aparecerá ante la
+                                    computadora.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>USB Device</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut usb_dev = UsbDeviceBuilder::new(
+    &usb_bus,
+    UsbVidPid(0x16c0, 0x27dd),
+)
+.strings(&[
+    StringDescriptors::default()
+        .manufacturer("Fundacion INVAP")
+        .product("Mini Lab USB Serial")
+        .serial_number("MINILAB01"),
+])
+.unwrap()
+.max_packet_size_0(64)
+.unwrap()
+.device_class(2)
+.build();</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    Estos descriptores permiten identificar el
+                                    dispositivo USB. El valor
+                                    <code>device_class(2)</code> corresponde a
+                                    la clase de comunicaciones USB utilizada por
+                                    CDC.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 04
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Programá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Enviá tu primer mensaje por USB
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Igual que en Velxio, vamos a enviar
+                                    <code>Hola Mini Lab!</code> una vez por
+                                    segundo.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Loop</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut last_message = 0;
+
+loop {
+    usb_dev.poll(&mut [&mut serial]);
+
+    let now = timer.get_counter().ticks();
+
+    if now - last_message >= 1_000_000 {
+        last_message = now;
+
+        let _ = serial.write(
+            b"Hola Mini Lab!\r\n",
+        );
+    }
+}</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    <code>usb_dev.poll(...)</code> mantiene
+                                    activa la comunicación USB. El temporizador
+                                    nos permite enviar el mensaje
+                                    aproximadamente una vez por segundo.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 05
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Ejecutá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Cargá el firmware en la Pico 2
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Con la placa conectada por USB, utilizamos
+                                    <code>picotool</code> para cargar y ejecutar
+                                    el firmware.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    .cargo/config.toml
+                                </span>
+
+                                <p>
+                                    Configurá <code>picotool</code> como runner
+                                    del proyecto:
+                                </p>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>.cargo/config.toml</span>
+                                    <span>Runner</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>runner = "picotool load -u -v -x -t elf"</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Después ejecutá:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Hardware</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo run --release</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 06
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Comprobá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Abrí el puerto serial en Linux
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Cuando el firmware comience a ejecutarse,
+                                    Linux debería detectar la Pico 2 como un
+                                    dispositivo serial USB.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>USB CDC</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>sudo cat /dev/ttyACM0</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">Deberías ver:</p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>/dev/ttyACM0</span>
+                                    <span>Salida</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>Hola Mini Lab!
+Hola Mini Lab!
+Hola Mini Lab!
+...</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <p>
+                                    El resultado conceptual es el mismo que en
+                                    Velxio. En el simulador utilizaste UART0;
+                                    con la placa real utilizaste USB CDC.
+                                </p>
+                            </aside>
+                        </section>
+                    </div>
 
                     <!-- =========================
             DESAFÍO
@@ -1453,11 +2073,13 @@ Hola Mini Lab!
 
                                     <li>Compilá nuevamente el firmware.</li>
 
-                                    <li>Cargá el nuevo ELF en Velxio.</li>
-
                                     <li>
-                                        Comprobá que el cambio aparezca en el
-                                        Serial Monitor.
+                                        Cargá el firmware en el entorno que
+                                        elegiste.
+                                    </li>
+                                    <li>
+                                        Comprobá que el nuevo mensaje aparezca
+                                        en la salida serial.
                                     </li>
                                 </ul>
                             </div>
@@ -1481,10 +2103,10 @@ Hola Mini Lab!
                             </h2>
 
                             <p class="activity-complete__description">
-                                Ya configuraste UART0 y enviaste información
-                                desde un firmware Rust al Serial Monitor. En el
-                                siguiente tutorial vas a comenzar a controlar
-                                una salida GPIO con un LED.
+                                Ya enviaste información serial desde un firmware
+                                Rust utilizando UART0 en Velxio. En el siguiente
+                                tutorial vas a comenzar a controlar una salida
+                                GPIO con un LED.
                             </p>
                         </div>
                     </section>
