@@ -3,6 +3,149 @@
     height: 1.5rem;
 }
 /* =========================
+   ELECCIÓN DE ENTORNO
+   ========================= */
+
+.activity-mode {
+    max-width: 920px;
+
+    margin-bottom: 3rem;
+    padding: 1.4rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--surface);
+}
+
+.activity-mode__header {
+    max-width: 700px;
+    margin-bottom: 1.3rem;
+}
+
+.activity-mode__eyebrow {
+    margin: 0 0 0.4rem;
+
+    color: var(--steps-accent);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.activity-mode__title {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.35rem;
+}
+
+.activity-mode__description {
+    margin: 0.6rem 0 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.activity-mode__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+}
+
+.activity-mode__option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    width: 100%;
+    padding: 1rem;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+
+    background-color: var(--background);
+    color: inherit;
+
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Hover de una tarjeta NO seleccionada */
+.activity-mode__option:not([aria-pressed="true"]):hover {
+    border-color: var(--steps-accent-border);
+    background-color: var(--surface);
+    transform: translateY(-2px);
+}
+
+/* Tarjeta seleccionada */
+.activity-mode__option[aria-pressed="true"] {
+    border-color: var(--steps-accent);
+    background-color: var(--steps-accent-soft);
+
+    box-shadow:
+        0 0 0 1px var(--steps-accent-border),
+        inset 3px 0 0 var(--steps-accent);
+
+    transform: none;
+}
+
+/* Título de la opción seleccionada */
+.activity-mode__option[aria-pressed="true"] .activity-mode__option-title {
+    color: var(--steps-accent);
+}
+
+.activity-mode__option-label {
+    color: var(--steps-accent);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.activity-mode__option-title {
+    color: var(--text-primary);
+
+    font-size: 1rem;
+}
+
+.activity-mode__option-description {
+    color: var(--text-secondary);
+
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.activity-mode__option-action {
+    margin-top: 0.4rem;
+
+    color: var(--steps-accent);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+@media (min-width: 700px) {
+    .activity-mode__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================
    ACTIVIDADES
    ========================= */
 
@@ -29,11 +172,7 @@
 
     height: 5rem;
 
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        var(--background)
-    );
+    background: linear-gradient(to bottom, transparent, var(--background));
 
     pointer-events: none;
 }
@@ -131,6 +270,49 @@
     line-height: 1.8;
 }
 
+/* =========================
+    FIGURAS / SETUPS
+   ========================= */
+
+.activity-figure {
+    width: fit-content;
+    max-width: 100%;
+
+    margin: 1.5rem 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--surface);
+}
+
+.activity-figure__image {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+.activity-figure__caption {
+    margin: 0;
+    padding: 0.8rem 1rem;
+
+    border-top: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.78rem;
+    line-height: 1.55;
+}
+
+.activity-figure__caption code {
+    color: var(--text-primary);
+}
 
 /* =========================
    METADATA
@@ -162,7 +344,6 @@
 .activity-meta__icon {
     color: var(--steps-accent);
 }
-
 
 /* =========================
    CONTENIDO
@@ -247,7 +428,6 @@
 .activity-section > * + *:not(br) {
     margin-top: 1.15rem;
 }
-
 
 /* =========================
    QUÉ VAS A APRENDER
@@ -336,7 +516,6 @@
     line-height: 1.7;
 }
 
-
 /* =========================
    MATERIALES
    ========================= */
@@ -405,7 +584,6 @@
     font-size: 0.78rem;
 }
 
-
 /* =========================
    NOTAS
    ========================= */
@@ -462,7 +640,6 @@
     font-family: monospace;
 }
 
-
 /* =========================
    EXPERIMENTOS
    ========================= */
@@ -513,7 +690,6 @@
     color: var(--text-primary);
 }
 
-
 /* =========================
    PISTA
    ========================= */
@@ -560,7 +736,6 @@
     font-size: 0.83rem;
     line-height: 1.7;
 }
-
 
 /* =========================
    BLOQUES DE CÓDIGO
@@ -612,7 +787,6 @@
     tab-size: 4;
 }
 
-
 /* =========================
    PATRÓN
    ========================= */
@@ -660,7 +834,6 @@
     color: var(--steps-accent);
 }
 
-
 /* =========================
    PREGUNTA
    ========================= */
@@ -703,7 +876,6 @@
     line-height: 1.7;
 }
 
-
 /* =========================
    SECUENCIA VISUAL
    ========================= */
@@ -739,7 +911,6 @@
     background-color: var(--border);
 }
 
-
 /* =========================
    DESAFÍO FINAL
    ========================= */
@@ -754,11 +925,7 @@
     border-radius: var(--radius-medium);
 
     background:
-        linear-gradient(
-            135deg,
-            var(--steps-accent-soft),
-            transparent
-        ),
+        linear-gradient(135deg, var(--steps-accent-soft), transparent),
         var(--surface);
 }
 
@@ -824,7 +991,6 @@
     line-height: 1.8;
 }
 
-
 /* =========================
    COMPLETADO
    ========================= */
@@ -880,7 +1046,6 @@
     font-size: 0.85rem;
     line-height: 1.65;
 }
-
 
 /* =========================
    NAVEGACIÓN FINAL
@@ -955,7 +1120,6 @@
 .activity-footer-nav__sequence > * {
     min-width: 0;
 }
-
 
 /* =========================
    SIDEBAR DE ACTIVIDADES
@@ -1078,7 +1242,6 @@
     color: var(--steps-nav-dot-active);
 }
 
-
 /* =========================
    PORTADA / CATÁLOGO
    ========================= */
@@ -1159,7 +1322,6 @@
     font-weight: 650;
 }
 
-
 /* =========================
    RESPONSIVE
    ========================= */
@@ -1205,7 +1367,6 @@
    HOME DE ACTIVIDADES
    ========================================================= */
 
-
 /* =========================
    HERO
    ========================= */
@@ -1222,15 +1383,8 @@
     background-color: var(--background);
 
     background-image:
-        linear-gradient(
-            var(--grid-color) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            var(--grid-color) 1px,
-            transparent 1px
-        );
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
 
     background-size: 44px 44px;
 }
@@ -1243,12 +1397,7 @@
 
     height: 7rem;
 
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            var(--background)
-        );
+    background: linear-gradient(to bottom, transparent, var(--background));
 
     pointer-events: none;
 }
@@ -1292,8 +1441,7 @@
 
     background-color: var(--steps-accent);
 
-    box-shadow:
-        0 0 10px var(--steps-accent-glow);
+    box-shadow: 0 0 10px var(--steps-accent-glow);
 }
 
 .activities-home-hero__title {
@@ -1318,7 +1466,6 @@
     font-size: 1rem;
     line-height: 1.75;
 }
-
 
 /* =========================
    TERMINAL HERO
@@ -1347,11 +1494,9 @@
 
     padding: 0 0.9rem;
 
-    border-bottom:
-        1px solid var(--code-window-header-border);
+    border-bottom: 1px solid var(--code-window-header-border);
 
-    background-color:
-        var(--code-window-header-bg);
+    background-color: var(--code-window-header-bg);
 }
 
 .activities-home-hero__terminal-header span {
@@ -1360,8 +1505,7 @@
 
     border-radius: 50%;
 
-    background-color:
-        rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .activities-home-hero__terminal-header p {
@@ -1391,7 +1535,6 @@
 .activities-home-hero__terminal-success {
     color: var(--code-window-text);
 }
-
 
 /* =========================
    INTRO
@@ -1446,7 +1589,6 @@
     line-height: 1.7;
 }
 
-
 /* =========================
    CONTADOR
    ========================= */
@@ -1459,8 +1601,7 @@
 
     padding-left: 1.2rem;
 
-    border-left:
-        2px solid var(--steps-accent);
+    border-left: 2px solid var(--steps-accent);
 }
 
 .activities-home-progress__number {
@@ -1484,7 +1625,6 @@
     text-transform: uppercase;
 }
 
-
 /* =========================
    CATÁLOGO
    ========================= */
@@ -1499,7 +1639,6 @@
 
     gap: 1.2rem;
 }
-
 
 /* =========================
    TARJETAS
@@ -1538,19 +1677,13 @@
     width: 100%;
     height: 2px;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--steps-accent),
-            transparent
-        );
+    background: linear-gradient(90deg, var(--steps-accent), transparent);
 
     opacity: 0;
 }
 
 .tutorial-card:hover {
-    border-color:
-        var(--steps-accent-border);
+    border-color: var(--steps-accent-border);
 
     transform: translateY(-3px);
 
@@ -1565,7 +1698,6 @@
     outline: 2px solid var(--steps-accent);
     outline-offset: -3px;
 }
-
 
 /* =========================
    CABECERA CARD
@@ -1593,12 +1725,10 @@
 
     padding: 0.35rem 0.6rem;
 
-    border:
-        1px solid var(--steps-accent-border);
+    border: 1px solid var(--steps-accent-border);
     border-radius: 999px;
 
-    background-color:
-        var(--steps-accent-soft);
+    background-color: var(--steps-accent-soft);
 
     color: var(--steps-accent);
 
@@ -1625,7 +1755,6 @@
     color: var(--text-secondary);
 }
 
-
 /* =========================
    ICONO
    ========================= */
@@ -1640,12 +1769,10 @@
 
     margin-bottom: 1.3rem;
 
-    border:
-        1px solid var(--steps-accent-border);
+    border: 1px solid var(--steps-accent-border);
     border-radius: var(--radius-small);
 
-    background-color:
-        var(--steps-accent-soft);
+    background-color: var(--steps-accent-soft);
 
     color: var(--steps-accent);
 
@@ -1660,7 +1787,6 @@
 
     flex-shrink: 0;
 }
-
 
 /* =========================
    CONTENIDO CARD
@@ -1702,7 +1828,6 @@
     line-height: 1.65;
 }
 
-
 /* =========================
    TAGS
    ========================= */
@@ -1729,7 +1854,6 @@
     font-family: monospace;
     font-size: 0.62rem;
 }
-
 
 /* =========================
    FOOTER CARD
@@ -1767,7 +1891,6 @@
     opacity: 0.65;
 }
 
-
 /* =========================
    TARJETAS FUTURAS
    ========================= */
@@ -1788,7 +1911,6 @@
     opacity: 0;
 }
 
-
 /* =========================
    NOTA INFERIOR
    ========================= */
@@ -1806,14 +1928,10 @@
 
     padding: 1.1rem 1.2rem;
 
-    border-left:
-        2px solid var(--steps-accent);
-    border-radius:
-        0 var(--radius-small)
-        var(--radius-small) 0;
+    border-left: 2px solid var(--steps-accent);
+    border-radius: 0 var(--radius-small) var(--radius-small) 0;
 
-    background-color:
-        var(--steps-accent-soft);
+    background-color: var(--steps-accent-soft);
 }
 
 .activities-home-note__icon {
@@ -1826,8 +1944,7 @@
 
     flex-shrink: 0;
 
-    border:
-        1px solid var(--steps-accent-border);
+    border: 1px solid var(--steps-accent-border);
     border-radius: 50%;
 
     color: var(--steps-accent);
@@ -1854,15 +1971,13 @@
     color: var(--text-primary);
 }
 
-
 /* =========================
    RESPONSIVE
    ========================= */
 
 @media (min-width: 700px) {
     .activities-home-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .activities-home-intro .page-container {
@@ -1879,9 +1994,7 @@
     }
 
     .activities-home-hero .page-container {
-        grid-template-columns:
-            minmax(0, 1.4fr)
-            minmax(300px, 0.6fr);
+        grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
 
         gap: 4rem;
     }

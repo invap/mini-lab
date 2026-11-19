@@ -156,7 +156,7 @@
                                 <span class="activities-nav__number"> 01 </span>
 
                                 <span class="activities-nav__label">
-                                    Serie / UART
+                                    Comunicación serial
                                 </span>
                             </a>
                         </li>
@@ -366,9 +366,30 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                     >
-                                        <rect x="4" y="15" width="4" height="5" rx="1" fill="currentColor" />
-                                        <rect x="10" y="10" width="4" height="10" rx="1" opacity="0.4" />
-                                        <rect x="16" y="4" width="4" height="16" rx="1" opacity="0.4" />
+                                        <rect
+                                            x="4"
+                                            y="15"
+                                            width="4"
+                                            height="5"
+                                            rx="1"
+                                            fill="currentColor"
+                                        />
+                                        <rect
+                                            x="10"
+                                            y="10"
+                                            width="4"
+                                            height="10"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
+                                        <rect
+                                            x="16"
+                                            y="4"
+                                            width="4"
+                                            height="16"
+                                            rx="1"
+                                            opacity="0.4"
+                                        />
                                     </svg>
                                 </span>
 
@@ -390,7 +411,9 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                     >
-                                        <path d="M4 8h16m-4-4 4 4-4 4M20 16H4m4-4-4 4 4 4" />
+                                        <path
+                                            d="M4 8h16m-4-4 4 4-4 4M20 16H4m4-4-4 4 4 4"
+                                        />
                                     </svg>
                                 </span>
 
@@ -412,8 +435,16 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                     >
-                                        <rect x="5" y="5" width="14" height="14" rx="2" />
-                                        <path d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3" />
+                                        <rect
+                                            x="5"
+                                            y="5"
+                                            width="14"
+                                            height="14"
+                                            rx="2"
+                                        />
+                                        <path
+                                            d="M9 2v3m6-3v3M9 19v3m6-3v3M2 9h3m-3 6h3m14-6h3m-3 6h3"
+                                        />
                                         <circle cx="12" cy="12" r="2" />
                                     </svg>
                                 </span>
@@ -436,12 +467,20 @@
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                     >
-                                        <rect x="3" y="4" width="18" height="13" rx="2" />
-                                        <path d="M8 21h8m-4-4v4M7 9h2l2 4 2-6 2 4h2" />
+                                        <rect
+                                            x="3"
+                                            y="4"
+                                            width="18"
+                                            height="13"
+                                            rx="2"
+                                        />
+                                        <path
+                                            d="M8 21h8m-4-4v4M7 9h2l2 4 2-6 2 4h2"
+                                        />
                                     </svg>
                                 </span>
 
-                                Velxio
+                                Velxio / Pico 2
                             </li>
                         </ul>
                     </div>
@@ -539,7 +578,8 @@
 
                                 <p class="learning-card__description">
                                     Obtené valores de aceleración sobre los ejes
-                                    X, Y y Z y mostralos por UART.
+                                    X, Y y Z y mostralos mediante comunicación
+                                    serial.
                                 </p>
                             </article>
                         </div>
@@ -571,9 +611,10 @@
 
                             <p class="activity-section__lead">
                                 Vamos a continuar sobre el proyecto del Tutorial
-                                3. Esta vez vamos a retirar el LED y el botón
-                                para concentrarnos en nuestro primer sensor
-                                conectado mediante I²C.
+                                3. Esta vez retiraremos el LED y el botón para
+                                concentrarnos en nuestro primer sensor conectado
+                                mediante I²C, tanto en Velxio como sobre la
+                                Raspberry Pi Pico 2 real.
                             </p>
                         </header>
 
@@ -612,7 +653,7 @@
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Sensor virtual disponible en Velxio
+                                        Virtual en Velxio o físico en el kit
                                     </span>
                                 </div>
                             </div>
@@ -627,399 +668,493 @@
 
                                 <div class="activity-material__content">
                                     <span class="activity-material__name">
-                                        Serial Monitor
+                                        Salida serial
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Para comprobar la comunicación y
-                                        observar las mediciones
+                                        Serial Monitor en Velxio o USB CDC en
+                                        hardware real
                                     </span>
                                 </div>
                             </div>
+                        </div>
+                    </section>
+
+                    <section class="activity-mode">
+                        <div class="activity-mode__header">
+                            <p class="activity-mode__eyebrow">
+                                Elegí tu entorno
+                            </p>
+
+                            <h2 class="activity-mode__title">
+                                ¿Cómo querés realizar esta actividad?
+                            </h2>
+
+                            <p class="activity-mode__description">
+                                En ambos recorridos vas a comunicarte con un
+                                MPU6050 mediante I²C y leer los valores de
+                                aceleración sobre los ejes X, Y y Z.
+                            </p>
+                        </div>
+
+                        <div class="activity-mode__grid">
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="velxio"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Simulador
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Velxio
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Conectá un MPU6050 virtual por I²C y observá
+                                    las mediciones desde el Serial Monitor.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar Velxio →
+                                </span>
+                            </button>
+
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="hardware"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Hardware real
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Raspberry Pi Pico 2
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Conectá físicamente el MPU6050 y observá las
+                                    mediciones mediante USB.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar hardware →
+                                </span>
+                            </button>
                         </div>
                     </section>
 
                     <!-- =========================
             03 · PREPARAR PROYECTO
             ========================= -->
-                    <section
-                        id="preparar-proyecto"
-                        class="activity-section activity-experiment"
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="velxio"
+                        hidden
                     >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    03
+                        <section
+                            id="preparar-proyecto"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Prepará el proyecto para el sensor
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    En el Tutorial 3 utilizamos GPIO14 para leer
+                                    un botón y GPIO15 para controlar un LED. En
+                                    este tutorial ya no necesitamos ninguno de
+                                    esos dos periféricos.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Eliminá el código del botón y del LED
                                 </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Prepará
-                                </span>
+                                <p>
+                                    Retirá los imports de entrada y salida
+                                    digital:
+                                </p>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Prepará el proyecto para el sensor
-                            </h2>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Imports GPIO</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::digital::InputPin;
+use embedded_hal::digital::OutputPin;</code></pre>
+                            </div>
 
                             <p class="activity-section__lead">
-                                En el Tutorial 3 utilizamos GPIO14 para leer un
-                                botón y GPIO15 para controlar un LED. En este
-                                tutorial ya no necesitamos ninguno de esos dos
-                                periféricos.
+                                Eliminá también la configuración de GPIO14 y
+                                GPIO15:
                             </p>
-                        </header>
 
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                Eliminá el código del botón y del LED
-                            </span>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>GPIO</span>
+                                </div>
 
-                            <p>
-                                Retirá los imports de entrada y salida digital:
-                            </p>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Imports GPIO</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use embedded_hal::digital::InputPin;
-use embedded_hal::digital::OutputPin;</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Eliminá también la configuración de GPIO14 y GPIO15:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>GPIO</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let mut led_pin = pins.gpio15.into_push_pull_output();
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut led_pin = pins.gpio15.into_push_pull_output();
 let mut button = pins.gpio14.into_pull_up_input();</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Por último, eliminá el <code>loop</code> que
-                            controlaba el LED con el botón.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Loop del Tutorial 3</span>
                             </div>
 
-                            <pre class="command-block__code"><code>loop {
+                            <p class="activity-section__lead">
+                                Por último, eliminá el <code>loop</code> que
+                                controlaba el LED con el botón.
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Loop del Tutorial 3</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
     if button.is_low().unwrap() {
         led_pin.set_high().unwrap();
     } else {
         led_pin.set_low().unwrap();
     }
 }</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Conservá <code>pac</code>, <code>sio</code> y la
-                                creación de <code>pins</code>. Vamos a
-                                reutilizar esos recursos para configurar UART e
-                                I²C.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    Conservá <code>pac</code>,
+                                    <code>sio</code> y la creación de
+                                    <code>pins</code>. Vamos a reutilizar esos
+                                    recursos para configurar UART e I²C.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             04 · ENTENDER SENSOR
             ========================= -->
-                    <section
-                        id="entender-mpu6050"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    04
-                                </span>
-
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Entendé
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                ¿Qué es el MPU6050?
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                El MPU6050 integra un acelerómetro y un
-                                giroscopio. El acelerómetro permite medir
-                                aceleraciones sobre los ejes X, Y y Z, mientras
-                                que el giroscopio permite medir rotación
-                                alrededor de esos mismos ejes.
-                            </p>
-                        </header>
-
-                        <div class="activity-pattern">
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Aceleración
-                                </span>
-
-                                <strong class="activity-pattern__value">
-                                    X · Y · Z
-                                </strong>
-                            </div>
-
-                            <span
-                                class="activity-pattern__arrow"
-                                aria-hidden="true"
-                            >
-                                +
-                            </span>
-
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Rotación
-                                </span>
-
-                                <strong class="activity-pattern__value">
-                                    X · Y · Z
-                                </strong>
-                            </div>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                En este primer contacto vamos a trabajar
-                                solamente con el acelerómetro. El giroscopio se
-                                puede explorar más adelante utilizando el mismo
-                                bus I²C.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =========================
-            05 · CONECTAR SENSOR
-            ========================= -->
-                    <section
-                        id="conectar-sensor"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    05
-                                </span>
-
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Conectá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Conectá el MPU6050
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Agregá el MPU6050 al circuito en Velxio y
-                                conectá las líneas del bus I²C.
-                            </p>
-                        </header>
-
-                        <div class="activity-materials">
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    SDA
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        GP4
+                        <section
+                            id="entender-mpu6050"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        04
                                     </span>
 
-                                    <span class="activity-material__detail">
-                                        Línea de datos I²C
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Entendé
                                     </span>
                                 </div>
-                            </div>
 
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    SCL
-                                </span>
+                                <h2 class="activity-section__title">
+                                    ¿Qué es el MPU6050?
+                                </h2>
 
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        GP5
+                                <p class="activity-section__lead">
+                                    El MPU6050 integra un acelerómetro y un
+                                    giroscopio. El acelerómetro permite medir
+                                    aceleraciones sobre los ejes X, Y y Z,
+                                    mientras que el giroscopio permite medir
+                                    rotación alrededor de esos mismos ejes.
+                                </p>
+                            </header>
+
+                            <div class="activity-pattern">
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        Aceleración
                                     </span>
 
-                                    <span class="activity-material__detail">
-                                        Señal de reloj I²C
-                                    </span>
+                                    <strong class="activity-pattern__value">
+                                        X · Y · Z
+                                    </strong>
                                 </div>
-                            </div>
 
-                            <div class="activity-material">
-                                <span class="activity-material__check">
+                                <span
+                                    class="activity-pattern__arrow"
+                                    aria-hidden="true"
+                                >
                                     +
                                 </span>
 
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        VCC → 3V3
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        Rotación
                                     </span>
 
-                                    <span class="activity-material__detail">
-                                        Alimentación del sensor
-                                    </span>
+                                    <strong class="activity-pattern__value">
+                                        X · Y · Z
+                                    </strong>
                                 </div>
                             </div>
 
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    −
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
                                 </span>
 
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        GND → GND
+                                <p>
+                                    En este primer contacto vamos a trabajar
+                                    solamente con el acelerómetro. El giroscopio
+                                    se puede explorar más adelante utilizando el
+                                    mismo bus I²C.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <!-- =========================
+            05 · CONECTAR SENSOR
+            ========================= -->
+                        <section
+                            id="conectar-sensor"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        05
                                     </span>
 
-                                    <span class="activity-material__detail">
-                                        Tierra común
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Conectá
                                     </span>
                                 </div>
+
+                                <h2 class="activity-section__title">
+                                    Conectá el MPU6050
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Agregá el MPU6050 al circuito en Velxio y
+                                    conectá las líneas del bus I²C.
+                                </p>
+                            </header>
+
+                            <div class="activity-materials">
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        SDA
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            GP4
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Línea de datos I²C
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        SCL
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            GP5
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Señal de reloj I²C
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        +
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            VCC → 3V3
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Alimentación del sensor
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        −
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            GND → GND
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Tierra común
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <figure class="activity-figure">
+                                <img
+                                    class="activity-figure__image"
+                                    src="../../../assets/images/actividades/actividad-04/velxio-setup.png"
+                                    alt="Setup de la Actividad 04 en Velxio con un MPU6050 conectado por I2C a la Pimoroni Pico Plus 2 W"
+                                />
 
-                            <p>
-                                En la Pimoroni Pico Plus 2 W utilizamos
-                                <strong>I²C0</strong>, con
-                                <strong>GPIO4 como SDA</strong> y
-                                <strong>GPIO5 como SCL</strong>.
-                            </p>
-                        </aside>
-                    </section>
+                                <figcaption class="activity-figure__caption">
+                                    Setup de la Actividad 04 en Velxio. El
+                                    MPU6050 utiliza
+                                    <code>GPIO4</code> como SDA,
+                                    <code>GPIO5</code> como SCL, además de
+                                    <code>3V3</code> y <code>GND</code> para
+                                    alimentación.
+                                </figcaption>
+                            </figure>
 
-                    <!-- =========================
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    En la Pimoroni Pico Plus 2 W utilizamos
+                                    <strong>I²C0</strong>, con
+                                    <strong>GPIO4 como SDA</strong> y
+                                    <strong>GPIO5 como SCL</strong>.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <!-- =========================
             06 · CLOCKS Y UART
             ========================= -->
-                    <section
-                        id="configurar-uart"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    06
-                                </span>
+                        <section
+                            id="configurar-uart"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        06
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Prepará
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Prepará clocks y UART
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Prepará clocks y UART
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a volver a utilizar comunicación
+                                    serial para mostrar las mediciones en el
+                                    Serial Monitor. Es la misma idea que
+                                    trabajaste en el
+                                    <a href="../actividad-01/">
+                                        Tutorial 1 — Comunicación serial </a
+                                    >.
+                                </p>
+                            </header>
 
                             <p class="activity-section__lead">
-                                Vamos a volver a utilizar comunicación serial
-                                para mostrar las mediciones en el Serial
-                                Monitor. Es la misma idea que trabajaste en el
-                                <a href="../actividad-01/">
-                                    Tutorial 1 — Serie / UART </a
-                                >.
+                                Agregá los imports que vamos a utilizar:
                             </p>
-                        </header>
 
-                        <p class="activity-section__lead">
-                            Agregá los imports que vamos a utilizar:
-                        </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Imports</span>
+                                </div>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Imports</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use core::fmt::Write;
+                                <pre
+                                    class="command-block__code"
+                                ><code>use core::fmt::Write;
 use cortex_m::delay::Delay;
 use embedded_hal::i2c::I2c;
 use hal::clocks::{Clock, init_clocks_and_plls};
 use hal::uart::{DataBits, StopBits, UartConfig};
 use rp235x_hal::fugit::RateExtU32;
 use rp235x_hal::gpio::{FunctionI2C, Pin};</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Dentro de <code>main()</code>, después de obtener
-                            <code>pac</code>, recuperá también los periféricos
-                            del procesador y configurá los clocks:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Clocks</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let core = cortex_m::Peripherals::take().unwrap();
+                            <p class="activity-section__lead">
+                                Dentro de <code>main()</code>, después de
+                                obtener <code>pac</code>, recuperá también los
+                                periféricos del procesador y configurá los
+                                clocks:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Clocks</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let core = cortex_m::Peripherals::take().unwrap();
 let sio = hal::Sio::new(pac.SIO);
 
 let mut watchdog = hal::Watchdog::new(pac.WATCHDOG);
@@ -1035,43 +1170,43 @@ let clocks = init_clocks_and_plls(
 )
 .ok()
 .unwrap();</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Después de este bloque, mantené la creación de
-                            <code>pins</code>:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>GPIO</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let pins = hal::gpio::Pins::new(
+                            <p class="activity-section__lead">
+                                Después de este bloque, mantené la creación de
+                                <code>pins</code>:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>GPIO</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let pins = hal::gpio::Pins::new(
     pac.IO_BANK0,
     pac.PADS_BANK0,
     sio.gpio_bank0,
     &mut pac.RESETS,
 );</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Ahora configurá UART0 utilizando GP2 para TX y GP3
-                            para RX:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>UART0</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let uart_pins = (
+                            <p class="activity-section__lead">
+                                Ahora configurá UART0 utilizando GP2 para TX y
+                                GP3 para RX:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>UART0</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let uart_pins = (
     pins.gpio2.into_function(),
     pins.gpio3.into_function(),
 );
@@ -1092,68 +1227,68 @@ let mut uart0 =
         clocks.peripheral_clock.freq(),
     )
     .unwrap();</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                Rust
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
 
-                            <p>
-                                Esta vez declaramos <code>uart0</code> con
-                                <code>mut</code> porque vamos a utilizar
-                                <code>writeln!</code>, que necesita escribir
-                                sobre UART mediante acceso mutable.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    Esta vez declaramos <code>uart0</code> con
+                                    <code>mut</code> porque vamos a utilizar
+                                    <code>writeln!</code>, que necesita escribir
+                                    sobre UART mediante acceso mutable.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             07 · I2C
             ========================= -->
-                    <section
-                        id="configurar-i2c"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    07
-                                </span>
+                        <section
+                            id="configurar-i2c"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        07
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Configurá
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Configurá el bus I²C
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Configurá el bus I²C
+                                </h2>
 
-                            <p class="activity-section__lead">
-                                Ahora configuramos GP4 y GP5 para que dejen de
-                                funcionar como GPIO comunes y pasen a formar el
-                                bus I²C0.
-                            </p>
-                        </header>
+                                <p class="activity-section__lead">
+                                    Ahora configuramos GP4 y GP5 para que dejen
+                                    de funcionar como GPIO comunes y pasen a
+                                    formar el bus I²C0.
+                                </p>
+                            </header>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>I²C0</span>
-                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>I²C0</span>
+                                </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let sda_pin: Pin&lt;_, FunctionI2C, _&gt; =
+                                <pre
+                                    class="command-block__code"
+                                ><code>let sda_pin: Pin&lt;_, FunctionI2C, _&gt; =
     pins.gpio4.reconfigure();
 
 let scl_pin: Pin&lt;_, FunctionI2C, _&gt; =
@@ -1167,270 +1302,278 @@ let mut i2c = hal::I2C::i2c0(
     &mut pac.RESETS,
     &clocks.system_clock,
 );</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                <strong>SDA</strong> transporta los datos entre
-                                el microcontrolador y el sensor.
-                                <strong>SCL</strong> transporta la señal de
-                                reloj que sincroniza esa comunicación.
-                            </p>
-                        </aside>
+                                <p>
+                                    <strong>SDA</strong> transporta los datos
+                                    entre el microcontrolador y el sensor.
+                                    <strong>SCL</strong> transporta la señal de
+                                    reloj que sincroniza esa comunicación.
+                                </p>
+                            </aside>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Configuramos I²C0 a <strong>400 kHz</strong>.
-                                Varios dispositivos pueden compartir SDA y SCL
-                                siempre que tengan direcciones I²C diferentes.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    Configuramos I²C0 a
+                                    <strong>400 kHz</strong>. Varios
+                                    dispositivos pueden compartir SDA y SCL
+                                    siempre que tengan direcciones I²C
+                                    diferentes.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             08 · REGISTROS
             ========================= -->
-                    <section
-                        id="entender-registros"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    08
-                                </span>
+                        <section
+                            id="entender-registros"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        08
+                                    </span>
 
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Entendé
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    ¿Qué son los registros?
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    El MPU6050 organiza su configuración y sus
+                                    mediciones en pequeñas posiciones internas
+                                    llamadas <strong>registros</strong>.
+                                </p>
+
+                                <p class="activity-section__lead">
+                                    Cada registro tiene una dirección. Para
+                                    configurar el sensor o leer un dato, primero
+                                    indicamos con qué dirección queremos
+                                    trabajar.
+                                </p>
+                            </header>
+
+                            <div class="activity-materials">
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        0x75
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            WHO_AM_I
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Permite comprobar la identidad del
+                                            sensor
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        0x6B
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            PWR_MGMT_1
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Permite configurar el estado de
+                                            energía
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        0x3B
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            ACCEL_XOUT_H
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Es el comienzo de los registros que
+                                            contienen los datos del acelerómetro
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aside class="activity-note">
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-note__icon"
                                     aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Entendé
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                ¿Qué son los registros?
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                El MPU6050 organiza su configuración y sus
-                                mediciones en pequeñas posiciones internas
-                                llamadas <strong>registros</strong>.
-                            </p>
-
-                            <p class="activity-section__lead">
-                                Cada registro tiene una dirección. Para
-                                configurar el sensor o leer un dato, primero
-                                indicamos con qué dirección queremos trabajar.
-                            </p>
-                        </header>
-
-                        <div class="activity-materials">
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    0x75
+                                >
+                                    i
                                 </span>
 
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        WHO_AM_I
-                                    </span>
+                                <p>
+                                    Los valores que comienzan con
+                                    <code>0x</code>
+                                    están escritos en hexadecimal, una
+                                    representación muy utilizada al trabajar con
+                                    hardware y registros.
+                                </p>
+                            </aside>
+                        </section>
 
-                                    <span class="activity-material__detail">
-                                        Permite comprobar la identidad del
-                                        sensor
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    0x6B
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        PWR_MGMT_1
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Permite configurar el estado de energía
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    0x3B
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        ACCEL_XOUT_H
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Es el comienzo de los registros que
-                                        contienen los datos del acelerómetro
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                Los valores que comienzan con <code>0x</code>
-                                están escritos en hexadecimal, una
-                                representación muy utilizada al trabajar con
-                                hardware y registros.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =========================
+                        <!-- =========================
             09 · ACTIVAR E IDENTIFICAR
             ========================= -->
-                    <section
-                        id="activar-identificar-sensor"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    09
-                                </span>
+                        <section
+                            id="activar-identificar-sensor"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        09
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Inicializá
-                                </span>
+                                    <span class="activity-section__category">
+                                        Inicializá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Activá e identificá el MPU6050
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Primero definimos la dirección que
+                                    identifica al MPU6050 dentro del bus I²C.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Dirección I²C</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>const MPU6050_ADDR: u8 = 0x68;</code></pre>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Activá e identificá el MPU6050
-                            </h2>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    No confundas la dirección
+                                    <code>0x68</code> con las direcciones de los
+                                    registros. <code>0x68</code> identifica al
+                                    MPU6050 dentro del bus I²C; valores como
+                                    <code>0x75</code> o
+                                    <code>0x6B</code> identifican posiciones
+                                    internas del sensor.
+                                </p>
+                            </aside>
+
+                            <h3 class="activity-section__title">
+                                Sacá el sensor del modo de suspensión
+                            </h3>
 
                             <p class="activity-section__lead">
-                                Primero definimos la dirección que identifica al
-                                MPU6050 dentro del bus I²C.
+                                Al encenderse, el MPU6050 comienza en
+                                <strong>modo de suspensión (sleep)</strong> para
+                                reducir el consumo de energía. Antes de realizar
+                                mediciones tenemos que sacarlo de ese estado.
                             </p>
-                        </header>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Dirección I²C</span>
-                            </div>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>PWR_MGMT_1</span>
+                                </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>const MPU6050_ADDR: u8 = 0x68;</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                No confundas la dirección <code>0x68</code> con
-                                las direcciones de los registros.
-                                <code>0x68</code> identifica al MPU6050 dentro
-                                del bus I²C; valores como <code>0x75</code> o
-                                <code>0x6B</code> identifican posiciones
-                                internas del sensor.
-                            </p>
-                        </aside>
-
-                        <h3 class="activity-section__title">
-                            Sacá el sensor del modo de suspensión
-                        </h3>
-
-                        <p class="activity-section__lead">
-                            Al encenderse, el MPU6050 comienza en
-                            <strong>modo de suspensión (sleep)</strong> para
-                            reducir el consumo de energía. Antes de realizar
-                            mediciones tenemos que sacarlo de ese estado.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>PWR_MGMT_1</span>
-                            </div>
-
-                            <pre class="command-block__code"><code>i2c.write(
+                                <pre
+                                    class="command-block__code"
+                                ><code>i2c.write(
     MPU6050_ADDR,
     &[0x6B, 0x00],
 ).unwrap();</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                <code>0x6B</code> selecciona el registro
-                                <code>PWR_MGMT_1</code>. Al escribir
-                                <code>0x00</code> desactivamos el modo sleep y
-                                dejamos el MPU6050 preparado para medir.
-                            </p>
-                        </aside>
-
-                        <h3 class="activity-section__title">
-                            Comprobá que responde
-                        </h3>
-
-                        <p class="activity-section__lead">
-                            Ahora consultamos el registro
-                            <code>WHO_AM_I</code>, ubicado en <code>0x75</code>.
-                            El sensor debería responder con su dirección de
-                            identificación.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>WHO_AM_I</span>
                             </div>
 
-                            <pre
-                                class="command-block__code"
-                            ><code>let mut who_am_i = [0u8; 1];
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    <code>0x6B</code> selecciona el registro
+                                    <code>PWR_MGMT_1</code>. Al escribir
+                                    <code>0x00</code> desactivamos el modo sleep
+                                    y dejamos el MPU6050 preparado para medir.
+                                </p>
+                            </aside>
+
+                            <h3 class="activity-section__title">
+                                Comprobá que responde
+                            </h3>
+
+                            <p class="activity-section__lead">
+                                Ahora consultamos el registro
+                                <code>WHO_AM_I</code>, ubicado en
+                                <code>0x75</code>. El sensor debería responder
+                                con su dirección de identificación.
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>WHO_AM_I</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut who_am_i = [0u8; 1];
 
 i2c.write_read(
     MPU6050_ADDR,
@@ -1443,119 +1586,121 @@ writeln!(
     "WHO_AM_I: 0x{:02X}",
     who_am_i[0]
 ).unwrap();</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                <code>write_read()</code> primero envía la
-                                dirección del registro que queremos consultar y
-                                después lee la respuesta del sensor. En este
-                                caso seleccionamos <code>0x75</code> y recibimos
-                                un byte.
-                            </p>
-                        </aside>
+                                <p>
+                                    <code>write_read()</code> primero envía la
+                                    dirección del registro que queremos
+                                    consultar y después lee la respuesta del
+                                    sensor. En este caso seleccionamos
+                                    <code>0x75</code> y recibimos un byte.
+                                </p>
+                            </aside>
 
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                Resultado esperado
-                            </span>
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Resultado esperado
+                                </span>
 
-                            <p>
-                                Si la comunicación funciona correctamente, el
-                                Serial Monitor debería mostrar
-                                <strong>WHO_AM_I: 0x68</strong>.
-                            </p>
-                        </div>
-                    </section>
+                                <p>
+                                    Si la comunicación funciona correctamente,
+                                    el Serial Monitor debería mostrar
+                                    <strong>WHO_AM_I: 0x68</strong>.
+                                </p>
+                            </div>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             10 · LEER ACELERACIÓN
             ========================= -->
-                    <section
-                        id="leer-aceleracion"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    10
-                                </span>
+                        <section
+                            id="leer-aceleracion"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        10
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Leé
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Leé
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Leé la aceleración
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Leé la aceleración
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Los datos del acelerómetro comienzan en el
+                                    registro <code>0x3B</code>. Vamos a leer
+                                    seis bytes: dos para X, dos para Y y dos
+                                    para Z.
+                                </p>
+                            </header>
 
                             <p class="activity-section__lead">
-                                Los datos del acelerómetro comienzan en el
-                                registro <code>0x3B</code>. Vamos a leer seis
-                                bytes: dos para X, dos para Y y dos para Z.
+                                Antes del <code>loop</code>, creá nuevamente un
+                                <code>Delay</code>. Lo vamos a usar para mostrar
+                                una medición cada 500 ms.
                             </p>
-                        </header>
 
-                        <p class="activity-section__lead">
-                            Antes del <code>loop</code>, creá nuevamente un
-                            <code>Delay</code>. Lo vamos a usar para mostrar una
-                            medición cada 500 ms.
-                        </p>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Delay</span>
+                                </div>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Delay</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let mut delay = Delay::new(
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut delay = Delay::new(
     core.SYST,
     clocks.system_clock.freq().to_Hz(),
 );</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                No queremos enviar miles de mediciones por
-                                segundo al Serial Monitor. El delay hace que el
-                                resultado sea mucho más fácil de observar.
-                            </p>
-                        </aside>
-
-                        <p class="activity-section__lead">
-                            Ahora reemplazá el <code>loop</code> vacío por la
-                            lectura completa:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Acelerómetro + UART</span>
                             </div>
 
-                            <pre class="command-block__code"><code>loop {
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    No queremos enviar miles de mediciones por
+                                    segundo al Serial Monitor. El delay hace que
+                                    el resultado sea mucho más fácil de
+                                    observar.
+                                </p>
+                            </aside>
+
+                            <p class="activity-section__lead">
+                                Ahora reemplazá el <code>loop</code> vacío por
+                                la lectura completa:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Acelerómetro + UART</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
     let mut accel_data = [0u8; 6];
 
     i2c.write_read(
@@ -1591,142 +1736,808 @@ writeln!(
 
     delay.delay_ms(500);
 }</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Cada eje utiliza <strong>16 bits</strong>, es
-                                decir, <strong>2 bytes</strong>. Por eso leemos
-                                seis bytes en total.
-                                <code>i16::from_be_bytes()</code> vuelve a unir
-                                cada pareja para obtener el valor
-                                correspondiente.
-                            </p>
-                        </aside>
+                                <p>
+                                    Cada eje utiliza <strong>16 bits</strong>,
+                                    es decir, <strong>2 bytes</strong>. Por eso
+                                    leemos seis bytes en total.
+                                    <code>i16::from_be_bytes()</code> vuelve a
+                                    unir cada pareja para obtener el valor
+                                    correspondiente.
+                                </p>
+                            </aside>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                Rust
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
 
-                            <p>
-                                Utilizamos <code>i16</code> porque las
-                                mediciones pueden tener valores positivos o
-                                negativos según la dirección de la aceleración.
-                            </p>
-                        </aside>
+                                <p>
+                                    Utilizamos <code>i16</code> porque las
+                                    mediciones pueden tener valores positivos o
+                                    negativos según la dirección de la
+                                    aceleración.
+                                </p>
+                            </aside>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                ↩
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    ↩
+                                </span>
 
-                            <p>
-                                <code>writeln!</code> reutiliza la comunicación
-                                serial que configuramos antes para enviar cada
-                                medición al Serial Monitor.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    <code>writeln!</code> reutiliza la
+                                    comunicación serial que configuramos antes
+                                    para enviar cada medición al Serial Monitor.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
             11 · COMPILAR Y PROBAR
             ========================= -->
-                    <section
-                        id="compilar"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    11
+                        <section
+                            id="compilar"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        11
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Probá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Compilá y ejecutá
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Compilá nuevamente el proyecto y cargá el
+                                    ELF resultante en Velxio.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Release</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo build --release</code></pre>
+                            </div>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Comprobá
                                 </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Probá
-                                </span>
+                                <p>
+                                    Ejecutá la simulación y abrí el Serial
+                                    Monitor. Primero deberías ver la respuesta
+                                    de
+                                    <code>WHO_AM_I</code> y después las
+                                    mediciones de los tres ejes.
+                                </p>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Compilá y ejecutá
-                            </h2>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Serial Monitor</span>
+                                    <span>Ejemplo</span>
+                                </div>
 
-                            <p class="activity-section__lead">
-                                Compilá nuevamente el proyecto y cargá el ELF
-                                resultante en Velxio.
-                            </p>
-                        </header>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
-                                <span>Release</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>cargo build --release</code></pre>
-                        </div>
-
-                        <div class="activity-task">
-                            <span class="activity-task__label"> Comprobá </span>
-
-                            <p>
-                                Ejecutá la simulación y abrí el Serial Monitor.
-                                Primero deberías ver la respuesta de
-                                <code>WHO_AM_I</code> y después las mediciones
-                                de los tres ejes.
-                            </p>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Serial Monitor</span>
-                                <span>Ejemplo</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>WHO_AM_I: 0x68
+                                <pre
+                                    class="command-block__code"
+                                ><code>WHO_AM_I: 0x68
 X: 0 | Y: 0 | Z: 16384
 X: 128 | Y: -45 | Z: 16350
 X: 240 | Y: -110 | Z: 16290
 ...</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Los valores de X, Y y Z son solamente un
-                                ejemplo. Las mediciones reales dependen del
-                                estado que tenga el MPU6050 dentro de Velxio.
+                                <p>
+                                    Los valores de X, Y y Z son solamente un
+                                    ejemplo. Las mediciones reales dependen del
+                                    estado que tenga el MPU6050 dentro de
+                                    Velxio.
+                                </p>
+                            </aside>
+                        </section>
+                    </div>
+
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="hardware"
+                        hidden
+                    >
+                        <section
+                            id="recorrido-hardware"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 01
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Retirá el botón y el LED
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    En el Tutorial 3 utilizamos GPIO14 como
+                                    entrada para el botón y GPIO15 como salida
+                                    para el LED. En esta actividad ya no
+                                    necesitamos ninguno de los dos.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Limpiá src/main.rs
+                                </span>
+
+                                <p>
+                                    Eliminá los imports de
+                                    <code>InputPin</code> y
+                                    <code>OutputPin</code>, además de
+                                    <code>button</code>, <code>led_pin</code> y
+                                    el <code>loop</code> que controlaba el LED.
+                                </p>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    Conservá la inicialización base del
+                                    microcontrolador. A continuación volveremos
+                                    a configurar los clocks, ya que los
+                                    necesitaremos para I²C y para la
+                                    comunicación USB.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 02
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Conectá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Conectá el MPU6050 a la Pico 2
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a utilizar I²C0 para comunicar la
+                                    Raspberry Pi Pico 2 con el MPU6050.
+                                </p>
+                            </header>
+
+                            <div class="activity-materials">
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        SDA
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            MPU6050 SDA → GPIO4
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Línea de datos del bus I²C.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        SCL
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            MPU6050 SCL → GPIO5
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Línea de reloj del bus I²C.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        +
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            MPU6050 VCC → 3V3
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Alimentación del módulo.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        −
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            MPU6050 GND → GND
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Tierra común con la Pico 2.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Prepará clocks y comunicación USB
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Para trabajar con I²C necesitamos volver a
+                                    configurar los clocks del RP2350. También
+                                    vamos a utilizar USB CDC para enviar las
+                                    mediciones directamente a la computadora.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Cargo.toml
+                                </span>
+
+                                <p>
+                                    Conservá las dependencias USB utilizadas
+                                    anteriormente y agregá
+                                    <code>embedded-io</code>:
+                                </p>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Cargo.toml</span>
+                                    <span>Dependencia</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>embedded-io = "0.6"</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Agregá los imports necesarios:
                             </p>
-                        </aside>
-                    </section>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Imports</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::i2c::I2c;
+use embedded_io::Write as _;
+use hal::clocks::init_clocks_and_plls;
+use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::gpio::{FunctionI2C, Pin};
+use usb_device::{class_prelude::*, prelude::*};
+use usbd_serial::SerialPort;</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Dentro de <code>main()</code>, configurá
+                                nuevamente el watchdog y los clocks:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Clocks</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut watchdog =
+    hal::Watchdog::new(pac.WATCHDOG);
+
+let clocks = init_clocks_and_plls(
+    12_000_000,
+    pac.XOSC,
+    pac.CLOCKS,
+    pac.PLL_SYS,
+    pac.PLL_USB,
+    &amp;mut pac.RESETS,
+    &amp;mut watchdog,
+)
+.ok()
+.unwrap();</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 04
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Creá el puerto USB serial
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Igual que en el Tutorial 1, la Pico 2
+                                    aparecerá en Linux como un puerto serial
+                                    USB.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Timer + USB CDC</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let timer = hal::Timer::new_timer0(
+    pac.TIMER0,
+    &amp;mut pac.RESETS,
+    &amp;clocks,
+);
+
+let usb_bus = UsbBusAllocator::new(
+    hal::usb::UsbBus::new(
+        pac.USB,
+        pac.USB_DPRAM,
+        clocks.usb_clock,
+        true,
+        &amp;mut pac.RESETS,
+    ),
+);
+
+let mut serial = SerialPort::new(&amp;usb_bus);
+
+let mut usb_dev = UsbDeviceBuilder::new(
+    &amp;usb_bus,
+    UsbVidPid(0x16c0, 0x27dd),
+)
+.strings(&amp;[
+    StringDescriptors::default()
+        .manufacturer("Fundacion INVAP")
+        .product("Mini Lab MPU6050")
+        .serial_number("MINILAB04"),
+])
+.unwrap()
+.max_packet_size_0(64)
+.unwrap()
+.device_class(2)
+.build();</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 05
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Configurá el bus I²C
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    GPIO4 funcionará como SDA y GPIO5 como SCL,
+                                    coincidiendo con las conexiones físicas que
+                                    realizaste.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>I²C0</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let sda_pin: Pin&lt;_, FunctionI2C, _&gt; =
+    pins.gpio4.reconfigure();
+
+let scl_pin: Pin&lt;_, FunctionI2C, _&gt; =
+    pins.gpio5.reconfigure();
+
+let mut i2c = hal::I2C::i2c0(
+    pac.I2C0,
+    sda_pin,
+    scl_pin,
+    400_u32.kHz(),
+    &amp;mut pac.RESETS,
+    &amp;clocks.system_clock,
+);</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    El bus funciona a <strong>400 kHz</strong>.
+                                    SDA transporta los datos y SCL proporciona
+                                    la señal de reloj que sincroniza la
+                                    comunicación.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 06
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Inicializá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Activá e identificá el MPU6050
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    El MPU6050 utiliza la dirección I²C
+                                    <code>0x68</code>. Primero lo despertaremos
+                                    y después leeremos su registro de
+                                    identificación.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>MPU6050</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>const MPU6050_ADDR: u8 = 0x68;
+
+i2c.write(
+    MPU6050_ADDR,
+    &amp;[0x6B, 0x00],
+)
+.unwrap();
+
+let mut who_am_i = [0u8; 1];
+
+i2c.write_read(
+    MPU6050_ADDR,
+    &amp;[0x75],
+    &amp;mut who_am_i,
+)
+.unwrap();</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    Escribimos <code>0x00</code> en
+                                    <code>PWR_MGMT_1</code> (<code>0x6B</code>)
+                                    para sacar al sensor del modo de reposo.
+                                    Después consultamos <code>WHO_AM_I</code>
+                                    (<code>0x75</code>).
+                                </p>
+                            </aside>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 07
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Medí
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Leé el acelerómetro por USB
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a leer seis bytes a partir del
+                                    registro
+                                    <code>0x3B</code> y convertirlos en los
+                                    valores de aceleración X, Y y Z.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Loop</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut last_message = 0u64;
+let mut identity_sent = false;
+
+loop {
+    usb_dev.poll(&amp;mut [&amp;mut serial]);
+
+    let now = timer.get_counter().ticks();
+
+    if now - last_message &gt;= 500_000 {
+        last_message = now;
+
+        if !identity_sent {
+            if serial
+                .write_fmt(format_args!(
+                    "WHO_AM_I: 0x{:02X}\r\n",
+                    who_am_i[0],
+                ))
+                .is_ok()
+            {
+                identity_sent = true;
+            }
+        }
+
+        let mut accel_data = [0u8; 6];
+
+        i2c.write_read(
+            MPU6050_ADDR,
+            &amp;[0x3B],
+            &amp;mut accel_data,
+        )
+        .unwrap();
+
+        let accel_x = i16::from_be_bytes([
+            accel_data[0],
+            accel_data[1],
+        ]);
+
+        let accel_y = i16::from_be_bytes([
+            accel_data[2],
+            accel_data[3],
+        ]);
+
+        let accel_z = i16::from_be_bytes([
+            accel_data[4],
+            accel_data[5],
+        ]);
+
+        let _ = serial.write_fmt(format_args!(
+            "X: {} | Y: {} | Z: {}\r\n",
+            accel_x,
+            accel_y,
+            accel_z,
+        ));
+    }
+}</code></pre>
+                            </div>
+                        </section>
+
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 08
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Comprobá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Probá el sensor real
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Cargá el firmware en la Pico 2 y abrí el
+                                    puerto serial USB desde Linux.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Cargar firmware</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo run --release</code></pre>
+                            </div>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>USB CDC</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>sudo cat /dev/ttyACM0</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Deberías obtener una salida similar a:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>/dev/ttyACM0</span>
+                                    <span>Salida</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>WHO_AM_I: 0x68
+X: 120 | Y: -80 | Z: 16250
+X: 350 | Y: -150 | Z: 16120
+X: 4100 | Y: -200 | Z: 15400
+...</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <p>
+                                    Mové o incliná físicamente el MPU6050. Los
+                                    valores de X, Y y Z deberían cambiar según
+                                    la orientación y el movimiento del sensor.
+                                </p>
+                            </aside>
+                        </section>
+                    </div>
 
                     <!-- =========================
             DESAFÍO
@@ -1751,8 +2562,9 @@ X: 240 | Y: -110 | Z: 16290
 
                                 <p class="activity-challenge__description">
                                     Observá los valores de X, Y y Z y tratá de
-                                    identificar cuál cambia cuando modificás el
-                                    estado del sensor en Velxio.
+                                    identificar cuál cambia cuando modificás la
+                                    posición o el estado del sensor en el
+                                    entorno que elegiste.
                                 </p>
 
                                 <ul class="activity-challenge__checklist">
@@ -1760,8 +2572,10 @@ X: 240 | Y: -110 | Z: 16290
                                         Observá primero los valores iniciales.
                                     </li>
 
-                                    <li>Modificá el estado del MPU6050.</li>
-
+                                    <li>
+                                        Modificá la posición o el estado del
+                                        MPU6050.
+                                    </li>
                                     <li>Compará las nuevas mediciones.</li>
 
                                     <li>Identificá qué eje cambió más.</li>
