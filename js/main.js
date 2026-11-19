@@ -192,8 +192,6 @@ function selectTutorial(selectedTutorial) {
     tutorialSelectors.forEach((button) => {
         const isSelected = button.dataset.tutorialSelect === selectedTutorial;
 
-        button.setAttribute("aria-pressed", String(isSelected));
-
         button.setAttribute("aria-pressed", isSelected ? "true" : "false");
     });
 
