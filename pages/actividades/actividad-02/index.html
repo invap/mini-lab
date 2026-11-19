@@ -156,7 +156,7 @@
                                 <span class="activities-nav__number"> 01 </span>
 
                                 <span class="activities-nav__label">
-                                    Serie / UART
+                                    Comunicación serial
                                 </span>
                             </a>
                         </li>
@@ -317,10 +317,11 @@
                         </h1>
 
                         <p class="activity-hero__description">
-                            En este tutorial vas a controlar un LED con Rust y
-                            el entorno de simulación. Vas a probar distintos
-                            tiempos de encendido y apagado, crear secuencias y
-                            experimentar con los patrones de parpadeo.
+                            En este tutorial vas a controlar un LED con Rust.
+                            Vas a probar distintos tiempos de encendido y apagado,
+                            crear secuencias y experimentar con patrones de
+                            parpadeo, tanto en Velxio como sobre una Raspberry Pi
+                            Pico 2 real.
                         </p>
 
                         <ul
@@ -790,7 +791,8 @@
                             <p class="activity-section__lead">
                                 Vamos a continuar sobre el mismo proyecto que
                                 utilizaste en el Tutorial 1. Primero retiraremos
-                                el código de UART y después configuraremos
+                                el código de comunicación serial correspondiente
+                                al entorno que elegiste y después configuraremos
                                 GPIO15 como una salida digital para controlar un
                                 LED.
                             </p>
@@ -826,11 +828,11 @@
 
                                 <div class="activity-material__content">
                                     <span class="activity-material__name">
-                                        Velxio
+                                        Entorno de ejecución
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Simulador utilizado durante el recorrido
+                                        Velxio o Raspberry Pi Pico 2
                                     </span>
                                 </div>
                             </div>
@@ -845,30 +847,11 @@
 
                                 <div class="activity-material__content">
                                     <span class="activity-material__name">
-                                        Pimoroni Pico Plus 2 W
+                                        LED
                                     </span>
 
                                     <span class="activity-material__detail">
-                                        Placa RP2350 disponible en Velxio
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span
-                                    class="activity-material__check"
-                                    aria-hidden="true"
-                                >
-                                    ✓
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        LED virtual
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Conectado a GPIO15
+                                        Virtual en Velxio o físico en el kit
                                     </span>
                                 </div>
                             </div>
@@ -902,187 +885,276 @@
                             </span>
 
                             <p>
-                                Mini Lab toma como hardware de referencia la
-                                Raspberry Pi Pico 2. En el recorrido actual
-                                utilizamos la Pimoroni Pico Plus 2 W disponible
-                                en Velxio, por lo que trabajaremos con GPIO15.
+                                En ambos recorridos trabajaremos con
+                                <strong>GPIO15</strong>. Lo que cambia es el
+                                entorno: en Velxio utilizamos la Pimoroni Pico
+                                Plus 2 W y en hardware real la Raspberry Pi Pico
+                                2 del kit.
                             </p>
                         </aside>
+                    </section>
+
+                    <section class="activity-mode">
+                        <div class="activity-mode__header">
+                            <p class="activity-mode__eyebrow">
+                                Elegí tu entorno
+                            </p>
+
+                            <h2 class="activity-mode__title">
+                                ¿Cómo querés realizar esta actividad?
+                            </h2>
+
+                            <p class="activity-mode__description">
+                                En ambos recorridos vas a controlar un LED desde
+                                GPIO15. Elegí si querés trabajar en el simulador
+                                o con el kit físico.
+                            </p>
+                        </div>
+
+                        <div class="activity-mode__grid">
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="velxio"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Simulador
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Velxio
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Controlá un LED virtual conectado a GPIO15.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar Velxio →
+                                </span>
+                            </button>
+
+                            <button
+                                class="activity-mode__option"
+                                type="button"
+                                data-tutorial-select="hardware"
+                                aria-pressed="false"
+                            >
+                                <span class="activity-mode__option-label">
+                                    Hardware real
+                                </span>
+
+                                <strong class="activity-mode__option-title">
+                                    Raspberry Pi Pico 2
+                                </strong>
+
+                                <span class="activity-mode__option-description">
+                                    Armá el circuito con un LED y una
+                                    resistencia del kit.
+                                </span>
+
+                                <span class="activity-mode__option-action">
+                                    Usar hardware →
+                                </span>
+                            </button>
+                        </div>
                     </section>
 
                     <!-- =========================
 03 · CONECTAR LED
 ========================= -->
-                    <section
-                        id="conectar-led"
-                        class="activity-section activity-experiment"
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="velxio"
+                        hidden
                     >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    03
-                                </span>
+                        <section
+                            id="conectar-led"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        03
+                                    </span>
 
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Conectá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Conectá el LED en Velxio
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Antes de programar Blinky, agregá un LED y
+                                    una resistencia al circuito virtual.
+                                </p>
+                            </header>
+
+                            <div class="activity-materials">
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        1
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            GPIO15 → resistencia
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá GPIO15 a una resistencia de
+                                            entre 220 Ω y 330 Ω.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        2
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            Resistencia → LED
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá la resistencia al ánodo del
+                                            LED.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        3
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            LED → GND
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá el cátodo del LED a GND.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <figure class="activity-figure">
+                                <img
+                                    class="activity-figure__image"
+                                    src="../../../assets/images/actividades/actividad-02/velxio-setup.png"
+                                    alt="Setup de la Actividad 02 en Velxio con un LED conectado a GPIO15 mediante una resistencia"
+                                />
+
+                                <figcaption class="activity-figure__caption">
+                                    Setup de la Actividad 02 en Velxio. El LED
+                                    está conectado a
+                                    <code>GPIO15</code> mediante una resistencia
+                                    y retorna a <code>GND</code>.
+                                </figcaption>
+                            </figure>
+
+                            <aside class="activity-note">
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-note__icon"
                                     aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Conectá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Conectá el LED en Velxio
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Antes de programar Blinky, agregá un LED y una
-                                resistencia al circuito virtual.
-                            </p>
-                        </header>
-
-                        <div class="activity-materials">
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    1
+                                >
+                                    i
                                 </span>
 
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        GPIO15 → resistencia
-                                    </span>
+                                <p>
+                                    La resistencia limita la corriente que
+                                    circula por el LED. En este tutorial vamos a
+                                    controlar el circuito desde
+                                    <strong>GPIO15</strong>.
+                                </p>
+                            </aside>
+                        </section>
 
-                                    <span class="activity-material__detail">
-                                        Conectá GPIO15 a una resistencia de
-                                        entre 220 Ω y 330 Ω.
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    2
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        Resistencia → LED
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Conectá la resistencia al ánodo del LED.
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="activity-material">
-                                <span class="activity-material__check">
-                                    3
-                                </span>
-
-                                <div class="activity-material__content">
-                                    <span class="activity-material__name">
-                                        LED → GND
-                                    </span>
-
-                                    <span class="activity-material__detail">
-                                        Conectá el cátodo del LED a GND.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                La resistencia limita la corriente que circula
-                                por el LED. En este tutorial vamos a controlar
-                                el circuito desde
-                                <strong>GPIO15</strong>.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!--  ===========================
+                        <!--  ===========================
                         04 - Preparar proyecto
                     =================================== -->
-                    <section
-                        id="preparar-proyecto"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    04
+                        <section
+                            id="preparar-proyecto"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        04
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Prepará el proyecto para Blinky
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    En el Tutorial 1 utilizamos UART para enviar
+                                    mensajes al Serial Monitor. En este tutorial
+                                    vamos a concentrarnos únicamente en
+                                    controlar una salida digital, así que
+                                    primero retiraremos el código de
+                                    comunicación serial.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Eliminá la configuración UART
                                 </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Prepará
-                                </span>
+                                <p>
+                                    Retirá los imports que agregamos para
+                                    configurar UART:
+                                </p>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Prepará el proyecto para Blinky
-                            </h2>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Imports UART</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use rp235x_hal::fugit::RateExtU32;
+use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
+                            </div>
 
                             <p class="activity-section__lead">
-                                En el Tutorial 1 utilizamos UART para enviar
-                                mensajes al Serial Monitor. En este tutorial
-                                vamos a concentrarnos únicamente en controlar
-                                una salida digital, así que primero retiraremos
-                                el código de comunicación serial.
+                                También eliminá la configuración de UART0:
                             </p>
-                        </header>
 
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                Eliminá la configuración UART
-                            </span>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>UART0</span>
+                                </div>
 
-                            <p>
-                                Retirá los imports que agregamos para configurar
-                                UART:
-                            </p>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Imports UART</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use rp235x_hal::fugit::RateExtU32;
-use rp235x_hal::uart::{DataBits, StopBits, UartConfig};</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            También eliminá la configuración de UART0:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>UART0</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let uart_pins = (
+                                <pre
+                                    class="command-block__code"
+                                ><code>let uart_pins = (
     pins.gpio2.into_function(),
     pins.gpio3.into_function(),
 );
@@ -1103,320 +1175,183 @@ let uart0 =
         clocks.peripheral_clock.freq(),
     )
     .unwrap();</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Por último, eliminá el <code>loop</code> del
-                            Tutorial 1. Lo vamos a reemplazar por el programa
-                            que controla el LED.
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Eliminar</span>
-                                <span>Loop UART</span>
                             </div>
 
-                            <pre class="command-block__code"><code>loop {
+                            <p class="activity-section__lead">
+                                Por último, eliminá el <code>loop</code> del
+                                Tutorial 1. Lo vamos a reemplazar por el
+                                programa que controla el LED.
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Eliminar</span>
+                                    <span>Loop UART</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
     uart0.write_full_blocking(b"Hola Mini Lab!\r\n");
     delay.delay_ms(1000);
 }</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Conservá la inicialización del microcontrolador,
-                                los clocks, los pines y <code>delay</code>. Todo
-                                eso sigue siendo necesario para este tutorial.
-                            </p>
-                        </aside>
-                    </section>
+                                <p>
+                                    Conservá la inicialización del
+                                    microcontrolador, los clocks, los pines y
+                                    <code>delay</code>. Todo eso sigue siendo
+                                    necesario para este tutorial.
+                                </p>
+                            </aside>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
                     05 - Configurar GPIO15 como salida
                     ========================= -->
-                    <section
-                        id="configurar-led"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    05
-                                </span>
+                        <section
+                            id="configurar-led"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        05
+                                    </span>
 
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
 
-                                <span class="activity-section__category">
-                                    Configurá
-                                </span>
-                            </div>
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
 
-                            <h2 class="activity-section__title">
-                                Configurá GPIO15 como salida
-                            </h2>
+                                <h2 class="activity-section__title">
+                                    Configurá GPIO15 como salida
+                                </h2>
 
-                            <p class="activity-section__lead">
-                                Un GPIO puede cumplir distintas funciones. Para
-                                controlar un LED necesitamos configurar GPIO15
-                                como una
-                                <strong>salida digital</strong>.
-                            </p>
-                        </header>
-
-                        <p class="activity-section__lead">
-                            Primero agregá el trait que nos permite controlar
-                            pines de salida:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Import</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>use embedded_hal::digital::OutputPin;</code></pre>
-                        </div>
-
-                        <p class="activity-section__lead">
-                            Después de crear <code>pins</code>, configurá
-                            GPIO15:
-                        </p>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>GPIO15</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                Rust
-                            </span>
-
-                            <p>
-                                Usamos <code>mut</code> porque el estado de
-                                <code>led_pin</code> va a cambiar durante la
-                                ejecución: algunas veces tendrá un nivel lógico
-                                alto y otras uno bajo.
-                            </p>
-                        </aside>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                <code>into_push_pull_output()</code> configura
-                                GPIO15 como una salida digital. A partir de ese
-                                momento el microcontrolador puede establecer
-                                directamente un nivel <strong>HIGH</strong> o
-                                <strong>LOW</strong> sobre el pin.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- ====================
-                    06 - Hacer parpadear el LED
-                    ==================== -->
-                    <section
-                        id="primer-blinky"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    06
-                                </span>
-
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Programá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Hacé parpadear el LED
-                            </h2>
+                                <p class="activity-section__lead">
+                                    Un GPIO puede cumplir distintas funciones.
+                                    Para controlar un LED necesitamos configurar
+                                    GPIO15 como una
+                                    <strong>salida digital</strong>.
+                                </p>
+                            </header>
 
                             <p class="activity-section__lead">
-                                Vamos a alternar el estado de GPIO15 cada 500
-                                ms. El resultado será un LED que se enciende y
-                                se apaga una vez por segundo.
+                                Primero agregá el trait que nos permite
+                                controlar pines de salida:
                             </p>
-                        </header>
 
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                                <span>Loop</span>
-                            </div>
-
-                            <pre class="command-block__code"><code>loop {
-    led_pin.set_high().unwrap();
-    delay.delay_ms(500);
-
-    led_pin.set_low().unwrap();
-    delay.delay_ms(500);
-}</code></pre>
-                        </div>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                <code>set_high()</code> coloca GPIO15 en nivel
-                                lógico alto y enciende el LED.
-                                <code>set_low()</code> vuelve el pin a nivel
-                                bajo y lo apaga.
-                            </p>
-                        </aside>
-
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
-
-                            <p>
-                                <code>delay.delay_ms(500)</code> detiene el
-                                programa durante 500 milisegundos antes de
-                                continuar con la siguiente instrucción.
-                            </p>
-                        </aside>
-                    </section>
-
-                    <!-- =============
-                    07 - Compilar y probar Blinky
-                    ==================-->
-                    <section
-                        id="probar-blinky"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    07
-                                </span>
-
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Comprobá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Compilá y probá Blinky
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Antes de modificar los tiempos, comprobá que el
-                                programa básico funciona correctamente.
-                            </p>
-                        </header>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>Terminal</span>
-                                <span>Release</span>
-                            </div>
-
-                            <pre
-                                class="command-block__code"
-                            ><code>cargo build --release</code></pre>
-                        </div>
-
-                        <div class="activity-task">
-                            <span class="activity-task__label">
-                                En Velxio
-                            </span>
-
-                            <p>
-                                Cargá el nuevo ELF, ejecutá la simulación y
-                                comprobá que el LED conectado a GPIO15 permanece
-                                500 ms encendido y 500 ms apagado.
-                            </p>
-                        </div>
-                    </section>
-
-                    <!-- =============
-                     cambiar velocidad
-                    -->
-                    <section
-                        id="cambiar-velocidad"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    08
-                                </span>
-
-                                <span
-                                    class="activity-section__line"
-                                    aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Experimentá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Cambiá la velocidad
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Ya comprobaste que Blinky funciona con
-                                intervalos de 500 ms. Ahora modificá solamente
-                                los tiempos para observar cómo cambia la
-                                frecuencia del parpadeo.
-                            </p>
-                        </header>
-
-                        <div class="activity-experiment__main">
                             <div class="command-block">
                                 <div class="command-block__header">
                                     <span>src/main.rs</span>
+                                    <span>Import</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::digital::OutputPin;</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Después de crear <code>pins</code>, configurá
+                                GPIO15:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>GPIO15</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut led_pin = pins.gpio15.into_push_pull_output();</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
+
+                                <p>
+                                    Usamos <code>mut</code> porque el estado de
+                                    <code>led_pin</code> va a cambiar durante la
+                                    ejecución: algunas veces tendrá un nivel
+                                    lógico alto y otras uno bajo.
+                                </p>
+                            </aside>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    <code>into_push_pull_output()</code>
+                                    configura GPIO15 como una salida digital. A
+                                    partir de ese momento el microcontrolador
+                                    puede establecer directamente un nivel
+                                    <strong>HIGH</strong> o
+                                    <strong>LOW</strong> sobre el pin.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <!-- ====================
+                    06 - Hacer parpadear el LED
+                    ==================== -->
+                        <section
+                            id="primer-blinky"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        06
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Programá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Hacé parpadear el LED
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a alternar el estado de GPIO15 cada
+                                    500 ms. El resultado será un LED que se
+                                    enciende y se apaga una vez por segundo.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Loop</span>
                                 </div>
 
                                 <pre class="command-block__code"><code>loop {
@@ -1428,175 +1363,317 @@ let uart0 =
 }</code></pre>
                             </div>
 
-                            <div class="activity-task">
-                                <span class="activity-task__label">
-                                    Tu objetivo
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
                                 </span>
 
                                 <p>
-                                    Hacé que el LED parpadee
-                                    <strong>el doble de rápido</strong>.
+                                    <code>set_high()</code> coloca GPIO15 en
+                                    nivel lógico alto y enciende el LED.
+                                    <code>set_low()</code> vuelve el pin a nivel
+                                    bajo y lo apaga.
+                                </p>
+                            </aside>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    <code>delay.delay_ms(500)</code> detiene el
+                                    programa durante 500 milisegundos antes de
+                                    continuar con la siguiente instrucción.
+                                </p>
+                            </aside>
+                        </section>
+
+                        <!-- =============
+                    07 - Compilar y probar Blinky
+                    ==================-->
+                        <section
+                            id="probar-blinky"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        07
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Comprobá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Compilá y probá Blinky
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Antes de modificar los tiempos, comprobá que
+                                    el programa básico funciona correctamente.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Release</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo build --release</code></pre>
+                            </div>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    En Velxio
+                                </span>
+
+                                <p>
+                                    Cargá el nuevo ELF, ejecutá la simulación y
+                                    comprobá que el LED conectado a GPIO15
+                                    permanece 500 ms encendido y 500 ms apagado.
                                 </p>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =============
+                     cambiar velocidad
+                    -->
+                        <section
+                            id="cambiar-velocidad"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        08
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Experimentá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Cambiá la velocidad
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Ya comprobaste que Blinky funciona con
+                                    intervalos de 500 ms. Ahora modificá
+                                    solamente los tiempos para observar cómo
+                                    cambia la frecuencia del parpadeo.
+                                </p>
+                            </header>
+
+                            <div class="activity-experiment__main">
+                                <div class="command-block">
+                                    <div class="command-block__header">
+                                        <span>src/main.rs</span>
+                                    </div>
+
+                                    <pre
+                                        class="command-block__code"
+                                    ><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(500);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(500);
+}</code></pre>
+                                </div>
+
+                                <div class="activity-task">
+                                    <span class="activity-task__label">
+                                        Tu objetivo
+                                    </span>
+
+                                    <p>
+                                        Hacé que el LED parpadee
+                                        <strong>el doble de rápido</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- =========================
                     09 - Hacer un destello corto
                     ========================= -->
-                    <section
-                        id="destello-corto"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    09
-                                </span>
+                        <section
+                            id="destello-corto"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        09
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Experimentá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Hacé un destello corto
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Los tiempos de encendido y apagado no tienen
+                                    que ser iguales. Ahora vamos a crear un
+                                    destello breve seguido por una pausa más
+                                    larga.
+                                </p>
+                            </header>
+
+                            <div class="activity-pattern">
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        Encendido
+                                    </span>
+
+                                    <strong class="activity-pattern__value">
+                                        100 ms
+                                    </strong>
+                                </div>
 
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-pattern__arrow"
                                     aria-hidden="true"
-                                ></span>
-
-                                <span class="activity-section__category">
-                                    Experimentá
-                                </span>
-                            </div>
-
-                            <h2 class="activity-section__title">
-                                Hacé un destello corto
-                            </h2>
-
-                            <p class="activity-section__lead">
-                                Los tiempos de encendido y apagado no tienen que
-                                ser iguales. Ahora vamos a crear un destello
-                                breve seguido por una pausa más larga.
-                            </p>
-                        </header>
-
-                        <div class="activity-pattern">
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Encendido
+                                >
+                                    →
                                 </span>
 
-                                <strong class="activity-pattern__value">
-                                    100 ms
-                                </strong>
+                                <div class="activity-pattern__item">
+                                    <span class="activity-pattern__label">
+                                        Apagado
+                                    </span>
+
+                                    <strong class="activity-pattern__value">
+                                        900 ms
+                                    </strong>
+                                </div>
                             </div>
 
-                            <span
-                                class="activity-pattern__arrow"
-                                aria-hidden="true"
-                            >
-                                →
-                            </span>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                </div>
 
-                            <div class="activity-pattern__item">
-                                <span class="activity-pattern__label">
-                                    Apagado
-                                </span>
-
-                                <strong class="activity-pattern__value">
-                                    900 ms
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                            </div>
-
-                            <pre class="command-block__code"><code>loop {
+                                <pre class="command-block__code"><code>loop {
     led_pin.set_high().unwrap();
     delay.delay_ms(100);
 
     led_pin.set_low().unwrap();
     delay.delay_ms(900);
 }</code></pre>
-                        </div>
-                    </section>
+                            </div>
+                        </section>
 
-                    <!-- =========================
+                        <!-- =========================
                     10 - Crear una secuencia
                     ========================= -->
-                    <section
-                        id="crear-patron"
-                        class="activity-section activity-experiment"
-                    >
-                        <header class="activity-section__header">
-                            <div class="activity-section__eyebrow">
-                                <span class="activity-section__number">
-                                    10
+                        <section
+                            id="crear-patron"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        10
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Experimentá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Creá una secuencia
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Ahora combiná varios cambios de estado.
+                                    Vamos a generar dos destellos rápidos
+                                    seguidos por una pausa más larga.
+                                </p>
+                            </header>
+
+                            <div
+                                class="activity-sequence"
+                                aria-label="Dos destellos cortos y una pausa larga"
+                            >
+                                <span
+                                    class="activity-sequence__on"
+                                    title="LED encendido"
+                                >
+                                    ●
                                 </span>
 
                                 <span
-                                    class="activity-section__line"
+                                    class="activity-sequence__off"
+                                    title="LED apagado"
+                                >
+                                    ○
+                                </span>
+
+                                <span
+                                    class="activity-sequence__on"
+                                    title="LED encendido"
+                                >
+                                    ●
+                                </span>
+
+                                <span
+                                    class="activity-sequence__pause"
                                     aria-hidden="true"
                                 ></span>
 
-                                <span class="activity-section__category">
-                                    Experimentá
+                                <span
+                                    class="activity-sequence__off"
+                                    title="LED apagado"
+                                >
+                                    ○
                                 </span>
                             </div>
 
-                            <h2 class="activity-section__title">
-                                Creá una secuencia
-                            </h2>
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                </div>
 
-                            <p class="activity-section__lead">
-                                Ahora combiná varios cambios de estado. Vamos a
-                                generar dos destellos rápidos seguidos por una
-                                pausa más larga.
-                            </p>
-                        </header>
-
-                        <div
-                            class="activity-sequence"
-                            aria-label="Dos destellos cortos y una pausa larga"
-                        >
-                            <span
-                                class="activity-sequence__on"
-                                title="LED encendido"
-                            >
-                                ●
-                            </span>
-
-                            <span
-                                class="activity-sequence__off"
-                                title="LED apagado"
-                            >
-                                ○
-                            </span>
-
-                            <span
-                                class="activity-sequence__on"
-                                title="LED encendido"
-                            >
-                                ●
-                            </span>
-
-                            <span
-                                class="activity-sequence__pause"
-                                aria-hidden="true"
-                            ></span>
-
-                            <span
-                                class="activity-sequence__off"
-                                title="LED apagado"
-                            >
-                                ○
-                            </span>
-                        </div>
-
-                        <div class="command-block">
-                            <div class="command-block__header">
-                                <span>src/main.rs</span>
-                            </div>
-
-                            <pre class="command-block__code"><code>loop {
+                                <pre class="command-block__code"><code>loop {
     led_pin.set_high().unwrap();
     delay.delay_ms(150);
 
@@ -1609,24 +1686,461 @@ let uart0 =
     led_pin.set_low().unwrap();
     delay.delay_ms(700);
 }</code></pre>
-                        </div>
+                            </div>
 
-                        <aside class="activity-note">
-                            <span
-                                class="activity-note__icon"
-                                aria-hidden="true"
-                            >
-                                i
-                            </span>
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
 
-                            <p>
-                                Modificá el código, ejecutá nuevamente
-                                <code>cargo build --release</code> y cargá el
-                                nuevo ELF en Velxio para comparar el resultado.
+                                <p>
+                                    Modificá el código, ejecutá nuevamente
+                                    <code>cargo build --release</code> y cargá
+                                    el nuevo ELF en Velxio para comparar el
+                                    resultado.
+                                </p>
+                            </aside>
+                        </section>
+                    </div>
+                    <div
+                        class="activity-tutorial"
+                        data-tutorial="hardware"
+                        hidden
+                    >
+                        <section
+                            id="recorrido-hardware"
+                            class="activity-section activity-experiment"
+                        >
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 01
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Hardware real
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Conectá el LED a la Pico 2
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a construir físicamente el mismo
+                                    circuito que utilizamos en Velxio. GPIO15
+                                    controlará un LED conectado mediante una
+                                    resistencia.
+                                </p>
+                            </header>
+
+                            <div class="activity-materials">
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        1
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            GPIO15 → resistencia
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá GPIO15 a una resistencia de
+                                            entre 220 Ω y 330 Ω.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        2
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            Resistencia → ánodo del LED
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá la resistencia a la pata
+                                            larga del LED.
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-material">
+                                    <span class="activity-material__check">
+                                        3
+                                    </span>
+
+                                    <div class="activity-material__content">
+                                        <span class="activity-material__name">
+                                            Cátodo → GND
+                                        </span>
+
+                                        <span class="activity-material__detail">
+                                            Conectá la pata corta del LED a GND.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    La resistencia limita la corriente que
+                                    atraviesa el LED. No conectes el LED
+                                    directamente entre GPIO15 y GND.
+                                </p>
+                            </aside>
+                        </section>
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 02
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Prepará
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Retirá la comunicación USB del tutorial
+                                    anterior
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    En el Tutorial 1 utilizamos USB CDC para
+                                    enviar mensajes a la computadora. En Blinky
+                                    ya no necesitamos comunicación serial: vamos
+                                    a concentrarnos únicamente en controlar
+                                    GPIO15.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Limpiá src/main.rs
+                                </span>
+
+                                <p>
+                                    Eliminá los imports de
+                                    <code>usb-device</code> y
+                                    <code>usbd-serial</code>, además de
+                                    <code>timer</code>, <code>usb_bus</code>,
+                                    <code>serial</code>, <code>usb_dev</code> y
+                                    el loop que enviaba
+                                    <code>Hola Mini Lab!</code>.
+                                </p>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    Conservá la inicialización del
+                                    microcontrolador, los clocks y los pines. A
+                                    continuación vamos a crear un nuevo
+                                    <code>delay</code> para controlar los
+                                    tiempos de Blinky.
+                                </p>
+                            </aside>
+                        </section>
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 03
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Configurá
+                                    </span>
+                                </div>
+                                <h2 class="activity-section__title">
+                                    Configurá GPIO15 como salida
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Para controlar el LED físico necesitamos
+                                    configurar GPIO15 como una salida digital.
+                                </p>
+                            </header>
+
+                            <p class="activity-section__lead">
+                                Primero creá el delay que utilizaremos para
+                                controlar los tiempos de encendido y apagado:
                             </p>
-                        </aside>
-                    </section>
 
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Delay</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut delay = cortex_m::delay::Delay::new(
+    core.SYST,
+    clocks.system_clock.freq().to_Hz(),
+);</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Agregá el trait que permite controlar pines de
+                                salida:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Import</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>use embedded_hal::digital::OutputPin;</code></pre>
+                            </div>
+
+                            <p class="activity-section__lead">
+                                Después de crear <code>pins</code>, configurá
+                                GPIO15:
+                            </p>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>GPIO15</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>let mut led_pin =
+    pins.gpio15.into_push_pull_output();</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    El mismo GPIO15 que utilizamos en Velxio
+                                    controla ahora un pin físico de la Raspberry
+                                    Pi Pico 2. Cuando escribimos HIGH o LOW
+                                    sobre ese GPIO estamos modificando el nivel
+                                    eléctrico real del pin.
+                                </p>
+                            </aside>
+                        </section>
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 04
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Programá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Hacé parpadear el LED físico
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Vamos a alternar el estado de GPIO15 cada
+                                    500 ms. El circuito físico tendrá el mismo
+                                    comportamiento que observaste en el
+                                    simulador.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>src/main.rs</span>
+                                    <span>Loop</span>
+                                </div>
+
+                                <pre class="command-block__code"><code>loop {
+    led_pin.set_high().unwrap();
+    delay.delay_ms(500);
+
+    led_pin.set_low().unwrap();
+    delay.delay_ms(500);
+}</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    Rust
+                                </span>
+
+                                <p>
+                                    <code>set_high()</code> coloca GPIO15 en
+                                    nivel lógico alto y enciende el LED.
+                                    <code>set_low()</code> vuelve el pin a nivel
+                                    bajo y lo apaga.
+                                </p>
+                            </aside>
+                        </section>
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 05
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Ejecutá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Cargá Blinky en la Pico 2
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Compilá el firmware y cargalo sobre la placa
+                                    utilizando la configuración de
+                                    <code>picotool</code> que preparaste en el
+                                    Tutorial 1.
+                                </p>
+                            </header>
+
+                            <div class="command-block">
+                                <div class="command-block__header">
+                                    <span>Terminal</span>
+                                    <span>Hardware</span>
+                                </div>
+
+                                <pre
+                                    class="command-block__code"
+                                ><code>cargo run --release</code></pre>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    i
+                                </span>
+
+                                <p>
+                                    El runner configurado en
+                                    <code>.cargo/config.toml</code> utiliza
+                                    <code>picotool</code> para cargar y ejecutar
+                                    el firmware sobre la Raspberry Pi Pico 2.
+                                </p>
+                            </aside>
+                        </section>
+                        <section class="activity-section activity-experiment">
+                            <header class="activity-section__header">
+                                <div class="activity-section__eyebrow">
+                                    <span class="activity-section__number">
+                                        HW 06
+                                    </span>
+
+                                    <span
+                                        class="activity-section__line"
+                                        aria-hidden="true"
+                                    ></span>
+
+                                    <span class="activity-section__category">
+                                        Comprobá
+                                    </span>
+                                </div>
+
+                                <h2 class="activity-section__title">
+                                    Observá el LED
+                                </h2>
+
+                                <p class="activity-section__lead">
+                                    Una vez cargado el firmware, el LED
+                                    conectado a GPIO15 debería encenderse
+                                    durante 500 ms y apagarse durante otros 500
+                                    ms de forma continua.
+                                </p>
+                            </header>
+
+                            <div class="activity-task">
+                                <span class="activity-task__label">
+                                    Resultado esperado
+                                </span>
+
+                                <p>
+                                    El LED debería completar aproximadamente un
+                                    ciclo de encendido y apagado por segundo.
+                                </p>
+                            </div>
+
+                            <aside class="activity-note">
+                                <span
+                                    class="activity-note__icon"
+                                    aria-hidden="true"
+                                >
+                                    ✓
+                                </span>
+
+                                <p>
+                                    Si el comportamiento coincide con el de
+                                    Velxio, el mismo firmware de control GPIO
+                                    está funcionando correctamente sobre
+                                    hardware real.
+                                </p>
+                            </aside>
+                        </section>
+                    </div>
                     <!-- =========================
                     DESAFÍO
                     ========================= -->
@@ -1657,8 +2171,8 @@ let uart0 =
                                 <p class="activity-challenge__description">
                                     Antes de ejecutarla, escribí o imaginá cómo
                                     debería verse. Después compilá el firmware y
-                                    compará tu predicción con el resultado en
-                                    Velxio.
+                                    compará tu predicción con el resultado en el
+                                    entorno que elegiste.
                                 </p>
 
                                 <ul class="activity-challenge__checklist">
@@ -1673,7 +2187,7 @@ let uart0 =
                                         ejecutarlo.
                                     </li>
 
-                                    <li>Probalo en el simulador.</li>
+                                    <li>Probalo en el entorno que elegiste.</li>
                                 </ul>
                             </div>
                         </div>
@@ -1721,7 +2235,7 @@ let uart0 =
                                 class="activity-footer-nav__back"
                             >
                                 <span aria-hidden="true">←</span>
-                                Tutorial 01 · Serie / UART
+                                Tutorial 01 · Comunicación serial
                             </a>
 
                             <a
