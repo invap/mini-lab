@@ -287,18 +287,6 @@
 
         <dialog id="component-dialog" class="component-dialog" aria-labelledby="dialog-title">
             <div class="component-dialog__container">
-                <!-- <header class="component-dialog__header"> -->
-                    <!-- <h2 id="dialog-title" class="component-dialog__title"></h2> -->
-                    <button
-                        id="component-dialog-close"
-                        class="component-dialog__close"
-                        type="button"
-                        aria-label="Cerrar detalles del componente"
-                    >
-                        ✕
-                    </button>
-                <!-- </header> -->
-
                 <div class="component-dialog__visual">
                     <div class="component-dialog__visual-grid" aria-hidden="true"></div>
                     <img
@@ -309,6 +297,17 @@
                 </div>
 
                 <div class="component-dialog__content">
+                    <div class="component-dialog__toolbar">
+                        <button
+                            id="component-dialog-close"
+                            class="component-dialog__close"
+                            type="button"
+                            aria-label="Cerrar detalles del componente"
+                        >
+                            ✕
+                        </button>
+                    </div>
+
                     <header class="component-dialog__header">
                         <p class="component-dialog__eyebrow">
                             Hardware

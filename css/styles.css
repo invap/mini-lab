@@ -66,11 +66,11 @@
     --notice-warning-dark-bg: #3a3422;
     --notice-warning-dark-text: #e0cf91;
 
-    --code-window-bg: #071a0f;
-    --code-window-header-bg: rgba(255, 255, 255, 0.025);
-    --code-window-header-border: rgba(255, 255, 255, 0.08);
-    --code-window-text: #9bc9ab;
-    --code-window-muted: #7d9a86;
+    --code-window-bg: #101312;
+    --code-window-header-bg: #171a19;
+    --code-window-header-border: rgba(255, 255, 255, 0.09);
+    --code-window-text: #e1e8e4;
+    --code-window-muted: #9aa59f;
 }
 
 [data-theme="dark"]{
@@ -129,11 +129,11 @@
     --notice-warning-dark-bg: #3a3422;
     --notice-warning-dark-text: #e0cf91;
 
-    --code-window-bg: #071a0f;
-    --code-window-header-bg: rgba(255, 255, 255, 0.025);
-    --code-window-header-border: rgba(255, 255, 255, 0.08);
-    --code-window-text: #9bc9ab;
-    --code-window-muted: #7d9a86;
+    --code-window-bg: #101312;
+    --code-window-header-bg: #171a19;
+    --code-window-header-border: rgba(255, 255, 255, 0.09);
+    --code-window-text: #e1e8e4;
+    --code-window-muted: #9aa59f;
 }
 
 * {
@@ -602,7 +602,64 @@ main {
     display: none;
 }
 
+<<<<<<< Updated upstream
 
+=======
+/* =========================
+   TERMINAL / CÓDIGO
+   ========================= */
+
+.command-block {
+    overflow: hidden;
+    margin: 1.25rem 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: var(--radius-medium);
+
+    background-color: var(--code-window-bg);
+
+    box-shadow: var(--shadow-small);
+}
+
+.command-block__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    min-height: 2.7rem;
+
+    padding: 0.65rem 0.9rem;
+
+    border-bottom: 1px solid var(--code-window-header-border);
+
+    background-color: var(--code-window-header-bg);
+    color: var(--code-window-muted);
+
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+}
+
+.command-block__code {
+    overflow-x: auto;
+
+    margin: 0;
+    padding: 1.2rem;
+
+    color: var(--code-window-text);
+
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+
+    font-size: 0.82rem;
+    line-height: 1.7;
+
+    tab-size: 4;
+}
+>>>>>>> Stashed changes
 
 .command-block__copy {
     padding: 0.25rem 0.55rem;

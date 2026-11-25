@@ -439,11 +439,6 @@
 }
 
 .component-dialog__close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-
     width: 42px;
     height: 42px;
 
@@ -558,6 +553,20 @@
 .component-dialog__content {
     min-width: 0;
     padding: 2rem;
+    background-color: var(--surface);
+}
+
+.component-dialog__toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
+    display: flex;
+    justify-content: flex-end;
+
+    margin: -2rem -2rem 1rem;
+    padding: 1rem 1rem 0;
+
     background-color: var(--surface);
 }
 
@@ -693,44 +702,15 @@
 
 /* Ayuda */
 
-.component-dialog__help-link {
-    margin-top: 1rem;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    color: var(--text-primary);
-
-    font-size: 1rem;
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-.component-dialog__help-link:hover {
-    color: var(--invap-green-dark);
-}
-
-.component-dialog__help-link span{
-    color: var(--invap-green);
-    transition: transform 0.2s ease;
-}
-
-.component-dialog__help-link:hover span{
-    transform: translateY(3px);
-}
-
-
-/* Documentación */
-
+.component-dialog__help-link,
 .component-dialog__documentation {
-    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
 
+    width: 100%;
+    box-sizing: border-box;
     padding: 1rem 1.1rem;
 
     border: 1px solid var(--border);
@@ -748,12 +728,34 @@
         background-color 0.2s ease;
 }
 
+.component-dialog__help-link {
+    margin-top: 1rem;
+}
+
+.component-dialog__documentation {
+    margin-top: 1rem;
+}
+
+.component-dialog__help-link:hover,
 .component-dialog__documentation:hover {
     border-color: var(--invap-green);
 }
 
+.component-dialog__help-link:focus-visible,
+.component-dialog__documentation:focus-visible {
+    outline: 2px solid var(--invap-green);
+    outline-offset: 3px;
+}
+
+.component-dialog__help-link span,
 .component-dialog__documentation span:last-child{
     color: var(--invap-green);
+    transition: transform 0.2s ease;
+}
+
+.component-dialog__help-link:hover span,
+.component-dialog__documentation:hover span:last-child {
+    transform: translateX(3px);
 }
 
 /* =========================================================
@@ -822,6 +824,10 @@
         padding-right: 2rem;
     }
 
+    .component-dialog__toolbar {
+        margin: -3.25rem -3.25rem 1rem;
+    }
+
     .component-dialog__data-list{
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
@@ -854,6 +860,10 @@
 
     .component-dialog__section {
         margin-bottom: 2rem;
+    }
+
+    .component-dialog__section:last-of-type {
+        margin-bottom: 0;
     }
 
     .page-header--kit{

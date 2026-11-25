@@ -1,7 +1,7 @@
 {
     "raspberry-pi-pico-2": {
         "title": "Raspberry Pi Pico 2",
-        "image": "raspberry-pi-pico-2-wh.png",
+        "image": "conoce-tu-kit/raspberry-pi-pico-2-wh.png",
         "cardDescription": "Placa principal utilizada para desarrollar y ejecutar los programas del kit.",
         "description":
             "La Raspberry Pi Pico 2 es la placa principal del kit.",
@@ -17,7 +17,7 @@
 
     "protoboard": {
         "title": "Protoboard",
-        "image": "protoboard.jpg",
+        "image": "conoce-tu-kit/protoboard-sin-fondo.png",
         "cardDescription": "Permite realizar conexiones y prototipos electrónicos sin necesidad de soldar.",
         "description":
             "La protoboard permite construir circuitos sin necesidad de soldar.",
@@ -32,7 +32,7 @@
 
     "mpu6050": {
         "title": "MPU6050",
-        "image": "MPU6050.png",
+        "image": "conoce-tu-kit/mpu6050-ejes-de-rotacion.png",
         "cardDescription": "Sensor de movimiento que combina acelerómetro y giroscopio.",
         "description":
             "El MPU6050 combina un acelerómetro y un giroscopio.",
@@ -40,12 +40,14 @@
             "Lo vamos a utilizar para medir movimiento, aceleración y orientación.",
         "documentationText": "Documentación del MPU6050",
         "documentation": "https://product.tdk.com/en/search/sensor/mortion-inertial/imu/info?part_no=MPU-6050",
-        "importantData": ["Acelerómetro: 16 bits", "Giroscopio: 16 bits", "Comunicación I2C"]
+        "importantData": ["Acelerómetro: 16 bits", "Giroscopio: 16 bits", "Comunicación I2C"],
+        "activities": ["Medir movimiento y orientación con el MPU6050", "Leer datos del sensor mediante I²C"],
+        "help": "../ayuda/"
     },
 
     "dupont-macho-macho": {
         "title": "Cables Dupont macho-macho",
-        "image": "dupont-macho-macho.jpg",
+        "image": "conoce-tu-kit/cables-dupont-macho-macho-sin-fondo.png",
         "cardDescription": "Cables utilizados para conectar componentes en la protoboard o placas de desarrollo.",
         "description":
             "Cables Dupont macho-macho utilizados para conectar componentes en la protoboard.",
@@ -53,12 +55,14 @@
             "Los vamos a utilizar para establecer conexiones entre la placa y los distintos componentes del kit.",
         "documentationText": null,
         "documentation": null,
-        "importantData": ["Cantidad: 40 cables", "Longitud: 20 cm", "Conectores: Macho en ambos extremos"]
+        "importantData": ["Cantidad: 40 cables", "Longitud: 20 cm", "Conectores: Macho en ambos extremos"],
+        "activities": ["Conectar el LED y la resistencia en la protoboard", "Conectar el botón y el sensor a la placa"],
+        "help": "../ayuda/"
     },
 
     "led-rojo": {
         "title": "LED rojo",
-        "image": "led-rojo.jpg",
+        "image": "conoce-tu-kit/leds-rojos-sin-fondo.png",
         "cardDescription": "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
         "description":
             "LED de color rojo utilizado para indicación visual en proyectos electrónicos.",
@@ -66,11 +70,13 @@
             "Lo vamos a utilizar para crear indicadores de estado o señales visuales.",
         "documentationText": "Guía sobre LEDs y su funcionamiento",
         "documentation": "https://learn.sparkfun.com/tutorials/light-emitting-diodes-leds/all",
-        "importantData": ["Color: Rojo", "Tensión directa: 2V", "Corriente directa: 20 mA", "Ángulo de visión: 30°", "Pata larga: Ánodo (+), Pata corta: Cátodo (-)"]
+        "importantData": ["Color: Rojo", "Tensión directa: 2V", "Corriente directa: 20 mA", "Ángulo de visión: 30°", "Pata larga: Ánodo (+), Pata corta: Cátodo (-)"],
+        "activities": ["Hacer parpadear un LED con Rust", "Controlar el LED con un botón"],
+        "help": "../ayuda/"
     },
     "resistencias": {
         "title": "Resistencias",
-        "image": "resistencias.jpg",
+        "image": "conoce-tu-kit/resistencias-azules-sin-fondo.png",
         "cardDescription": "Componentes utilizados para limitar el flujo de corriente en los circuitos electrónicos.",
         "description":
             "Resistencias utilizadas para controlar el flujo de corriente en los circuitos.",
@@ -78,12 +84,14 @@
             "Las vamos a utilizar para limitar la corriente que fluye a través de los componentes del kit.",
         "documentationText": "Guía sobre resistencias y su funcionamiento",
         "documentation": "https://learn.sparkfun.com/tutorials/resistors/all",
-        "importantData": ["Valores: 220Ω, 1kΩ, 4.7kΩ, 10kΩ", "Potencia nominal: 1/4 vatios" ]
+        "importantData": ["Valores: 220Ω, 1kΩ, 4.7kΩ, 10kΩ", "Potencia nominal: 1/4 vatios" ],
+        "activities": ["Limitar la corriente del LED", "Armar circuitos con LED en la protoboard"],
+        "help": "../ayuda/"
     },
 
     "boton-pulsador": {
         "title": "Botón pulsador",
-        "image": "boton-pulsador.png",
+        "image": "conoce-tu-kit/pulsadores-tactiles-negros-sin-fondo.png",
         "cardDescription": "Componente utilizado para enviar una señal de entrada a un circuito electrónico.",
         "description":
             "Botón pulsador utilizado para interactuar con los circuitos.",
@@ -91,7 +99,9 @@
             "Lo vamos a utilizar para activar o desactivar funciones en nuestros proyectos.",
         "documentationText": "Guía sobre botones y su funcionamiento",
         "documentation": "https://learn.sparkfun.com/tutorials/button-and-switch-basics/all",
-        "importantData": ["Tipo: Momentáneo", "Tensión máxima: 12V", "Corriente máxima: 50 mA"]
+        "importantData": ["Tipo: Momentáneo", "Tensión máxima: 12V", "Corriente máxima: 50 mA"],
+        "activities": ["Leer una entrada digital con el botón", "Controlar el LED al presionar el botón"],
+        "help": "../ayuda/"
     }
 
 }
